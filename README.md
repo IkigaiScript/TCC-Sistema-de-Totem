@@ -1,4 +1,5 @@
-# TCC-Sistema-de-Totem
+# Sistema de Totem 
 
-* sdçlkcmd
-* sldac,mpçsd
+## Coisas a serem feitas
+
+* Adicionar informações principais do nosso sistema
