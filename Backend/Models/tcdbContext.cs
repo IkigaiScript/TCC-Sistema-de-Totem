@@ -176,6 +176,10 @@ namespace Backend.Models
                 entity.HasKey(e => e.IdFilme)
                     .HasName("PRIMARY");
 
+                entity.HasIndex(e => e.NmFilme)
+                    .HasName("nm_filme")
+                    .IsUnique();
+
                 entity.Property(e => e.DsGenero)
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
@@ -393,13 +397,13 @@ namespace Backend.Models
 
             modelBuilder.Entity<TbTrailer>(entity =>
             {
-                entity.HasKey(e => e.IdTreiler)
+                entity.HasKey(e => e.IdTrailer)
                     .HasName("PRIMARY");
 
                 entity.HasIndex(e => e.IdFilme)
                     .HasName("id_filme");
 
-                entity.Property(e => e.NmTreiler)
+                entity.Property(e => e.NmTrailer)
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
 
