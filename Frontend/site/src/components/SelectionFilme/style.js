@@ -29,14 +29,10 @@ border: 0.5px solid black;
 export const ContainerTitle = styled.div`
 
 display: flex;
-flex-direction: row;
+flex-direction: column;
 width: 250;
 height: 80px;
 justify-content: center;
 align-items: center;
 `;
 
-export const TitleFilme = styled.h1`
-
-color: black;
-`;
