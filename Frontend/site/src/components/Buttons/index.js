@@ -3,7 +3,9 @@ import { ButtonStyled } from '../Buttons/style';
 
 export default function Button(props) {
     return(
-            <ButtonStyled>Button</ButtonStyled>
+            <ButtonStyled>
+                {props.children} 
+            </ButtonStyled>
     );
 }
 
