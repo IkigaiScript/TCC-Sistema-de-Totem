@@ -1,7 +1,6 @@
 create database tcdb;
 use tcdb;
 
-
 CREATE TABLE tb_filme (
 	id_filme			INT PRIMARY KEY AUTO_INCREMENT,
     nm_filme			VARCHAR(100) UNIQUE,
@@ -278,4 +277,97 @@ insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(14, '
 
 insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(15, '', 03, true);
 
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(1,'Will Smith','1968-09-25');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(2,'Bred pitt','1963-12-18');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(3,'Tom Hanks','1956-07-9');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(4,'Leonardo DiCprio','1974-11-11');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(5,'Harrison Ford','1942-07-13');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(6,'Johnny Depp','1963-06-09');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(7,'Julia Roberts','1967-10-28');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(8,'Robert Pattinso','1986-05-13');
+
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(9,'Tom Cruise','1962-07-12');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(10,'Jim Carrey','1962-01-17');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(11,'Natalie Portman','1981-06-09');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(12,'Matt Damon','1970-10-08');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(13,'Sylvester Stallone','1946-06-06');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(14,'Nicolas Cage','1964-01-07');
+  
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(15,'Robert De Niro','1943-08-17');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(1,'Quentin Tarantino','1963-03-27');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(2,'Quentin Tarantino','1963-03-27');
+    
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(3,'Quentin Tarantino','1963-03-27');
+    
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(4,'Quentin Tarantino','1963-03-27');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(5,'Quentin Tarantino','1963-03-27');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(6,'Martin Scorsese','1942-11-17');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(7,'Martin Scorsese','1942-11-17');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(8,'Martin Scorsese','1942-11-17');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(9,'Martin Scorsese','1942-11-17');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(10,'Martin Scorsese','1942-11-17');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(11,'Woody Allen','1935-12-01');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(12,'Woody Allen','1935-12-01');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(13,'Woody Allen','1935-12-01');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(14,'Woody Allen','1935-12-01');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(15,'Woody Allen','1935-12-01');
+
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco)value('Pipoca','Pipoca','cinema','tradicional','400g','n sei',8,10.50);
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Pipoca','Pipoca','Cinema','amantegada','400g','n sei',8,11.00);
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Pipoca','Pipoca','Cinema','com chocolate','400g','n sei',8,14.00);
+
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Pipoca','Pipoca','Cinema','doce','400g','n sei',8,12.00);
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Coca Cola','bebida','Cinema','cola','500ml','n sei',8,10.00);
+
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Guaraná Antartica','bebida','antartica','guarana','500ml','n sei',8,10.00);
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Sprit','bebida','coca cola','limão','500ml','n sei',8,10.00);
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('fanta uva','bebida','coca cola','uva','500ml','n sei',8,10.00);
+   
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Fanta Laranja','bebida','coca cola','laranja','500ml','n sei',8,10.00);
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Fanta Guaraná','bebida','cocacola','guaraná','500ml','n sei',8,10.00);
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Dentaduras Fini','doce','fini','tuti fruti','300g','n sei',8,8.00);
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Beijo Fini','doce','fini','morango','300g','n sei',8,8.00);
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Tubes Fini','doce','fini','morango','300g','n sei',8,8.00);  
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Choquito','doce','nestle','chocolate','100g','n sei',8,4.00);  
+  
+insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('suflair','doce','nestle','chocolate','100g','n sei',8,4.00);
+
 select * from tb_filme;
+select * from tb_ator;
+select * from tb_diretor;
+select * from tb_snack_bar;

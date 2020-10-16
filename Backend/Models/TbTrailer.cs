@@ -9,12 +9,12 @@ namespace Backend.Models
     public partial class TbTrailer
     {
         [Key]
-        [Column("id_treiler")]
-        public int IdTreiler { get; set; }
+        [Column("id_trailer")]
+        public int IdTrailer { get; set; }
         [Column("id_filme")]
         public int? IdFilme { get; set; }
-        [Column("nm_treiler", TypeName = "varchar(100)")]
-        public string NmTreiler { get; set; }
+        [Column("nm_trailer", TypeName = "varchar(100)")]
+        public string NmTrailer { get; set; }
         [Column("nr_duracao")]
         public int? NrDuracao { get; set; }
         [Column("bt_dublado")]
