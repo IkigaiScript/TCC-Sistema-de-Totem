@@ -1,30 +1,32 @@
 import styled from 'styled-components'
 import Button from '../../components/Buttons';
 
+
+export const PagesDefault = styled.div`
+padding: 0px;
+margin: 0px;
+
+
+>Button{
+  margin-left: 80px;
+}
+`;
+
+//Titulo
+
 export const Titulo = styled.h1`
    text-align: center;
    font-size: 50px;
    font-family: Arial;
-   margin-top:-10px;
+   
 
 `;
-
-export const PagesDefault = styled.div`
- padding: 0px;
- margin: 0px;
-
- >Button{
-     margin-left: 80px;
- }
-`;
-
 
 //Parte do Combo
 
 export const ParteCombo = styled.div`
  flex-direction: row;
  display: flex;
- margin-top: -3%;
 `;
 
 export const ImgCombo = styled.img`
@@ -106,10 +108,3 @@ export const Hr = styled.hr`
   width: 95%;
 `;
 
-// Botão Voltar
-
-export const BtnVoltar = styled.button`
-    margin-left: 5%;
-    width: 15%;
-    height: 24px;
-`;
