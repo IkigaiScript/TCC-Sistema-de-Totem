@@ -1,10 +1,10 @@
 import React from 'react';
 import {PagesDefault, Titulo, ImgCombo, ParteCombo, TituloCombo, PartePipoca, 
 ImgPipoca, TituloPipoca, ParteBebida, ImgBebida, TituloBebida, ParteDoce, ImgDoce, TituloDoce, Hr,} from './style'
-import Combo from '../../assets/Img/Combo.jpg'
-import Pipoca from '../../assets/Img/Pipoca.png'
-import Bebida from '../../assets/Img/Bebida.png'
-import Doce from '../../assets/Img/Doce.png'
+import Combo from '../../assets/Img/Combo.jpg';
+import Pipoca from '../../assets/Img/Pipoca.png';
+import Bebida from '../../assets/Img/Bebida.png';
+import Doce from '../../assets/Img/Doce.png';
 import Button from '../../components/Buttons';
 
 

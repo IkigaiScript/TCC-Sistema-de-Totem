@@ -1,6 +1,6 @@
 import React from 'react';
-import {PagesDefault, Titulo, Img, SubTitulo, Body,} from './style'
-import ImgPagamentoRealizado from '../../assets/Img/PagamentoRealizado.png'
+import {PagesDefault, Titulo, Img, SubTitulo, Body,} from './style';
+import ImgPagamentoRealizado from '../../assets/Img/PagamentoRealizado.png';
 
 export default function PagamentoRealizado() {
     return(

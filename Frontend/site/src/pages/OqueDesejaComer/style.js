@@ -105,6 +105,6 @@ export const TituloDoce = styled.p`
 // Todos os hr (linhas)
 
 export const Hr = styled.hr`
-  width: 95%;
+  width: 90%
 `;
 
