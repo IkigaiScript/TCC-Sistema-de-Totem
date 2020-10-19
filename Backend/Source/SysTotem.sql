@@ -139,7 +139,7 @@ CREATE TABLE tb_pedido_combo (
     FOREIGN KEY (id_combo)  REFERENCES tb_combo (id_combo) ON DELETE CASCADE
 );
    
-CREATE TABLE tb_nota_fiscal(
+CREATE TABLE tb_nota_fiscal (
     id_nota_fisical			INT PRIMARY KEY AUTO_INCREMENT,
     id_pedido   			INT,
     ds_email 				VARCHAR(255),
@@ -147,7 +147,7 @@ CREATE TABLE tb_nota_fiscal(
     FOREIGN KEY (id_pedido) REFERENCES tb_pedido (id_pedido) ON DELETE CASCADE
 );
    
-CREATE TABLE tb_cartao(
+CREATE TABLE tb_cartao (
     id_cartao				INT PRIMARY KEY AUTO_INCREMENT,
     id_pedido   			INT,
 	nr_cartao				INT,
