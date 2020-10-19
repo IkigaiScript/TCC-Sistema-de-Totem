@@ -6,18 +6,6 @@
 // using Microsoft.AspNetCore.Mvc;
 
 // namespace Backend.Controllers
-// {
-//     [ApiController]
-//     [Route("[controller]")]
-//     public class ClienteContoller : ControllerBase     
-//     {
-        
-//        [HttpGet]
-//         public int PegarCliente(int IdLogin){
-//             Models.tcdbContext ctx = new Models.tcdbContext();
-            
-//             Models.TbCliente cliente = ctx.TbCliente.Where(x => x.IdCliente == IdLogin);
-//             return cliente;
-//         }
-//     }
+// {    
+//            
 // }

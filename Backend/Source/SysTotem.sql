@@ -80,7 +80,7 @@ CREATE TABLE tb_ingresso (
     id_pedido   		INT,
     id_sessao   		INT,
     ds_fileira			VARCHAR(1),
-    nr_poltrona		 	INT,
+    nr_poltrona	  		 INT,
     bt_meia_entrada		BOOL,
     FOREIGN KEY (id_pedido) REFERENCES tb_pedido (id_pedido) ON DELETE CASCADE,
     FOREIGN KEY (id_sessao) REFERENCES tb_sessao (id_sessao) ON DELETE CASCADE
@@ -367,7 +367,7 @@ insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds
   
 insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('suflair','doce','nestle','chocolate','100g','n sei',8,4.00);
 
-select * from tb_filme;
+select * from tb_ingresso;
 select * from tb_ator;
 select * from tb_diretor;
 select * from tb_snack_bar;

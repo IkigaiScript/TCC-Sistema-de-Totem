@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Trailer_API.Business
 {
-    public class GerenciadorFotos
+    public class GerenciadorFoto
     {
        public string GerarNovoNome(string nome)
        {
