@@ -80,7 +80,7 @@ CREATE TABLE tb_ingresso (
     id_pedido   		INT,
     id_sessao   		INT,
     ds_fileira			VARCHAR(1),
-    nr_poltona		 	INT,
+    nr_poltrona		 	INT,
     bt_meia_entrada		BOOL,
     FOREIGN KEY (id_pedido) REFERENCES tb_pedido (id_pedido) ON DELETE CASCADE,
     FOREIGN KEY (id_sessao) REFERENCES tb_sessao (id_sessao) ON DELETE CASCADE
