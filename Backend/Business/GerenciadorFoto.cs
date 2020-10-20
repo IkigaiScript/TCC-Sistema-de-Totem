@@ -2,9 +2,9 @@ using System.IO;
 using System;
 using Microsoft.AspNetCore.Http;
 
-namespace Trailer_API.Business
+namespace Backend.Business
 {
-    public class GerenciadorFoto
+    public class GerenciadorFotos
     {
        public string GerarNovoNome(string nome)
        {

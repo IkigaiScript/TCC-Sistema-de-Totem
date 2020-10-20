@@ -24,7 +24,6 @@ namespace Backend.Business
 
         public Models.TbPedido Alterar(int id,Models.TbPedido tb)
         {
-            Models.TbPedido ped = ConsTBase.Pedido(id);
             if(!string.IsNullOrEmpty(tb.DsFormaPagamento))
             {
                 if(tb.DsFormaPagamento.ToLower() != "cartao"    && 
@@ -41,10 +40,9 @@ namespace Backend.Business
             if(!string.IsNullOrEmpty(tb.NmTitular))
             {
                 if(tb.NmTitular.Length <= 10) throw new ArgumentNullException("Quantidade de caracteres inválida no nome");
+                // verificar nome com api externa de nome
             }
-
-            Models.TbPedido pedido =  this.NullValue(id,tb);
-            return db.Alterar(ped,pedido);
+            return db.Alterar(id,tb);
         }
 
         public Models.TbPedido ConsultarPedido(int id)
@@ -57,31 +55,9 @@ namespace Backend.Business
 
         public float CalcularTotal(int id)
         {
-            Models.TbPedido pedido = ConsTBase.Pedido(id);
+            if(ConsTBase.Pedido(id) == null) throw new ArgumentException("Pedido não existe");
             
-            if(pedido == null) throw new ArgumentNullException("Pedido não existe");
-
-            if(pedido.VlTotal != 0 && pedido.VlTotal != null) throw  new ArgumentException("Valor já calculado");
-            return (float) db.CalcularTotal(pedido).VlTotal;
-        }
-
-        public Models.TbPedido NullValue(int id, Models.TbPedido req)
-        {
-            Models.TbPedido pedido = ConsTBase.Pedido(id);
-            Models.TbPedido ret = new Models.TbPedido();
-            ret.DsFormaPagamento = string.IsNullOrEmpty(req.DsFormaPagamento)
-                    ? pedido.DsFormaPagamento
-                    : req.DsFormaPagamento;
-            
-            ret.NmTitular = string.IsNullOrEmpty(req.NmTitular)
-                    ? pedido.NmTitular
-                    : req.NmTitular;
-            
-            ret.DsStatus = string.IsNullOrEmpty(req.DsStatus)
-                    ? pedido.DsStatus
-                    : req.DsStatus;
-            
-            return ret;  
-        }
+            return (float) db.CalcularTotal(id).VlTotal;
+        }        
     }
 }

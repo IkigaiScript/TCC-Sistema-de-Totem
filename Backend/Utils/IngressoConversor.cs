@@ -9,7 +9,7 @@ namespace Backend.Utils
         public Models.Response.IngressoResponse ParaResponse(Models.TbIngresso tb)
         {
             return new Models.Response.IngressoResponse {
-                Poltrona = tb.NrPoltona,
+                Poltrona = tb.NrPoltrona,
                 Fileira = tb.DsFileira[0]
             };
         }
@@ -25,7 +25,7 @@ namespace Backend.Utils
                 DsFileira = req.Fileira.ToString(),
                 BtMeiaEntrada = req.MeiaEntrada,
                 IdPedido = req.Pedido,
-                NrPoltona = req.Poltrona,
+                NrPoltrona = req.Poltrona,
                 IdSessao = req.Sessao,
             };
         }

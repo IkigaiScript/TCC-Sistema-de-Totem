@@ -41,7 +41,7 @@ CREATE TABLE tb_trailer (
 CREATE TABLE tb_cupom_desconto (
 	id_cupom_desconto	INT PRIMARY KEY AUTO_INCREMENT,
     nm_cupom      		VARCHAR(100),
-    ds_codigo			VARCHAR(4),
+    ds_codigo			VARCHAR(4) UNIQUE,
 	vl_desconto			DECIMAL(10,2),
     vl_min_gasto		DECIMAL(10,2)
 );
@@ -80,7 +80,7 @@ CREATE TABLE tb_ingresso (
     id_pedido   		INT,
     id_sessao   		INT,
     ds_fileira			VARCHAR(1),
-    nr_poltrona	  		 INT,
+    nr_poltrona		 	INT,
     bt_meia_entrada		BOOL,
     FOREIGN KEY (id_pedido) REFERENCES tb_pedido (id_pedido) ON DELETE CASCADE,
     FOREIGN KEY (id_sessao) REFERENCES tb_sessao (id_sessao) ON DELETE CASCADE
@@ -367,7 +367,51 @@ insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds
   
 insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('suflair','doce','nestle','chocolate','100g','n sei',8,4.00);
 
-select * from tb_ingresso;
-select * from tb_ator;
+insert into tb_combo (nm_combo,ds_first_item,ds_secondary_item,vl_preco) values ("Mc feliz","Batata media","Hamburguer pequeno",20.1);
+
+insert into tb_cupom_desconto (nm_cupom,ds_codigo,vl_desconto,vl_min_gasto) values ("Dia de abertura","1k2k",10,100);
+
+insert into tb_cupom_desconto (nm_cupom,ds_codigo,vl_desconto,vl_min_gasto) values ("Dia de abertura","1k2k",10,100);
+
+insert into tb_cupom_desconto (nm_cupom,ds_codigo,vl_desconto,vl_min_gasto) values ("Dia de abertura","AAAA",20,100);
+
+insert into tb_cupom_desconto (nm_cupom,ds_codigo,vl_desconto,vl_min_gasto) values ("Dia de abertura","1KKK",10,100);
+
+insert into tb_pedido (id_login) values (1);
+
+insert into tb_pedido (id_login) values (2);
+
+insert into tb_pedido (id_login) values (3);
+
+insert into tb_pedido (id_login) values (4);
+
+insert into tb_pedido (id_login) values (5);
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (1,2,3);
+
+insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (1,3,4);
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (1,5,2);
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (3,2,3);
+
+insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (3,3,4);
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (3,5,2);
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (4,2,3);
+
+insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (4,3,4);
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (4,5,2);
+
+insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (5,3,4);
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (5,5,9);
+
+select * from tb_cupom_desconto;
+select * from tb_combo;
+select * from tb_pedido;
+select * from tb_pedido_snack_bar;
 select * from tb_diretor;
 select * from tb_snack_bar;

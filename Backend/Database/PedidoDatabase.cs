@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using Newtonsoft;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -34,21 +32,27 @@ namespace Backend.Database
             return tb;
         }
 
-        public Models.TbPedido CalcularTotal(Models.TbPedido tb)
+        public Models.TbPedido CalcularTotal(int id)
         {
-            // falta o include
             decimal total = 0;
-            Console.WriteLine(JsonConvert.SerializeObject(tb));
-            total += (decimal) tb.TbIngresso.Sum(x => x.IdSessaoNavigation.VlIngresso);
-            Console.WriteLine(total);
-            total += (decimal) tb.TbPedidoCombo.Sum(x => x.IdComboNavigation.VlPreco * x.NrQtdCombo);
-            Console.WriteLine(total);
-            total += (decimal) tb.TbPedidoSnackBar.Sum(x => x.IdSnackBarNavigation.VlPreco * x.NrQtdSnackBar);
-  
-            tb.VlTotal = total;
-            ctx.SaveChanges();
+           
+            total = (decimal) ctx.TbIngresso.Where(x => x.IdPedido == id)
+                                                                .Include(x => x.IdSessaoNavigation)
+                                                            .Select(x => x.IdSessaoNavigation.VlIngresso)
+                                                            .Sum();
+            total = (decimal) ctx.TbPedidoCombo.Where(x => x.IdPedido == id)
+                                                       .Include(x => x.IdComboNavigation)
+                                                    .Select(x => x.IdComboNavigation.VlPreco * x.NrQtdCombo)
+                                                    .Sum();
+            total += (decimal) ctx.TbPedidoSnackBar.Where(x => x.IdPedido == id)
+                                                          .Include(x => x.IdSnackBarNavigation)
+                                                        .Select(x => x.IdSnackBarNavigation.VlPreco * x.NrQtdSnackBar)
+                                                        .Sum();
 
-            return tb;
+            Models.TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == id);
+            pedido.VlTotal = Math.Round(total,2);
+            ctx.SaveChanges();
+            return pedido;
         }
 
         public Models.TbPedido Cadastrar(Models.TbPedido tb)
@@ -58,12 +62,14 @@ namespace Backend.Database
             return tb;
         }
 
-        public Models.TbPedido Alterar(Models.TbPedido pedido, Models.TbPedido tb)
+        public Models.TbPedido Alterar(int id, Models.TbPedido tb)
         {
-            pedido.NmTitular = tb.NmTitular;
-            pedido.DsFormaPagamento = tb.DsFormaPagamento;
-            pedido.DsStatus = tb.DsStatus;
-            Console.WriteLine(JsonConvert.SerializeObject(pedido));
+            Models.TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == id); 
+
+            if(!string.IsNullOrEmpty(tb.NmTitular)) pedido.NmTitular = tb.NmTitular;
+            if(!string.IsNullOrEmpty(tb.DsFormaPagamento)) pedido.DsFormaPagamento = tb.DsFormaPagamento;
+            if(!string.IsNullOrEmpty(tb.DsStatus)) pedido.DsStatus = tb.DsStatus;
+            Console.WriteLine(JsonConvert.SerializeObject(tb));
             ctx.SaveChanges();
             return pedido;
         }

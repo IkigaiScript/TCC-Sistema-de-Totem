@@ -4,24 +4,24 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class CupomDescontoController : ControllerBase
     {
+        Database.IdBase ConsTBase = new Database.IdBase();
         Business.CupomDescontoBusiness buss = new Business.CupomDescontoBusiness();
         Utils.CupomDescontoConversor conv = new Utils.CupomDescontoConversor();
 
-        [HttpPost] // consertar - database - include
+        [HttpGet] // funcionando
         public ActionResult<Models.Response.CupomDescontoResponse> Consultar(string codigo, int pedido)
         {
             try
             {
                 Models.TbPedido ped = buss.Consultar(codigo,pedido);
-                Console.WriteLine("aaa");
-                return conv.ParaResponse((float) ped.VlTotal,ped.IdCupomDescontoNavigation.NmCupom); 
+                return conv.ParaResponse((float) ped.VlTotal,ConsTBase.Desconto(codigo).NmCupom); 
             }
             catch(Exception ex)
             {

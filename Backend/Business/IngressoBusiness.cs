@@ -26,13 +26,13 @@ namespace Backend.Business
  
                 if(ConstBase.Sessao((int) tb.IdSessao) == null) throw new ArgumentException("Sessão não existe");
 
-                if(tb.NrPoltona == 0) throw new ArgumentException("Número de poltrona inválido");
+                if(tb.NrPoltrona == 0) throw new ArgumentException("Número de poltrona inválido");
 
                 if(!column.Any(x => x == tb.DsFileira.ToUpper()[0]) && tb.DsFileira.ToUpper()[0] != 'C' &&  tb.DsFileira.ToUpper()[0] != 'I') throw new ArgumentException("Fileira inválida");
 
-                if(column.Any(x => x == tb.DsFileira.ToUpper()[0])  && (tb.NrPoltona < 1 || tb.NrPoltona > 6)) throw new ArgumentException("Poltrona não existe nessa fileira");
+                if(column.Any(x => x == tb.DsFileira.ToUpper()[0])  && (tb.NrPoltrona < 1 || tb.NrPoltrona > 6)) throw new ArgumentException("Poltrona não existe nessa fileira");
 
-                if((tb.DsFileira.ToUpper()[0] == 'C' || tb.DsFileira.ToUpper()[0] == 'I') && (tb.NrPoltona < 1 || tb.NrPoltona > 3)) throw new ArgumentException("Poltrona não existe nessa fileira");
+                if((tb.DsFileira.ToUpper()[0] == 'C' || tb.DsFileira.ToUpper()[0] == 'I') && (tb.NrPoltrona < 1 || tb.NrPoltrona > 3)) throw new ArgumentException("Poltrona não existe nessa fileira");
             }
 
             List<Models.TbIngresso> ingressos = db.Cadastrar(tbs);

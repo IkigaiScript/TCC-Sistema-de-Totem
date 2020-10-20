@@ -48,7 +48,7 @@ namespace Backend.Controllers
             }
         }
  
-        [HttpPut("{id}")] // consertar
+        [HttpPut("{id}")] // funcionando
         public ActionResult<Models.Response.PedidoResponse> Alterar(int id, Models.Request.PedidoRequest req)
         {
             try
@@ -64,7 +64,7 @@ namespace Backend.Controllers
             }
         }
          
-        [HttpPut("total/{id}")] // consertar  - database - include
+        [HttpPut("Total/{id}")] // funcionando
         public ActionResult<float> CalcularTotal(int id)
         {
             try
@@ -74,7 +74,7 @@ namespace Backend.Controllers
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(500,ex.Message)
+                    new Models.Response.ErrorResponse(400,ex.Message)
                 );
             }
         }

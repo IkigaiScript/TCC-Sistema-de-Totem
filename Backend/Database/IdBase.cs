@@ -24,7 +24,6 @@ namespace Backend.Database
 
         public Models.TbPedido Pedido(int id)
         {
-            Console.WriteLine(id);
             return ctx.TbPedido.FirstOrDefault(x => x.IdPedido == id);
         }
 

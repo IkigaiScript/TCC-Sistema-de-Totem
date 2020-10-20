@@ -17,8 +17,8 @@ namespace Backend.Models
         public int? IdSessao { get; set; }
         [Column("ds_fileira", TypeName = "varchar(1)")]
         public string DsFileira { get; set; }
-        [Column("nr_poltona")]
-        public int? NrPoltona { get; set; }
+        [Column("nr_poltrona")]
+        public int? NrPoltrona { get; set; }
         [Column("bt_meia_entrada")]
         public bool? BtMeiaEntrada { get; set; }
 
