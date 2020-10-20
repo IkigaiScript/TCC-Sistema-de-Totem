@@ -2,7 +2,6 @@ import React from 'react';
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import { Container, ContainerImage, ContainerTitleLanche, ContainerDescLanche, SubContainer, ContainerBottom, Button, Input } from './style';
 
-
 export default function SelectLanche(props) {
     return(
         <Container>
@@ -17,13 +16,13 @@ export default function SelectLanche(props) {
 
                 <ContainerTitleLanche>
 
-                    <h1>{props.title}</h1>
+                    <span>{props.title}</span>
 
                 </ContainerTitleLanche>
             
                 <ContainerDescLanche>
 
-                    <p>{props.desc}</p>
+                    <span>{props.desc}</span>
 
                 </ContainerDescLanche>
 
