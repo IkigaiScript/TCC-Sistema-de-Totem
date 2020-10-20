@@ -1,38 +1,51 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    height: 17vh;
 
-display: flex;
-flex-direction: row;
-justify-content: left;
-align-items: center;
-margin-bottom: 10px;
-width: 400px;
-border: 2px solid black;
-height: 80px;
-background-color: white;
-color: black;
+    justify-content: left;
+    align-items: center;
+
+    border: 2px solid black;
+    margin-bottom: 10px;
+    margin-left:auto;
+    margin-right:auto;
+   
+    background-color: white;
+    color: black;
 `;
 
 export const ContainerImage = styled.div`
+    display: flex;
+    flex-direction: row;
+    height:100%;
+    width: 10%;
 
-display: flex;
-float: left;
-justify-content: left; 
-margin-right: 20px;
-width: 70px;
-height: 80px;
-flex-direction: row;
-border: 0.5px solid black;
+    float: left;
+    justify-content: left; 
+    margin-left: 20px;
 `;
 
 export const ContainerTitle = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80px;
 
-display: flex;
-flex-direction: column;
-width: 250;
-height: 80px;
-justify-content: center;
-align-items: center;
+    justify-content: center;
+    align-items: center;
 `;
 
+export const Title = styled.span`
+    text-align:center;
+    text-decoration:underline;
+    
+    font-size:50px;
+    font-style:oblique;
+    font-weight:400;
+
+    letter-spacing:2px;
+`;

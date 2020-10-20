@@ -2,18 +2,12 @@ import styled from "styled-components";
 
 //Container
 export const PagesDefault = styled.div`
+  display:flex;
+  flex-direction:column;  
   padding:0px;
   margin:0px;
   background-color: #00a000;
-  height:100%;
-`;
-
-//Titulo
-export const Titulo = styled.h1`
-    color: #565656;
-    font-family: Arial;
-    margin-left:28%;
-    font-size: 35pt;
+  min-height:100%;
 `;
 
 //Imagem

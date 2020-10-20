@@ -1,6 +1,6 @@
 import React from 'react';
 import {PagesDefault, Titulo, Img, SubTitulo} from './style';
-import ImgPagamentoErro from '../../assets/Img/PagamentoErro.png';
+import ImgPagamentoErro from '../../../assets/Img/PagamentoErro.png';
 
 export default function ErroNoPagamento() {
     return (

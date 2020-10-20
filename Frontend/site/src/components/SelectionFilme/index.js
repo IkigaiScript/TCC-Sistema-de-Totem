@@ -1,19 +1,17 @@
 import React from 'react';
-
-import { Container, ContainerImage, ContainerTitle, TitleFilme } from '../SelectionFilme/style';
+import { Container, ContainerImage, ContainerTitle, Title } from './style';
 
 export default function SelectFilme(props) {
     return(
         <Container>
             <ContainerImage>
-                <img src={props.image} 
-                     alt={props.desc} /> 
+                <img src={props.imagem}  alt={props.desc} height = '95px' width = '120px' /> 
             </ContainerImage>
 
             <ContainerTitle>
-                <TitleFilme>
+                <Title>
                     {props.name}
-                </TitleFilme>
+                </Title>
             </ContainerTitle>
         </Container>
     );

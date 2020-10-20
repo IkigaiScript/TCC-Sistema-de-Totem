@@ -3,9 +3,9 @@ import { ButtonStyled } from '../Buttons/style';
 
 export default function Button(props) {
     return(
-            <ButtonStyled>
-                {props.children} 
-            </ButtonStyled>
+        <ButtonStyled to = {props.to}  onCLick = {props.Onclick}>
+            {props.children} 
+        </ButtonStyled>
     );
 }
 

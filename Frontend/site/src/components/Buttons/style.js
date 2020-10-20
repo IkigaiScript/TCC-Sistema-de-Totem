@@ -1,22 +1,23 @@
 import styled from 'styled-components';
 
 export const ButtonStyled = styled.button`
-  :hover{
-    cursor: pointer;
-    opacity: 0.6;
-    transition: 0.3s;
-    color: green;
-  }
-  color: white;
-  font-size: 1em;
   min-width: 150px;
   height: 50px;
-  background-color: lightgreen;
+  background-color: gray;
+  
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid green;
-  border-radius: 3px;
-`;
+  border: 2px solid darkgray;
+  border-radius: 12px;
+  box-shadow:3px -5px darkgray;
 
+  font-size: 16px;
+  color: white;
 
-    
+  :hover{
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s;
+    color: white;
+  }
+`; 
