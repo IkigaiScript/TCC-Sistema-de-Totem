@@ -23,6 +23,7 @@ const Global = createGlobalStyle`
         font-size:40pt;
         font-weight:400;
         font-display:oblique;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
         
         letter-spacing:3px;
 
@@ -33,8 +34,9 @@ const Global = createGlobalStyle`
     p{
         text-align:center;
 
-        font-size:25px;
+        font-size:23px;
         font-weight:300;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
 
         margin-top:5px;
         margin-bottom:10px;
