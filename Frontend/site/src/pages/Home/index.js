@@ -5,6 +5,7 @@ import Button from '../../components/Buttons';
 import Relogio from '../../components/Relogio';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import SelectionLanche from '../../components/SelectionLanche';
 
 
 export default function  Home(){
@@ -59,6 +60,9 @@ export default function  Home(){
                 />
                 
             </ButtonWrapper>
+            <SelectionLanche>
+                
+            </SelectionLanche>
 
         </PageDefault>
     );

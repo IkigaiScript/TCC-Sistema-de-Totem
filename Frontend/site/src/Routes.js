@@ -31,6 +31,8 @@ import ErroNoPagamento from './pages/Pagamento/PagamentoError';
 import Teste from './pages/Teste'
 
 
+
+
 function Routes(){
     return(
         <BrowserRouter>
