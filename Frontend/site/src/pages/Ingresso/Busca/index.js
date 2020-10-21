@@ -45,7 +45,6 @@ export default function Busca (){
             <SelectFilme />
             <SelectFilme />
             <SelectFilme />
-            
         </Wrapper>
     );
 }
