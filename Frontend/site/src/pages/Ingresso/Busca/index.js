@@ -3,6 +3,7 @@ import { Wrapper, SearchWrapper, Input, SelectionWrapper } from './style';
 import Relogio from '../../../components/Relogio/';
 import SelectionFilme from '../../../components/SelectionFilme/';
 import SelectFilme from '../../../components/SelectionFilme/';
+
 export default function Busca (){
     return (
         <Wrapper>
