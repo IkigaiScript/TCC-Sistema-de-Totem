@@ -16,7 +16,7 @@ export default function Login(){
             <InputWrapper>
                 <input type="text" size="40" placeholder="Insira seu email" required />
                 <br />
-                <input type="password" size="40" height="3" placeholder="Insira sua senha" required />
+                <input type="password" size="40" placeholder="Insira sua senha" required />
             </InputWrapper>
 
             <div>
