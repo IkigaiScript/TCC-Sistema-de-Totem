@@ -24,17 +24,11 @@ export default function Teste (){
                 desc = 'pipoca Grande,Refrigerante Medio,Nachos e M&M'
                 preco = 'R$ 100,00'
             />
-            <SelectLanche 
-                name = {Doce}
-                title = 'Especial de Filme'
-                desc = 'pipoca Grande,Refrigerante Medio,Nachos e M&M'
-                preco = 'R$ 100,00'
-            />
-            
 
             <Card />
 
             <Relogio />
+
 
             
         </div>
