@@ -7,17 +7,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers
 {
+    [ApiController]
+    [Route("SnackBars")]
    public class SnackBarController : ControllerBase
    {
        Business.GerenciadorFotos foto = new Business.GerenciadorFotos();
        
-       [HttpGet("Foto/{nome}")]
+       [HttpGet("Fotos/{nome}")]
        public ActionResult BuscarFoto(string nome)
        {
            try
            {
-               byte[] photo =  foto.LerFoto(nome);
-               return File(photo,foto.GerarContentType(nome));
+               return foto.BuscarFoto(nome);
            }
            catch (Exception ex)
            {
@@ -26,5 +27,11 @@ namespace Backend.Controllers
                );
            }
        }
+
+        [HttpGet("ping")]
+        public string ping()
+        {
+            return "pong";
+        }
    }
 }

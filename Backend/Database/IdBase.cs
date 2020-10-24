@@ -12,9 +12,10 @@ namespace Backend.Database
             return ctx.TbSessao.FirstOrDefault(x => x.IdSessao == id);
         } 
 
-        public Models.TbLogin Login (int id)
+        public Models.TbLogin Login(string email, string senha)
         {
-            return ctx.TbLogin.FirstOrDefault(x => x.IdLogin == id);
+            return ctx.TbLogin.FirstOrDefault(x => x.DsSenha == senha &&
+                                                    x.DsEmail.ToLower() == email.ToLower());
         }
 
         public Models.TbCupomDesconto Desconto(string codigo)
@@ -26,25 +27,9 @@ namespace Backend.Database
         {
             return ctx.TbPedido.FirstOrDefault(x => x.IdPedido == id);
         }
-
         public Models.TbSnackBar SnackBar(int id)
         {
             return ctx.TbSnackBar.FirstOrDefault(x => x.IdSnackBar == id);
-        }
-
-        public List<Models.TbPedidoSnackBar> PedidoSnackBar(int id)
-        {
-            return ctx.TbPedidoSnackBar.Where(x => x.IdPedido == id).ToList();
-        }
-
-        public List<Models.TbPedidoCombo> PedidoCombo(int id)
-        {
-            return ctx.TbPedidoCombo.Where(x => x.IdPedido == id).ToList();
-        }
-
-        public List<Models.TbIngresso> Ingressos(int id)
-        {
-            return ctx.TbIngresso.Where(x => x.IdPedido == id).ToList();
         }
 
         public Models.TbCombo Combo(int id)

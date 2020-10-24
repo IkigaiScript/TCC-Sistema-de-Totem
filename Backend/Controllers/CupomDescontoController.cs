@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Cupons")]
     public class CupomDescontoController : ControllerBase
     {
         Database.IdBase ConsTBase = new Database.IdBase();

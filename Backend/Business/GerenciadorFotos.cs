@@ -1,10 +1,11 @@
+using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System;
 using Microsoft.AspNetCore.Http;
 
 namespace Backend.Business
 {
-    public class GerenciadorFotos
+    public class GerenciadorFotos : ControllerBase
     {
        public string GerarNovoNome(string nome)
        {
@@ -20,16 +21,21 @@ namespace Backend.Business
            }
        }
 
-       public byte[] LerFoto (string nome)
+       private byte[] LerFoto (string nome)
        {
            string caminho = Path.Combine(AppContext.BaseDirectory,"Storage","Fotos",nome);
-           return File.ReadAllBytes(caminho);
+           return System.IO.File.ReadAllBytes(caminho);
        }
 
-       public string GerarContentType(string nome)
+       private string GerarContentType(string nome)
        {
            return $"image/{Path.GetExtension(nome).Replace(".","")}";
        }
-        
+
+       public ActionResult BuscarFoto(string nome)
+       {
+           byte[] photo =  this.LerFoto(nome);
+           return File(photo,this.GerarContentType(nome));
+       }
     }
 }

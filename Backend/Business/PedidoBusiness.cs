@@ -16,12 +16,6 @@ namespace Backend.Business
             return db.Deletar(pedido);            
         }
 
-        public Models.TbPedido Cadastrar(Models.TbPedido tb)
-        {
-            if(ConsTBase.Login((int) tb.IdLogin) == null) throw new ArgumentException("Login não existe");
-            return db.Cadastrar(tb);
-        }
-
         public Models.TbPedido Alterar(int id,Models.TbPedido tb)
         {
             if(!string.IsNullOrEmpty(tb.DsFormaPagamento))

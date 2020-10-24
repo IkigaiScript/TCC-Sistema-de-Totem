@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Backend.Controllers
 {
     [ApiController]
-        [Route("[controller]")]
+    [Route("Clientes")]
     public class ClienteController  : ControllerBase
     {
     
@@ -28,6 +28,11 @@ namespace Backend.Controllers
                 new Models.Response.ErrorResponse(400,ex.Message));
             }
         } 
-    
+        
+        [HttpGet("ping")]
+        public string ping()
+        {
+            return "pong";
+        }
     }
 }

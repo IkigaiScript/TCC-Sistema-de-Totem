@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Pedidos")]
     public class PedidoController : ControllerBase
     {
         Utils.PedidoConversor conv = new Utils.PedidoConversor();
@@ -25,25 +25,6 @@ namespace Backend.Controllers
             {
                 return new BadRequestObjectResult(
                     new Models.Response.ErrorResponse(404,ex.Message)
-                );
-            }
-        }
-
-        [HttpPost] // funcionando
-        public ActionResult<Models.Response.PedidoResponse> Cadastrar(int login)
-        {
-            try
-            {
-                Models.TbPedido pedido = new Models.TbPedido {
-                    IdLogin = login,
-                };
-
-                return conv.ParaResponse(buss.Cadastrar(pedido));
-            }
-            catch(Exception ex)
-            {
-                return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(400,ex.Message)
                 );
             }
         }
@@ -64,7 +45,7 @@ namespace Backend.Controllers
             }
         }
          
-        [HttpPut("Total/{id}")] // funcionando
+        [HttpPut("Totals/{id}")] // funcionando
         public ActionResult<float> CalcularTotal(int id)
         {
             try
@@ -93,6 +74,7 @@ namespace Backend.Controllers
                 );
             }
         }
+        
         [HttpGet("ping")]
         public string ping()
         {

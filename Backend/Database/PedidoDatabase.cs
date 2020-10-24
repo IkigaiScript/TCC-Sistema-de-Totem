@@ -55,13 +55,6 @@ namespace Backend.Database
             return pedido;
         }
 
-        public Models.TbPedido Cadastrar(Models.TbPedido tb)
-        {
-            ctx.TbPedido.Add(tb);
-            ctx.SaveChanges();
-            return tb;
-        }
-
         public Models.TbPedido Alterar(int id, Models.TbPedido tb)
         {
             Models.TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == id); 

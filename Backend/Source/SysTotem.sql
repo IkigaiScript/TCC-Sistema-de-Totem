@@ -411,7 +411,7 @@ insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values
 
 select * from tb_cupom_desconto;
 select * from tb_combo;
-select * from tb_pedido;
+select * from tb_cartao;
 select * from tb_pedido_snack_bar;
 select * from tb_diretor;
 select * from tb_snack_bar;

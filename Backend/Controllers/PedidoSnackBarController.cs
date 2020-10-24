@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Pedidos/SnackBars")]
     public class PedidoSnackBarController : ControllerBase
     {
         Business.PedidoSnackBarBusiness buss = new Business.PedidoSnackBarBusiness();

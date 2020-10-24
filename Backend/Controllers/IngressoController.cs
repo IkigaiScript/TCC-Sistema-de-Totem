@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Ingressos")]
     public class IngressoController : ControllerBase
     {
         Utils.IngressoConversor conv = new Utils.IngressoConversor();

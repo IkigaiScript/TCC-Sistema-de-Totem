@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Pedidos/Combos")]
     public class PedidoComboController : ControllerBase
     {
         Utils.PedidoComboConvesor conv = new Utils.PedidoComboConvesor();
