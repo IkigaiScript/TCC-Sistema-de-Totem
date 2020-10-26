@@ -1,5 +1,5 @@
 using System;
-
+using System.Linq;
 namespace Backend.Database
 {
     public class LoginDatabase
@@ -16,6 +16,12 @@ namespace Backend.Database
             ctx.TbPedido.Add(pedido);
             ctx.SaveChanges();
             return pedido;
+        }
+
+        public Models.TbLogin Login(string email, string senha)
+        {
+            return ctx.TbLogin.FirstOrDefault(x => x.DsSenha == senha &&
+                                                    x.DsEmail.ToLower() == email.ToLower());
         }       
     }
 }

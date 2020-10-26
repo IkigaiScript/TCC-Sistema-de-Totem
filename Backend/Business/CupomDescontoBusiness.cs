@@ -8,14 +8,14 @@ namespace Backend.Business
         Database.CupomDescontoDatabase db = new Database.CupomDescontoDatabase();
         public Models.TbPedido Consultar(string codigo, int pedido)
         {
-            Models.TbCupomDesconto cupom = ConstBase.Desconto(codigo);
+            Models.TbCupomDesconto cupom = db.Desconto(codigo);
             Models.TbPedido ped = ConstBase.Pedido(pedido);
             
             if(codigo.Length != 4) throw new ArgumentException("Código inválido");
 
             if(cupom == null) throw new ArgumentException("Cupom não encontrado");
 
-            if(ped.VlTotal < ConstBase.Desconto(codigo).VlDesconto) throw new ArgumentException("Valor insuficiente");
+            if(ped.VlTotal < cupom.VlDesconto) throw new ArgumentException("Valor insuficiente");
 
             if(ped.VlTotal <= 0 || ped.VlTotal == null) throw new ArgumentException("Pedido não possui calculo do preço");
 

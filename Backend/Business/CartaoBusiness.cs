@@ -1,6 +1,7 @@
 using System;
 using RestSharp;
 using RestSharp.Authenticators;
+using System.Collections.Generic;
 
 namespace Backend.Business
 {
@@ -8,7 +9,7 @@ namespace Backend.Business
     {
         Database.CartaoDatabase db = new Database.CartaoDatabase();
         Database.IdBase ConsTBase = new Database.IdBase();
-        public Models.TbCartao Cadastrar(Models.TbCartao tb, int cvv, string senha, string pagamento)
+        public Models.TbCartao Cadastrar(Models.TbCartao tb, int cvv, int senha, string pagamento)
         {
             if(ConsTBase.Pedido(tb.IdPedido.Value) == null) throw new ArgumentException("Pedido não existe");  
 
@@ -16,17 +17,11 @@ namespace Backend.Business
 
             if(tb.NrCartao.Value != 16) throw new ArgumentException("Numero de cartão inválido");
 
-            foreach(char let in senha)
-            {
-                int num = (int) let;
-                if(num < 48 || num > 57) throw new ArgumentException("Senha só pode conter numero");
-            }
-
             if(pagamento.ToLower() != "debito" &&
                 pagamento.ToLower() != "credito") throw new ArgumentException("Forma de pagamento inválido");
 
             // consulta API de banco 
-
+            // mandar consulta para o banco depois de validar
             return db.Cadastrar(tb);
         }
     }

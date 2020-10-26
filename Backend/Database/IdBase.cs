@@ -12,15 +12,9 @@ namespace Backend.Database
             return ctx.TbSessao.FirstOrDefault(x => x.IdSessao == id);
         } 
 
-        public Models.TbLogin Login(string email, string senha)
+        public Models.TbCupomDesconto Desconto(int id)
         {
-            return ctx.TbLogin.FirstOrDefault(x => x.DsSenha == senha &&
-                                                    x.DsEmail.ToLower() == email.ToLower());
-        }
-
-        public Models.TbCupomDesconto Desconto(string codigo)
-        {
-            return ctx.TbCupomDesconto.FirstOrDefault(x => x.DsCodigo == codigo);
+            return ctx.TbCupomDesconto.FirstOrDefault(x => x.IdCupomDesconto == id);
         }
 
         public Models.TbPedido Pedido(int id)

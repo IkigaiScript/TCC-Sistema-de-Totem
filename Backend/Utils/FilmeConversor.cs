@@ -18,6 +18,7 @@ namespace Backend.Utils
                 Classificacao = tb.NrClassficacao.Value,
                 Duracao = tb.NrDuracao.Value,
                 Breve = tb.BtBreve.Value,
+                Estreia = tb.BtEstreia.Value
             };
         }
 

@@ -14,7 +14,7 @@ namespace Backend.Controllers
         Business.FilmeBusines buss = new Business.FilmeBusines();
         Utils.FilmeConversor conv = new Utils.FilmeConversor();
 
-        [HttpGet("Seach/{nome}")]
+        [HttpGet("Seach/{nome}")] // testar 
         public ActionResult<List<Models.Response.FilmeResponse>> ConsultaParcial(string nome)
         {
             try

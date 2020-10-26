@@ -12,7 +12,7 @@ namespace Backend.Controllers
         Utils.LoginConversor conv = new Utils.LoginConversor();
         Business.LoginBusiness buss = new Business.LoginBusiness();
 
-        [HttpPost]
+        [HttpPost] // testar 
         public ActionResult<Models.Response.LoginResponse> Iniciar(Models.Request.LoginRequest req)
         {
             try

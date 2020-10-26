@@ -21,7 +21,7 @@ namespace Backend.Controllers
             try
             {
                 Models.TbPedido ped = buss.Consultar(codigo,pedido);
-                return conv.ParaResponse((float) ped.VlTotal,ConsTBase.Desconto(codigo).NmCupom); 
+                return conv.ParaResponse((float) ped.VlTotal,ConsTBase.Desconto(ped.IdCupomDesconto.Value).NmCupom); 
             }
             catch(Exception ex)
             {
