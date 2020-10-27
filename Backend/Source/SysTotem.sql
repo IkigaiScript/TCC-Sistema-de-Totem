@@ -157,66 +157,6 @@ CREATE TABLE tb_cartao (
 
 show tables;
 
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Esquadrão 6','Ação','Lorem ipsum dolor sit amet,  ut varius turpis facilisis ultricies. Donec quis','paisagem.jpg',12,148,false,true);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Homem aranha','Aventura','Lorem ipsum dolor sit','paisagem.jpg',14,167,false,false);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Velozes e furiosos 9','Ação','Lorem ipsum dolor sit','paisagem.jpg',14,156,true,false);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Cemiterio maldito','Terror','Lorem ipsum dolor sit','paisagem.jpg',16,128,false,true);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('O Albergue 3','Terro','Lorem ipsum dolor sit','paisagem.jpg',14,140,false,false);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('A babá: rainha da morte','Aventura','Lorem ipsum dolor sit','paisagem.jpg',16,143,false,false);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Parker','Suspense','Lorem ipsum dolor sit','paisagem.jpg',14,181,false,true);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Massacre da serra eletrica','Fantasia','Lorem ipsum dolor sit','paisagem.jpg',18,174,false,false);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Deus do egito','Aventura','Lorem ipsum dolor sit','paisagem.jpg',12,126,false,false);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Goosebumps 2: Monstros e Arrepios','Comedia','Lorem ipsum dolor sit','paisagem.jpg',10,103,true,false);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Bird box','Ficçao cientifica','Lorem ipsum dolor sit','paisagem.jpg',16,124,false,true);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('O poço','Suspense','Lorem ipsum dolor sit','paisagem.jpg',14,134,false,true);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Harry potter e a ordem da Fenix','Fantasia','Lorem ipsum dolor sit','paisagem.jpg',12,178,false,false);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Hotel transilvania 2','Comedia','Lorem ipsum dolor sit','paisagem.jpg',0,99,false,true);
-
-insert into tb_filme (nm_filme,ds_genero,ds_sinopse,ds_imagem,nr_classficacao,nr_duracao,bt_breve,bt_estreia) values ('Hotel transilvania','Comedia','Lorem ipsum dolor sit','paisagem.jpg',0,102,false,false);
-
-insert into tb_login(ds_email, ds_senha) values('joaofarhat9@gmail.com', '12345678');
-
-insert into tb_login(ds_email, ds_senha) values ('juninho123@gmail.com', '123321');
-
-insert into tb_login(ds_email, ds_senha) values('eduardo47@hotmail.com', '56276587');
-
-insert into tb_login(ds_email, ds_senha) values ('eduar_da89k@gmail.com', 'vintedoquatro2004');
-
-insert into tb_login(ds_email, ds_senha) values ('jotinhatroios@yahoo.com', '1289347');
-
-insert into tb_login(ds_email, ds_senha) values ('charizard28@hotmail.com', 'fireredmelhor');
-
-insert into tb_login(ds_email, ds_senha) values ('antetegmon@gmail,com', 'digimonemelhor');
-
-insert into tb_login(ds_email, ds_senha) values ('chornaina2@gmail.com','nomefeiodagota');
-
-insert into tb_login(ds_email, ds_senha) values ('juliana298@hotmail.com', '7q89437');
-
-insert into tb_login(ds_email, ds_senha) values ('yanzinhobrabo@outlook.com', '12089437');
-
-insert into tb_login(ds_email, ds_senha) values ('4troios@yahoo.com', 'troiamente');
-
-insert into tb_login(ds_email, ds_senha) values ('carlinhos32@hotmail.com', 'carlinhos29739');
-
-insert into tb_login(ds_email, ds_senha) values ('coninho32@outlook.com', '78941273894');
-
-insert into tb_login(ds_email, ds_senha) values ('thominhasbom@gmail.com', '2734687');
-
-insert into tb_login(ds_email, ds_senha) values ('klebinho@gmail.com', '372846');
-
 insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(1, 2, '3D', '2020-10-10-10-10-10', 27.00);
 
 insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(2, 3, 'XD', '2020-10-17-21-50', 12.50);
@@ -247,167 +187,97 @@ insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) 
 
 insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(15, 5, 'XD', '2020-10-20-19-20', 12.50);
 
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(1, '', 03, true);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(2, '' , 04, false);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(3, '', 06, true);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(4, '', 03, false);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(5, '', 05, false);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(6, '' , 04, true);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(7, '', 06, false);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(8, '', 04, false); 
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(9, '', 06, true);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(10, '', 04, true);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(11, '', 06, false);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(12, '', 06, false);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(13, '', 05, true);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(14, '', 07, false);
-
-insert into tb_trailer(id_filme, nm_trailer,nr_duracao, bt_dublado) values(15, '', 03, true);
-
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(1,'Will Smith','1968-09-25');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Will Smith','1968-09-25');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(2,'Bred pitt','1963-12-18');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (2,'Bred pitt','1963-12-18');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(3,'Tom Hanks','1956-07-9');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (3,'Tom Hanks','1956-07-9');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(4,'Leonardo DiCprio','1974-11-11');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (4,'Leonardo DiCprio','1974-11-11');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(5,'Harrison Ford','1942-07-13');
-  
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(6,'Johnny Depp','1963-06-09');
-  
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(7,'Julia Roberts','1967-10-28');
-  
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(8,'Robert Pattinso','1986-05-13');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (5,'Harrison Ford','1942-07-13');
 
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(9,'Tom Cruise','1962-07-12');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (6,'Johnny Depp','1963-06-09');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(10,'Jim Carrey','1962-01-17');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (7,'Julia Roberts','1967-10-28');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(11,'Natalie Portman','1981-06-09');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (8,'Robert Pattinso','1986-05-13');
+
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (9,'Tom Cruise','1962-07-12');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(12,'Matt Damon','1970-10-08');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Jim Carrey','1962-01-17');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(13,'Sylvester Stallone','1946-06-06');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (11,'Natalie Portman','1981-06-09');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(14,'Nicolas Cage','1964-01-07');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Matt Damon','1970-10-08');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) value(15,'Robert De Niro','1943-08-17');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (13,'Sylvester Stallone','1946-06-06');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(1,'Quentin Tarantino','1963-03-27');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Nicolas Cage','1964-01-07');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(2,'Quentin Tarantino','1963-03-27');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (15,'Robert De Niro','1943-08-17');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (1,'Quentin Tarantino','1963-03-27');
+  
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (2,'Quentin Tarantino','1963-03-27');
     
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(3,'Quentin Tarantino','1963-03-27');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (3,'Quentin Tarantino','1963-03-27');
     
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(4,'Quentin Tarantino','1963-03-27');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (4,'Quentin Tarantino','1963-03-27');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(5,'Quentin Tarantino','1963-03-27');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (5,'Quentin Tarantino','1963-03-27');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(6,'Martin Scorsese','1942-11-17');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (6,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(7,'Martin Scorsese','1942-11-17');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (7,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(8,'Martin Scorsese','1942-11-17');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (8,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(9,'Martin Scorsese','1942-11-17');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (9,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(10,'Martin Scorsese','1942-11-17');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (10,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(11,'Woody Allen','1935-12-01');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (11,'Woody Allen','1935-12-01');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(12,'Woody Allen','1935-12-01');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (12,'Woody Allen','1935-12-01');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(13,'Woody Allen','1935-12-01');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (13,'Woody Allen','1935-12-01');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(14,'Woody Allen','1935-12-01');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (14,'Woody Allen','1935-12-01');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) value(15,'Woody Allen','1935-12-01');
-
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco)value('Pipoca','Pipoca','cinema','tradicional','400g','n sei',8,10.50);
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Pipoca','Pipoca','Cinema','amantegada','400g','n sei',8,11.00);
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Pipoca','Pipoca','Cinema','com chocolate','400g','n sei',8,14.00);
-
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Pipoca','Pipoca','Cinema','doce','400g','n sei',8,12.00);
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Coca Cola','bebida','Cinema','cola','500ml','n sei',8,10.00);
-
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Guaraná Antartica','bebida','antartica','guarana','500ml','n sei',8,10.00);
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Sprit','bebida','coca cola','limão','500ml','n sei',8,10.00);
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('fanta uva','bebida','coca cola','uva','500ml','n sei',8,10.00);
-   
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Fanta Laranja','bebida','coca cola','laranja','500ml','n sei',8,10.00);
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Fanta Guaraná','bebida','cocacola','guaraná','500ml','n sei',8,10.00);
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Dentaduras Fini','doce','fini','tuti fruti','300g','n sei',8,8.00);
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Beijo Fini','doce','fini','morango','300g','n sei',8,8.00);
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Tubes Fini','doce','fini','morango','300g','n sei',8,8.00);  
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('Choquito','doce','nestle','chocolate','100g','n sei',8,4.00);  
-  
-insert into tb_snack_bar(nm_produto,ds_tipo_produto,ds_marca,ds_sabor,ds_peso,ds_imagem,nr_qtd_estoque,vl_preco) value('suflair','doce','nestle','chocolate','100g','n sei',8,4.00);
-
-insert into tb_combo (nm_combo,ds_first_item,ds_secondary_item,vl_preco) values ("Mc feliz","Batata media","Hamburguer pequeno",20.1);
-
-insert into tb_cupom_desconto (nm_cupom,ds_codigo,vl_desconto,vl_min_gasto) values ("Dia de abertura","1k2k",10,100);
-
-insert into tb_cupom_desconto (nm_cupom,ds_codigo,vl_desconto,vl_min_gasto) values ("Dia de abertura","1k2k",10,100);
-
-insert into tb_cupom_desconto (nm_cupom,ds_codigo,vl_desconto,vl_min_gasto) values ("Dia de abertura","AAAA",20,100);
-
-insert into tb_cupom_desconto (nm_cupom,ds_codigo,vl_desconto,vl_min_gasto) values ("Dia de abertura","1KKK",10,100);
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (15,'Woody Allen','1935-12-01');
 
 insert into tb_pedido (id_login) values (1);
 
 insert into tb_pedido (id_login) values (2);
 
-insert into tb_pedido (id_login) values (3);
+-- insert into tb_pedido (id_login) values (3);
 
-insert into tb_pedido (id_login) values (4);
+-- insert into tb_pedido (id_login) values (4);
 
-insert into tb_pedido (id_login) values (5);
+-- insert into tb_pedido (id_login) values (5);
 
-insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (1,2,3);
+-- insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (1,2,3);
 
-insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (1,3,4);
+-- insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (1,3,4);
 
-insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (1,5,2);
+-- insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (1,5,2);
 
-insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (3,2,3);
+-- insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (3,2,3);
 
-insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (3,3,4);
+-- insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (3,3,4);
 
-insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (3,5,2);
+-- insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (3,5,2);
 
-insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (4,2,3);
+-- insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (4,2,3);
 
-insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (4,3,4);
+-- insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (4,3,4);
 
-insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (4,5,2);
+-- insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (4,5,2);
 
-insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (5,3,4);
+-- insert into tb_pedido_snack_bar(id_pedido,id_snack_bar,nr_qtd_snack_bar) values (5,3,4);
 
-insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (5,5,9);
+-- insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (5,5,9);
 
 select * from tb_cupom_desconto;
 select * from tb_login;
