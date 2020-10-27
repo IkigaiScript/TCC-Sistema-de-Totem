@@ -37,11 +37,15 @@ export default function  Home(){
                 <Relogio />
 
                 <Span>Logar</Span>
-
+                
             </Menu>
 
             <Carousel responsive={responsive} >
 
+                <Card />
+                <Card />
+                <Card />
+                <Card />
                 <Card />
                 
             </Carousel>;

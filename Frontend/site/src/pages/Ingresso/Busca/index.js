@@ -1,12 +1,11 @@
 import React from 'react';
-import { Wrapper, SearchWrapper, Input, SelectionWrapper } from './style';
+import { PageDefault, SearchWrapper, Input, SelectionWrapper, Select } from './style';
 import Relogio from '../../../components/Relogio/';
-import SelectionFilme from '../../../components/SelectionFilme/';
 import SelectFilme from '../../../components/SelectionFilme/';
 
 export default function Busca (){
     return (
-        <Wrapper>
+        <PageDefault>
             <h1>Filmes em Cartaz</h1>  
 
             <SearchWrapper>
@@ -16,29 +15,29 @@ export default function Busca (){
 
             <SelectionWrapper>
                 <div>
-                    <select>
+                    <Select>
                         <option>Livre</option>
                         <option>12</option>
                         <option>14</option>
                         <option>16</option>
                         <option>18</option>
-                    </select>
+                    </Select>
                 </div>
 
                 <div>
-                    <select>
+                    <Select>
                         <option>Comédia</option>
                         <option>Romance</option>
                         <option>Ação</option>
                         <option>Suspense</option>
                         <option>Terror</option>
-                    </select>
+                    </Select>
                 </div>
 
                 <div>
-                    <select>
+                    <Select>
                         <option>3D</option>
-                    </select>
+                    </Select>
                 </div>
             </SelectionWrapper>
 
@@ -46,6 +45,6 @@ export default function Busca (){
             <SelectFilme />
             <SelectFilme />
             <SelectFilme />
-        </Wrapper>
+        </PageDefault>
     );
 }

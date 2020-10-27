@@ -6,12 +6,15 @@ export const ButtonStyled = styled.button`
   background-color: gray;
   
   margin: 1em;
-  padding: 0.25em 1em;
+  padding-top: 10px;
+  padding-left:10px;
   border: 2px solid darkgray;
   border-radius: 12px;
   box-shadow:3px -5px darkgray;
 
   font-size: 16px;
+  text-align:center;
+  text-decoration:none;
   color: white;
 
   :hover{
