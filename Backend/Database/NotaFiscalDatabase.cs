@@ -39,5 +39,12 @@ namespace Backend.Database
                                        .Include(x => x.IdSnackBarNavigation)
                                        .ToList();
         }
+
+        public List<Models.TbIngresso> ConsultarIngresso(int pedido)
+        {
+            return ctx.TbIngresso.Where(x => x.IdPedido == pedido)
+                                 .Include(x => x.IdSessaoNavigation)
+                                 .ToList();
+        }
     }
 }

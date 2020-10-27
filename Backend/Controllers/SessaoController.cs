@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Backend.Controllers
 {
     [ApiController]
-    [Route("Sessaos")]
+    [Route("Sessao")]
     public class SessaoController : ControllerBase
     {
         Business.SessaoController buss = new Business.SessaoController();

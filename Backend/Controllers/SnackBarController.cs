@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers
 {
-    [ApiController]
-    [Route("SnackBars")]
+   [ApiController]
+   [Route("SnackBars")]
    public class SnackBarController : ControllerBase
    {
        Business.GerenciadorFotos foto = new Business.GerenciadorFotos();

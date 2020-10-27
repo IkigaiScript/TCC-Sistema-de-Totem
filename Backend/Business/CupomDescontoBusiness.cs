@@ -2,13 +2,13 @@ using System;
 
 namespace Backend.Business
 {
-    public class CupomDescontoBusiness
+    public class CupomDescontoBusiness : Cryptography
     {
         Database.IdBase ConstBase = new Database.IdBase();
         Database.CupomDescontoDatabase db = new Database.CupomDescontoDatabase();
         public Models.TbPedido Consultar(string codigo, int pedido)
         {
-            Models.TbCupomDesconto cupom = db.Desconto(codigo);
+            Models.TbCupomDesconto cupom = db.Desconto(CriarHash(codigo));
             Models.TbPedido ped = ConstBase.Pedido(pedido);
             
             if(codigo.Length != 4) throw new ArgumentException("Código inválido");

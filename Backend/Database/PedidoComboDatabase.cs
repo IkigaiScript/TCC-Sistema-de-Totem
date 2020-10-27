@@ -10,6 +10,7 @@ namespace Backend.Database
         public List<Models.TbPedidoCombo> Cadastrar(List<Models.TbPedidoCombo> tbs)
         {
             ctx.TbPedidoCombo.AddRange(tbs);
+
             ctx.SaveChanges();
             return tbs;
         }

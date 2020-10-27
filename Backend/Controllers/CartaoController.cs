@@ -13,7 +13,7 @@ namespace Backend.Controllers
         Utils.CartaoConversor conv = new Utils.CartaoConversor();
         Business.CartaoBusiness buss = new Business.CartaoBusiness();
 
-        [HttpPost] // incompleto - testar 
+        [HttpPost] // terminando 
         public ActionResult<Models.Response.CartaoResponse> Cadastrar(Models.Request.CartaoRequest req)
         {
             try

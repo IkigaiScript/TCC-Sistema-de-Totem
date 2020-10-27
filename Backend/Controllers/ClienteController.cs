@@ -10,16 +10,15 @@ namespace Backend.Controllers
     [Route("Clientes")]
     public class ClienteController  : ControllerBase
     {
-    
         Utils.ClienteConversor conv = new Utils.ClienteConversor();
-        Business.BusinessCliente Buss = new Business.BusinessCliente();
+        Business.ClienteBusiness Buss = new Business.ClienteBusiness();
 
-        [HttpGet("{id}")]// Cliente
+        [HttpGet("{id}")] // Cliente
         public ActionResult<Models.Response.ClienteResponse> Consultar(int id)
         {
             try
             {
-                return conv.ParaResponse(Buss.ConsularCliente(id));
+                return conv.ParaResponse(Buss.ConsultarCliente(id));
             }
                 
             catch(Exception ex)

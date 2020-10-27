@@ -11,7 +11,14 @@ namespace Backend.Database
 
         public Models.TbCliente ConsultarCliente(int id)
         {
-            return ctx.TbCliente.FirstOrDefault(x => x.IdCliente == id);
+            if(id == 1)
+            {
+                return new Models.TbCliente(){
+                    IdLogin = 1,
+                    NmCliente = "Totem"
+                };
+            }
+            return ctx.TbCliente.FirstOrDefault(x => x.IdLogin == id);
         }
     }
 }

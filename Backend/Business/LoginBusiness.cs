@@ -2,7 +2,7 @@ using System;
 
 namespace Backend.Business
 {
-    public class LoginBusiness
+    public class LoginBusiness : Cryptography
     {
         Database.LoginDatabase db = new Database.LoginDatabase();
         public Models.TbPedido Iniciar(Models.TbLogin tb)
@@ -10,11 +10,12 @@ namespace Backend.Business
             Models.TbLogin login = new Models.TbLogin();
             if(!string.IsNullOrEmpty(tb.DsEmail))
             {
-                Models.TbLogin login1 = db.Login(tb.DsEmail,tb.DsSenha);
+                Models.TbLogin login1 = db.Login(tb.DsEmail,CriarHash(tb.DsSenha)); // hash da senha
                 if(login1 == null) throw new ArgumentException("Login não encontrado");
 
                 login = login1;
             }
+
             return db.Iniciar(login);
         }
     }

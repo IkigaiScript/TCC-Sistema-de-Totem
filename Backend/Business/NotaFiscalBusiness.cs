@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Backend.Business
 {
-    public class NotaFiscalBusiness
+    public class NotaFiscalBusiness : Cryptography
     {
         Database.NotaFiscalDatabase db = new Database.NotaFiscalDatabase();
         Database.IdBase ConsTBase = new Database.IdBase();
@@ -39,6 +39,7 @@ namespace Backend.Business
             
             // usar api para validar email
             
+            tb.DsCpf = CriarHash(tb.DsCpf);
             return db.Cadastrar(tb);
         }
 
@@ -51,6 +52,11 @@ namespace Backend.Business
             return db.Consultar(pedido);
         }
 
+
+        public void ValidarPedido(int pedido)
+        {
+            if(ConsTBase.Pedido(pedido) == null) throw new ArgumentException("Pedido não existe");
+        }
         public List<Models.TbPedidoSnackBar> ConsultarSnackBar(int pedido)
         {
             this.ValidarPedido(pedido);
@@ -65,9 +71,11 @@ namespace Backend.Business
             return db.ConsultarCombo(pedido);
         }
 
-        public void ValidarPedido(int pedido)
+        public List<Models.TbIngresso> ConsultarIngresso(int pedido)
         {
-            if(ConsTBase.Pedido(pedido) == null) throw new ArgumentException("Pedido não existe");
+            this.ValidarPedido(pedido);
+
+            return db.ConsultarIngresso(pedido);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Backend.Business
 {
-    public class CartaoBusiness
+    public class CartaoBusiness : Cryptography
     {
         Database.CartaoDatabase db = new Database.CartaoDatabase();
         Database.IdBase ConsTBase = new Database.IdBase();
@@ -22,6 +22,7 @@ namespace Backend.Business
 
             // consulta API de banco 
             // mandar consulta para o banco depois de validar
+            // tb.NrCartao = CriarHash(tb.NrCartao);
             return db.Cadastrar(tb);
         }
     }

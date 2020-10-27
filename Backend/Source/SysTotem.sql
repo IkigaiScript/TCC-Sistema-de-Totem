@@ -413,5 +413,5 @@ select * from tb_cupom_desconto;
 select * from tb_login;
 select * from tb_cartao;
 select * from tb_pedido_snack_bar;
-select * from tb_nota_fiscal;
+select * from tb_pedido;
 select * from tb_snack_bar;
