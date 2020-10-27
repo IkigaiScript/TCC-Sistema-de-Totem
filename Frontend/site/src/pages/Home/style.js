@@ -10,7 +10,9 @@ export const PageDefault = styled.div`
     padding-left:15px;
     padding-right:15px;
 
+    background:linear-gradient(#773510,#F3D69D);
 `;
+
 export const ButtonWrapper = styled.div`
     display:flex;
     height:15vh;
@@ -19,6 +21,14 @@ export const ButtonWrapper = styled.div`
     align-items:center;
     justify-content:center;
     justify-content:space-around;
+
+    @media(max-width:800px){
+        width:70%;
+        justify-content:none;
+
+        margin-left:auto;
+        margin-right:auto;
+    }
 `;
 
 export const Menu = styled.div`
@@ -28,12 +38,11 @@ export const Menu = styled.div`
 
     justify-content:space-between;    
     align-items:center;
-
+    
     margin-bottom:10px;
     margin-left:auto;
     margin-right:auto;
     border-bottom:1px solid black;
-
     
 `;
 

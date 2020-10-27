@@ -5,11 +5,16 @@ export const PageDefault = styled.div`
     flex-direction:column;
     height:85vh;
     width:30vw;
+    background:whitesmoke;
 
     margin-left:50px;
     border-radius:8px;
     border:1px solid black;
 
+    @media(max-width:800px){
+        width:80vw;
+        margin-left:20px;
+    }
 `;
 
 export const Header = styled.div`
@@ -28,7 +33,6 @@ export const InfoWrapper = styled.div`
 
     overflow-y: auto;
     ::-webkit-scrollbar{opacity:0};
-
 `;
 
 export const FilmeWrapper = styled.div`
@@ -50,13 +54,11 @@ export const Custom = styled.div`
 
     overflow-x:auto;
     ::-webkit-scrollbar{opacity:0};
-
+    
     >li{
         margin-left:5px;
     }
 `;
-
-
 
 export const Video = styled.video`
     height:100%;
@@ -68,10 +70,11 @@ export const Video = styled.video`
 
 export const Span = styled.span`
     text-align:flex-end;
+
     font-size:19px;
     font-weight:400;
     font-style:oblique;
-
+    
     position:relative;
     z-index:1;
     top:4em;

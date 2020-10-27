@@ -7,6 +7,9 @@ const Global = createGlobalStyle`
         margin: 0;
         box-sizing: border-box;
         ::-webkit-scrollbar{
+            height:0;
+            width:0;
+            
             opacity:0;
         };
     }

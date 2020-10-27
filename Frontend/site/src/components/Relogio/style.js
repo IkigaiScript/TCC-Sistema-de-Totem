@@ -8,12 +8,15 @@ export const PageDefault = styled.div`
 
     border:1px solid black;
     border-radius:8px;
-
     margin-top:auto;
     margin-bottom:auto;
     margin-left:10px;
 
     align-items:center;
+    
+    @media(max-width:800px){
+        width:15vw;
+    }
 `;
 
 export const Span = styled.span`
