@@ -9,8 +9,8 @@ export const PageDefault = styled.div`
     box-sizing:border-box;
     padding-left:15px;
     padding-right:15px;
-`;
 
+`;
 export const ButtonWrapper = styled.div`
     display:flex;
     height:15vh;
@@ -33,6 +33,8 @@ export const Menu = styled.div`
     margin-left:auto;
     margin-right:auto;
     border-bottom:1px solid black;
+
+    
 `;
 
 export const Span = styled.span`

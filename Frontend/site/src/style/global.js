@@ -6,7 +6,9 @@ const Global = createGlobalStyle`
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        ::-webkit-scrollbar{opacity:0};
+        ::-webkit-scrollbar{
+            opacity:0;
+        };
     }
    
     body,
@@ -14,6 +16,18 @@ const Global = createGlobalStyle`
     #root{
         height:100%;
         width:100%;
+    }
+
+    h1,
+    h2,
+    h3
+    h4{
+        font-family:'Lato';
+    }
+
+    span,
+    p{
+        font-family:'Josefin Sans';
     }
 
     h1{
@@ -39,6 +53,7 @@ const Global = createGlobalStyle`
         margin-top:5px;
         margin-bottom:10px;
     }
+
 `;
 
 export default Global;
