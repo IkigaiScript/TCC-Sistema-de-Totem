@@ -4,7 +4,7 @@ export const PageDefault = styled.div`
     display:flex;
     height:5vh;
     width:8vw;
-    background:black;
+    background:radial-gradient(darkblue,blue,#1E90FF);
 
     border:1px solid black;
     border-radius:8px;
@@ -13,7 +13,7 @@ export const PageDefault = styled.div`
     margin-left:10px;
 
     align-items:center;
-    
+
     @media(max-width:800px){
         width:15vw;
     }

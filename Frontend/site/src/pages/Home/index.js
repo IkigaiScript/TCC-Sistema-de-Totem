@@ -1,5 +1,6 @@
 import React from 'react';
 import {PageDefault, ButtonWrapper, Menu, Span} from './style';
+import {Link} from 'react-router-dom';
 import Card from '../../components/Card';
 import Button from '../../components/Buttons';
 import Relogio from '../../components/Relogio';
@@ -34,9 +35,9 @@ export default function  Home(){
 
             <Menu>
 
-                <Relogio />
+                <Relogio/>
 
-                <Span>Logar</Span>
+                <Link to = '/login'><Span>Logar</Span></Link>
                 
             </Menu>
 
