@@ -12,7 +12,7 @@ namespace InsertsAPI.Controllers
         Business.Cryptography crip = new Business.Cryptography();
         Databases.CuponsDatabase db = new Databases.CuponsDatabase();
 
-        [HttpPost]
+        [HttpPost("Cadastrar")]
         public ActionResult<List<Models.Response.CuponsResponse>> Cadastrar(List<Models.Request.CuponsRequest> reqs)
         {
             try
