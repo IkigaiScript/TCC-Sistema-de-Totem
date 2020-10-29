@@ -36,7 +36,7 @@ namespace InsertsAPI.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;userid=root;password=12345678;database=tcdb", x => x.ServerVersion("8.0.21-mysql"));
+                optionsBuilder.UseMySql("server=localhost;userid=root;password=1234;database=tcdb", x => x.ServerVersion("8.0.21-mysql"));
             }
         }
 
