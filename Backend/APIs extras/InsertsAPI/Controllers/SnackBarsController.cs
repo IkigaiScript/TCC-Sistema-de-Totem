@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InsertsAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Inserts/[controller]")]
     public class SnackBarsController : ControllerBase
     {
         Utils.SnackBarsConversor conv = new Utils.SnackBarsConversor();
