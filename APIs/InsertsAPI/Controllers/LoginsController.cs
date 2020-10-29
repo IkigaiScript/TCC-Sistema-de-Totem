@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InsertsAPI.Controllers
 {
     [ApiController]
-    [Route("Inserts/[controller]")]
+    [Route("[controller]")]
     public class LoginsController : ControllerBase
     {
         Business.Cryptography crip = new Business.Cryptography();

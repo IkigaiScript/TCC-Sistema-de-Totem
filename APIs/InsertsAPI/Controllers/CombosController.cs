@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace InsertsAPI.Controllers
 {
     [ApiController]
-    [Route("Inserts/[controller]")]
+    [Route("[controller]")]
     public class CombosController : ControllerBase
     {
         Utils.CombosConversor conv = new Utils.CombosConversor();
