@@ -28,7 +28,22 @@ namespace Backend.Controllers
                 );
             }
         }
-        
+
+        [HttpGet] // funcionando
+        public ActionResult<List<Models.Response.FilmeResponse>> Consultar()
+        {
+            try
+            {
+                return conv.ParaListaResponse(buss.Consultar());
+            }
+            catch(Exception ex)
+            {
+                return new BadRequestObjectResult(
+                    new Models.Response.ErrorResponse(500,ex.Message)
+                );
+            }
+        }
+
         [HttpGet("ping")]
         public string ping()
         {

@@ -13,7 +13,16 @@ namespace Backend.Database
            return ctx.TbFilme.Where(x => x.NmFilme.Contains(nome) &&
                                         x.BtBreve == false &&
                                         x.BtEstreia == true)
+                                    .OrderBy(x => x.NmFilme)
                                     .ToList();
+        }
+
+        public List<Models.TbFilme> Consultar()
+        {
+            return ctx.TbFilme.Where(x => x.BtBreve == false &&
+                                          x.BtEstreia == true)
+                              .OrderBy(x => x.NmFilme)
+                              .ToList();
         }
     }
 }

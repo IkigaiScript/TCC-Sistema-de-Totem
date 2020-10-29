@@ -5,7 +5,7 @@ CREATE TABLE tb_filme (
 	id_filme			INT PRIMARY KEY AUTO_INCREMENT,
     nm_filme			VARCHAR(100) UNIQUE,
     ds_genero			VARCHAR(255),
-    ds_sinopse			VARCHAR(255),
+    ds_sinopse			TEXT,
     ds_imagem           VARCHAR(255),
     nr_classficacao     INT,
 	nr_duracao			INT,
@@ -41,7 +41,7 @@ CREATE TABLE tb_trailer (
 CREATE TABLE tb_cupom_desconto (
 	id_cupom_desconto	INT PRIMARY KEY AUTO_INCREMENT,
     nm_cupom      		VARCHAR(100),
-    ds_codigo			VARCHAR(4) UNIQUE,
+    ds_codigo			VARCHAR(100) UNIQUE,
 	vl_desconto			DECIMAL(10,2),
     vl_min_gasto		DECIMAL(10,2)
 );
@@ -85,7 +85,7 @@ CREATE TABLE tb_ingresso (
     FOREIGN KEY (id_pedido) REFERENCES tb_pedido (id_pedido) ON DELETE CASCADE,
     FOREIGN KEY (id_sessao) REFERENCES tb_sessao (id_sessao) ON DELETE CASCADE
 ); 
-      
+
 CREATE TABLE tb_cliente (
 	id_cliente				INT PRIMARY KEY AUTO_INCREMENT,
     id_login   				INT,
@@ -157,99 +157,99 @@ CREATE TABLE tb_cartao (
 
 show tables;
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(1, 2, '3D', '2020-10-10-10-10-10', 27.00);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(1, 2, '3D', '2020-10-10-10-10-10', 27.00);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(2, 3, 'XD', '2020-10-17-21-50', 12.50);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(2, 3, 'XD', '2020-10-17-21-50', 12.50);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(3, 4, 'XD', '2020-10-19-15-00', 24.50);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(3, 4, 'XD', '2020-10-19-15-00', 24.50);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(4, 1, 'XD', '2020-10-18-11-50', 27.00);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(4, 1, 'XD', '2020-10-18-11-50', 27.00);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(5, 5, 'XD', '2020-10-18-17-20', 22.50);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(5, 5, 'XD', '2020-10-18-17-20', 22.50);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(6, 3, 'XD', '2020-10-18-18-30', 20.00);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(6, 3, 'XD', '2020-10-18-18-30', 20.00);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(7, 2, '3D', '2020-10-18-00-00', 30.00);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(7, 2, '3D', '2020-10-18-00-00', 30.00);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(8, 5, 'XD', '2020-10-18-15-30', 23.70);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(8, 5, 'XD', '2020-10-18-15-30', 23.70);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(9, 3, 'XD', '2020-10-19-16-40', 12.50);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(9, 3, 'XD', '2020-10-19-16-40', 12.50);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(10, 1, '3D', '2020-10-19-11-30', 19.00);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(10, 1, '3D', '2020-10-19-11-30', 19.00);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(11, 4, 'XD', '2020-10-18-21-55', 21.50);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(11, 4, 'XD', '2020-10-18-21-55', 21.50);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(12, 2, '3D', '2020-10-19-13-45', 27.00);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(12, 2, '3D', '2020-10-19-13-45', 27.00);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(13, 3, 'XD', '2020-10-19-18-50', 22.50);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(13, 3, 'XD', '2020-10-19-18-50', 22.50);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(14, 1, '3D', '2020-10-19-00-00', 30.00);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(14, 1, '3D', '2020-10-19-00-00', 30.00);
 
-insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(15, 5, 'XD', '2020-10-20-19-20', 12.50);
+-- insert into tb_sessao(id_filme, nr_sala, ds_tipo_sala, dt_horario, vl_ingresso) values(15, 5, 'XD', '2020-10-20-19-20', 12.50);
 
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Will Smith','1968-09-25');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Will Smith','1968-09-25');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (2,'Bred pitt','1963-12-18');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (2,'Bred pitt','1963-12-18');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (3,'Tom Hanks','1956-07-9');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (3,'Tom Hanks','1956-07-9');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (4,'Leonardo DiCprio','1974-11-11');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (4,'Leonardo DiCprio','1974-11-11');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (5,'Harrison Ford','1942-07-13');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (5,'Harrison Ford','1942-07-13');
 
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (6,'Johnny Depp','1963-06-09');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (6,'Johnny Depp','1963-06-09');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (7,'Julia Roberts','1967-10-28');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (7,'Julia Roberts','1967-10-28');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (8,'Robert Pattinso','1986-05-13');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (8,'Robert Pattinso','1986-05-13');
 
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (9,'Tom Cruise','1962-07-12');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (9,'Tom Cruise','1962-07-12');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Jim Carrey','1962-01-17');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Jim Carrey','1962-01-17');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (11,'Natalie Portman','1981-06-09');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (11,'Natalie Portman','1981-06-09');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Matt Damon','1970-10-08');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Matt Damon','1970-10-08');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (13,'Sylvester Stallone','1946-06-06');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (13,'Sylvester Stallone','1946-06-06');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Nicolas Cage','1964-01-07');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Nicolas Cage','1964-01-07');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (15,'Robert De Niro','1943-08-17');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (15,'Robert De Niro','1943-08-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (1,'Quentin Tarantino','1963-03-27');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (1,'Quentin Tarantino','1963-03-27');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (2,'Quentin Tarantino','1963-03-27');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (2,'Quentin Tarantino','1963-03-27');
     
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (3,'Quentin Tarantino','1963-03-27');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (3,'Quentin Tarantino','1963-03-27');
     
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (4,'Quentin Tarantino','1963-03-27');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (4,'Quentin Tarantino','1963-03-27');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (5,'Quentin Tarantino','1963-03-27');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (5,'Quentin Tarantino','1963-03-27');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (6,'Martin Scorsese','1942-11-17');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (6,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (7,'Martin Scorsese','1942-11-17');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (7,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (8,'Martin Scorsese','1942-11-17');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (8,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (9,'Martin Scorsese','1942-11-17');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (9,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (10,'Martin Scorsese','1942-11-17');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (10,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (11,'Woody Allen','1935-12-01');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (11,'Woody Allen','1935-12-01');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (12,'Woody Allen','1935-12-01');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (12,'Woody Allen','1935-12-01');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (13,'Woody Allen','1935-12-01');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (13,'Woody Allen','1935-12-01');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (14,'Woody Allen','1935-12-01');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (14,'Woody Allen','1935-12-01');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (15,'Woody Allen','1935-12-01');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (15,'Woody Allen','1935-12-01');
 
-insert into tb_pedido (id_login) values (1);
+-- insert into tb_pedido (id_login) values (1);
 
-insert into tb_pedido (id_login) values (2);
+-- nsert into tb_pedido (id_login) values (2);
 
 -- insert into tb_pedido (id_login) values (3);
 
@@ -280,8 +280,8 @@ insert into tb_pedido (id_login) values (2);
 -- insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (5,5,9);
 
 select * from tb_cupom_desconto;
-select * from tb_login;
+select * from tb_filme;
 select * from tb_cartao;
-select * from tb_pedido_snack_bar;
+select * from tb_combo;
 select * from tb_pedido;
 select * from tb_snack_bar;
