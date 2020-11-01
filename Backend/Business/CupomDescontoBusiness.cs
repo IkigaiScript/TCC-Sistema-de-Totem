@@ -1,15 +1,17 @@
 using System;
 
+using Backend.Models;
+using Backend.Database;
 namespace Backend.Business
 {
     public class CupomDescontoBusiness : Cryptography
     {
-        Database.IdBase ConstBase = new Database.IdBase();
-        Database.CupomDescontoDatabase db = new Database.CupomDescontoDatabase();
-        public Models.TbPedido Consultar(string codigo, int pedido)
+        IdBase ConstBase = new IdBase();
+        CupomDescontoDatabase db = new CupomDescontoDatabase();
+        public TbPedido Consultar(string codigo, int pedido)
         {
-            Models.TbCupomDesconto cupom = db.Desconto(CriarHash(codigo));
-            Models.TbPedido ped = ConstBase.Pedido(pedido);
+            TbCupomDesconto cupom = db.Desconto(CriarHash(codigo));
+            TbPedido ped = ConstBase.Pedido(pedido);
             
             if(codigo.Length != 4) throw new ArgumentException("Código inválido");
 

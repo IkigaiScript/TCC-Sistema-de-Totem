@@ -6,17 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Database;
+using Backend.Services.Documents;
+using Backend.Models;
+using Backend.Models.Request;
+using Backend.Models.Response;
+
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("Ingressos")]
     public class IngressoController : ControllerBase
     {
-        Utils.IngressoConversor conv = new Utils.IngressoConversor();
-        Business.IngressoBusiness buss = new Business.IngressoBusiness();
+        IngressoConversor conv = new IngressoConversor();
+        IngressoBusiness buss = new IngressoBusiness();
 
         [HttpGet] // refazer apos o weverton definir certinho as cadeiras
-        public ActionResult<List<Models.Response.IngressoResponse>> ConsultarLugares(int sessao)
+        public ActionResult<List<IngressoResponse>> ConsultarLugares(int sessao)
         {
             try
             {
@@ -34,24 +42,24 @@ namespace Backend.Controllers
                 else code = 500;
 
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(code,error)
+                    new ErrorResponse(code,error)
                 );
             }
         }
 
         [HttpPost] // funcionando
-        public ActionResult Cadastrar(List<Models.Request.IngressoRequest> reqs)
+        public ActionResult Cadastrar(List<IngressoRequest> reqs)
         {
             try
             {
-                List<Models.TbIngresso> ingressos = conv.ParaListaTabela(reqs);
+                List<TbIngresso> ingressos = conv.ParaListaTabela(reqs);
                 buss.Cadastrar(ingressos);
                 return new OkResult();
             }
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(400,ex.Message)
+                    new ErrorResponse(400,ex.Message)
                 );
             }
         }

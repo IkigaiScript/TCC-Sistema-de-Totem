@@ -4,12 +4,13 @@ using System.Linq;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
+using Backend.Models;
 namespace Backend.Database
 {
     public class PedidoDatabase
     {
-        Models.tcdbContext ctx = new Models.tcdbContext();
-        public Models.TbPedido Deletar(Models.TbPedido tb)
+        tcdbContext ctx = new tcdbContext();
+        public TbPedido Deletar(TbPedido tb)
         {
             ctx.TbIngresso.RemoveRange(tb.TbIngresso);
             ctx.SaveChanges();
@@ -32,7 +33,7 @@ namespace Backend.Database
             return tb;
         }
 
-        public Models.TbPedido CalcularTotal(int id)
+        public TbPedido CalcularTotal(int id)
         {
             decimal total = 0;
            
@@ -49,15 +50,15 @@ namespace Backend.Database
                                                         .Select(x => x.IdSnackBarNavigation.VlPreco * x.NrQtdSnackBar)
                                                         .Sum();
 
-            Models.TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == id);
+            TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == id);
             pedido.VlTotal = Math.Round(total,2);
             ctx.SaveChanges();
             return pedido;
         }
 
-        public Models.TbPedido Alterar(int id, Models.TbPedido tb)
+        public TbPedido Alterar(int id, TbPedido tb)
         {
-            Models.TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == id); 
+            TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == id); 
 
             if(!string.IsNullOrEmpty(tb.NmTitular)) pedido.NmTitular = tb.NmTitular;
             if(!string.IsNullOrEmpty(tb.DsFormaPagamento)) pedido.DsFormaPagamento = tb.DsFormaPagamento;

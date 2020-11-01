@@ -1,13 +1,16 @@
 using System;
 
+using Backend.Database;
+using Backend.Models;
+
 namespace Backend.Business
 {
-    public class SessaoController
+    public class SessaoBusiness
     {
-        Database.IdBase ConstBase = new Database.IdBase();
-        public Models.TbSessao Consultar(int sessao)
+        IdBase ConstBase = new IdBase();
+        public TbSessao Consultar(int sessao)
         {
-            Models.TbSessao ses = ConstBase.Sessao(sessao);
+            TbSessao ses = ConstBase.Sessao(sessao);
             if(ses == null) throw new ArgumentException("Sessão não existe");
 
             return ses;

@@ -1,12 +1,15 @@
 using System;
 
+using Backend.Models;
+using Backend.Models.Request;
+
 namespace Backend.Utils
 {
     public class TrailerConversor
     {
-        public Models.TbTrailer ParaTabela(Models.Request.TrailerRequest req)
+        public TbTrailer ParaTabela(TrailerRequest req)
         {
-            return new Models.TbTrailer {
+            return new TbTrailer {
                 BtDublado = req.dublado,
                 NrDuracao = req.duracao 
             };

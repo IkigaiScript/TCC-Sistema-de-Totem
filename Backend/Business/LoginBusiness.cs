@@ -1,16 +1,18 @@
 using System;
 
+using Backend.Models;
+using Backend.Database;
 namespace Backend.Business
 {
     public class LoginBusiness : Cryptography
     {
-        Database.LoginDatabase db = new Database.LoginDatabase();
-        public Models.TbPedido Iniciar(Models.TbLogin tb)
+        LoginDatabase db = new LoginDatabase();
+        public TbPedido Iniciar(TbLogin tb)
         {
-            Models.TbLogin login = new Models.TbLogin();
+            TbLogin login = new TbLogin();
             if(!string.IsNullOrEmpty(tb.DsEmail))
             {
-                Models.TbLogin login1 = db.Login(tb.DsEmail,CriarHash(tb.DsSenha)); // hash da senha
+                TbLogin login1 = db.Login(tb.DsEmail,CriarHash(tb.DsSenha)); // hash da senha
                 if(login1 == null) throw new ArgumentException("Login não encontrado");
 
                 login = login1;

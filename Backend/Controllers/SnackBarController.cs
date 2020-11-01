@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+using Backend.Models.Response;
+using Backend.Business;
 
 namespace Backend.Controllers
 {
@@ -11,7 +13,7 @@ namespace Backend.Controllers
    [Route("SnackBars")]
    public class SnackBarController : ControllerBase
    {
-       Business.GerenciadorFotos foto = new Business.GerenciadorFotos();
+       GerenciadorFotos foto = new GerenciadorFotos();
        
        [HttpGet("Fotos/{nome}")]
        public ActionResult BuscarFoto(string nome)
@@ -23,7 +25,7 @@ namespace Backend.Controllers
            catch (Exception ex)
            {
                return new BadRequestObjectResult(
-                   new Models.Response.ErrorResponse(404,ex.Message)
+                   new ErrorResponse(404,ex.Message)
                );
            }
        }

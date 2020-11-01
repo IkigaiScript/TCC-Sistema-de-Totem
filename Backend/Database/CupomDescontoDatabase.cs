@@ -4,15 +4,17 @@ using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Collections;
+
+using Backend.Models;
 namespace Backend.Database
 {
     public class CupomDescontoDatabase
     {
-        Models.tcdbContext ctx = new Models.tcdbContext();
-        public Models.TbPedido Consultar(int cup, int ped)
+        tcdbContext ctx = new tcdbContext();
+        public TbPedido Consultar(int cup, int ped)
         {
-            Models.TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == ped);
-            Models.TbCupomDesconto cupom = ctx.TbCupomDesconto.FirstOrDefault(x => x.IdCupomDesconto == cup);
+            TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == ped);
+            TbCupomDesconto cupom = ctx.TbCupomDesconto.FirstOrDefault(x => x.IdCupomDesconto == cup);
             pedido.IdCupomDesconto = cupom.IdCupomDesconto;
             pedido.VlTotal -= cupom.VlDesconto.Value;
             Console.WriteLine(pedido.VlTotal);
@@ -20,7 +22,7 @@ namespace Backend.Database
             ctx.SaveChanges();
             return pedido; 
         }
-        public Models.TbCupomDesconto Desconto(string codigo)
+        public TbCupomDesconto Desconto(string codigo)
         {
             return ctx.TbCupomDesconto.FirstOrDefault(x => x.DsCodigo == codigo);
         }

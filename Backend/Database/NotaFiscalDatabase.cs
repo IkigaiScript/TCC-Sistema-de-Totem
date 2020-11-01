@@ -4,12 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
+using Backend.Models;
 namespace Backend.Database
 {
     public class NotaFiscalDatabase
     {
-        Models.tcdbContext ctx = new Models.tcdbContext();
-        public int Cadastrar(Models.TbNotaFiscal tb)
+        tcdbContext ctx = new tcdbContext();
+        public int Cadastrar(TbNotaFiscal tb)
         {
             ctx.TbNotaFiscal.Add(tb);
             ctx.SaveChanges();
@@ -21,26 +22,26 @@ namespace Backend.Database
             return ctx.TbNotaFiscal.Any(x => x.IdPedido == id);
         }
 
-        public Models.TbNotaFiscal Consultar(int pedido)
+        public TbNotaFiscal Consultar(int pedido)
         {
             return ctx.TbNotaFiscal.FirstOrDefault(x => x.IdPedido == pedido);
         }
 
-        public List<Models.TbPedidoCombo> ConsultarCombo(int pedido)
+        public List<TbPedidoCombo> ConsultarCombo(int pedido)
         {
             return ctx.TbPedidoCombo.Where(x => x.IdPedido == pedido)
                                     .Include(x => x.IdComboNavigation)
                                     .ToList();
         }
 
-        public List<Models.TbPedidoSnackBar> ConsultarSnackBar(int pedido)
+        public List<TbPedidoSnackBar> ConsultarSnackBar(int pedido)
         {
             return ctx.TbPedidoSnackBar.Where(x => x.IdPedido == pedido)
                                        .Include(x => x.IdSnackBarNavigation)
                                        .ToList();
         }
 
-        public List<Models.TbIngresso> ConsultarIngresso(int pedido)
+        public List<TbIngresso> ConsultarIngresso(int pedido)
         {
             return ctx.TbIngresso.Where(x => x.IdPedido == pedido)
                                  .Include(x => x.IdSessaoNavigation)

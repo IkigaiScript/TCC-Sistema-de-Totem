@@ -1,14 +1,15 @@
 using System;
 using System.Linq;
+
+using Backend.Models;
 namespace Backend.Database
 {
     public class LoginDatabase
     {
-        Models.tcdbContext ctx = new Models.tcdbContext();
-
-        public Models.TbPedido Iniciar(Models.TbLogin tb)
+        tcdbContext ctx = new tcdbContext();
+        public TbPedido Iniciar(TbLogin tb)
         {
-            Models.TbPedido pedido = new Models.TbPedido();            
+            TbPedido pedido = new TbPedido();            
             pedido.IdLogin = tb.IdLogin == 0
                         ? 1 // o login do totem é o primeiro login
                         : tb.IdLogin;
@@ -18,7 +19,7 @@ namespace Backend.Database
             return pedido;
         }
 
-        public Models.TbLogin Login(string email, string senha)
+        public TbLogin Login(string email, string senha)
         {
             return ctx.TbLogin.FirstOrDefault(x => x.DsSenha == senha &&
                                                     x.DsEmail.ToLower() == email.ToLower());

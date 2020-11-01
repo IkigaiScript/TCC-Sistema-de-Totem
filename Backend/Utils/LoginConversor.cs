@@ -1,20 +1,24 @@
 using System;
 
+using Backend.Models.Request;
+using Backend.Models.Response;
+using Backend.Models;
+
 namespace Backend.Utils
 {
     public class LoginConversor
     {
-        public Models.TbLogin ParaTabela(Models.Request.LoginRequest req)
+        public TbLogin ParaTabela(LoginRequest req)
         {
-            return new Models.TbLogin {
+            return new TbLogin {
                 DsEmail = req.Email,
                 DsSenha = req.Senha
             };
         }
 
-        public Models.Response.LoginResponse ParaResponse(Models.TbPedido tb)
+        public LoginResponse ParaResponse(TbPedido tb)
         {
-            return new Models.Response.LoginResponse {
+            return new LoginResponse {
                 Pedido = tb.IdPedido
             };
         }

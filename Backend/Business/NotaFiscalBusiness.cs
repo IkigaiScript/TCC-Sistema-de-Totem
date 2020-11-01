@@ -3,13 +3,15 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
+using Backend.Models;
+using Backend.Database;
 namespace Backend.Business
 {
     public class NotaFiscalBusiness : Cryptography
     {
-        Database.NotaFiscalDatabase db = new Database.NotaFiscalDatabase();
-        Database.IdBase ConsTBase = new Database.IdBase();
-        public int Cadastrar(Models.TbNotaFiscal tb)
+        NotaFiscalDatabase db = new NotaFiscalDatabase();
+        IdBase ConsTBase = new IdBase();
+        public int Cadastrar(TbNotaFiscal tb)
         {
             if(!string.IsNullOrEmpty(tb.DsCpf))
             {
@@ -43,7 +45,7 @@ namespace Backend.Business
             return db.Cadastrar(tb);
         }
 
-        public Models.TbNotaFiscal Consultar(int pedido)
+        public TbNotaFiscal Consultar(int pedido)
         {
             if(!db.ExitsPedido(pedido)) throw new ArgumentException("Nenhuma nota fiscal encontrada");
 
@@ -52,26 +54,25 @@ namespace Backend.Business
             return db.Consultar(pedido);
         }
 
-
         public void ValidarPedido(int pedido)
         {
             if(ConsTBase.Pedido(pedido) == null) throw new ArgumentException("Pedido não existe");
         }
-        public List<Models.TbPedidoSnackBar> ConsultarSnackBar(int pedido)
+        public List<TbPedidoSnackBar> ConsultarSnackBar(int pedido)
         {
             this.ValidarPedido(pedido);
         
             return db.ConsultarSnackBar(pedido);
         }
 
-        public List<Models.TbPedidoCombo> ConsultarCombo(int pedido)
+        public List<TbPedidoCombo> ConsultarCombo(int pedido)
         {
             this.ValidarPedido(pedido);
 
             return db.ConsultarCombo(pedido);
         }
 
-        public List<Models.TbIngresso> ConsultarIngresso(int pedido)
+        public List<TbIngresso> ConsultarIngresso(int pedido)
         {
             this.ValidarPedido(pedido);
 

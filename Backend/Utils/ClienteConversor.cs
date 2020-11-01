@@ -2,14 +2,17 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
+using Backend.Models.Request;
+using Backend.Models.Response;
+using Backend.Models;
 
 namespace Backend.Utils
 {
     public class ClienteConversor
     {
-        public Models.Response.ClienteResponse ParaResponse(Models.TbCliente tb)
+        public ClienteResponse ParaResponse(TbCliente tb)
         {
-            return new Models.Response.ClienteResponse{
+            return new ClienteResponse{
                 Id = tb.IdCliente,
                 Nome = tb.NmCliente,
                 Cpf = tb.DsCpf,

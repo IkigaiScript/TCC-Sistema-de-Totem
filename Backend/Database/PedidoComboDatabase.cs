@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using Backend.Models;
 namespace Backend.Database
 {
     public class PedidoComboDatabase
     {
-        Models.tcdbContext ctx = new Models.tcdbContext();
-        public List<Models.TbPedidoCombo> Cadastrar(List<Models.TbPedidoCombo> tbs)
+        tcdbContext ctx = new tcdbContext();
+        public List<TbPedidoCombo> Cadastrar(List<TbPedidoCombo> tbs)
         {
             ctx.TbPedidoCombo.AddRange(tbs);
 

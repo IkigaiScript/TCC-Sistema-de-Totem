@@ -2,15 +2,17 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
+using Backend.Models;
+using Backend.Database;
 namespace Backend.Business
 {
     public class ClienteBusiness
     {
-        Database.ClienteDatabase db = new Database.ClienteDatabase();
-        public Models.TbCliente ConsultarCliente(int id)
+        ClienteDatabase db = new ClienteDatabase();
+        public TbCliente ConsultarCliente(int id)
         {
             
-            Models.TbCliente Cliente = db.ConsultarCliente(id);
+            TbCliente Cliente = db.ConsultarCliente(id);
             if(Cliente == null) throw new ArgumentException("ID incorreto");
 
             return db.ConsultarCliente(Cliente.IdCliente);

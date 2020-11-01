@@ -3,27 +3,35 @@ using System.Collections;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Database;
+using Backend.Services.Documents;
+using Backend.Models;
+using Backend.Models.Request;
+using Backend.Models.Response;
+
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("Logins")]
     public class LoginController : ControllerBase
     {
-        Utils.LoginConversor conv = new Utils.LoginConversor();
-        Business.LoginBusiness buss = new Business.LoginBusiness();
+        LoginConversor conv = new LoginConversor();
+        LoginBusiness buss = new LoginBusiness();
 
         [HttpPost] // funcionando 
-        public ActionResult<Models.Response.LoginResponse> Iniciar(Models.Request.LoginRequest req)
+        public ActionResult<LoginResponse> Iniciar(LoginRequest req)
         {
             try
             {
-                Models.TbLogin login = conv.ParaTabela(req);
+                TbLogin login = conv.ParaTabela(req);
                 return conv.ParaResponse(buss.Iniciar(login));
             }
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(400,ex.Message)
+                    new ErrorResponse(400,ex.Message)
                 );
             }
         }

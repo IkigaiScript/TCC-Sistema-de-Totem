@@ -8,7 +8,7 @@ using System.IO;
 using System.Collections.Generic;
 
 
-namespace Backend.Controllers
+namespace Backend.Services.Documents
 {
     public class DocumentPDF
     {
@@ -31,7 +31,7 @@ namespace Backend.Controllers
 
             doc.Open();
 
-            Image logo = Image.GetInstance($"{path}Fotos\\logo.png");
+            Image logo = Image.GetInstance($"{path}Fotos\\logo.PNG");
             logo.ScaleToFit(100f, 80f);
             logo.SetAbsolutePosition(80,700);
             doc.Add(logo);
@@ -100,7 +100,7 @@ namespace Backend.Controllers
                 table.AddCell(new Phrase($"R$ {ingresso.IdSessaoNavigation.VlIngresso}",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
             }
 
-            doc.Add(table);
+            doc.Add(table); 
 
             if(snacks.Count > 0)
             {

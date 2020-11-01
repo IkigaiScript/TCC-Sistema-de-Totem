@@ -1,10 +1,16 @@
+using System;
+
+using Backend.Models.Request;
+using Backend.Models.Response;
+using Backend.Models;
+
 namespace Backend.Utils
 {
     public class CupomDescontoConversor
     {
-        public Models.Response.CupomDescontoResponse ParaResponse(float valor, string nome)
+        public CupomDescontoResponse ParaResponse(float valor, string nome)
         {
-            return new Models.Response.CupomDescontoResponse {
+            return new CupomDescontoResponse {
                 Valor = valor,
                 Nome = nome
             };

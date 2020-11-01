@@ -5,17 +5,23 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Models;
+using Backend.Models.Request;
+using Backend.Models.Response;
+
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("Pedidos")]
     public class PedidoController : ControllerBase
     {
-        Utils.PedidoConversor conv = new Utils.PedidoConversor();
-        Business.PedidoBusiness buss = new Business.PedidoBusiness();
+        PedidoConversor conv = new PedidoConversor();
+        PedidoBusiness buss = new PedidoBusiness();
 
         [HttpDelete("{id}")] // funcionando
-        public ActionResult<Models.Response.PedidoResponse> Deletar(int id)
+        public ActionResult<PedidoResponse> Deletar(int id)
         {
             try
             {
@@ -24,23 +30,23 @@ namespace Backend.Controllers
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(404,ex.Message)
+                    new ErrorResponse(404,ex.Message)
                 );
             }
         }
  
         [HttpPut("{id}")] // funcionando
-        public ActionResult<Models.Response.PedidoResponse> Alterar(int id, Models.Request.PedidoRequest req)
+        public ActionResult<PedidoResponse> Alterar(int id, PedidoRequest req)
         {
             try
             {
-                Models.TbPedido ped = conv.ParaTabela(req);
+                TbPedido ped = conv.ParaTabela(req);
                 return conv.ParaResponse(buss.Alterar(id,ped));
             }
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(400,ex.Message)
+                    new ErrorResponse(400,ex.Message)
                 );
             }
         }
@@ -55,13 +61,13 @@ namespace Backend.Controllers
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(400,ex.Message)
+                    new ErrorResponse(400,ex.Message)
                 );
             }
         }
         
         [HttpGet("{id}")] // funcionando
-        public ActionResult<Models.Response.PedidoResponse> Consultar(int id)
+        public ActionResult<PedidoResponse> Consultar(int id)
         {
             try
             {
@@ -70,7 +76,7 @@ namespace Backend.Controllers
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(404,ex.Message)
+                    new ErrorResponse(404,ex.Message)
                 );
             }
         }

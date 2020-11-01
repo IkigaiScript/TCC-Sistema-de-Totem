@@ -2,17 +2,18 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
+using Backend.Models;
 namespace Backend.Database
 {
     public class IngressoDatabase
     {
-        Models.tcdbContext ctx = new Models.tcdbContext();
-        public List<Models.TbIngresso> ConsultarLugares(int sessao)
+        tcdbContext ctx = new tcdbContext();
+        public List<TbIngresso> ConsultarLugares(int sessao)
         {
             return ctx.TbIngresso.Where(x => x.IdSessao == sessao).ToList();
         }
 
-        public List<Models.TbIngresso> Cadastrar(List<Models.TbIngresso> tbs)
+        public List<TbIngresso> Cadastrar(List<TbIngresso> tbs)
         {
             ctx.TbIngresso.AddRange(tbs);
             ctx.SaveChanges();

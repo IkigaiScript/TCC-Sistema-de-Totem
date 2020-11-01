@@ -1,21 +1,25 @@
 using System;
 
+using Backend.Models.Request;
+using Backend.Models.Response;
+using Backend.Models;
+
 namespace Backend.Utils
 {
     public class NotaFiscalConversor
     {
-        public Models.TbNotaFiscal ParaTabela(Models.Request.NotaFiscalRequest req)
+        public TbNotaFiscal ParaTabela(NotaFiscalRequest req)
         {
-            return new Models.TbNotaFiscal {
+            return new TbNotaFiscal {
                 DsEmail = req.Email,
                 DsCpf = req.Cpf,
                 IdPedido = req.Pedido
             };
         }
 
-        public Models.Response.NotaFiscalResponse ParaResponse(int pedido)
+        public NotaFiscalResponse ParaResponse(int pedido)
         {
-            return new Models.Response.NotaFiscalResponse {
+            return new NotaFiscalResponse {
                 Pedido = pedido
             };
         }

@@ -2,15 +2,16 @@ using System;
 using System.Linq;
 using System.Collections;
 
+using Backend.Models;
 namespace Backend.Database
 {
     public class CartaoDatabase
     {
-        Models.tcdbContext ctx = new Models.tcdbContext();
-        public Models.TbCartao Cadastrar(Models.TbCartao tb)
+        tcdbContext ctx = new tcdbContext();
+        public TbCartao Cadastrar(TbCartao tb)
         {
             // receber consulta do cartão
-            Models.TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == tb.IdPedido);
+            TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == tb.IdPedido);
 
             tb.VlGasto = pedido.VlTotal; 
 

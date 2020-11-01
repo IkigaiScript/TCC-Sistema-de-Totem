@@ -2,26 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using Backend.Models.Request;
+using Backend.Models.Response;
+using Backend.Models;
+
 namespace Backend.Utils
 {
     public class IngressoConversor
     {
-        public Models.Response.IngressoResponse ParaResponse(Models.TbIngresso tb)
+        public IngressoResponse ParaResponse(TbIngresso tb)
         {
-            return new Models.Response.IngressoResponse {
+            return new IngressoResponse {
                 Poltrona = tb.NrPoltrona,
                 Fileira = tb.DsFileira[0]
             };
         }
 
-        public List<Models.Response.IngressoResponse> ParaListaResponse(List<Models.TbIngresso> tbs)
+        public List<IngressoResponse> ParaListaResponse(List<TbIngresso> tbs)
         {
             return tbs.Select(x => this.ParaResponse(x)).ToList();
         }
 
-        public Models.TbIngresso ParaTabela(Models.Request.IngressoRequest req)
+        public TbIngresso ParaTabela(IngressoRequest req)
         {
-            return new Models.TbIngresso {
+            return new TbIngresso {
                 DsFileira = req.Fileira.ToString(),
                 BtMeiaEntrada = req.MeiaEntrada,
                 IdPedido = req.Pedido,
@@ -30,7 +34,7 @@ namespace Backend.Utils
             };
         }
 
-        public List<Models.TbIngresso> ParaListaTabela(List<Models.Request.IngressoRequest> reqs)
+        public List<TbIngresso> ParaListaTabela(List<IngressoRequest> reqs)
         {
             return reqs.Select(x => this.ParaTabela(x)).ToList();
         }

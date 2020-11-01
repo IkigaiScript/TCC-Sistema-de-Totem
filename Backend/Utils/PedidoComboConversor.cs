@@ -3,27 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using Backend.Models.Request;
+using Backend.Models.Response;
+using Backend.Models;
+
 namespace Backend.Utils
 {
     public class PedidoComboConvesor
     {
-        public Models.TbPedidoCombo ParaTabela (Models.Request.PedidoComboRequest req)
+        public TbPedidoCombo ParaTabela (PedidoComboRequest req)
         {
-            return new Models.TbPedidoCombo {
+            return new TbPedidoCombo {
                 NrQtdCombo = req.Qtd,
                 IdPedido = req.Pedido,
                 IdCombo = req.Combo
             };
         }
 
-        public List<Models.TbPedidoCombo> ParaListaTabela (List<Models.Request.PedidoComboRequest> reqs)
+        public List<TbPedidoCombo> ParaListaTabela (List<PedidoComboRequest> reqs)
         {
             return reqs.Select(x => this.ParaTabela(x)).ToList();
         }
 
-        public Models.Response.PedidoComboResponse ParaResponse (Models.TbPedidoCombo tb)
+        public PedidoComboResponse ParaResponse (TbPedidoCombo tb)
         {
-            return new Models.Response.PedidoComboResponse {
+            return new PedidoComboResponse {
                 Qtd = (int) tb.NrQtdCombo,
                 Pedido = (int) tb.IdPedido,
                 Combo = (int) tb.IdCombo,
@@ -31,7 +35,7 @@ namespace Backend.Utils
             };
         }
 
-        public List<Models.Response.PedidoComboResponse> ParaListaResponse (List<Models.TbPedidoCombo> tbs)
+        public List<PedidoComboResponse> ParaListaResponse (List<TbPedidoCombo> tbs)
         {
             return tbs.Select(x => this.ParaResponse(x)).ToList();
         }

@@ -2,18 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
+using Backend.Models;
 namespace Backend.Database
 {
     public class PedidoSnackBarDatabase
     {
-        Models.tcdbContext ctx = new Models.tcdbContext();
+        tcdbContext ctx = new tcdbContext();
 
-        public List<Models.TbPedidoSnackBar> Cadastrar (List<Models.TbPedidoSnackBar> tbs)
+        public List<TbPedidoSnackBar> Cadastrar (List<TbPedidoSnackBar> tbs)
         {
             ctx.TbPedidoSnackBar.AddRange(tbs);
             ctx.SaveChanges();
 
-            foreach(Models.TbSnackBar snackBar in ctx.TbSnackBar)
+            foreach(TbSnackBar snackBar in ctx.TbSnackBar)
             {
                 if(tbs.Any(x => x.IdSnackBar == snackBar.IdSnackBar))
                         snackBar.NrQtdEstoque -= tbs.FirstOrDefault(x => x.IdSnackBar == snackBar.IdSnackBar).NrQtdSnackBar.Value; 

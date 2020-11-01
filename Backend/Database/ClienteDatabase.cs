@@ -2,18 +2,17 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-
+using Backend.Models;
 namespace Backend.Database
 {
     public class ClienteDatabase
     {
-        Models.tcdbContext ctx = new Models.tcdbContext();
-
-        public Models.TbCliente ConsultarCliente(int id)
+        tcdbContext ctx = new tcdbContext();
+        public TbCliente ConsultarCliente(int id)
         {
             if(id == 1)
             {
-                return new Models.TbCliente(){
+                return new TbCliente(){
                     IdLogin = 1,
                     NmCliente = "Totem"
                 };

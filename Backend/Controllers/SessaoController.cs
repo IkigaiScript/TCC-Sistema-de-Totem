@@ -6,17 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Models.Response;
+
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("Sessao")]
     public class SessaoController : ControllerBase
     {
-        Business.SessaoController buss = new Business.SessaoController();
-        Utils.SessaoConversor conv = new Utils.SessaoConversor();
+        SessaoBusiness buss = new SessaoBusiness();
+        SessaoConversor conv = new SessaoConversor();
 
         [HttpGet] // funcionando
-        public ActionResult<Models.Response.SessaoResponse> Consultar(int sessao)
+        public ActionResult<SessaoResponse> Consultar(int sessao)
         {
             try
             {
@@ -34,7 +38,7 @@ namespace Backend.Controllers
                 else code = 500;
 
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(code,error)
+                    new ErrorResponse(code,error)
                 );            
             }
         }

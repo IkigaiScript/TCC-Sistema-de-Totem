@@ -4,27 +4,33 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Models;
+using Backend.Models.Request;
+using Backend.Models.Response;
+
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("Cartoes")]
     public class CartaoController : ControllerBase
     {
-        Utils.CartaoConversor conv = new Utils.CartaoConversor();
-        Business.CartaoBusiness buss = new Business.CartaoBusiness();
+        CartaoConversor conv = new CartaoConversor();
+        CartaoBusiness buss = new CartaoBusiness();
 
         [HttpPost] // terminando 
-        public ActionResult<Models.Response.CartaoResponse> Cadastrar(Models.Request.CartaoRequest req)
+        public ActionResult<CartaoResponse> Cadastrar(CartaoRequest req)
         {
             try
             {
-                Models.TbCartao cartao = conv.ParaTabela(req);
+                TbCartao cartao = conv.ParaTabela(req);
                 return conv.ParaResponse(buss.Cadastrar(cartao,req.Cvv,req.Senha,req.Pagamento));
             }
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(400,ex.Message)
+                    new ErrorResponse(400,ex.Message)
                 );
             }
         }

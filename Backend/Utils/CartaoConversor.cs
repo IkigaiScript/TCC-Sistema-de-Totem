@@ -1,12 +1,15 @@
 using System;
 
+using Backend.Models.Request;
+using Backend.Models.Response;
+using Backend.Models;
 namespace Backend.Utils
 {
     public class CartaoConversor
     {
-        public Models.Response.CartaoResponse ParaResponse(Models.TbCartao tb)
+        public CartaoResponse ParaResponse(TbCartao tb)
         {
-            return new Models.Response.CartaoResponse {
+            return new CartaoResponse {
                 Id = tb.IdCartao,
                 Pedido = tb.IdPedido.Value,
                 Gasto  = (float) tb.VlGasto,
@@ -14,9 +17,9 @@ namespace Backend.Utils
             };
         }
 
-        public Models.TbCartao ParaTabela(Models.Request.CartaoRequest req)
+        public TbCartao ParaTabela(CartaoRequest req)
         {
-            return new Models.TbCartao {
+            return new TbCartao {
                 NrCartao = req.Numero,
                 IdPedido = req.Pedido
             };

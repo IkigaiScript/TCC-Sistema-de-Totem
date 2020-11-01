@@ -3,24 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using Backend.Models;
+using Backend.Database;
 namespace Backend.Business
 {
     public class IngressoBusiness
     {
-        Database.IdBase ConstBase = new Database.IdBase();
-        Database.IngressoDatabase db = new Database.IngressoDatabase();
-        public List<Models.TbIngresso> ConsultarLugares(int sessao)
+        IdBase ConstBase = new IdBase();
+        IngressoDatabase db = new IngressoDatabase();
+        public List<TbIngresso> ConsultarLugares(int sessao)
         {
             if(ConstBase.Sessao(sessao) == null) throw new ArgumentException("Sessão não existe.400");
 
             return db.ConsultarLugares(sessao);
         } 
 
-        public void Cadastrar(List<Models.TbIngresso> tbs)
+        public void Cadastrar(List<TbIngresso> tbs)
         {
             char[] column = new char[9] {'A','B','D','E','F','G','H','J','K'};
 
-            foreach(Models.TbIngresso tb in tbs)
+            foreach(TbIngresso tb in tbs)
             {
                 if(ConstBase.Pedido((int) tb.IdPedido) == null) throw new ArgumentException("Pedido não existe");
  
@@ -35,7 +37,7 @@ namespace Backend.Business
                 if((tb.DsFileira.ToUpper()[0] == 'C' || tb.DsFileira.ToUpper()[0] == 'I') && (tb.NrPoltrona < 1 || tb.NrPoltrona > 3)) throw new ArgumentException("Poltrona não existe nessa fileira");
             }
 
-            List<Models.TbIngresso> ingressos = db.Cadastrar(tbs);
+            List<TbIngresso> ingressos = db.Cadastrar(tbs);
         }
     }
 }

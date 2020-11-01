@@ -1,31 +1,35 @@
 using System;
 using System.Linq;
 
+using Backend.Models.Request;
+using Backend.Models.Response;
+using Backend.Models;
+
 namespace Backend.Utils
 {
     public class PedidoConversor
     {
-        public Models.TbPedido ParaTabela(Models.Request.PedidoRequest req)
+        public TbPedido ParaTabela(PedidoRequest req)
         {
-            return new Models.TbPedido {
+            return new TbPedido {
                 DsFormaPagamento = req.FormaPagamento,
                 DsStatus = req.Status,
                 NmTitular = req.Titular
             };
         }
 
-        public Models.TbPedido Cadastrar(Models.Request.PedidoRequest req)
+        public TbPedido Cadastrar(PedidoRequest req)
         {
-            return new Models.TbPedido {
+            return new TbPedido {
                 DsFormaPagamento = "",
                 DsStatus = "em processo",
                 NmTitular = "",
             };
         }
 
-        public Models.Response.PedidoResponse ParaResponse(Models.TbPedido tb)
+        public PedidoResponse ParaResponse(TbPedido tb)
         {
-            return new Models.Response.PedidoResponse {
+            return new PedidoResponse {
                 Id = tb.IdPedido,
                 Login = tb.IdLogin.Value,
                 FormaPagamento = tb.DsFormaPagamento,

@@ -8,22 +8,27 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft;
 using Newtonsoft.Json;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Models;
+using Backend.Models.Request;
+
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("Trailers")]
     public class TrailerController : ControllerBase
     {
-        Utils.TrailerConversor conv = new Utils.TrailerConversor();
-        Business.GerenciadorFotos buss = new Business.GerenciadorFotos();
-        Models.tcdbContext ctx = new Models.tcdbContext();
+        TrailerConversor conv = new Utils.TrailerConversor();
+        GerenciadorFotos buss = new GerenciadorFotos();
+        tcdbContext ctx = new tcdbContext();
 
         [HttpPost] // Inserir trailer
-        public ActionResult<string> Cadastrar([FromForm] Models.Request.TrailerRequest req)
+        public ActionResult<string> Cadastrar([FromForm] TrailerRequest req)
         {
             try
             {
-                Models.TbTrailer trailer = conv.ParaTabela(req);
+                TbTrailer trailer = conv.ParaTabela(req);
                 trailer.NmTrailer = buss.GerarNovoNome(req.trailer.FileName);
                 ctx.Add(trailer);
                 ctx.SaveChanges();    

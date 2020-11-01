@@ -6,6 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Models;
+using Backend.Models.Request;
+using Backend.Models.Response;
+
 
 namespace Backend.Controllers
 {
@@ -13,21 +19,21 @@ namespace Backend.Controllers
     [Route("Pedidos/SnackBars")]
     public class PedidoSnackBarController : ControllerBase
     {
-        Business.PedidoSnackBarBusiness buss = new Business.PedidoSnackBarBusiness();
-        Utils.PedidoSnackBarConversor conv = new Utils.PedidoSnackBarConversor();
+        PedidoSnackBarBusiness buss = new PedidoSnackBarBusiness();
+        PedidoSnackBarConversor conv = new PedidoSnackBarConversor();
 
         [HttpPost] // funcionando
-        public ActionResult<List<Models.Response.PedidoSnackBarResponse>> Cadastrar(List<Models.Request.PedidoSnackBarRequest> reqs)
+        public ActionResult<List<PedidoSnackBarResponse>> Cadastrar(List<PedidoSnackBarRequest> reqs)
         {
             try
             {
-                List<Models.TbPedidoSnackBar> psb = conv.ParaListaTabela(reqs);
+                List<TbPedidoSnackBar> psb = conv.ParaListaTabela(reqs);
                 return conv.ParaListaResponse(buss.Cadastrar(psb));
             }
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(400,ex.Message)
+                    new ErrorResponse(400,ex.Message)
                 );
             }   
         }

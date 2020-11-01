@@ -4,17 +4,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Database;
+using Backend.Services.Documents;
+using Backend.Models;
+using Backend.Models.Request;
+using Backend.Models.Response;
+
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("Clientes")]
     public class ClienteController  : ControllerBase
     {
-        Utils.ClienteConversor conv = new Utils.ClienteConversor();
-        Business.ClienteBusiness Buss = new Business.ClienteBusiness();
+        ClienteConversor conv = new ClienteConversor();
+        ClienteBusiness Buss = new ClienteBusiness();
 
         [HttpGet("{id}")] // Cliente
-        public ActionResult<Models.Response.ClienteResponse> Consultar(int id)
+        public ActionResult<ClienteResponse> Consultar(int id)
         {
             try
             {
@@ -24,7 +32,7 @@ namespace Backend.Controllers
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                new Models.Response.ErrorResponse(400,ex.Message));
+                new ErrorResponse(400,ex.Message));
             }
         } 
         

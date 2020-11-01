@@ -3,13 +3,15 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System.Collections.Generic;
 
+using Backend.Models;
+using Backend.Database;
 namespace Backend.Business
 {
     public class CartaoBusiness : Cryptography
     {
-        Database.CartaoDatabase db = new Database.CartaoDatabase();
-        Database.IdBase ConsTBase = new Database.IdBase();
-        public Models.TbCartao Cadastrar(Models.TbCartao tb, int cvv, int senha, string pagamento)
+        CartaoDatabase db = new CartaoDatabase();
+        IdBase ConsTBase = new IdBase();
+        public TbCartao Cadastrar(TbCartao tb, int cvv, int senha, string pagamento)
         {
             if(ConsTBase.Pedido(tb.IdPedido.Value) == null) throw new ArgumentException("Pedido não existe");  
 

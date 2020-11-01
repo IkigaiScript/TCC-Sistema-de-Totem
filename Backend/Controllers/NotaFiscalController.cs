@@ -4,28 +4,35 @@ using System.Text;
 using System.Net.Mail;
 using Microsoft.AspNetCore.Mvc;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Database;
+using Backend.Services.Documents;
+using Backend.Models;
+using Backend.Models.Request;
+using Backend.Models.Response;
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("Notas")]
     public class NotaFiscalController : ControllerBase 
     {
-        DocumentPDF pdf = new DocumentPDF();
-        Utils.NotaFiscalConversor conv = new Utils.NotaFiscalConversor();
-        Business.NotaFiscalBusiness buss = new Business.NotaFiscalBusiness();
+        DocumentPDF pdf = new Services.Documents.DocumentPDF();
+        NotaFiscalConversor conv = new NotaFiscalConversor();
+        NotaFiscalBusiness buss = new NotaFiscalBusiness();
 
         [HttpPost] // inserir 
-        public ActionResult<Models.Response.NotaFiscalResponse> Cadastrar(Models.Request.NotaFiscalRequest req)
+        public ActionResult<NotaFiscalResponse> Cadastrar(NotaFiscalRequest req)
         {
             try
             {
-                Models.TbNotaFiscal nota = conv.ParaTabela(req);
+                TbNotaFiscal nota = conv.ParaTabela(req);
                 return conv.ParaResponse(buss.Cadastrar(nota));
             }
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                  new Models.Response.ErrorResponse(400,ex.Message)  
+                  new ErrorResponse(400,ex.Message)  
                 );
             }
         }
@@ -34,12 +41,12 @@ namespace Backend.Controllers
         public ActionResult EnviarEmail(int pedido)
         {
             // Adicionar anexo com a nota fiscal criada 
-            Database.IdBase ConsTBase = new Database.IdBase();
+            IdBase ConsTBase = new IdBase();
 
             try
             {
-                Models.TbNotaFiscal nota = buss.Consultar(pedido);
-                Models.TbPedido ped = ConsTBase.Pedido(pedido);
+                TbNotaFiscal nota = buss.Consultar(pedido);
+                TbPedido ped = ConsTBase.Pedido(pedido);
                 string file = pdf.NewFile(nota,ped);
 
                 MailMessage mail = new MailMessage("venanciodacostacarloshenrique@gmail.com",nota.DsEmail);
@@ -66,7 +73,7 @@ namespace Backend.Controllers
                 catch(Exception) 
                 {
                     return new BadRequestObjectResult(
-                        new Models.Response.ErrorResponse(500,"Erro ao mandar email")
+                        new ErrorResponse(500,"Erro ao mandar email")
                     );
                 }
                 finally
@@ -79,7 +86,7 @@ namespace Backend.Controllers
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(400,ex.Message)
+                    new ErrorResponse(400,ex.Message)
                 );
             }
         }

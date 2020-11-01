@@ -5,17 +5,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Database;
+using Backend.Services.Documents;
+using Backend.Models;
+using Backend.Models.Request;
+using Backend.Models.Response;
+
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("Filmes")]
     public class FilmeController : ControllerBase
     {
-        Business.FilmeBusines buss = new Business.FilmeBusines();
-        Utils.FilmeConversor conv = new Utils.FilmeConversor();
+        FilmeBusines buss = new FilmeBusines();
+        FilmeConversor conv = new FilmeConversor();
 
         [HttpGet("Seach/{nome}")] // testar 
-        public ActionResult<List<Models.Response.FilmeResponse>> ConsultaParcial(string nome)
+        public ActionResult<List<FilmeResponse>> ConsultaParcial(string nome)
         {
             try
             {
@@ -24,13 +32,13 @@ namespace Backend.Controllers
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(400,ex.Message)
+                    new ErrorResponse(400,ex.Message)
                 );
             }
         }
 
         [HttpGet] // funcionando
-        public ActionResult<List<Models.Response.FilmeResponse>> Consultar()
+        public ActionResult<List<FilmeResponse>> Consultar()
         {
             try
             {
@@ -39,7 +47,37 @@ namespace Backend.Controllers
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(500,ex.Message)
+                    new ErrorResponse(500,ex.Message)
+                );
+            }
+        }
+
+        [HttpGet("Breve")]
+        public ActionResult<List<FilmeResponse>> ConsultarBreve()
+        {
+            try
+            {
+                return conv.ParaListaResponse(buss.ConsultarBreve());
+            }
+            catch(Exception ex)
+            {
+                return new BadRequestObjectResult(
+                    new ErrorResponse(500,ex.Message)
+                );
+            }
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<FilmeCompletoResponse> ConsultaUNI(int id)
+        {
+            try
+            {
+                return conv.ParaResponseCompleto(buss.ConsultarUNI(id));
+            }
+            catch(Exception ex)
+            {
+                return new BadRequestObjectResult(
+                    new ErrorResponse(400,ex.Message)
                 );
             }
         }

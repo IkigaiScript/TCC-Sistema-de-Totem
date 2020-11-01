@@ -2,16 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using Backend.Database;
+using Backend.Models;
+
 namespace Backend.Business
 {
     public class PedidoComboBusiness
     {
-        Database.IdBase ConstBase = new Database.IdBase();
-        Database.PedidoComboDatabase db = new Database.PedidoComboDatabase();
+        IdBase ConstBase = new IdBase();
+        PedidoComboDatabase db = new PedidoComboDatabase();
        
-        public List<Models.TbPedidoCombo> Cadastrar(List<Models.TbPedidoCombo> tbs)
+        public List<TbPedidoCombo> Cadastrar(List<TbPedidoCombo> tbs)
         {
-            foreach(Models.TbPedidoCombo tb in tbs)
+            foreach(TbPedidoCombo tb in tbs)
             {
                 if(tb.NrQtdCombo < 0 || tb.NrQtdCombo > 10) throw new ArgumentException("Quantidade do combo inválido");
 

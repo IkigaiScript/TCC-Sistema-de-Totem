@@ -6,6 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
+using Backend.Business;
+using Backend.Utils;
+using Backend.Models;
+using Backend.Models.Request;
+using Backend.Models.Response;
 
 namespace Backend.Controllers
 {
@@ -13,21 +18,21 @@ namespace Backend.Controllers
     [Route("Pedidos/Combos")]
     public class PedidoComboController : ControllerBase
     {
-        Utils.PedidoComboConvesor conv = new Utils.PedidoComboConvesor();
-        Business.PedidoComboBusiness buss = new Business.PedidoComboBusiness();
+        PedidoComboConvesor conv = new PedidoComboConvesor();
+        PedidoComboBusiness buss = new PedidoComboBusiness();
         
         [HttpPost] // funcionando
-        public ActionResult<List<Models.Response.PedidoComboResponse>> Cadastrar(List<Models.Request.PedidoComboRequest> reqs)
+        public ActionResult<List<PedidoComboResponse>> Cadastrar(List<PedidoComboRequest> reqs)
         {
             try
             {
-                List<Models.TbPedidoCombo> combos = conv.ParaListaTabela(reqs);
+                List<TbPedidoCombo> combos = conv.ParaListaTabela(reqs);
                 return conv.ParaListaResponse(buss.Cadastrar(combos));
             }
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new Models.Response.ErrorResponse(400,ex.Message)
+                    new ErrorResponse(400,ex.Message)
                 );
             }
         }

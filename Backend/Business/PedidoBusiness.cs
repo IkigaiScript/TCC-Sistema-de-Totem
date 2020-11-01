@@ -2,21 +2,23 @@ using System;
 using Newtonsoft;
 using Newtonsoft.Json;
 
+using Backend.Database;
+using Backend.Models;
 namespace Backend.Business
 {
     public class PedidoBusiness
     {
-        Database.IdBase ConsTBase = new Database.IdBase();
-        Database.PedidoDatabase db = new Database.PedidoDatabase();
-        public Models.TbPedido Deletar(int id)
+        IdBase ConsTBase = new IdBase();
+        PedidoDatabase db = new PedidoDatabase();
+        public TbPedido Deletar(int id)
         {
-            Models.TbPedido pedido = ConsTBase.Pedido(id);
+            TbPedido pedido = ConsTBase.Pedido(id);
             
             if(pedido == null) throw new ArgumentException("Pedido não existe");
             return db.Deletar(pedido);            
         }
 
-        public Models.TbPedido Alterar(int id,Models.TbPedido tb)
+        public TbPedido Alterar(int id,TbPedido tb)
         {
             if(!string.IsNullOrEmpty(tb.DsFormaPagamento))
             {
@@ -39,9 +41,9 @@ namespace Backend.Business
             return db.Alterar(id,tb);
         }
 
-        public Models.TbPedido ConsultarPedido(int id)
+        public TbPedido ConsultarPedido(int id)
         {
-            Models.TbPedido pedido = ConsTBase.Pedido(id);
+            TbPedido pedido = ConsTBase.Pedido(id);
 
             if(pedido == null) throw new ArgumentNullException("Pedido não encontrado");
             return pedido;

@@ -2,15 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+using Backend.Database;
+using Backend.Models;
+
 namespace Backend.Business
 {
     public class PedidoSnackBarBusiness
     {
-        Database.PedidoSnackBarDatabase db = new Database.PedidoSnackBarDatabase();
-        Database.IdBase ConstBase = new Database.IdBase();
-        public List<Models.TbPedidoSnackBar> Cadastrar(List<Models.TbPedidoSnackBar> tbs)
+        PedidoSnackBarDatabase db = new PedidoSnackBarDatabase();
+        IdBase ConstBase = new IdBase();
+        public List<TbPedidoSnackBar> Cadastrar(List<TbPedidoSnackBar> tbs)
         {
-            foreach(Models.TbPedidoSnackBar tb in tbs)
+            foreach(TbPedidoSnackBar tb in tbs)
             {
                 if(tb.NrQtdSnackBar < 1 || tb.NrQtdSnackBar > 10) throw new ArgumentException("Quantidade de lanche inválido");
 
