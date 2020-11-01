@@ -8,9 +8,9 @@ namespace InsertsAPI.Controllers
     [Route("[controller]")]
     public class LoginsController : ControllerBase
     {
+        Models.tcdbContext ctx = new Models.tcdbContext();
         Business.Cryptography crip = new Business.Cryptography();
         Utils.LoginsConversor conv = new Utils.LoginsConversor();
-        Databases.LoginsDatabase db = new Databases.LoginsDatabase();
 
         [HttpPost] // funcionando
         public ActionResult<List<Models.Response.LoginsResponse>> Cadastrar(List<Models.Request.LoginsRequest> reqs)
@@ -22,8 +22,10 @@ namespace InsertsAPI.Controllers
                 {
                     login.DsSenha = crip.CriarHash(login.DsSenha);
                 }
-
-                return conv.ParaListaResponse(db.Cadastrar(logins));
+                
+                ctx.TbLogin.AddRange(logins);
+                ctx.SaveChanges();
+                return conv.ParaListaResponse(logins);
             }
             catch(Exception ex)
             {

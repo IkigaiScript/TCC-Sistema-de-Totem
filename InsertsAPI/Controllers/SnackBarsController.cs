@@ -7,8 +7,8 @@ namespace InsertsAPI.Controllers
     [Route("[controller]")]
     public class SnackBarsController : ControllerBase
     {
+        Models.tcdbContext ctx = new Models.tcdbContext();
         Utils.SnackBarsConversor conv = new Utils.SnackBarsConversor();
-        Databases.SnackBarsDatabase db = new Databases.SnackBarsDatabase();
         Business.GerenciadorFotos fotos = new Business.GerenciadorFotos();
         
         [HttpPost]
@@ -19,7 +19,8 @@ namespace InsertsAPI.Controllers
                 Models.TbSnackBar snackBar = conv.ParaTabela(req);
                 snackBar.DsImagem = fotos.NovoNome(req.Imagem.FileName);
 
-                snackBar = db.Cadastrar(snackBar);
+                ctx.TbSnackBar.Add(snackBar);
+                ctx.SaveChanges();
                 fotos.SalvarFoto(snackBar.DsImagem,req.Imagem);
 
                 return conv.ParaResponse(snackBar);

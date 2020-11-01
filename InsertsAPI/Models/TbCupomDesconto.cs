@@ -18,7 +18,7 @@ namespace InsertsAPI.Models
         public int IdCupomDesconto { get; set; }
         [Column("nm_cupom", TypeName = "varchar(100)")]
         public string NmCupom { get; set; }
-        [Column("ds_codigo", TypeName = "varchar(4)")]
+        [Column("ds_codigo", TypeName = "varchar(100)")]
         public string DsCodigo { get; set; }
         [Column("vl_desconto", TypeName = "decimal(10,2)")]
         public decimal? VlDesconto { get; set; }

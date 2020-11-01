@@ -23,7 +23,7 @@ namespace InsertsAPI.Models
         public string NmFilme { get; set; }
         [Column("ds_genero", TypeName = "varchar(255)")]
         public string DsGenero { get; set; }
-        [Column("ds_sinopse", TypeName = "varchar(255)")]
+        [Column("ds_sinopse", TypeName = "text")]
         public string DsSinopse { get; set; }
         [Column("ds_imagem", TypeName = "varchar(255)")]
         public string DsImagem { get; set; }

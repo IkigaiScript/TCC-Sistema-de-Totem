@@ -36,7 +36,8 @@ namespace InsertsAPI.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;userid=root;password=1234;database=tcdb", x => x.ServerVersion("8.0.21-mysql"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=localhost;userid=root;pwd=1234;database=tcdb", x => x.ServerVersion("8.0.21-mysql"));
             }
         }
 
@@ -141,6 +142,10 @@ namespace InsertsAPI.Models
             {
                 entity.HasKey(e => e.IdCupomDesconto)
                     .HasName("PRIMARY");
+
+                entity.HasIndex(e => e.DsCodigo)
+                    .HasName("ds_codigo")
+                    .IsUnique();
 
                 entity.Property(e => e.DsCodigo)
                     .HasCharSet("utf8mb4")

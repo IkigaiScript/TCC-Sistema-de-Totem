@@ -8,9 +8,9 @@ namespace InsertsAPI.Controllers
     [Route("[controller]")]
     public class CuponsController : ControllerBase
     {
+        Models.tcdbContext ctx = new Models.tcdbContext();
         Utils.CuponsConversor conv = new Utils.CuponsConversor();
         Business.Cryptography crip = new Business.Cryptography();
-        Databases.CuponsDatabase db = new Databases.CuponsDatabase();
 
         [HttpPost]
         public ActionResult<List<Models.Response.CuponsResponse>> Cadastrar(List<Models.Request.CuponsRequest> reqs)
@@ -23,7 +23,9 @@ namespace InsertsAPI.Controllers
                     cupom.DsCodigo = crip.CriarHash(cupom.DsCodigo);
                 }
 
-                return conv.ParaListaResponse(db.Cadastrar(cupons));
+                ctx.TbCupomDesconto.AddRange(cupons);
+                ctx.SaveChanges();
+                return conv.ParaListaResponse(cupons);
             }
             catch(Exception ex)
             {

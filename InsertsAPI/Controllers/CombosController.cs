@@ -7,8 +7,8 @@ namespace InsertsAPI.Controllers
     [Route("[controller]")]
     public class CombosController : ControllerBase
     {
+        Models.tcdbContext ctx = new Models.tcdbContext();
         Utils.CombosConversor conv = new Utils.CombosConversor();
-        Databases.CombosDatabase db = new Databases.CombosDatabase();
         Business.GerenciadorFotos fotos = new Business.GerenciadorFotos();
         [HttpPost]
         public ActionResult<Models.Response.CombosResponse> Cadastrar([FromForm] Models.Request.CombosRequest req)
@@ -18,7 +18,9 @@ namespace InsertsAPI.Controllers
                 Models.TbCombo combo = conv.ParaTabela(req);
                 combo.DsImagem = fotos.NovoNome(req.Imagem.FileName);
 
-                combo = db.Cadastrar(combo);
+                
+                ctx.TbCombo.Add(combo);
+                ctx.SaveChanges();
                 fotos.SalvarFoto(combo.DsImagem,req.Imagem);
 
                 return conv.ParaResponse(combo);

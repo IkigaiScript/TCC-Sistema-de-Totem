@@ -7,7 +7,7 @@ namespace InsertsAPI.Controllers
     [Route("[controller]")]
     public class FilmesController : ControllerBase
     {
-        Databases.FilmesDatabase db = new Databases.FilmesDatabase();
+        Models.tcdbContext ctx = new Models.tcdbContext();
         Business.GerenciadorFotos fotos = new Business.GerenciadorFotos();
         Utils.FilmesConversor conv = new Utils.FilmesConversor();
 
@@ -18,8 +18,9 @@ namespace InsertsAPI.Controllers
             {
                 Models.TbFilme ret = conv.ParaTabela(req);
                 ret.DsImagem = fotos.NovoNome(req.Imagem.FileName);
-                ret = db.Cadastrar(ret);
-                Console.WriteLine("Salvar imagem");
+                ctx.TbFilme.Add(ret);
+                ctx.SaveChanges();
+
                 fotos.SalvarFoto(ret.DsImagem,req.Imagem);
 
                 return conv.ParaResponse(ret);
