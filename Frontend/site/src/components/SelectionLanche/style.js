@@ -16,6 +16,11 @@ export const Container = styled.div`
    
     background-color: white;
     color: black;
+
+    @media(max-width: 800px){
+        width:80vw;
+        margin-left:0;
+    }
 `;
 
 export const ContainerImage = styled.div`
@@ -65,6 +70,13 @@ export const ContainerDescLanche = styled.div`
     padding-left:10px;
     margin-right:5px;
     border: 1px solid black;
+
+    overflow-y:auto;
+
+    @media(max-width:800px){
+        width:50vw;
+        height:25vh;
+    }
 `;
 
 export const ContainerBottom = styled.div`
@@ -77,6 +89,11 @@ export const ContainerBottom = styled.div`
     justify-content:space-evenly;
 
     margin-top: 10px;
+
+    @media(max-width:800px){
+        width:30vw;
+        margin-left:10px;
+    }
 `;
 
 export const Button = styled.button`
@@ -92,4 +109,12 @@ export const Button = styled.button`
 export const Input = styled.input`
     height:5vh;
     width:5vw;
+
+    @media(max-width: 800px){
+        height:4vh;
+        width:10vw;
+
+        margin-left:5px;
+        margin-right:5px;
+    }
 `;

@@ -3,7 +3,9 @@ import styled from 'styled-components'
 export const PagesDefault = styled.div`
    display:flex;
    flex-direction:column;
+   min-height:100vh;
    width:100vw;
+   background:linear-gradient(#773500,#F3D69D);
 
    padding: 0px;
    margin: 0px;
@@ -53,6 +55,10 @@ export const Img = styled.img`
    border:1px solid black;
    border-radius:100%;
    margin-left:20vh;
+
+   @media(max-width: 800px){
+      
+   }
 `;
 
 //Container das opções
@@ -63,8 +69,14 @@ export const LancheWrapper = styled.div`
    margin-top:5px;
    margin-bottom:5px;
 
-   :hover{
-      background:green;
-      color:white;
+   @media(max-width: 800px){
+      flex-direction:column;
    }
+   
+   :hover{
+      background:darkslateblue;
+      >p {color:white;};
+   }
+
+   
 `;

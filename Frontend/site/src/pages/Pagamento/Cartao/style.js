@@ -5,8 +5,26 @@ export const PageDefault = styled.div`
     flex-direction:column;
     min-height:100vh;
     width:100vw;
+    background:linear-gradient(#773500,#F3D69D);
 
     align-items:center;
+
+    >#cartao{
+        flex-direction:row;
+        width:70vw;
+
+        padding-left:5px;
+        padding-right:5px;
+
+        >div{
+            padding-left:5px;
+            padding-right:5px;
+        }
+
+        >div input{
+            width:10vw;
+        }
+    }
 `;
 
 export const CartaoWrapper = styled.div`
@@ -23,6 +41,14 @@ export const CartaoWrapper = styled.div`
     padding-right:16px;
     margin-left:auto;
     margin-right:auto;
+
+    @media(max-width:800px){
+        flex-direction:column;
+
+        padding-left:5px;
+        padding-right:5px;
+    }
+
 `;
 
 export const Custom = styled.div`
@@ -35,17 +61,23 @@ export const Custom = styled.div`
 
     margin-left:auto;
     margin-right:auto;
+
+    @media(max-width:800px){
+       >input{
+           width:50vw;
+       }
+    }
 `;
 
-export const Input = styled.input`
-    height:5vh;
-    width: ${props =>  props.width ? props.width : '800px'};
+export const ButtonWrapper = styled.div`
+    display:flex;
+    height:10vh;
+    width:80vw;
 
-    border:1px solid black;
-    border-radius:8px;
+    margin-left:auto;
+    margin-right:auto;
 
-    box-sizing:border-box;
-    padding-left:10px;
-    margin:10px;
+    align-items:center;
+    justify-content:center;
+    justify-content:space-between;
 `;
-

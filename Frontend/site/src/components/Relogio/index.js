@@ -23,7 +23,7 @@ setInterval(function(){
     // no nosso elemento HTML
     console.log(minuto)
 
-    document.getElementById('hora').textContent = hora+':'+minuto;
+    document.getElementsByClassName('hora')[0].textContent = hora+':'+minuto;
 },1000)
 
 
@@ -46,7 +46,7 @@ function zero(x) {
 export default function Relogio() {
     return(
         <PageDefault>
-            <Span id = 'hora'></Span>
+            <Span className = 'hora'></Span>
         </PageDefault>
     )
 }

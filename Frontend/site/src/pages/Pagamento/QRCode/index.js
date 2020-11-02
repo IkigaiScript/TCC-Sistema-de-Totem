@@ -21,7 +21,10 @@ export default function QRCode (){
 
             <ButtonWrappper>
 
-                <Button children = 'Cancelar Pedido'  />
+                <Button 
+                    to = '/'
+                    children = 'Cancelar Pedido' 
+                />
 
                 <Relogio />
 

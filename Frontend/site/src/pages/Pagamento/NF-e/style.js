@@ -5,6 +5,7 @@ export const PageDefault = styled.div`
     flex-direction:column;
     min-height:100vh;
     width:100vw;
+    background:linear-gradient(#773500,#F3D69D);
 
     box-sizing:border-box;
     padding-top:20px;
@@ -26,20 +27,19 @@ export const Custom = styled.div`
     margin-left:auto;
     margin-right:auto;
     margin-bottom:20px;
-`;
 
+    @media(max-width:800px){
+        height:20vh;
+        width:90vw;
 
-export const Input = styled.input`
-    height:6vh;
-    width:1000px;
+        >input{
+            align-items:center;
+            justify-content:center;
+        }
+        
 
-    border-radius:8px;
-
-    box-sizing:border-box;
-    padding-left:15px;
-    padding-right:15px;
-    margin-top:10px;
-
+        overflow-y:auto;    
+    }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -52,4 +52,12 @@ export const ButtonWrapper = styled.div`
 
     justify-content:space-between;
     align-items:center;
+
+    @media(max-width:800px){
+        flex-direction:column;
+        height:30vh;
+        width:80vw;
+
+        justify-content:space-evenly;
+    }
 `;

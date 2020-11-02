@@ -6,4 +6,9 @@ const api = axios.create({
 
 export default class Filme {
     
+    async consult(){
+        const resp = await api.get();
+        return resp;
+    }
+
 }

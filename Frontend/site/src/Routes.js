@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 
 /* Tela de Ingresso */
-import Assentos from './pages/Ingresso/Assento';
+import Lugar from './pages/Ingresso/Assento';
 import Filme from './pages/Ingresso/Filme';
 import ComprarIngresso from './pages/Ingresso/CompraIngresso';
 import Busca from './pages/Ingresso/Busca';
@@ -42,8 +42,8 @@ function Routes(){
                 
                                     {/* Ingresso */}
                                     
-                <Route path = '/compra/assento' component = {Assentos} exact/>
-                <Route path = '/compraringresso' component = {ComprarIngresso} exact/>
+                <Route path = '/compra/assento' component = {Lugar} exact/>
+                <Route path = '/compra/ingresso' component = {ComprarIngresso} exact/>
                 <Route path = '/sessaofilme' component = {Busca} exact/>
                 <Route path = '/Filme' component = {Filme} exact/>
 

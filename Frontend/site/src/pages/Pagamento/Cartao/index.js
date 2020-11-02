@@ -1,13 +1,15 @@
 import React from 'react';
 import Relogio from '../../../components/Relogio';
-import {PageDefault,CartaoWrapper,Custom,Input} from './style';
+import Input from '../../../components/Input';
+import Button from '../../../components/Buttons'
+import {PageDefault, CartaoWrapper, Custom, ButtonWrapper} from './style';
 
 export default function Cartao (){
     return (
-        <div>
+        <PageDefault>
             <h1>Pagamento com Cartão</h1>
 
-            <CartaoWrapper>
+            <CartaoWrapper id = 'cartao'>
 
                 <Custom>
 
@@ -24,11 +26,24 @@ export default function Cartao (){
                 </Custom>
 
             </CartaoWrapper>
+            
+            <CartaoWrapper>
 
-            <Custom>
-                <span>Numero do cartão</span>
-                <Input type = 'number'/>
-            </Custom>
+                <Custom>
+
+                    <span>Numero do cartão</span>
+                    <Input type = 'number'/>
+
+                </Custom>
+
+                <Custom>
+
+                    <span>Validade</span>
+                    <Input type = 'date'  width = '500'/>
+
+                </Custom>
+
+            </CartaoWrapper>
 
             <CartaoWrapper>
 
@@ -51,12 +66,17 @@ export default function Cartao (){
 
             </CartaoWrapper>
 
-            <div>
+            <ButtonWrapper>
 
-            </div>
+                <Relogio />
+    
+                <Button 
+                    to = '/PagamentoRealizado'
+                    children = 'Concluir'
+                />
 
-            <Relogio />
+            </ButtonWrapper>
 
-        </div>
+        </PageDefault>
     );
 }

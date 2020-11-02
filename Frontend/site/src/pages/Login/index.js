@@ -1,31 +1,62 @@
 import React from 'react';
-import Relogio from '../../components/Relogio/index';
-import Button from '../../components/Buttons/index';
-import { LoginWrapper, InputWrapper} from './style';
+import Relogio from '../../components/Relogio';
+import Button from '../../components/Buttons';
+import Input from '../../components/Input';
+import { PageDefault, Custom, ButtonWrapper, TextLogin} from './style';
 
 export default function Login(){
     return(
-        <LoginWrapper>
-            <div>
-                <h1>Login</h1>
-                <br />
-                <p>Caso não tenha seu cadastro faça atraves de nosso app CineTotem
-                ou em nosso site www.CineTotem.com.br/CadastroMembroCineTotem</p>
-            </div>
+        <PageDefault>
+            
+            <h1>Login</h1>
+               
+            <TextLogin>   
+                <p>
+                    Faça agora seu login caso não tenha seu cadastro faça atraves de nossos app 
+                    CineTotem  ou entre em nosso site <br></br>
+                    www.CineTotem.com.br/CadastroMembroCineTotem
 
-            <InputWrapper>
-                <input type="text" size="40" placeholder="Insira seu email" required />
-                <br />
-                <input type="password" size="40" placeholder="Insira sua senha" required />
-            </InputWrapper>
+                </p>
+            </TextLogin>
 
-            <div>
-                <Button to="/" onClick="" children="Voltar"/>
-                <Button to="/" onClick="" children="Logar"/>
-            </div>
+            <Custom>
 
-            <br />
-            <Relogio />
-        </LoginWrapper>
+                <Input 
+                    type = 'text' 
+                    width = '60vw'
+                    placeholder = 'Digite seu e-mail CineTotem'
+                    border = '0'
+                />
+
+            </Custom>
+            
+            <Custom>
+                
+                <Input 
+                    type = 'password' 
+                    width = '60vw'  
+                    placeholder = 'Digite sua senha'
+                    border = '0'
+                />
+
+            </Custom>
+
+            <ButtonWrapper>
+
+                <Button
+                    to = '/'
+                    children = 'Voltar'
+                />
+
+                <Relogio />
+
+                <Button 
+                    to = '/'
+                    children = 'Logar'
+                />
+
+            </ButtonWrapper>
+
+        </PageDefault>
     );
 }

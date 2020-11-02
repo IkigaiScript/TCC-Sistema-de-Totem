@@ -1,7 +1,8 @@
 import React from 'react'
 import Relogio from '../../../components/Relogio'
 import Button from '../../../components/Buttons'
-import {PageDefault, Custom, Input, ButtonWrapper} from './style'
+import Input from '../../../components/Input'
+import {PageDefault, Custom, ButtonWrapper} from './style'
 
 export default function NFe (){
     return (
@@ -16,11 +17,11 @@ export default function NFe (){
 
             </Custom>
 
-            <Custom>
+            <Custom ClassName= 'inputone'>
 
-                <Input type = 'text'  placeholder = 'Digite seu e-mail para receber a nota fiscal' />
+                <Input type = 'text'  placeholder = 'Digite seu e-mail para receber a nota fiscal' width = '1000' />
 
-                <Input type = 'text'  placeholder = 'Digite seu CPF' />
+                <Input type = 'text'  placeholder = 'Digite seu CPF' width = '1000' />
 
             </Custom>
 
@@ -34,19 +35,25 @@ export default function NFe (){
 
             </Custom>           
 
-            <Custom>
+            <Custom className= 'inputwo'>
 
-                <Input type = 'text' maxLength ='4' placeholder = 'Digite o codigo do seu cupom de desconto' />
+                <Input type = 'text' maxLength ='4' placeholder = 'Digite o codigo do seu cupom de desconto' width = '1000'/>
 
             </Custom> 
 
             <ButtonWrapper> 
                 
-                <Button children = 'Cancelar Pedido' />
+                <Button 
+                    to = '/'
+                    children = 'Cancelar Pedido' 
+                />
 
                 <Relogio />
 
-                <Button children = 'Confirmar' />
+                <Button 
+                    to = '/pagamento/cartao'
+                    children = 'Confirmar' 
+                />
             </ButtonWrapper>
 
         </PageDefault>

@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {PageDefault, ButtonWrapper, Menu, Span} from './style';
 import {Link} from 'react-router-dom';
+import Logo from '../../assets/Img/Logo.png';
 import Card from '../../components/Card';
 import Button from '../../components/Buttons';
 import Relogio from '../../components/Relogio';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
 
 export default function  Home(){
 
@@ -30,10 +30,13 @@ export default function  Home(){
         },
     };
 
+
     return (
         <PageDefault>
 
             <Menu>
+
+                <img src = {Logo} alt = '' width = '150' />
 
                 <Relogio/>
 
@@ -43,13 +46,14 @@ export default function  Home(){
 
             <Carousel responsive={responsive} >
 
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+             
                 
-            </Carousel>;
+                    <Card 
+                    />
+                
+                
+                
+            </Carousel>
 
             <ButtonWrapper>
 

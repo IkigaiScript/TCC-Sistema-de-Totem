@@ -1,144 +1,126 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div` 
-
+export const PageDefault = styled.div` 
     display: flex;
     flex-direction: column;
+    min-height:100vh;
+    max-width:100vw;
+    background:linear-gradient(#773500,#F3D69D);
 
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
 
-    background-color: lightskyblue;
+    box-sizing:border-box;
+    padding:15px;
 `;
 
-export const FilmeWrapper = styled.div` 
+export const FilmeWrapper =  styled.div`
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+    width:80vw;
+    background:whitesmoke;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    margin-left:auto;
+    margin-right:auto;
 
-    width: 400px;
-    height: 120px;
-
-    margin-top: 10px;
-    padding: 3px;
-
-    border: 2pt solid black;
-    border-radius: 5px;
-
-    background-color: white;
-
-`;
-
-export const TitleWrapper = styled.div`
-
-display: flex;
-flex-direction: column;
-
-word-wrap: break-word;
-align-items: center;
-
-width: 260px;
-height: 100px;
+    border:1px solid black;
+    border-radius:16px;
 
 `;
 
-export const ImgWrapper = styled.div`
+export const Video = styled.video`
+    height:40vh;
+    width:100%;
 
-display: flex;
-flex-direction: column;
+    border:2px solid black;
 
-margin-right: 10px;
-width: 120px;
-height: 100px;
+    border-top-right-radius:16px;
+    border-top-left-radius:16px;
 
 `;
 
-export const SinopseWrapper = styled.div` 
+export const InfoWrapper = styled.div`
+    display:flex;
+    flex-direction:column;
+    height:30vh;
+    width:75vw;
 
-    display: flex;
-    flex-direction: column;
-    word-wrap: break-word;
+    box-sizing:border-box;
+    padding:16px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:15px;
 
-    h2 {
-        text-align: center;
-    }
+    border:1px solid black;
 
-    width: 450px;
-    height: 180px;
-    margin-top: 10px;
-
-    border: 1pt solid black;
-    border-radius: 5px;
-
-    background-color: white;
+    overflow-y:auto;
 `;
 
-export const InfoWrapper = styled.div` 
+export const Custom = styled.div`
+    display:flex;
+    height:15vh;
+    width:75vw;
 
-    display: flex;
-    flex-direction: column;
-    word-wrap: break-word;
+    box-sizing:border-box;
+    padding:10px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    margin-bottom:5px;
 
-    h2 {
-        text-align: center;
-    }
+    border:1px solid black;
 
-    width: 450px;
-    height: 150px;
-    margin-top: 10px;
-
-    border: 1pt solid black;
-    border-radius: 5px;
-
-    background-color: white;
+    overflow-y:auto;
 `;
 
-export const SessaoWrapper = styled.div` 
+export const Img = styled.img`
+    height:200px;
+    width:200px;
 
-    display: flex;
-    flex-direction: column;
-    word-wrap: break-word;
+    border-radius:10px;
 
-    h4 {
-        text-align: center;
-    }
 
-    width: 450px;
-    height: 80px;
-    margin-top: 10px;
-
-    border: 1pt solid black;
-    border-radius: 5px;
-
-    background-color: white;
-`;
-
-export const SalaWrapper = styled.div` 
-
-    display: flex;
-    flex-direction: column;
-    word-wrap: break-word;
-
-    h4 {
-        text-align: center;
-    }
-
-    width: 450px;
-    height: 80px;
-    margin-top: 10px;
-
-    border: 1pt solid black;
-    border-radius: 5px;
-
-    background-color: white;
-`;
-
-export const Rodape = styled.div` 
-
-    display: inline-flexbox;
-    align-items: center;
-    justify-content: space-between;
+    margin-left:20px;
     
-    width: 450px;
+`;
+
+export const ImgCont = styled.div`
+    display:flex;
+    height:30vh;
+    width:75vw;
+
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    
+    align-items:center;
+    
+    text-align:center;
+    font-size:20px;
+    color:black;
+    
+`;
+
+export const Span = styled.span`
+    text-align:center;
+
+    font-size:20pt;
+    margin-left:auto;
+    margin-right:auto;
+
+`;
+
+export const ButtonWrapper = styled.div`
+    display:flex;
+    height:15vh;
+    width:70vw;
+    background:whitesmoke;
+
+    margin-left:auto;
+    margin-right:auto;
+
+    align-items:center;
+    justify-content:center;
+    justify-content:space-around;
 `;

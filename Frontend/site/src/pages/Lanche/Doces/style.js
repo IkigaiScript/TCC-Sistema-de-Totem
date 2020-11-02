@@ -1,63 +1,76 @@
-import styled from "styled-components";
-
-
+import styled from 'styled-components';
 
 export const PagesDefault = styled.div`
-    background-color:#cccccc;
-
-
-`;
-
-export const DivButton = styled.div`
-    margin-left:400px;
-`; 
-
-export const DivRelogio = styled.div`
-    margin-left:600px;
-    margin-top:-60px;
-`;
-
-
-export const DivLanche = styled.div`
     display:flex;
-    height: fit-content;
-    width:90vw;
-    background-color:whitesmoke;
+    flex-direction:column;
+    min-height:100vh;
+    max-width:100vw;
+    background:linear-gradient(#773500,#F3D69D);
+
+    align-items:center;
+    justify-content:center;
+`;
+
+export const ButtonWrapper = styled.div`
+    display:flex;
+    height:10vh;
+    width:80vw;
 
     box-sizing:border-box;
-    margin-left: auto;
+    padding-left:16px;
+    padding-right:16px;
+    margin-left:auto;
     margin-right:auto;
-    margin-bottom:15px;
-    margin-top:50px;
-    flex-direction:column;
+    margin:20px;
+
     align-items:center;
-    padding:10px;
-    overflow-y: scroll;
-    
+    justify-content:center;
+    justify-content:space-around;
 
+    @media(max-width: 800px){
+        flex-direction:column;
+        height:30vh;
+        width:100vw;
 
-    border:3px solid black;
-    border-radius:12px 8px;
-
-    
+        justify-content:space-evenly;
+    }
 `;
 
-export const DivTitulo = styled.div`
-    margin-left:30px;
-`;
-
-export const UltDiv = styled.div`
-    background-color:grey;
+export const Custom = styled.div`
     display:flex;
-    justify-content:space-evenly;
-    flex-direction:row;
-    
-    width:100%;
-    bottom:0px;
-    align-items:center;
-    
-    border:1px solid black;
-    border-radius:12px 8px;
+    height:fit-content;
+    width: 80vw;
 
-    text-decoration:none;
+    box-sizing:border-box;
+    padding:10px;
+    margin-left:auto;
+    margin-right:auto;
+
+    @media(max-width: 800px){
+        flex-direction:column;
+        padding:0;
+        
+    }
+`;
+
+export const OptionWrapper = styled.div`
+    display:flex;
+    flex-direction:column;
+    height:85vh;
+    width:90vw;
+
+    box-sizing:border-box;
+    padding:10px 16px;
+    margin-left:auto;
+    margin-right:auto;
+
+    border: 1px solid black;
+    border-radius:20px;
+
+    @media(max-width: 800px){
+        flex-direction:column;
+        height:65vh;
+
+        padding:5px;
+    }
 `;

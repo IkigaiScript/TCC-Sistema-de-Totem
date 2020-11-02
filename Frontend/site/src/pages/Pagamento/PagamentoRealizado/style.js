@@ -4,23 +4,26 @@ import styled from "styled-components";
 export const PagesDefault = styled.div`
   display:flex;
   flex-direction:column;  
-  padding:0px;
-  margin:0px;
-  background-color: #00a000;
   min-height:100%;
+  background-color: #00a000;
 `;
 
 //Imagem
 export const Img = styled.img`
-    margin-top:30px;
-    margin-left:40%;
+  margin-top:30px;
+  margin-left:40%;
     
+  @media(max-width:800px){
+    margin-left:10%;
+  }
 `;
 
 //Subtitulo
 export const SubTitulo = styled.p`
-    color: white;
-    font-family: Arial;
-    font-size: 20pt;
-    text-align:center;
+  text-align:center;
+  
+  font-family: Arial;
+  font-size: 20pt;
+  
+  color: white;
 `;  

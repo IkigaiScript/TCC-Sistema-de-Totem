@@ -1,49 +1,62 @@
 import React from 'react';
-import {PagesDefault, DivButton, DivRelogio, DivLanche,DivTitulo, UltDiv} from './style';
+import {PagesDefault, ButtonWrapper, OptionWrapper, Custom} from './style';
 import SelectionLanche from '../../../components/SelectionLanche';
 import Relogio from '../../../components/Relogio';
-import Buttons from '../../../components/Buttons'
+import Button from '../../../components/Buttons'
 import { BiReset } from "react-icons/bi";
+
 
 
  
 export default function Pipoca(){
     return (
         <PagesDefault>
-            <DivTitulo>
-                <h1>Qual pipoca deseja?</h1>
-            </DivTitulo>
+            
+        <h1>Qual pipoca deseja?</h1>
 
-            <DivButton>
-            <Buttons
-                 to = '/'
+        <ButtonWrapper>
+            <Button
+                to = '/compra/lanche'
                 children = 'Voltar'
             />
-            </DivButton>
 
-            <DivRelogio>
-                 <Relogio/>
-            </DivRelogio>
+            <Relogio />
 
-            <DivLanche>
-                 <SelectionLanche/>
-                 <SelectionLanche/>
-                 <SelectionLanche/>
-                 <SelectionLanche/>
-            </DivLanche>
+            <Button 
+                children = 'DropDown'
+            />
 
-            <UltDiv>
-                <Buttons
-                    to = '/'
-                    children = "Comprar ingresso"
-                />
-                <a href="" alt="Desfazer"><BiReset/>  Desfazer </a>
-                <Buttons
-                    to = '/'
-                    children = "Pagamento"
-                />
-            </UltDiv>
+        </ButtonWrapper>
 
-        </PagesDefault>       
+        <OptionWrapper>
+
+            <Custom>
+
+                <SelectionLanche />
+
+                <SelectionLanche />
+
+            </Custom>
+
+        </OptionWrapper>
+
+        <ButtonWrapper>
+
+            <Button 
+                to = '/sessaofilme'
+                children = 'Compra Ingreeso'
+            />
+
+            <button>Desfazer</button>
+
+            <Button 
+                to = '/escolha-pagamento'
+                children = 'Pagamento'
+            />
+
+        </ButtonWrapper>
+        
+        
+    </PagesDefault>       
     );
 }

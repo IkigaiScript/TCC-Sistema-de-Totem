@@ -1,7 +1,8 @@
 import React from 'react';
-import { PageDefault, SearchWrapper, Input, SelectionWrapper, Select } from './style';
-import Relogio from '../../../components/Relogio/';
-import SelectFilme from '../../../components/SelectionFilme/';
+import {Link} from 'react-router-dom'
+import { PageDefault, SearchWrapper, Input, SelectionWrapper, Select, FilmesWrapper } from './style';
+import Relogio from '../../../components/Relogio';
+import SelectFilme from '../../../components/SelectionFilme';
 
 export default function Busca (){
     return (
@@ -9,42 +10,55 @@ export default function Busca (){
             <h1>Filmes em Cartaz</h1>  
 
             <SearchWrapper>
-                    <Input type="text" size="45" placeholder="Pesquisar filme" />
-                    <Relogio />   
+
+                <Input type="text" size="45" placeholder="Pesquisar filme" />
+                <Relogio />   
+
             </SearchWrapper>
 
             <SelectionWrapper>
-                <div>
-                    <Select>
-                        <option>Livre</option>
-                        <option>12</option>
-                        <option>14</option>
-                        <option>16</option>
-                        <option>18</option>
-                    </Select>
-                </div>
+            
+                <Select>
 
-                <div>
-                    <Select>
-                        <option>Comédia</option>
-                        <option>Romance</option>
-                        <option>Ação</option>
-                        <option>Suspense</option>
-                        <option>Terror</option>
-                    </Select>
-                </div>
+                    <option>Livre</option>
+                    <option>12</option>
+                    <option>14</option>
+                    <option>16</option>
+                    <option>18</option>
 
-                <div>
-                    <Select>
-                        <option>3D</option>
-                    </Select>
-                </div>
+                </Select>
+            
+    
+                <Select>
+
+                    <option>Comédia</option>
+                    <option>Romance</option>
+                    <option>Ação</option>
+                    <option>Suspense</option>
+                    <option>Terror</option>
+
+                </Select>
+            
+        
+                <Select>
+
+                    <option>3D</option>
+
+                </Select>
+                
             </SelectionWrapper>
 
-            <SelectFilme />
-            <SelectFilme />
-            <SelectFilme />
-            <SelectFilme />
+            <FilmesWrapper>
+                
+                <Link to = '/compra/assento'>
+                    <SelectFilme />
+                </Link>
+                <Link to = '/compra/assento'>
+                    <SelectFilme />
+                </Link>
+                
+            </FilmesWrapper>
+
         </PageDefault>
     );
 }

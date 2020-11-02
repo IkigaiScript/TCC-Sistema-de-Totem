@@ -5,5 +5,9 @@ const api = axios.create({
 });
 
 export default class Sessao {
-    
+ 
+    async consult() {
+        const resp = await api.get(`/Sessao/`)
+        return resp;
+    } 
 }

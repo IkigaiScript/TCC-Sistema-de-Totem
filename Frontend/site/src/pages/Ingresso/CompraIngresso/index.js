@@ -1,73 +1,91 @@
 import React from 'react'
-import { Wrapper, FilmeWrapper, TitleWrapper, TitleFilmeWrapper, ImgWrapper, RelogioWrapper,
-         InputWrapper, InputSecondWrapper, InputOne, InputTwo, NomeWrapper, UltDiv} from './style';
+import {PageDefault, Custom, ButtonWrapper,AssentoInfo} from './style';
 import Relogio from '../../../components/Relogio/';
-import Button from '../../../components/Buttons/';
+import Input from '../../../components/Input';
+import Button from '../../../components/Buttons';
+import SelectFilme from '../../../components/SelectionFilme'
 import { BiReset } from "react-icons/bi";
 
 export default function CompraIngresso (){
     return (
-        <Wrapper>
-            <TitleWrapper>
-                <h1>Ingresso</h1>
+        <PageDefault>
+            <h1>Ingresso</h1>
 
-                <RelogioWrapper>
-                    <Relogio />
-                </RelogioWrapper>
-            </TitleWrapper>
+            <SelectFilme />
 
-            <FilmeWrapper>
-                <ImgWrapper>
-                    <img src="" alt="" height = '80px' width = '120px' />
-                </ImgWrapper>
-
-                <TitleFilmeWrapper>
-                    <h2>Nome do Filme</h2>
-                </TitleFilmeWrapper>
-            </FilmeWrapper>
-
-            <InputWrapper>
-                <h2>Assentos</h2>
-                <input type="text" size="28"  />
-            </InputWrapper>
-
-            <InputSecondWrapper>
-                <InputOne>
-                    <h3>Sala</h3>
-                    <input type="text" size="15"  />
-                </InputOne>
-
-                <InputTwo>
-                    <h3>Sessão</h3>
-                    <input type="text" size="15"  />
-                </InputTwo>
-            </InputSecondWrapper>
-
-
-            <InputSecondWrapper>
-                <InputOne>
-                    <h4>Inteira R$ 00,00</h4>
-                    <input type="number" min="1" max="5" />
-                </InputOne>
+            <AssentoInfo>
+                <span>Assentos</span>
                 
-                <InputTwo>
-                    <h4>Meia-Entrada R$ 00,00</h4>
-                    <input type="number" min="1" max="5" />
-                </InputTwo>
-            </InputSecondWrapper>
+            </AssentoInfo>
 
-            <NomeWrapper>
-                <h4>Qual seu nome?</h4>
-                <input type="text" size="30" />
-            </NomeWrapper>
+            <Custom>
 
-            <UltDiv>
-                    <Button 
-                        to = '/' children = "Comprar ingresso" />
-                <a href="" alt="Desfazer"><BiReset/>  Desfazer </a>
-                    <Button 
-                        to = '/' children = "Pagamento" />
-            </UltDiv>
-        </Wrapper>
+                <div>
+
+                    <span>Sala</span>
+                    <Input type = 'text' border = '0' 
+                        width = '400px'
+                    />
+
+                </div>
+
+                <div>
+
+                    <span>Sessão</span>
+                    <Input type = 'text' 
+                        border = '0' width = '400px'
+                    />
+
+                </div>
+
+            </Custom>
+
+            <Custom>
+
+                <div>
+
+                    <span>Inteira R$ 00,00</span>
+                    <Input type = 'number'  width = '300'
+                        min = '0' max = '50'
+                    />
+
+                </div>
+
+                <div>
+
+                    <span>Meia-entrada R$ 00,00</span>
+                    <Input  type = 'number' width = '300'
+                        min = '0' max = '50'
+                    />
+                    
+                </div>
+
+            </Custom>
+
+            <div>
+
+                <span>Qual seu nome?</span>
+                <Input type = 'text' width = '80vw'/>
+
+            </div>
+
+            <ButtonWrapper>
+
+                <Button 
+                    to = '/compra/lanche'
+                    children = 'Comprar Lanche'
+                />
+                
+                <Relogio  />
+
+                <Button 
+                    to = '/escolha-pagamento'
+                    children = 'Pagamento'
+                />
+
+            </ButtonWrapper>
+
+            
+        </PageDefault>
     );
 }

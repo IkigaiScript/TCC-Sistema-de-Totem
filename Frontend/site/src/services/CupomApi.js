@@ -5,5 +5,8 @@ const api = axios.create({
 });
 
 export default class Cupom {
-    
+    async consult(codigo, pedido){
+        const resp = await api.get('/Cupons/${codigo},${Pedido}')
+        return resp;
+    }
 }

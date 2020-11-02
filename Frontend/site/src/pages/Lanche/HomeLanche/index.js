@@ -15,6 +15,7 @@ export default function OqueDesejaComer() {
             <Titulo><u>O que deseja comer?</u></Titulo>
 
             <Link to = '/compra/lanche/combo'>
+
                 <LancheWrapper>
 
                     <Img src= {Combo} alt="Combo"  width="150px"  height= '110px'/>
@@ -22,11 +23,13 @@ export default function OqueDesejaComer() {
                     <Opcao>Combo</Opcao>
 
                 </LancheWrapper>
+
             </Link>
 
             <Hr></Hr>
 
             <Link to = '/compra/lanche/pipoca'>
+
                 <LancheWrapper>
 
                     <Img src= {Pipoca} alt="Pipoca" width="150px" height="110px"/>
@@ -34,28 +37,33 @@ export default function OqueDesejaComer() {
                     <Opcao>Pipoca</Opcao>
 
                 </LancheWrapper>
+
             </Link>
 
             <Hr></Hr> 
 
             <Link to = '/compra/lanche/bebida'>
+
                 <LancheWrapper>
 
                     <Img src= {Bebida} alt="Bebida" width="150px" height="110px"/>
                     <Opcao>Bebida</Opcao>
 
                 </LancheWrapper>
+
             </Link>
 
             <Hr></Hr> 
 
             <Link to = '/compra/lanche/doces'>
+
                 <LancheWrapper>
 
                     <Img src= {Doce} alt="Doce" width="150px" height="110px"/>
                     <Opcao>Doce</Opcao>
 
                 </LancheWrapper>  
+                
             </Link>  
 
             <Hr></Hr>

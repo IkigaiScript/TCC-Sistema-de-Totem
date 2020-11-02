@@ -5,5 +5,8 @@ const api = axios.create({
 });
 
 export default class Cliente {
-    
+    async consult(id){
+        const resp = await api.get('/Clientes/${id}')
+        return  resp;
+    }
 }

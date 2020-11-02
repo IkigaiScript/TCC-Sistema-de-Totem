@@ -2,24 +2,21 @@ import styled from "styled-components";
 
 //Container
 export const PagesDefault = styled.div`
-    padding:0px;
-    margin:0px;
+    display:flex;
+    flex-direction:column;
+    min-height:100%;
+    max-width:100vw;
     background-color: #C00;
-    height:100%;
-`;
-
-//Titulo
-export const Titulo = styled.h1`
-    color: #00000;
-    font-family: Arial;
-    margin-left:28%;
-    font-size: 35pt;
 `;
 
 //Imagem
 export const Img = styled.img`
     margin-top:30px;
     margin-left:37%;
+
+    @media(max-width: 800px){
+        margin-left:10%;
+    }
 `;
 
 //SubTitulo

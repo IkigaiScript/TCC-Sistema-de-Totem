@@ -1,50 +1,66 @@
 import React from 'react'
-import { Wrapper, FilmeWrapper, SinopseWrapper, InfoWrapper, ImgWrapper, SessaoWrapper, SalaWrapper, TitleWrapper, Rodape } from './style';
+import {PageDefault, FilmeWrapper, Video, InfoWrapper, Img, Custom, ImgCont, Span, ButtonWrapper} from './style';
 import Relogio from '../../../components/Relogio/';
-import Button from '../../../components/Buttons/';
+import Button from '../../../components/Buttons';
 
 export default function Filme (){
     return (
-        <Wrapper>
-            <div>
-                <video width="400" controls>
-                    <source src="" type="video/mp4" />
-                </video>
-            </div>
+        <PageDefault> 
 
             <FilmeWrapper>
-                <ImgWrapper>
-                    <img src="" alt="" height = '95px' width = '90px' />
-                </ImgWrapper>
 
-                <TitleWrapper>
-                    <h2>Filme</h2>    
-                </TitleWrapper>
+                
+                <Video controls>
+                    <source src = '' type = 'vide/mp4' />
+                </Video>
+
+                <ImgCont>
+
+                    <Img src = '' alt = ''  height = '200' width = '200'/>
+
+                    
+                    <Span>Investigação sobre um cidadao acima de qualquer suspeita</Span>
+
+                </ImgCont>
+
+                <InfoWrapper>
+                    <span>Sninopse</span>
+                </InfoWrapper>
+
+                <InfoWrapper>
+                    <span>Sobre o Filme </span>
+
+                    
+                </InfoWrapper>
+
+                <Custom>
+                    <span>Sessão</span>
+
+                </Custom>
+
+                <Custom>
+                    <span>Sala</span>
+                </Custom>
+
+                <ButtonWrapper>
+
+                    <Button 
+                        to = '/compra/assento'
+                        children = 'Comprar ingressos'
+                    />
+
+                    <Relogio />
+
+                    <Button 
+                        to = '/sessaofilme'
+                        children = 'voltar'
+                    />
+
+                </ButtonWrapper>
+
             </FilmeWrapper>
 
-            <SinopseWrapper>
-                <h2>Sinopse</h2>
-                    <br />
-                <p>Sinopse do Filme</p>
-            </SinopseWrapper>
 
-            <InfoWrapper>
-                <h2>Informações do Filme</h2>
-                <p>Infos</p>
-            </InfoWrapper>
-
-            <SessaoWrapper>
-                <h4>Sessão</h4>
-            </SessaoWrapper>
-
-            <SalaWrapper>
-                <h4>Sala</h4>
-            </SalaWrapper>
-
-            <Rodape>
-                <Button to="/" children="Comprar Ingresso" />
-                <Relogio />
-            </Rodape>
-        </Wrapper>
+        </PageDefault>
     );
 }

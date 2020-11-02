@@ -31,7 +31,7 @@ export default function Card(props){
 
                 <Custom>
                     <span>Sessão</span>
-
+                   
 
                 </Custom>
 

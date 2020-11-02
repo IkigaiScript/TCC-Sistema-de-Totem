@@ -19,7 +19,6 @@ const Global = createGlobalStyle`
     #root{
         height:100%;
         width:100%;
-
     }
 
     h1,
@@ -27,6 +26,7 @@ const Global = createGlobalStyle`
     h3
     h4{
         font-family:'Lato';
+        color:white;   
     }
 
     span,

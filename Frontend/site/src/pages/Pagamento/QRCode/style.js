@@ -3,8 +3,9 @@ import styled from 'styled-components'
 export const PageDefault = styled.div`
     display:flex;
     flex-direction:column;
-    height:100vh;
+    min-height:100vh;
     width:100vw;
+    background:linear-gradient(#773500,#F3D69D);
 
     box-sizing:border-box;
     padding:20px;
@@ -23,6 +24,9 @@ export const ButtonWrappper = styled.div`
     margin-left:auto;
     margin-right:auto;
 
+    @media(max-width: 800px){
+        height:20vh;
+    }
 `;
 
 export const QRCodeWrapper = styled.div`
