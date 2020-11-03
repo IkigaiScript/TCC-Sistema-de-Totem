@@ -33,6 +33,30 @@ namespace Backend.Database
                                 .ToList();
         }
 
+        public List<TbFilme> ConsultarFilter(string genero,int classificacao,string sala)
+        {
+            List<TbFilme> filmes = ctx.TbFilme.Include(x => x.TbSessao)  
+                                                .ToList();
+
+            if(sala != null && sala != string.Empty)
+            {
+                filmes = filmes.Where(x => x.TbSessao.Any(x => x.DsTipoSala.ToLower() == sala.ToLower() &&
+                                                               x.DtHorario.Day == DateTime.Now.Day)).ToList();
+            }
+
+            if(genero != null && genero != string.Empty)
+            {
+                filmes = filmes.Where(x => x.DsGenero.Contains(genero)).ToList();
+            }
+
+            if(classificacao.ToString() != null && classificacao.ToString() != string.Empty)
+            {
+                filmes = filmes.Where(x => x.NrClassificacao == classificacao).ToList();
+            }
+
+            return filmes;
+        }
+
         
         public TbFilme ConsultarUNI(int id)
         {

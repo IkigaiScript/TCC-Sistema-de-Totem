@@ -37,7 +37,7 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpGet] // funcionando
+        [HttpGet("Seach")] // funcionando
         public ActionResult<List<FilmeResponse>> Consultar()
         {
             try
@@ -73,6 +73,21 @@ namespace Backend.Controllers
             try
             {
                 return conv.ParaResponseCompleto(buss.ConsultarUNI(id));
+            }
+            catch(Exception ex)
+            {
+                return new BadRequestObjectResult(
+                    new ErrorResponse(400,ex.Message)
+                );
+            }
+        }
+
+        [HttpGet("Seach")]
+        public ActionResult<List<FilmeResponse>> ConsultarFilter(int classificacao,string sala,string genero)
+        {
+            try
+            {
+                return conv.ParaListaResponse(buss.ConsultarFilter(classificacao,genero,sala));
             }
             catch(Exception ex)
             {

@@ -7,13 +7,18 @@ using System.Linq;
 using System.IO;
 using System.Collections.Generic;
 
-
+using Backend.Services.Documents;
+using Backend.Models;
+using Backend.Database;
+using Backend.Business;
 namespace Backend.Services.Documents
 {
     public class DocumentPDF
     {
-        Database.IdBase ConsTBase = new Database.IdBase();
-        Business.NotaFiscalBusiness buss = new Business.NotaFiscalBusiness();
+        QrCode qrcode = new QrCode();
+        tcdbContext ctx = new tcdbContext();
+        IdBase ConsTBase = new IdBase();
+        NotaFiscalBusiness buss = new NotaFiscalBusiness();
         public string NewFile(Models.TbNotaFiscal notaFiscal, Models.TbPedido pedido)
         {
             string text = string.Empty;
@@ -68,7 +73,7 @@ namespace Backend.Services.Documents
             client.Alignment = Element.ALIGN_LEFT;
             client.SpacingAfter = 10;
             client.SpacingBefore = 10;
-            client.Add($"CPF/CNPJ do consumidor {notaFiscal.DsCpf ?? "Não informado"}\n".ToUpper());
+            client.Add($"CPF/CNPJ do consumidor {notaFiscal.DsCpf  ?? "Não informado"}\n".ToUpper());
             client.Add($"nome: {pedido.NmTitular}\n".ToUpper()); 
             doc.Add(client);
 
@@ -95,9 +100,10 @@ namespace Backend.Services.Documents
                 table.AddCell(new Phrase(ingresso.NrPoltrona.ToString(),new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                 table.AddCell(new Phrase(ingresso.DsFileira,new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                 table.AddCell(new Phrase(ingresso.IdSessaoNavigation.NrSala.ToString(),new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
-                table.AddCell(new Phrase(ingresso.IdSessaoNavigation.DtHorario.Value.ToLongTimeString(),new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
-                table.AddCell(new Phrase(ingresso.BtMeiaEntrada.Value ? "sim" : "não",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
+                table.AddCell(new Phrase(ingresso.IdSessaoNavigation.DtHorario.ToLongTimeString(),new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
+                table.AddCell(new Phrase(ingresso.BtMeiaEntrada ? "sim" : "não",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                 table.AddCell(new Phrase($"R$ {ingresso.IdSessaoNavigation.VlIngresso}",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
+                total += 1;
             }
 
             doc.Add(table); 
@@ -174,11 +180,31 @@ namespace Backend.Services.Documents
             paragrafo1.Add($"qtde. total de itens {total}\n".ToUpper());
             paragrafo1.Add($"valor total R$ {pedido.VlTotal}\n".ToUpper());
             paragrafo1.Add($"forma de pagamento\n{pedido.DsFormaPagamento}\n".ToUpper());
+
+            float desconto = 0f;
+            if(ctx.TbCupomDesconto.Any(x => x.IdCupomDesconto == pedido.IdCupomDesconto)) // validar desconto 
+            {
+                desconto = (float) ConsTBase.Desconto(pedido.IdCupomDesconto.Value).VlDesconto;
+            }
+
             paragrafo1.Add($"Desconto R$ {ConsTBase.Desconto(pedido.IdCupomDesconto.Value).VlDesconto}\n".ToUpper());
-            paragrafo1.Add($"Troco R$ {pedido.VlTroco}");
+            
+            float troco = 0;
+            if(pedido.VlTroco.Value.ToString() != string.Empty)
+            {
+                troco = (float) pedido.VlTroco;
+            }
+            
+            paragrafo1.Add($"Troco R$ {troco}".ToUpper());
 
             doc.Add(paragrafo1);
             
+            byte[] qrcoder = qrcode.CreateQrCode(pedido.IdPedido);
+            Image qrcoding = Image.GetInstance(qrcoder);
+            qrcoding.ScaleToFit(380f,230f);
+            qrcoding.SetAbsolutePosition(300,10);
+            doc.Add(qrcoding);
+
             doc.Close();            
 
             Console.WriteLine("Concluido");

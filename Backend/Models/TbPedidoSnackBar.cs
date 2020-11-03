@@ -12,11 +12,11 @@ namespace Backend.Models
         [Column("id_pedido_snack_bar")]
         public int IdPedidoSnackBar { get; set; }
         [Column("id_pedido")]
-        public int? IdPedido { get; set; }
+        public int IdPedido { get; set; }
         [Column("id_snack_bar")]
-        public int? IdSnackBar { get; set; }
+        public int IdSnackBar { get; set; }
         [Column("nr_qtd_snack_bar")]
-        public int? NrQtdSnackBar { get; set; }
+        public int NrQtdSnackBar { get; set; }
 
         [ForeignKey(nameof(IdPedido))]
         [InverseProperty(nameof(TbPedido.TbPedidoSnackBar))]

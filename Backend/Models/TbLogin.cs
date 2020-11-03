@@ -17,8 +17,10 @@ namespace Backend.Models
         [Key]
         [Column("id_login")]
         public int IdLogin { get; set; }
+        [Required]
         [Column("ds_email", TypeName = "varchar(255)")]
         public string DsEmail { get; set; }
+        [Required]
         [Column("ds_senha", TypeName = "varchar(255)")]
         public string DsSenha { get; set; }
 

@@ -16,8 +16,10 @@ namespace Backend.Models
         [Key]
         [Column("id_combo")]
         public int IdCombo { get; set; }
+        [Required]
         [Column("nm_combo", TypeName = "varchar(100)")]
         public string NmCombo { get; set; }
+        [Required]
         [Column("ds_first_item", TypeName = "varchar(255)")]
         public string DsFirstItem { get; set; }
         [Column("ds_secondary_item", TypeName = "varchar(255)")]
@@ -25,7 +27,7 @@ namespace Backend.Models
         [Column("ds_third_item", TypeName = "varchar(255)")]
         public string DsThirdItem { get; set; }
         [Column("vl_preco", TypeName = "decimal(10,2)")]
-        public decimal? VlPreco { get; set; }
+        public decimal VlPreco { get; set; }
         [Column("ds_imagem", TypeName = "varchar(255)")]
         public string DsImagem { get; set; }
 

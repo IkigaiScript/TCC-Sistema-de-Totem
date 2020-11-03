@@ -6,13 +6,15 @@ using Microsoft.EntityFrameworkCore;
 
 using Backend.Models.Response;
 using Backend.Business;
-
+using Backend.Utils;
 namespace Backend.Controllers
 {
    [ApiController]
    [Route("SnackBars")]
    public class SnackBarController : ControllerBase
    {
+       SnackBarBusiness buss = new SnackBarBusiness();
+       SnackBarConversor conv = new SnackBarConversor();
        GerenciadorFotos foto = new GerenciadorFotos();
        
        [HttpGet("Fotos/{nome}")]
@@ -26,6 +28,21 @@ namespace Backend.Controllers
            {
                return new BadRequestObjectResult(
                    new ErrorResponse(404,ex.Message)
+               );
+           }
+       }
+
+       [HttpGet]
+       public ActionResult<List<SnackBarResponse>> Consultar(string tipoProduto)
+       {
+           try
+           {
+               return conv.ParaListaResponse(buss.Consultar(tipoProduto));
+           }
+           catch(Exception ex)
+           {
+               return new BadRequestObjectResult(
+                   new ErrorResponse(400,ex.Message)
                );
            }
        }

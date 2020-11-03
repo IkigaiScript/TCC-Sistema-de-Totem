@@ -13,7 +13,7 @@ namespace Backend.Database
             // receber consulta do cartão
             TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == tb.IdPedido);
 
-            tb.VlGasto = pedido.VlTotal; 
+            tb.VlGasto = pedido.VlTotal.Value; 
 
             pedido.DsStatus = "aprovado";
             pedido.DsFormaPagamento = "cartao";

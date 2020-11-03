@@ -18,7 +18,7 @@ namespace Backend.Database
             foreach(TbSnackBar snackBar in ctx.TbSnackBar)
             {
                 if(tbs.Any(x => x.IdSnackBar == snackBar.IdSnackBar))
-                        snackBar.NrQtdEstoque -= tbs.FirstOrDefault(x => x.IdSnackBar == snackBar.IdSnackBar).NrQtdSnackBar.Value; 
+                        snackBar.NrQtdEstoque -= tbs.FirstOrDefault(x => x.IdSnackBar == snackBar.IdSnackBar).NrQtdSnackBar; 
             }            
 
             ctx.SaveChanges();

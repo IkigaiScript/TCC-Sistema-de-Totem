@@ -1,7 +1,6 @@
 drop database tcdb;
 create database tcdb;
 use tcdb;
-show tables;
 
 CREATE TABLE tb_filme (
 	`id_filme`        INT PRIMARY KEY AUTO_INCREMENT,
@@ -43,6 +42,7 @@ CREATE TABLE tb_trailer (
 CREATE TABLE tb_cupom_desconto (
 	`id_cupom_desconto`	    INT PRIMARY KEY AUTO_INCREMENT,
     `nm_cupom`      		VARCHAR(100) NOT NULL,
+    `ds_codigo`				VARCHAR(100) NOT  NULL,
  	`vl_desconto`			DECIMAL(10,2) NOT NULL,
     `vl_min_gasto`		    DECIMAL(10,2) NOT NULL
 );
@@ -151,14 +151,12 @@ CREATE TABLE tb_nota_fiscal (
 CREATE TABLE tb_cartao (
     `id_cartao`				INT PRIMARY KEY AUTO_INCREMENT,
     `id_pedido`   			INT NOT NULL,
-	`nr_cartao`				INT NOT NULL,
+	`ds_cartao`			    VARCHAR(100) NOT NULL,
     `vl_gasto`				DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (`id_pedido`) REFERENCES tb_pedido (`id_pedido`) ON DELETE CASCADE
 );
 
 show tables;
-
-
 
 insert into tb_filme(nm_filme,ds_genero,ds_sinopse,nr_classificacao,nr_duracao,bt_breve,bt_estreia) values ('Bloodshot','Ação/Aventura','Depois de ser morto em combate, o soldado Ray Garrison é trazido de volta à vida com um exército de nanotecnologia em suas veias e poderes sobre-humanos: uma incrível força e a habilidade de se curar instantaneamente. Sem memória, ele está decidido a descobrir a verdade sobre quem realmente é.',14,109,false,true);
 
@@ -293,15 +291,16 @@ insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (3,'Woody Allen
 insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (1,'Woody Allen','1935-12-01');
   
 insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (1,'Woody Allen','1935-12-01');
+
 insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,ds_third_item,vl_preco) values ('Cine caixinha passatempo chambinho','1 baldinho de pipoca','1 bebida servida em um copo de plastico brinde','1 passatempo chambinho',15.80);
 
 insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,ds_third_item,vl_preco) values ('combo kitkat','1 pipoca media', '1 bebida media', '1 kitkat',12.30);
 
 insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,ds_third_item,vl_preco) values ('combo M&Ms','1 pipoca com M&Ms','1 bebida','1 baldinho de plastico exclusivo',13.90);
 
-insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,ds_third_item,vl_preco) values ('combo mega','1 pipoca salgada grande com direito','1 bebida grande',16.20);
+insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,vl_preco) values ('combo mega','1 pipoca salgada grande','1 bebida grande',16.20);
 
-insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,ds_third_item,vl_preco) values ('combo balde','1 balde pipoca, salgada ou manteiga','2 bebidas media',11.50);
+insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,vl_preco) values ('combo balde','1 balde pipoca, salgada ou manteiga','2 bebidas media',11.50);
 
 				-- NOTA FISCAL TESTE --
 
@@ -361,9 +360,12 @@ insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entr
 
 insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (1,1,'A',11,false);
 
+insert into tb_nota_fiscal (id_pedido,ds_email,ds_cpf) values (1,'skegtyko@gmail.com','000.000.000-00');
+
 -- select * from tb_cupom_desconto;
 -- select * from tb_filme;
 -- select * from tb_cartao;
--- select * from tb_combo;
--- select * from tb_pedido;
--- select * from tb_snack_bar;
+select * from tb_combo;
+select * from tb_pedido;
+select * from tb_snack_bar;
+select * from tb_nota_fiscal;

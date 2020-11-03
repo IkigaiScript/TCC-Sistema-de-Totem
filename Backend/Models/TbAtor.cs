@@ -12,11 +12,12 @@ namespace Backend.Models
         [Column("id_ator")]
         public int IdAtor { get; set; }
         [Column("id_filme")]
-        public int? IdFilme { get; set; }
+        public int IdFilme { get; set; }
+        [Required]
         [Column("nm_ator", TypeName = "varchar(100)")]
         public string NmAtor { get; set; }
         [Column("dt_nascimento", TypeName = "datetime")]
-        public DateTime? DtNascimento { get; set; }
+        public DateTime DtNascimento { get; set; }
 
         [ForeignKey(nameof(IdFilme))]
         [InverseProperty(nameof(TbFilme.TbAtor))]

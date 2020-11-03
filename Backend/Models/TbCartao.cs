@@ -12,11 +12,12 @@ namespace Backend.Models
         [Column("id_cartao")]
         public int IdCartao { get; set; }
         [Column("id_pedido")]
-        public int? IdPedido { get; set; }
-        [Column("nr_cartao")]
-        public int? NrCartao { get; set; }
+        public int IdPedido { get; set; }
+        [Required]
+        [Column("ds_cartao", TypeName = "varchar(100)")]
+        public string DsCartao { get; set; }
         [Column("vl_gasto", TypeName = "decimal(10,2)")]
-        public decimal? VlGasto { get; set; }
+        public decimal VlGasto { get; set; }
 
         [ForeignKey(nameof(IdPedido))]
         [InverseProperty(nameof(TbPedido.TbCartao))]

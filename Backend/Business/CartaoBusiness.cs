@@ -13,18 +13,18 @@ namespace Backend.Business
         IdBase ConsTBase = new IdBase();
         public TbCartao Cadastrar(TbCartao tb, int cvv, int senha, string pagamento)
         {
-            if(ConsTBase.Pedido(tb.IdPedido.Value) == null) throw new ArgumentException("Pedido não existe");  
+            if(ConsTBase.Pedido(tb.IdPedido) == null) throw new ArgumentException("Pedido não existe");  
 
             if(cvv != 3) throw new ArgumentException("CVV inválido");
 
-            if(tb.NrCartao.Value != 16) throw new ArgumentException("Numero de cartão inválido");
+            if(tb.DsCartao.Length != 16) throw new ArgumentException("Numero de cartão inválido");
 
             if(pagamento.ToLower() != "debito" &&
                 pagamento.ToLower() != "credito") throw new ArgumentException("Forma de pagamento inválido");
 
             // consulta API de banco 
             // mandar consulta para o banco depois de validar
-            // tb.NrCartao = CriarHash(tb.NrCartao);
+            tb.DsCartao = CriarHash(tb.DsCartao);
             return db.Cadastrar(tb);
         }
     }

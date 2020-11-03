@@ -12,10 +12,12 @@ namespace Backend.Models
         [Column("id_nota_fisical")]
         public int IdNotaFisical { get; set; }
         [Column("id_pedido")]
-        public int? IdPedido { get; set; }
+        public int IdPedido { get; set; }
+        [Required]
         [Column("ds_email", TypeName = "varchar(255)")]
         public string DsEmail { get; set; }
-        [Column("ds_cpf", TypeName = "varchar(255)")]
+        [Required]
+        [Column("ds_cpf", TypeName = "varchar(14)")]
         public string DsCpf { get; set; }
 
         [ForeignKey(nameof(IdPedido))]

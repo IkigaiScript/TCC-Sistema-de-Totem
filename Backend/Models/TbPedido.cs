@@ -23,7 +23,7 @@ namespace Backend.Models
         [Column("id_cupom_desconto")]
         public int? IdCupomDesconto { get; set; }
         [Column("id_login")]
-        public int? IdLogin { get; set; }
+        public int IdLogin { get; set; }
         [Column("nm_titular", TypeName = "varchar(100)")]
         public string NmTitular { get; set; }
         [Column("ds_forma_pagamento", TypeName = "varchar(255)")]

@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using RestSharp;
+using RestSharp.Authenticators;
 
 using Backend.Models;
 using Backend.Database;
@@ -24,12 +26,18 @@ namespace Backend.Business
                     if(num < 48 || num > 57) throw new ArgumentException("Cpf só pode conter numero");
                 }
 
-                // usar api para validar cpf
+                var client = new RestClient("http://geradorapp.com/api/v1/cpf/validate");
+                
+                var request = new RestRequest($"/{tb.DsCpf}?token=e069cc6de242802d93eb1c64628d4aaf",DataFormat.Json);
+                var response = client.Get(request);
+                string status = response.Content.Substring(response.Content.IndexOf("\"status"),response.Content.IndexOf(","));
+                
+                if(status.Contains("0")) throw new ArgumentException("CPF não encontrado");
             }
 
-            if(db.ExitsPedido(tb.IdPedido.Value)) throw new ArgumentException("Só pode existir uma nota por pedido");
+            if(db.ExitsPedido(tb.IdPedido)) throw new ArgumentException("Só pode existir uma nota por pedido");
 
-            if(ConsTBase.Pedido(tb.IdPedido.Value) == null) throw new ArgumentException("Pedido não existe");
+            if(ConsTBase.Pedido(tb.IdPedido) == null) throw new ArgumentException("Pedido não existe");
 
             if(string.IsNullOrEmpty(tb.DsEmail)) throw new ArgumentException("Email está vazio");
 
@@ -38,8 +46,6 @@ namespace Backend.Business
 
             string[] dominio = new string[4]{"@gmail","@outlook","@hotmail","@yahoo"};
             if(!dominio.Any(x => tb.DsEmail.Contains(x))) throw new ArgumentException("Dominio do email não aceito");
-            
-            // usar api para validar email
             
             tb.DsCpf = CriarHash(tb.DsCpf);
             return db.Cadastrar(tb);

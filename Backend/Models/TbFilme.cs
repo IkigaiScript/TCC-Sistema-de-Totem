@@ -19,22 +19,25 @@ namespace Backend.Models
         [Key]
         [Column("id_filme")]
         public int IdFilme { get; set; }
+        [Required]
         [Column("nm_filme", TypeName = "varchar(100)")]
         public string NmFilme { get; set; }
+        [Required]
         [Column("ds_genero", TypeName = "varchar(255)")]
         public string DsGenero { get; set; }
-        [Column("ds_sinopse", TypeName = "varchar(255)")]
+        [Required]
+        [Column("ds_sinopse", TypeName = "text")]
         public string DsSinopse { get; set; }
         [Column("ds_imagem", TypeName = "varchar(255)")]
         public string DsImagem { get; set; }
-        [Column("nr_classficacao")]
-        public int? NrClassficacao { get; set; }
+        [Column("nr_classificacao")]
+        public int NrClassificacao { get; set; }
         [Column("nr_duracao")]
-        public int? NrDuracao { get; set; }
+        public int NrDuracao { get; set; }
         [Column("bt_breve")]
-        public bool? BtBreve { get; set; }
+        public bool BtBreve { get; set; }
         [Column("bt_estreia")]
-        public bool? BtEstreia { get; set; }
+        public bool BtEstreia { get; set; }
 
         [InverseProperty("IdFilmeNavigation")]
         public virtual ICollection<TbAtor> TbAtor { get; set; }

@@ -12,13 +12,14 @@ namespace Backend.Models
         [Column("id_trailer")]
         public int IdTrailer { get; set; }
         [Column("id_filme")]
-        public int? IdFilme { get; set; }
+        public int IdFilme { get; set; }
+        [Required]
         [Column("nm_trailer", TypeName = "varchar(100)")]
         public string NmTrailer { get; set; }
         [Column("nr_duracao")]
-        public int? NrDuracao { get; set; }
+        public int NrDuracao { get; set; }
         [Column("bt_dublado")]
-        public bool? BtDublado { get; set; }
+        public bool BtDublado { get; set; }
 
         [ForeignKey(nameof(IdFilme))]
         [InverseProperty(nameof(TbFilme.TbTrailer))]

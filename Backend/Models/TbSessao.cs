@@ -17,15 +17,16 @@ namespace Backend.Models
         [Column("id_sessao")]
         public int IdSessao { get; set; }
         [Column("id_filme")]
-        public int? IdFilme { get; set; }
+        public int IdFilme { get; set; }
+        [Required]
         [Column("ds_tipo_sala", TypeName = "varchar(255)")]
         public string DsTipoSala { get; set; }
         [Column("nr_sala")]
-        public int? NrSala { get; set; }
+        public int NrSala { get; set; }
         [Column("vl_ingresso", TypeName = "decimal(10,2)")]
-        public decimal? VlIngresso { get; set; }
+        public decimal VlIngresso { get; set; }
         [Column("dt_horario", TypeName = "datetime")]
-        public DateTime? DtHorario { get; set; }
+        public DateTime DtHorario { get; set; }
 
         [ForeignKey(nameof(IdFilme))]
         [InverseProperty(nameof(TbFilme.TbSessao))]

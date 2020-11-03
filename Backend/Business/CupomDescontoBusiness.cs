@@ -28,7 +28,7 @@ namespace Backend.Business
             if(ped.IdCupomDesconto != 0 &&
                 ped.IdCupomDesconto != null) throw new ArgumentException("Um Cupom ja foi adicionado");
 
-            return db.Consultar(cupom.IdCupomDesconto,ped.IdPedido);
+            return  db.Consultar(cupom.IdCupomDesconto,ped.IdPedido);
         }
     }
 }

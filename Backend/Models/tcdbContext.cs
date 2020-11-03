@@ -36,7 +36,8 @@ namespace Backend.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;userid=adm;password=12345678;database=tcdb", x => x.ServerVersion("8.0.21-mysql"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=localhost;userid=root;pwd=1234;database=tcdb", x => x.ServerVersion("8.0.21-mysql"));
             }
         }
 
@@ -57,7 +58,6 @@ namespace Backend.Models
                 entity.HasOne(d => d.IdFilmeNavigation)
                     .WithMany(p => p.TbAtor)
                     .HasForeignKey(d => d.IdFilme)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_ator_ibfk_1");
             });
 
@@ -69,10 +69,13 @@ namespace Backend.Models
                 entity.HasIndex(e => e.IdPedido)
                     .HasName("id_pedido");
 
+                entity.Property(e => e.DsCartao)
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
+
                 entity.HasOne(d => d.IdPedidoNavigation)
                     .WithMany(p => p.TbCartao)
                     .HasForeignKey(d => d.IdPedido)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_cartao_ibfk_1");
             });
 
@@ -107,7 +110,6 @@ namespace Backend.Models
                 entity.HasOne(d => d.IdLoginNavigation)
                     .WithMany(p => p.TbCliente)
                     .HasForeignKey(d => d.IdLogin)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_cliente_ibfk_1");
             });
 
@@ -166,7 +168,6 @@ namespace Backend.Models
                 entity.HasOne(d => d.IdFilmeNavigation)
                     .WithMany(p => p.TbDiretor)
                     .HasForeignKey(d => d.IdFilme)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_diretor_ibfk_1");
             });
 
@@ -214,13 +215,11 @@ namespace Backend.Models
                 entity.HasOne(d => d.IdPedidoNavigation)
                     .WithMany(p => p.TbIngresso)
                     .HasForeignKey(d => d.IdPedido)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_ingresso_ibfk_1");
 
                 entity.HasOne(d => d.IdSessaoNavigation)
                     .WithMany(p => p.TbIngresso)
                     .HasForeignKey(d => d.IdSessao)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_ingresso_ibfk_2");
             });
 
@@ -257,7 +256,6 @@ namespace Backend.Models
                 entity.HasOne(d => d.IdPedidoNavigation)
                     .WithMany(p => p.TbNotaFiscal)
                     .HasForeignKey(d => d.IdPedido)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_nota_fiscal_ibfk_1");
             });
 
@@ -293,7 +291,6 @@ namespace Backend.Models
                 entity.HasOne(d => d.IdLoginNavigation)
                     .WithMany(p => p.TbPedido)
                     .HasForeignKey(d => d.IdLogin)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_pedido_ibfk_2");
             });
 
@@ -311,13 +308,11 @@ namespace Backend.Models
                 entity.HasOne(d => d.IdComboNavigation)
                     .WithMany(p => p.TbPedidoCombo)
                     .HasForeignKey(d => d.IdCombo)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_pedido_combo_ibfk_2");
 
                 entity.HasOne(d => d.IdPedidoNavigation)
                     .WithMany(p => p.TbPedidoCombo)
                     .HasForeignKey(d => d.IdPedido)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_pedido_combo_ibfk_1");
             });
 
@@ -335,13 +330,11 @@ namespace Backend.Models
                 entity.HasOne(d => d.IdPedidoNavigation)
                     .WithMany(p => p.TbPedidoSnackBar)
                     .HasForeignKey(d => d.IdPedido)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_pedido_snack_bar_ibfk_2");
 
                 entity.HasOne(d => d.IdSnackBarNavigation)
                     .WithMany(p => p.TbPedidoSnackBar)
                     .HasForeignKey(d => d.IdSnackBar)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_pedido_snack_bar_ibfk_1");
             });
 
@@ -360,7 +353,6 @@ namespace Backend.Models
                 entity.HasOne(d => d.IdFilmeNavigation)
                     .WithMany(p => p.TbSessao)
                     .HasForeignKey(d => d.IdFilme)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_sessao_ibfk_1");
             });
 
@@ -409,7 +401,6 @@ namespace Backend.Models
                 entity.HasOne(d => d.IdFilmeNavigation)
                     .WithMany(p => p.TbTrailer)
                     .HasForeignKey(d => d.IdFilme)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("tb_trailer_ibfk_1");
             });
 

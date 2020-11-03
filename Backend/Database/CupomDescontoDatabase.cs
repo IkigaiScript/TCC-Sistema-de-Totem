@@ -16,7 +16,7 @@ namespace Backend.Database
             TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == ped);
             TbCupomDesconto cupom = ctx.TbCupomDesconto.FirstOrDefault(x => x.IdCupomDesconto == cup);
             pedido.IdCupomDesconto = cupom.IdCupomDesconto;
-            pedido.VlTotal -= cupom.VlDesconto.Value;
+            pedido.VlTotal -= cupom.VlDesconto;
             Console.WriteLine(pedido.VlTotal);
             Console.WriteLine(cupom.VlDesconto);
             ctx.SaveChanges();

@@ -31,7 +31,7 @@ namespace Backend.Utils
         {
             return new PedidoResponse {
                 Id = tb.IdPedido,
-                Login = tb.IdLogin.Value,
+                Login = tb.IdLogin,
                 FormaPagamento = tb.DsFormaPagamento,
                 Status = tb.DsStatus,
                 Titular = tb.NmTitular

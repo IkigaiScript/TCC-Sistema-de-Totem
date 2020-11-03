@@ -19,10 +19,10 @@ namespace Backend.Utils
                 Genero = tb.DsGenero,
                 Sinopse = tb.DsSinopse,
                 Imagem = tb.DsImagem,
-                Classificacao = tb.NrClassficacao.Value,
-                Duracao = tb.NrDuracao.Value,
-                Breve = tb.BtBreve.Value,
-                Estreia = tb.BtEstreia.Value
+                Classificacao = tb.NrClassificacao,
+                Duracao = tb.NrDuracao,
+                Breve = tb.BtBreve,
+                Estreia = tb.BtEstreia
             };
         }
 
@@ -37,14 +37,14 @@ namespace Backend.Utils
 
             Func<TbAtor,AtorResponse> ator = (a) => {
                 return new AtorResponse {
-                    Nascimento = a.DtNascimento.Value,
+                    Nascimento = a.DtNascimento,
                     Nome = a.NmAtor
                 };           
             };
 
             Func<TbDiretor,DiretorResponse> diretor = (d) => {
                 return new DiretorResponse {
-                    Nascimento = d.DtNascimento.Value,
+                    Nascimento = d.DtNascimento,
                     Nome = d.NmDiretor
                 };
             };
@@ -55,10 +55,10 @@ namespace Backend.Utils
                 Genero = tb.DsGenero,
                 Sinopse = tb.DsSinopse,
                 Imagem = tb.DsImagem,
-                Classificacao = tb.NrClassficacao.Value,
-                Duracao = tb.NrDuracao.Value,
-                Breve = tb.BtBreve.Value,
-                Estreia = tb.BtEstreia.Value,
+                Classificacao = tb.NrClassificacao,
+                Duracao = tb.NrDuracao,
+                Breve = tb.BtBreve,
+                Estreia = tb.BtEstreia,
                 Atores = tb.TbAtor.Select(x => ator(x))
                             .ToList(),
                 Diretores = tb.TbDiretor.Select(x => diretor(x))

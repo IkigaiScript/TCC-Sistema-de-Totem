@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Backend.Database;
 using Backend.Models;
@@ -33,12 +34,34 @@ namespace Backend.Business
             return filmes;
         }
 
+        public List<TbFilme> ConsultarFilter(int classificacao,string genero,string sala)
+        {
+            string[] generos = new string[]{ "ação", "animação", "aventura", "comédia","comedia","dança","drama","espionagem", "faroeste", "fantasia", "romance", "terror", "guerra", "ficção cientifica", "ficção científica", "policial", "musical", "thriller", "suspense", "guerra" };
+            if(classificacao.ToString() != string.Empty && classificacao.ToString() != null)
+            {
+                if(classificacao < 0 || classificacao > 18) throw new ArgumentException("Classificação inválida");
+            }
+
+            if(sala != string.Empty && sala != null)
+            {
+                if(sala.ToUpper() != "XD" && sala.ToUpper() != "3D") throw new ArgumentException("Tipo de sala inválida");
+            }
+
+            if(genero != string.Empty && genero != null)
+            {
+                if(!generos.Any(x => genero == x)) throw new ArgumentException("Genero não existe");
+            }
+
+            return db.ConsultarFilter(genero,classificacao,sala);
+        }
+
         public TbFilme ConsultarUNI(int id)
         {
-            TbFilme filme = ConsTBase.Filme(id);
+            TbFilme filme = db.ConsultarUNI(id);
 
             if(filme == null) throw new ArgumentException("Filme não existe");
-               
+
+            return filme;   
         }
     }
 }

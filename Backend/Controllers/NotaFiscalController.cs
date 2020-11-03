@@ -39,12 +39,11 @@ namespace Backend.Controllers
 
         [HttpPost("Email/{pedido}")]  // mandar email -  Terminando
         public ActionResult EnviarEmail(int pedido)
-        {
-            // Adicionar anexo com a nota fiscal criada 
+        { 
             IdBase ConsTBase = new IdBase();
 
             try
-            {
+            { 
                 TbNotaFiscal nota = buss.Consultar(pedido);
                 TbPedido ped = ConsTBase.Pedido(pedido);
                 string file = pdf.NewFile(nota,ped);
@@ -62,10 +61,9 @@ namespace Backend.Controllers
                 
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com",587);
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("venanciodacostcarloshenrique@gmail.com","Blizard2020");
+                smtp.Credentials = new NetworkCredential("venanciodacostacarloshenrique@gmail.com","Blizard2020");
                 smtp.EnableSsl = true;
-                smtp.Timeout = 100; 
-
+                
                 try
                 {
                     smtp.Send(mail);
@@ -73,7 +71,7 @@ namespace Backend.Controllers
                 catch(Exception) 
                 {
                     return new BadRequestObjectResult(
-                        new ErrorResponse(500,"Erro ao mandar email")
+                        new ErrorResponse(500,"Erro ao enviar email")
                     );
                 }
                 finally

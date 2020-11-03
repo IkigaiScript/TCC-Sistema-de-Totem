@@ -14,7 +14,7 @@ namespace Backend.Database
         {
             ctx.TbNotaFiscal.Add(tb);
             ctx.SaveChanges();
-            return tb.IdPedido.Value;
+            return tb.IdPedido;
         }
 
         public bool ExitsPedido(int id)

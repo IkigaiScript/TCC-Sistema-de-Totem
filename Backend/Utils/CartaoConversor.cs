@@ -11,9 +11,9 @@ namespace Backend.Utils
         {
             return new CartaoResponse {
                 Id = tb.IdCartao,
-                Pedido = tb.IdPedido.Value,
+                Pedido = tb.IdPedido,
                 Gasto  = (float) tb.VlGasto,
-                Numero = tb.NrCartao.Value
+                Numero = tb.NrCartao
             };
         }
 
