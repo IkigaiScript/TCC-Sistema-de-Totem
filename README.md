@@ -27,17 +27,25 @@ Nosso sistema pensando na praticidade do dia a dia e na modernização e facilid
 
 ![Template](https://user-images.githubusercontent.com/63354553/97389708-c353d680-18b9-11eb-9bb2-beef9980526f.png)
 
-
 # Modificação a serem feitas... (03/11/2020)
 
-- [ ]  Integrar o Frontend ou Brackend
+### BACKEND
 
-- [ ]  Criação da Tela de Assentos
+- [x] Implementar qr code na nota fiscal
+- [x] Configurar documento gerado pela rota do email
+- [x] Refatoração de codigo
+- [x] Revisão das tabelas
+- [x] Teste final 
+- [x] Fazer API para inserir registros
+- [x] Terminar rotas da Api
+- [x] Implementação de APIs externas 
+- [x]  Atualizar MER
 
-- [ ]  Revisão do código
+### FRONTEND
 
-- [ ]  Finalização da Api
+- [ ] Revisão do Frontend
 
-- [ ]  Implementação de APIs externas 
+- [ ] Integrar o Frontend ou Brackend
+- [ ] Revisão do código
+- [ ] Fazer tela de assento
 
-- [ ]  Revisão do Frontend
