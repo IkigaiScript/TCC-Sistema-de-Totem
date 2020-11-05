@@ -1,4 +1,5 @@
 import React from 'react';
+import { Multiselect } from 'multiselect-react-dropdown';
 import {PagesDefault, ButtonWrapper, OptionWrapper, Custom} from './style';
 import SelectionLanche from '../../../components/SelectionLanche';
 import Relogio from '../../../components/Relogio';
@@ -9,6 +10,27 @@ import { BiReset } from "react-icons/bi";
 
  
 export default function Pipoca(){
+    const options = {
+        select: [{name: "Pipoca", id: "1"},
+                 {name: "Combo", id: "2"},
+                 {name: "Doce", id: "3"},
+                 {name: "Bebida", id: "4"}]
+   };
+
+   const style = {
+        chips: {
+            color: "white"
+        },
+        searchBox: {
+            width: "150px",
+            height: "35px"
+        },
+        multiselectContainer: {
+            width: "150px",
+            height: "35px"
+        }
+  };
+
     return (
         <PagesDefault>
             
@@ -22,8 +44,11 @@ export default function Pipoca(){
 
             <Relogio />
 
-            <Button 
-                children = 'DropDown'
+            <Multiselect
+                    options={options.select}
+                    displayValue="name"
+                    style={style}
+                    singleSelect
             />
 
         </ButtonWrapper>
