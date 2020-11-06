@@ -6,7 +6,7 @@ namespace Backend.Models.Response
     {
         public int Id { get; set; }
         public int Pedido { get; set; }
-        public int Numero { get; set; }
+        public string Numero { get; set; }
         public float Gasto { get; set; }
     }
 }

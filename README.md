@@ -43,9 +43,9 @@ Nosso sistema pensando na praticidade do dia a dia e na modernização e facilid
 
 ### FRONTEND
 
-- [ ] Revisão do Frontend
+- [x] Revisão do Frontend
 
 - [ ] Integrar o Frontend ou Brackend
-- [ ] Revisão do código
+- [x] Revisão do código
 - [ ] Fazer tela de assento
 

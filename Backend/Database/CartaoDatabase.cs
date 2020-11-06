@@ -10,19 +10,13 @@ namespace Backend.Database
         tcdbContext ctx = new tcdbContext();
         public TbCartao Cadastrar(TbCartao tb)
         {
-            // receber consulta do cartão
             TbPedido pedido = ctx.TbPedido.FirstOrDefault(x => x.IdPedido == tb.IdPedido);
+            pedido.DsStatus = "Aprovado";
+            pedido.DsFormaPagamento = "Cartão";
 
-            tb.VlGasto = pedido.VlTotal.Value; 
-
-            pedido.DsStatus = "aprovado";
-            pedido.DsFormaPagamento = "cartao";
-        
-            // if(pedido.VlTotal - cartao.VlCartao < 0) cartao.VlCartao -= pedido.VlTotal;
-            //
-            // else cartao.VlCartao = 0;
             ctx.SaveChanges();
  
+            tb.VlGasto = pedido.VlTotal.Value; 
             ctx.TbCartao.Add(tb);
             ctx.SaveChanges();
 

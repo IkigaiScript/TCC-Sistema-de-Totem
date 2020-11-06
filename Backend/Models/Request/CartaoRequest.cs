@@ -4,7 +4,7 @@ namespace Backend.Models.Request
 {
     public class CartaoRequest
     { 
-        public int Numero { get; set; }
+        public string Numero { get; set; }
         public int Cvv { get; set; }
         public int Senha { get; set; }
         public int Pedido { get; set; }

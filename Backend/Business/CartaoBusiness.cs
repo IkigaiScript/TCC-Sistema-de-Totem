@@ -22,8 +22,6 @@ namespace Backend.Business
             if(pagamento.ToLower() != "debito" &&
                 pagamento.ToLower() != "credito") throw new ArgumentException("Forma de pagamento inválido");
 
-            // consulta API de banco 
-            // mandar consulta para o banco depois de validar
             tb.DsCartao = CriarHash(tb.DsCartao);
             return db.Cadastrar(tb);
         }

@@ -73,12 +73,21 @@ namespace Backend.Services.Documents
             client.Alignment = Element.ALIGN_LEFT;
             client.SpacingAfter = 10;
             client.SpacingBefore = 10;
-            client.Add($"CPF/CNPJ do consumidor {notaFiscal.DsCpf  ?? "Não informado"}\n".ToUpper());
-            client.Add($"nome: {pedido.NmTitular}\n".ToUpper()); 
+            
+            string consumidor = pedido.NmTitular == string.Empty 
+                                        ? "Não informado"
+                                        : pedido.NmTitular;
+
+            string cpf = notaFiscal.DsCpf == string.Empty 
+                                        ? "Não informado"
+                                        : notaFiscal.DsCpf;
+
+            client.Add($"CPF/CNPJ do consumidor {cpf}\n".ToUpper());
+            client.Add($"consumidor: {consumidor}\n".ToUpper()); 
             doc.Add(client);
 
             int total = 0;
-
+ 
             PdfPTable table = new PdfPTable(6);
             table.DefaultCell.FixedHeight = 20;
             table.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -97,13 +106,14 @@ namespace Backend.Services.Documents
 
             foreach(Models.TbIngresso ingresso in ingressos)
             {
+                total += 1;
+                table.AddCell(new Phrase($"{total}",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                 table.AddCell(new Phrase(ingresso.NrPoltrona.ToString(),new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                 table.AddCell(new Phrase(ingresso.DsFileira,new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                 table.AddCell(new Phrase(ingresso.IdSessaoNavigation.NrSala.ToString(),new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                 table.AddCell(new Phrase(ingresso.IdSessaoNavigation.DtHorario.ToLongTimeString(),new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                 table.AddCell(new Phrase(ingresso.BtMeiaEntrada ? "sim" : "não",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                 table.AddCell(new Phrase($"R$ {ingresso.IdSessaoNavigation.VlIngresso}",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
-                total += 1;
             }
 
             doc.Add(table); 
@@ -128,12 +138,13 @@ namespace Backend.Services.Documents
 
                 foreach(Models.TbPedidoSnackBar snack in snacks)
                 {
+                    total += 1;
+                    table.AddCell(new Phrase($"{total}",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                     tabela.AddCell(new Phrase(snack.IdSnackBarNavigation.NmProduto,new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                     tabela.AddCell(new Phrase(snack.NrQtdSnackBar.ToString(),new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                     tabela.AddCell(new Phrase(snack.IdSnackBarNavigation.DsPeso,new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                     tabela.AddCell(new Phrase($"R$ {snack.IdSnackBarNavigation.VlPreco}",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                     tabela.AddCell(new Phrase($"R$ {snack.IdSnackBarNavigation.VlPreco * snack.NrQtdSnackBar}",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
-                    total += 1;
                 }
 
                 doc.Add(tabela);
@@ -159,6 +170,8 @@ namespace Backend.Services.Documents
 
                     foreach(Models.TbPedidoCombo combo in combos)
                     {
+                        total += 1;
+                        table.AddCell(new Phrase($"{total}",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                         tabela1.AddCell(new Phrase(combo.IdComboNavigation.NmCombo,new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                         tabela1.AddCell(new Phrase(combo.NrQtdCombo.ToString(),new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                         tabela1.AddCell(new Phrase(combo.IdComboNavigation.DsFirstItem,new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
@@ -166,7 +179,6 @@ namespace Backend.Services.Documents
                         tabela1.AddCell(new Phrase(combo.IdComboNavigation.DsThirdItem ?? "",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                         tabela1.AddCell(new Phrase($"R$ {combo.IdComboNavigation.VlPreco}",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));
                         tabela1.AddCell(new Phrase($"R$ {combo.IdComboNavigation.VlPreco * combo.NrQtdCombo}",new iTextSharp.text.Font(Font.NORMAL,11,Font.BOLD,BaseColor.DARK_GRAY)));                
-                        total += 1;
                     }
                     
                     doc.Add(tabela1);

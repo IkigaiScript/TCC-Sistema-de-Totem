@@ -13,14 +13,14 @@ namespace Backend.Utils
                 Id = tb.IdCartao,
                 Pedido = tb.IdPedido,
                 Gasto  = (float) tb.VlGasto,
-                Numero = tb.NrCartao
+                Numero = tb.DsCartao
             };
         }
 
         public TbCartao ParaTabela(CartaoRequest req)
         {
             return new TbCartao {
-                NrCartao = req.Numero,
+                DsCartao = req.Numero,
                 IdPedido = req.Pedido
             };
         }
