@@ -32,8 +32,6 @@ namespace Backend.Models
         public string DsStatus { get; set; }
         [Column("vl_total", TypeName = "decimal(10,2)")]
         public decimal? VlTotal { get; set; }
-        [Column("vl_troco", TypeName = "decimal(10,2)")]
-        public decimal? VlTroco { get; set; }
 
         [ForeignKey(nameof(IdCupomDesconto))]
         [InverseProperty(nameof(TbCupomDesconto.TbPedido))]

@@ -201,14 +201,6 @@ namespace Backend.Services.Documents
 
             paragrafo1.Add($"Desconto R$ {ConsTBase.Desconto(pedido.IdCupomDesconto.Value).VlDesconto}\n".ToUpper());
             
-            float troco = 0;
-            if(pedido.VlTroco.Value.ToString() != string.Empty)
-            {
-                troco = (float) pedido.VlTroco;
-            }
-            
-            paragrafo1.Add($"Troco R$ {troco}".ToUpper());
-
             doc.Add(paragrafo1);
             
             byte[] qrcoder = qrcode.CreateQrCode(pedido.IdPedido);
