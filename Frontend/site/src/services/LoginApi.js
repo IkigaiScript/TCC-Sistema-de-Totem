@@ -6,4 +6,9 @@ const api = axios.create({
 
 export default class Login {
     
+    async Iniciar(req){
+        const response = await api.post(`/Logins/`,req)
+        console.log(response.data)
+        return response
+    }
 }
