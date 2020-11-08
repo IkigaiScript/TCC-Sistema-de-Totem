@@ -11,8 +11,7 @@ import { BiReset } from "react-icons/bi";
 export default function Combo (){
     const options = {
         select: [
-            {name: "Adicionar mais items", id: "default"},
-            {name: "Pipoca", id: "1"},
+            {name: 'Pipoca', id: "1"},
             {name: "Combo", id: "2"},
             {name: "Doce", id: "3"},    
             {name: "Bebida", id: "4"}
@@ -21,20 +20,23 @@ export default function Combo (){
 
    const style = {
         chips: {
-            color: "white"
+            color: 'white',
+            fontsize:'18px',
+            paddingleft: '10px'
         },
         searchBox: {
-            minwidth: "200px",
-            height: "35px",
-            background: "gray",
-            
-            justifycontent: "center",
+            minwidth: '200px',
+            height: '35px',
+            background : 'lightgray',
+
+            color: 'white'
            
         },
         multiselectContainer: {
-            width: "200px",
-            height: "35px",
-            color: "darkblue"
+            width: '200px',
+            height: '35px',
+            color: 'darkorange'
+ 
         }
     };
 
@@ -53,6 +55,7 @@ export default function Combo (){
                 <Relogio />
 
                 <Multiselect
+                    placeholder = 'adicionar items'
                     options={options.select}
                     displayValue="name"
                     style={style}
