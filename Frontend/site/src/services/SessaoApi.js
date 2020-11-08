@@ -10,4 +10,6 @@ export default class Sessao {
         const resp = await api.get(`/Sessao/`)
         return resp;
     } 
+
+    
 }

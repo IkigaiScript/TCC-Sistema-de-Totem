@@ -19,8 +19,8 @@ export default function Teste (){
             "Senha":senha
         }
 
-        const response = await api.Iniciar(request);
-        return response
+        /*const response = await api.Iniciar(request);
+        return response*/
     }
 
     return(

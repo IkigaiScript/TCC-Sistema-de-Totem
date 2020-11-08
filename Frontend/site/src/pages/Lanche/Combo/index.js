@@ -10,25 +10,33 @@ import { BiReset } from "react-icons/bi";
  
 export default function Combo (){
     const options = {
-        select: [{name: "Pipoca", id: "1"},
-                 {name: "Combo", id: "2"},
-                 {name: "Doce", id: "3"},
-                 {name: "Bebida", id: "4"}]
-   };
+        select: [
+            {name: "Adicionar mais items", id: "default"},
+            {name: "Pipoca", id: "1"},
+            {name: "Combo", id: "2"},
+            {name: "Doce", id: "3"},    
+            {name: "Bebida", id: "4"}
+        ]
+    };
 
    const style = {
         chips: {
             color: "white"
         },
         searchBox: {
-            width: "150px",
-            height: "35px"
+            minwidth: "200px",
+            height: "35px",
+            background: "gray",
+            
+            justifycontent: "center",
+           
         },
         multiselectContainer: {
-            width: "150px",
-            height: "35px"
+            width: "200px",
+            height: "35px",
+            color: "darkblue"
         }
-  };
+    };
 
     return (
         <PagesDefault>

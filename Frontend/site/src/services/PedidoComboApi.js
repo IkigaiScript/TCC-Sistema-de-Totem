@@ -6,4 +6,11 @@ const api = axios.create({
 
 export default class PedidoCombo {
     
+    async RegisterComboOrden(req){
+        
+        const response = await api.post('/Pedidos/Combos/${req}')
+        return response;
+
+    }
+
 }

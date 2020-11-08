@@ -6,4 +6,11 @@ const api = axios.create({
 
 export default class Trailer {
     
+    async ConsultTrailer(nome){
+        
+        const response = await api.get('/Trailers/Videos/${nome}')
+        return response;
+
+    }
+
 }

@@ -6,4 +6,11 @@ const api = axios.create({
 
 export default class PedidoSnackBar {
     
+    async RegisterSnackOrder(req){
+
+        const response = await api.post('/Pedidos/SnackBars/${req}')
+        return response;
+
+    }
+
 }
