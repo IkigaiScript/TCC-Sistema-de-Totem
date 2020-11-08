@@ -5,6 +5,7 @@ const api = axios.create({
 });
 
 export default class Filme {
+    
     async consultParcial(nome){
         const response = await api.get(`Filmes/Seach/${nome}`);
         return response.data;
@@ -15,6 +16,6 @@ export default class Filme {
         return response.data;
     }
 
-    // combo 
+    // combo
     // ingresso    
 }
