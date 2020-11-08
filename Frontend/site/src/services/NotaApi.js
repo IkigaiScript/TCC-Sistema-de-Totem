@@ -6,5 +6,13 @@ const api = axios.create({
 });
 
 export default class Nota {
-    
+    async cadastrar(req){
+        const response = await api.post(`Notas`,req);
+        return response.data;
+    }
+
+    async sendEmail(pedido){
+        const response = await api.post(`Notas/Email/${pedido}`);
+        console.log(response);
+    }
 }

@@ -6,17 +6,33 @@ const api = axios.create({
 });
 
 export default class Filme {
-    
     async consultParcial(nome){
         const response = await api.get(`Filmes/Seach/${nome}`);
         return response.data;
     }
 
     async consult(){
-        const response = await api.get(`Filmes/Seach`);
+        const response = await api.get(`Filmes`);
         return response.data;
     }
 
-    // combo
-    // ingresso    
+    async consultBreve(){
+        const response = await api.get(`Filmes/Breve`);
+        return response.data;
+    }   
+
+    async consultUNI(id){
+        const response = await api.get(`Filmes/${id}`);
+        return response.data;
+    }
+
+    async consultFilter(sala,genero,classificacao){
+        const response = await api.get(`Filmes?classificacao=${classificacao}&sala=${sala}&genero=${genero}`);
+        return response.data;
+    }
+
+    getPhoto(nome){
+        const response = api.get(`Filmes/Foto/${nome}`);
+        return response.data;
+    }
 }
