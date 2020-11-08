@@ -6,4 +6,16 @@ const api = axios.create({
 
 export default class SnackBar {
     
+    async ConsultFoto(nome){
+
+        const response = await api.get('/SnackBars/Fotos/${nome}')
+        return response;
+    }
+
+    async Produto(){
+
+        const response = await api.get('/SnackBars/')
+        return response;
+    }
+
 }
