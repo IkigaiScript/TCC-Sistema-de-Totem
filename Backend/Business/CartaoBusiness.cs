@@ -17,7 +17,7 @@ namespace Backend.Business
 
             if(cvv != 3) throw new ArgumentException("CVV inválido");
 
-            if(tb.DsCartao.Length != 16) throw new ArgumentException("Numero de cartão inválido");
+            if(tb.DsCartao.Replace(" ","").Length != 16) throw new ArgumentException("Numero de cartão inválido");
 
             if(pagamento.ToLower() != "debito" &&
                 pagamento.ToLower() != "credito") throw new ArgumentException("Forma de pagamento inválido");

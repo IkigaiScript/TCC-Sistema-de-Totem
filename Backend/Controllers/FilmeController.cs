@@ -19,6 +19,7 @@ namespace Backend.Controllers
     [Route("Filmes")]
     public class FilmeController : ControllerBase
     {
+        GerenciadorFotos fotos = new GerenciadorFotos();
         FilmeBusines buss = new FilmeBusines();
         FilmeConversor conv = new FilmeConversor();
 
@@ -93,6 +94,21 @@ namespace Backend.Controllers
             {
                 return new BadRequestObjectResult(
                     new ErrorResponse(400,ex.Message)
+                );
+            }
+        }
+
+        [HttpGet("Foto/{nome}")]
+        public ActionResult BuscarFoto(string nome)
+        {
+            try
+            {
+                return fotos.BuscarFoto(nome);
+            }
+            catch(Exception ex)
+            {
+                return new BadRequestObjectResult(
+                    new ErrorResponse(404,ex.Message)
                 );
             }
         }
