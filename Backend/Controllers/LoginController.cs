@@ -31,7 +31,7 @@ namespace Backend.Controllers
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                    new ErrorResponse(400,ex.Message)
+                    new ErrorResponse(400,ex.ToString())
                 );
             }
         }
