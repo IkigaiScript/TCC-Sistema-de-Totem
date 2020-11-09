@@ -13,9 +13,11 @@ namespace Backend.Utils
         public ClienteResponse ParaResponse(TbCliente tb)
         {
             return new ClienteResponse{
-                Id = tb.IdCliente,
                 Nome = tb.NmCliente,
                 Cpf = tb.DsCpf,
+                Login = tb.IdLogin,
+                Cep = tb.DsCep,
+                CondiçãoEspecial = tb.BtCondicaoEspecial,
                 Rg = tb.DsRg,
                 Celular = tb.DsCelular,
                 Vip = tb.BtVip

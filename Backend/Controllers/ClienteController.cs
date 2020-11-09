@@ -22,11 +22,11 @@ namespace Backend.Controllers
         ClienteBusiness Buss = new ClienteBusiness();
 
         [HttpGet("{id}")] // Cliente
-        public ActionResult<ClienteResponse> Consultar(int id)
+        public ActionResult<ClienteResponse> Consultar(int Id)
         {
             try
             {
-                return conv.ParaResponse(Buss.ConsultarCliente(id));
+                return conv.ParaResponse(Buss.ConsultarCliente(Id));
             }
                 
             catch(Exception ex)

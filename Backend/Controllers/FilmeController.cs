@@ -38,7 +38,7 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpGet()] // funcionando
+        [HttpGet] // funcionando
         public ActionResult<List<FilmeResponse>> Consultar()
         {
             try
