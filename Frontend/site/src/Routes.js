@@ -28,8 +28,9 @@ import NFe from './pages/Pagamento/NF-e';
 import PagamentoRealizado from './pages/Pagamento/PagamentoRealizado';
 import ErroNoPagamento from './pages/Pagamento/PagamentoError';
 
-import Teste from './pages/Teste'
-
+/* Telas fora do sistema */
+import Teste from './pages/Teste';
+import HomeGerente from './pages/Gerente/Home';
 
 function Routes(){
     return(
@@ -64,7 +65,12 @@ function Routes(){
                 <Route path = '/pagamento/QRCode' component = {QRCode} exact/>
                 <Route path = '/ErroNoPagamento' component = {ErroNoPagamento} exact/>
                 <Route path = '/PagamentoRealizado' component = {PagamentoRealizado} exact/>   
-
+                
+                                    {/* Gerente */}
+                
+                <Route path = '/Gerenciar' component = {HomeGerente} exact />
+                
+            
             </Switch>
         </BrowserRouter>
     )
