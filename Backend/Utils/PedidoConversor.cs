@@ -32,9 +32,9 @@ namespace Backend.Utils
             return new PedidoResponse {
                 Id = tb.IdPedido,
                 Login = tb.IdLogin,
-                FormaPagamento = tb.DsFormaPagamento,
-                Status = tb.DsStatus,
-                Titular = tb.NmTitular
+                FormaPagamento = tb.DsFormaPagamento ?? string.Empty,
+                Status = tb.DsStatus ?? string.Empty,
+                Titular = tb.NmTitular ?? string.Empty
             };
         }
     }

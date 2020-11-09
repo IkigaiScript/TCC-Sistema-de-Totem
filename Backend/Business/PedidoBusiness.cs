@@ -44,7 +44,7 @@ namespace Backend.Business
         public TbPedido ConsultarPedido(int id)
         {
             TbPedido pedido = ConsTBase.Pedido(id);
-
+            
             if(pedido == null) throw new ArgumentNullException("Pedido não encontrado");
             return pedido;
         }

@@ -72,7 +72,7 @@ CREATE TABLE tb_pedido (
     `ds_status`				VARCHAR(255),
     `vl_total`				DECIMAL(10,2),
     FOREIGN KEY (`id_cupom_desconto`) REFERENCES tb_cupom_desconto (`id_cupom_desconto`) ON DELETE CASCADE,
-    FOREIGN KEY (`id_login`) 	REFERENCES tb_login (`id_login`) ON DELETE CASCADE
+    FOREIGN KEY (`id_login`) REFERENCES tb_login (`id_login`) ON DELETE CASCADE
 );
    
 CREATE TABLE tb_ingresso (
