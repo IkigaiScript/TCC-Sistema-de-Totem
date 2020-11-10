@@ -50,7 +50,8 @@ export default function  Home(){
   }
 
   useEffect(() => {
-    ConsultClick()
+    console.log("Hello world");
+    ConsultClick();
   },[])
 
 
