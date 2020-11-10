@@ -13,6 +13,7 @@ export default class Filme {
 
     async consult(){
         const response = await api.get(`Filmes`);
+        console.log("Consultar");
         return response.data;
     }
 

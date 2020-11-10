@@ -38,7 +38,6 @@ export default function  Home(){
   const ConsultClick = async () => {
 
     try{
-
       const con = await api.consult();
       console.log(`con ${con}`);
       setReq([...con]);
