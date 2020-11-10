@@ -51,7 +51,7 @@ namespace Backend.Controllers
             }
         }
          
-        [HttpPut("Totals/{id}")] // funcionando
+        [HttpPost("Totals/{id}")] // funcionando
         public ActionResult<float> CalcularTotal(int id)
         {
             try

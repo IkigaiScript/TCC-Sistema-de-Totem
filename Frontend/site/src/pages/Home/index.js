@@ -40,8 +40,9 @@ export default function  Home(){
     try{
 
       const con = await api.consult();
+      console.log(`con ${con}`);
       setReq([...con]);
-
+      console.log(`req ${req}`);
     }
     catch(e){
       console.error("Deu Ruim Man");
@@ -68,15 +69,13 @@ export default function  Home(){
 
       <Carousel responsive={responsive} >
 
-        {req.map(x =>  
-          
+        {req.map(x =>            
           <Card  key = {x.id}
             trailer = {x.trailer}
             image = {x.image}
             nome = {x.nome}
             sinopse = {x.sinopse}
           />
-  
         )}  
           
       </Carousel>

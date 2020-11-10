@@ -10,10 +10,8 @@ namespace Backend.Utils
         public CartaoResponse ParaResponse(TbCartao tb)
         {
             return new CartaoResponse {
-                Id = tb.IdCartao,
                 Pedido = tb.IdPedido,
                 Gasto  = (float) tb.VlGasto,
-                Numero = tb.DsCartao
             };
         }
 

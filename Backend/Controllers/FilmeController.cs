@@ -98,7 +98,7 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpGet("Foto/{nome}")]
+        [HttpGet("Fotos/{nome}")]
         public ActionResult BuscarFoto(string nome)
         {
             try

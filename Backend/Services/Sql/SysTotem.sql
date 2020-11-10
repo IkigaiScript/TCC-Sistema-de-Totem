@@ -2,6 +2,9 @@ drop database tcdb;
 create database tcdb;
 use tcdb;
 
+-- Carlos : login, combo, 
+-- Weverton : filme, ator, diretor
+
 CREATE TABLE tb_filme (
 	`id_filme`        INT PRIMARY KEY AUTO_INCREMENT,
     `nm_filme`        VARCHAR(100) UNIQUE NOT NULL,
@@ -72,7 +75,7 @@ CREATE TABLE tb_pedido (
     `ds_status`				VARCHAR(255),
     `vl_total`				DECIMAL(10,2),
     FOREIGN KEY (`id_cupom_desconto`) REFERENCES tb_cupom_desconto (`id_cupom_desconto`) ON DELETE CASCADE,
-    FOREIGN KEY (`id_login`) REFERENCES tb_login (`id_login`) ON DELETE CASCADE
+    FOREIGN KEY (`id_login`) 	REFERENCES tb_login (`id_login`) ON DELETE CASCADE
 );
    
 CREATE TABLE tb_ingresso (
@@ -366,5 +369,6 @@ insert into tb_nota_fiscal (id_pedido,ds_email,ds_cpf) values (1,'skegtyko@gmail
 -- select * from tb_cartao;
 select * from tb_combo;
 select * from tb_pedido;
+select * from tb_login;
 select * from tb_snack_bar;
 select * from tb_nota_fiscal;
