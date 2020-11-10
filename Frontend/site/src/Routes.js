@@ -31,6 +31,8 @@ import ErroNoPagamento from './pages/Pagamento/PagamentoError';
 /* Telas fora do sistema */
 import Teste from './pages/Teste';
 import HomeGerente from './pages/Gerente/Home';
+import ConsultGerente from './pages/Gerente/ConsultMesDia'
+import ConsulTop from './pages/Gerente/ConsulTop'
 
 function Routes(){
     return(
@@ -69,7 +71,8 @@ function Routes(){
                                     {/* Gerente */}
                 
                 <Route path = '/Gerenciar' component = {HomeGerente} exact />
-                
+                <Route path = '/Gerenciar/consult' component = {ConsultGerente} exact />
+                <Route path = '/Gerenciar/top' component = {ConsulTop} exact />
             
             </Switch>
         </BrowserRouter>

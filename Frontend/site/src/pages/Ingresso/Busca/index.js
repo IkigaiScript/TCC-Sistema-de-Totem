@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import { PageDefault, SearchWrapper, Input, SelectionWrapper, Select, FilmesWrapper } from './style';
+import { PageDefault, SearchWrapper, SelectionWrapper, Select, FilmesWrapper } from './style';
 import Relogio from '../../../components/Relogio';
+import Input from  '../../../components/Input';
 import SelectFilme from '../../../components/SelectionFilme';
 
 export default function Busca (){
@@ -11,7 +12,7 @@ export default function Busca (){
 
             <SearchWrapper>
 
-                <Input type="text" size="45" placeholder="Pesquisar filme" />
+                <Input type='search' width='25vw' placeholder="Pesquisar filme" />
                 <Relogio />   
 
             </SearchWrapper>

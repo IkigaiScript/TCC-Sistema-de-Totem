@@ -5,9 +5,8 @@ export const PageDefault = styled.div`
     flex-direction:column;
     min-height:100vh;
     max-width:100vw;
-    background:rgb(170,170,170,0.3);
+    background:rgb(120,120,120,0.4);
 `;
-
 
 export const OpcaoWrapper = styled.div`
     display:flex;
@@ -17,5 +16,4 @@ export const OpcaoWrapper = styled.div`
     align-items:center;
     justify-content:center;
     justify-content:space-around;
-
 `;

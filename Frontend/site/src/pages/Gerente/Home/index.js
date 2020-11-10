@@ -13,7 +13,7 @@ export default function HomeGerente() {
 
             <OpcaoWrapper>
                
-               <Button 
+                <Button 
                     children = 'Consultar por dia/mês'
                
                 />
