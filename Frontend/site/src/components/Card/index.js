@@ -22,26 +22,12 @@ export default function Card(props){
             <InfoWrapper>
 
                 <span>Sinopse</span>
-                <p>{props.sinopse}</p>
+                <p style = {{'font-size': '18px'}}>{props.sinopse}</p>
 
             </InfoWrapper>
 
             
-            <FilmeWrapper>
-
-                <Custom>
-                    <span>Sessão</span>
-                   
-
-                </Custom>
-
-                <Custom>
-
-                    <span>Sala</span>
-
-                </Custom>
-
-            </FilmeWrapper>
+            
 
         </PageDefault>
     );

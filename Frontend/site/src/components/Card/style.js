@@ -20,29 +20,20 @@ export const PageDefault = styled.div`
 export const Header = styled.div`
     display:flex;
     flex-direction:column;
-    height:30vh;
+    height:35vh;
 `;
 
 export const InfoWrapper = styled.div`
     display:flex;
     flex-direction:column;
-    height:30vh;
+    height:40vh;
 
     margin-left:10px;
     margin-right:10px;
+    margin-bottom:10px;
 
-    overflow-y: auto;
+    overflow-y:auto;
     ::-webkit-scrollbar{opacity:0};
-`;
-
-export const FilmeWrapper = styled.div`
-    display:flex;
-    flex-direction:column;
-    height:20vh;
-    width:100%;
-
-    margin-left:10px;
-    margin-right:10px;
 `;
 
 export const Custom = styled.div`
@@ -78,9 +69,11 @@ export const Span = styled.span`
     position:relative;
     z-index:1;
     top:4em;
-    left:4em;
+
     
     padding:0;
+    margin-left:auto;
+    margin-right:auto;
 `;
 
 

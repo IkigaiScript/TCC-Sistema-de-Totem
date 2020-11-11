@@ -5,7 +5,7 @@ import { ButtonStyled } from './style';
 export default function Button (props) {
     return(
         <ButtonStyled  as = {Link} to = {props.to}  onCLick = {props.Onclick}>
-            {props.children} 
+            <span>{props.children} </span> {props.icon} 
         </ButtonStyled>
     );
 }

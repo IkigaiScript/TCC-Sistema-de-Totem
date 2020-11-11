@@ -51,7 +51,7 @@ export const Menu = styled.div`
 
 export const Span = styled.span`
     text-decoration:none;
-    font-size:22px;
+    font-size:25px;
     font-weight:400;
 
     color:white;

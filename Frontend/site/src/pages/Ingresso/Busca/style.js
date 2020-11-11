@@ -13,11 +13,12 @@ export const PageDefault = styled.div`
 
 export const SearchWrapper = styled.div`
   display:flex;
-  width:80vw;
-  height: 50px;
+  width:50vw;
+  height: 60px;
 
   align-items: center;
   justify-content: center;
+  justify-content:space-around;
 
   margin-top: 20px;
   margin-left:auto;
@@ -44,25 +45,6 @@ export const SelectionWrapper = styled.div`
     padding-right:5px;
   }  
 
-`;
-
-
-export const Input = styled.input`
-  height:5vh;
-  width:35vw;
-
-  border: 2px solid black;
-  border-radius: 12px;
-
-  box-sizing: border-box;
-  padding-left:10px;
-
-  font-size: 16px;
-  background-color: white;
-
-  @media(max-width: 800px) {
-    width:70vw;
-  }
 `;
 
 export const Select = styled.select`

@@ -7,13 +7,19 @@ import Button from '../../components/Buttons';
 import Relogio from '../../components/Relogio';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Filme from '../../services/FilmeApi'
+import {FaRegUserCircle} from 'react-icons/fa';
+import {GiMeal, GiTicket} from 'react-icons/gi';
+import { IconContext } from "react-icons";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Filme from '../../services/FilmeApi';
 
 const api = new Filme();
 
 export default function  Home(){
 
   const [req,setReq] = useState([]);
+  const [reqs,setReqs] = useState([]);
 
   const responsive = {
     superLargeDesktop: {
@@ -40,11 +46,15 @@ export default function  Home(){
     try{
       const con = await api.consult();
       setReq([...con]);
+      console.log('ok Filme');
+
     }
     catch(e){
-      console.error("Deu Ruim Man");
+      toast.error('Fodeu');
     }
   }
+
+
 
   useEffect(() => {
     console.log("Hello world");
@@ -55,22 +65,25 @@ export default function  Home(){
   return (
     <PageDefault>
 
+      <ToastContainer />
       <Menu>
 
         <img src = {Logo} alt = '' width = '150' />
 
         <Relogio/>
-        
-        <Link to = '/login'><Span>Logar</Span></Link>
-        
+
+        <Link style ={{'textDecoration': 'none'}} to = '/login'> 
+
+          <Span>Usuario <FaRegUserCircle /></Span>
+
+        </Link>
+
       </Menu>
 
       <Carousel responsive={responsive} >
 
         {req.map(x =>            
           <Card  key = {x.id}
-            trailer = {x.trailer}
-            image = {x.image}
             nome = {x.nome}
             sinopse = {x.sinopse}
           />
@@ -80,17 +93,24 @@ export default function  Home(){
 
       <ButtonWrapper>
 
-        <Button 
-          to = '/compra/lanche'
-          children = 'Comprar Lanche'
-        />
+        <IconContext.Provider value={{ size: '20px'}}>
 
-        <Button 
-          to = '/sessaofilme'
-          children = 'Comprar Ingresso'
-        />
+          <Button
+            to = '/compra/lanche'
+            children = 'Comprar Lanche'
+            icon = { <GiMeal /> } 
+          />
+
+          <Button 
+            to = '/sessaofilme'
+            children = 'Comprar Ingresso'
+            icon = { <GiTicket /> }
+          />
+          
+        </IconContext.Provider>
           
       </ButtonWrapper>
+
     </PageDefault>
   );
 }
