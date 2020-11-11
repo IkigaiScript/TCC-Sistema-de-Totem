@@ -20,11 +20,11 @@ namespace Backend.Controllers
         SessaoConversor conv = new SessaoConversor();
 
         [HttpGet] // funcionando
-        public ActionResult<SessaoResponse> Consultar(int sessao)
+        public ActionResult<SessaoResponse> Consultar(int id)
         {
             try
             {
-                return conv.ParaResponse(buss.Consultar(sessao));
+                return conv.ParaResponse(buss.Consultar(id));
             }
             catch(Exception ex)
             {

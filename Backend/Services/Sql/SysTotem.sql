@@ -2,8 +2,8 @@ drop database tcdb;
 create database tcdb;
 use tcdb;
 
--- Carlos : login, combo, 
--- Weverton : filme, ator, diretor
+-- Carlos : login, combo, cliente, trailer, snack_bar, sessao
+-- Weverton : filme, ator, diretor, cupom_desconto
 
 CREATE TABLE tb_filme (
 	`id_filme`        INT PRIMARY KEY AUTO_INCREMENT,
@@ -234,67 +234,56 @@ insert into tb_snack_bar(nm_produto, ds_tipo_produto, ds_marca, ds_sabor, ds_pes
 
 insert into tb_snack_bar(nm_produto, ds_tipo_produto, ds_marca, ds_sabor, ds_peso, nr_qtd_estoque, vl_preco) values ("Salgadinho","Lanche","Ruffles","Lemon","300g",10,4.70);
 
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Will Smith','1968-09-25');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Blue hunt','1968-09-25');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (2,'Bred pitt','1963-12-18');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Alice braga','1963-12-18');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (3,'Tom Hanks','1956-07-9');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Henry zaga','1956-07-9');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (4,'Leonardo DiCprio','1974-11-11');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Maisies williams','1974-11-11');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (5,'Harrison Ford','1942-07-13');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Carlie heaton','1942-07-13');
 
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (6,'Johnny Depp','1963-06-09');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Frank welker','1963-06-09');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (7,'Julia Roberts','1967-10-28');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Will forte','1967-10-28');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (8,'Robert Pattinso','1986-05-13');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Zac efron','1986-05-13');
 
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (9,'Tom Cruise','1962-07-12');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Michael peña','1962-07-12');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Jim Carrey','1962-01-17');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Maggie q.','1962-01-17');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (11,'Natalie Portman','1981-06-09');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Lucy hale','1981-06-09');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (2,'Matt Damon','1970-10-08');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Melissa raunch','1970-10-08');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Sylvester Stallone','1946-06-06');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'George lópez','1946-06-06');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Nicolas Cage','1964-01-07');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Noel jonshansen','1964-01-07');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (5,'Robert De Niro','1943-08-17');
+insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Sarah giles','1943-08-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (1,'Quentin Tarantino','1963-03-27');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (12,'Sean mcnamara','1963-03-27');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (2,'Quentin Tarantino','1963-03-27');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (10,'Jeff wadlow','1973-02-27');
     
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (3,'Quentin Tarantino','1963-03-27');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (14,'Quentin Tarantino','1978-10-23');
     
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (4,'Quentin Tarantino','1963-03-27');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (15,'Quentin Tarantino','1983-01-19');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (5,'Quentin Tarantino','1963-03-27');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (11,'Elisa beth','1976-05-07');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (6,'Martin Scorsese','1942-11-17');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (16,'Martin Scorsese','1942-11-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (7,'Martin Scorsese','1942-11-17');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (7,'Martin Scorsese','1946-10-16');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (8,'Martin Scorsese','1942-11-17');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (8,'Martin Scorsese','1962-01-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (9,'Martin Scorsese','1942-11-17');
+insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (9,'Woody Allen','1935-12-01');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (10,'Martin Scorsese','1942-11-17');
-  
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (11,'Woody Allen','1935-12-01');
-  
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (1,'Woody Allen','1935-12-01');
-  
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (3,'Woody Allen','1935-12-01');
-  
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (1,'Woody Allen','1935-12-01');
-  
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (1,'Woody Allen','1935-12-01');
 
-insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,ds_third_item,vl_preco) values ('Cine caixinha passatempo chambinho','1 baldinho de pipoca','1 bebida servida em um copo de plastico brinde','1 passatempo chambinho',15.80);
+insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,ds_third_item,vl_preco) values ('Combo balde doce','1 baldinho de pipoca caramelo','2 bebida media',15.80);
 
 insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,ds_third_item,vl_preco) values ('combo kitkat','1 pipoca media', '1 bebida media', '1 kitkat',12.30);
 
@@ -364,9 +353,21 @@ insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entr
 
 insert into tb_nota_fiscal (id_pedido,ds_email,ds_cpf) values (1,'skegtyko@gmail.com','000.000.000-00');
 
+
+-- Carlos : cliente, trailer, snack_bar
+-- Weverton :  
 -- select * from tb_cupom_desconto;
 -- select * from tb_filme;
 -- select * from tb_cartao;
+
+SELECT * 
+	FROM tb_filme f
+LEFT JOIN tb_diretor d 
+	ON f.id_filme = d.id_filme
+    WHERE d.id_filme IS NULL;
+
+select * from tb_filme;
+
 select * from tb_combo;
 select * from tb_pedido;
 select * from tb_login;

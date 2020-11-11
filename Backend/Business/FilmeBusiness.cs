@@ -49,7 +49,7 @@ namespace Backend.Business
 
             if(genero != string.Empty && genero != null)
             {
-                if(!generos.Any(x => genero == x)) throw new ArgumentException("Genero não existe");
+                if(!generos.Any(x => genero.ToLower() == x)) throw new ArgumentException("Genero não existe");
             }
 
             return db.ConsultarFilter(genero,classificacao,sala);
