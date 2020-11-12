@@ -13,6 +13,11 @@ namespace Backend.Database
             return ctx.TbSessao.FirstOrDefault(x => x.IdSessao == id);
         } 
 
+        public TbFilme Filme(int id)
+        {
+            return ctx.TbFilme.FirstOrDefault(x => x.IdFilme == id);
+        }
+
         public TbCupomDesconto Desconto(int id)
         {
             return ctx.TbCupomDesconto.FirstOrDefault(x => x.IdCupomDesconto == id);

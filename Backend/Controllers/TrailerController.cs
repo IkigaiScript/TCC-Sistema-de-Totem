@@ -1,8 +1,7 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 
 using Backend.Business;
-using Backend.Utils;
-using Backend.Models;
 
 namespace Backend.Controllers
 {
@@ -10,13 +9,14 @@ namespace Backend.Controllers
     [Route("Trailers")]
     public class TrailerController : ControllerBase
     {
-        GerenciadorFotos buss = new GerenciadorFotos();
-        tcdbContext ctx = new tcdbContext();
-
-        [HttpGet("Videos/{nome}")] // Consultar trailer
-        public ActionResult LerVideo (string nome)
+        TrailerBusiness buss = new TrailerBusiness();
+        GerenciadorFotos fotos = new GerenciadorFotos();
+        
+        [HttpGet("Videos/id")] // Consultar trailer
+        public ActionResult LerVideo (int id)
         {
-            return buss.BuscarFoto(nome);
+            string nome =  buss.LerVideo(id);
+            return fotos.BuscarFoto(nome);
         }
 
         [HttpGet("ping")] 
