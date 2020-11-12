@@ -11,12 +11,14 @@ export default function Login(){
             <h1>Login</h1>
                
             <TextLogin>   
+
                 <p>
                     Faça agora seu login caso não tenha seu cadastro faça atraves de nossos app 
                     CineTotem  ou entre em nosso site <br></br>
                     www.CineTotem.com.br/CadastroMembroCineTotem
 
                 </p>
+                
             </TextLogin>
 
             <Custom>

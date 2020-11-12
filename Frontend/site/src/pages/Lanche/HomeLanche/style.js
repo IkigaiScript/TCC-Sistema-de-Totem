@@ -9,11 +9,6 @@ export const PagesDefault = styled.div`
 
    padding: 0px;
    margin: 0px;
-
-
-   >Button{
-      margin-left: 80px;
-   }
 `;
 
 //Titulo

@@ -8,10 +8,10 @@ export const ButtonStyled = styled.button`
 
   box-shadow:3px -5px darkgray;
   box-sizing:border-box;
-  padding-top:10px;
+  padding-top:15px;
   padding-bottom:auto;
-  padding-left:10px;
-  padding-right:10px;
+  padding-left:15px;
+  padding-right:15px;
   margin: 1em;
   border: 2px solid darkgray;
   border-radius: 12px;

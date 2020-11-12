@@ -67,9 +67,9 @@ export default function OqueDesejaComer() {
             </Link>  
 
             <Hr></Hr>
-
-            <Button children = 'Voltar' />
             
+            <Button children = 'Voltar' />
+        
             <div style = {{visibility: 'hidden'}}>
                 <Relogio />
             </div>
