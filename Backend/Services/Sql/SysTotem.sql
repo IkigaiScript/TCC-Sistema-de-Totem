@@ -244,37 +244,37 @@ insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Maisies williams'
   
 insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (1,'Carlie heaton','1942-07-13');
 
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Frank welker','1963-06-09');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Frank welker','1963-06-09');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Will forte','1967-10-28');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Will forte','1967-10-28');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Zac efron','1986-05-13');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (14,'Zac efron','1986-05-13');
 
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Michael peña','1962-07-12');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Michael peña','1962-07-12');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Maggie q.','1962-01-17');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Maggie q.','1962-01-17');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Lucy hale','1981-06-09');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (10,'Lucy hale','1981-06-09');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Melissa raunch','1970-10-08');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Melissa raunch','1970-10-08');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'George lópez','1946-06-06');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'George lópez','1946-06-06');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Noel jonshansen','1964-01-07');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Noel jonshansen','1964-01-07');
   
-insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Sarah giles','1943-08-17');
+-- insert into tb_ator(id_filme,nm_ator,dt_nascimento) values (12,'Sarah giles','1943-08-17');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (12,'Sean mcnamara','1963-03-27');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (12,'Sean mcnamara','1963-03-27');
   
 insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (10,'Jeff wadlow','1973-02-27');
     
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (14,'Quentin Tarantino','1978-10-23');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (14,'Quentin Tarantino','1978-10-23');
     
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (15,'Quentin Tarantino','1983-01-19');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (15,'Quentin Tarantino','1983-01-19');
   
 insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (11,'Elisa beth','1976-05-07');
   
-insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (16,'Martin Scorsese','1942-11-17');
+-- insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (16,'Martin Scorsese','1942-11-17');
   
 insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (7,'Martin Scorsese','1946-10-16');
   
@@ -283,7 +283,7 @@ insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (8,'Martin Scor
 insert into tb_diretor(id_filme,nm_diretor,dt_nascimento) values (9,'Woody Allen','1935-12-01');
   
 
-insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,ds_third_item,vl_preco) values ('Combo balde doce','1 baldinho de pipoca caramelo','2 bebida media',15.80);
+insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,vl_preco) values ('Combo balde doce','1 baldinho de pipoca caramelo','2 bebida media',15.80);
 
 insert into tb_combo(nm_combo,ds_first_item,ds_secondary_item,ds_third_item,vl_preco) values ('combo kitkat','1 pipoca media', '1 bebida media', '1 kitkat',12.30);
 
@@ -314,6 +314,12 @@ insert into tb_pedido (id_login) value (3);
 insert into tb_pedido (id_login) value (4);
 
 insert into tb_pedido (id_login) value (5);
+
+insert into tb_pedido (id_login) value (2);
+
+insert into tb_pedido (id_login) value (3);
+
+insert into tb_pedido (id_login) value (4);
 
 insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (1,2,3);
 
@@ -353,6 +359,25 @@ insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entr
 
 insert into tb_nota_fiscal (id_pedido,ds_email,ds_cpf) values (1,'skegtyko@gmail.com','000.000.000-00');
 
+insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (3,'Diego Lima Cavalcanti','737.905.675-15','40265-080','(11)94050-6575','38.861.140-6',false,false);
+
+insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (4,'Davi Melo Ribeiro','738.015.754-03','04152-030','(11)99865-9137','27.637.913-5',false,true);
+
+insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (5,'Luan Sousa Cavalcanti','784.825.865-30','14403-352','(11)96502-8840','19.445.044-2',false,false);
+
+insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (6,'Vinícius Souza Cardoso','892.288.696-07','45606-145','(11)99748-6850','28.746.410-6',false,false);
+
+insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (7,'Otávio Barros Oliveira','432.947.602-99','03140-010','(11)97416-3582','43.717.287-9',false,false);
+
+insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (8,'Cauã Cavalcanti Santos','705.560.407-91','86706-630','(11)93769-5806','38.767.985-6',true,false);
+
+insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (9,'Luis Barros Alves','415.984.162-78','18072-043','(11)90126-5913','14.059.072-9',false,false);
+
+insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (10,'Kauê Dias Ferreira','771.579.318-34','28238-892','(11)95961-1425','36.514.876-3',false,true);
+
+insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (11,'Tiago Alves Pereira','718.289.192-2','84061-300','(11)91832-8313','14.890.383-6',false,false);
+
+insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (12,'Marcos Alves Oliveira','495.297.657-20','21060-550','(11)99429-2624','37.678.430-1',false,false);
 
 -- Carlos : cliente, trailer, snack_bar
 -- Weverton :  
@@ -365,11 +390,13 @@ SELECT *
 LEFT JOIN tb_diretor d 
 	ON f.id_filme = d.id_filme
     WHERE d.id_filme IS NULL;
+    
 
-select * from tb_filme;
+desc tb_cliente;
 
 select * from tb_combo;
 select * from tb_pedido;
+
 select * from tb_login;
 select * from tb_snack_bar;
 select * from tb_nota_fiscal;

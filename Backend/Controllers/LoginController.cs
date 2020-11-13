@@ -17,6 +17,7 @@ namespace Backend.Controllers
     [Route("Logins")]
     public class LoginController : ControllerBase
     {
+        IdBase ConsTBase = new IdBase();
         LoginConversor conv = new LoginConversor();
         LoginBusiness buss = new LoginBusiness();
 
@@ -26,7 +27,10 @@ namespace Backend.Controllers
             try
             {
                 TbLogin login = conv.ParaTabela(req);
-                return conv.ParaResponse(buss.Iniciar(login));
+                TbPedido pedido = buss.Iniciar(login);
+                TbLogin lg = ConsTBase.Login(pedido.IdLogin);
+
+                return conv.ParaResponse(pedido,(int) lg.NrNivel);
             }
             catch(Exception ex)
             {

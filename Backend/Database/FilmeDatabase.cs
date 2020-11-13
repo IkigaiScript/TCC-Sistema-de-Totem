@@ -42,15 +42,11 @@ namespace Backend.Database
 
             if(sala != null && sala != string.Empty)
             {
-                Console.WriteLine(sala);
-                Console.WriteLine(filmes[0].TbSessao.ToList()[0].IdSessao);
                 filmes = filmes.Where(x => x.TbSessao.Any(x => x.DsTipoSala.ToLower() == sala.ToLower())).ToList();
             }
 
             if(genero != null && genero != string.Empty)
             {
-                Console.WriteLine($"Genero: {genero}");
-                filmes = filmes.Where(x => this.GenderValidation(x.DsGenero.ToLower(),genero)).ToList();
                 Console.WriteLine($"{filmes.Count} {filmes[0].NmFilme}");
             }
 

@@ -36,6 +36,7 @@ namespace Backend.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseMySql("server=localhost;userid=root;pwd=1234;database=tcdb", x => x.ServerVersion("8.0.21-mysql"));
             }
         }
@@ -234,6 +235,8 @@ namespace Backend.Models
                 entity.Property(e => e.DsSenha)
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.NrNivel).HasDefaultValueSql("'0'");
             });
 
             modelBuilder.Entity<TbNotaFiscal>(entity =>
@@ -276,6 +279,8 @@ namespace Backend.Models
                 entity.Property(e => e.DsStatus)
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
+
+                entity.Property(e => e.DtHorario).HasDefaultValueSql("'2020-11-12 12:00:00'");
 
                 entity.Property(e => e.NmTitular)
                     .HasCharSet("utf8mb4")
