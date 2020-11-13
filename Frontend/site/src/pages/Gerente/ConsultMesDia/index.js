@@ -1,15 +1,43 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import Input from '../../../components/Input'
 import Relogio from '../../../components/Relogio';
 import {PageDefault, SearchWrappper} from './style';
+import { ToastContainer,toast } from 'react-toastify'
+import { Gerente } from '../../../services/GerenteApi'
+const api = new Gerente();
 
+"use strict"
 
 export default function ConsultGerente() {
+
+    const [dia,setDia] = useState(0);
+    const [mesInicio,setMesInicio] = useState(0);
+    const [mesFinal,setMesFinal] = useState(0);
+    
+    async function consultVendasDoDia(){
+        try{
+            const response = api.VendasDoDia(dia);
+            return response;
+        }
+        catch(e){
+            toast.error(e.response.data.error);
+        }
+    }
+
+    async function consultVendasDoMes(){
+        try{
+            const response = api.VendasdoMes(mesInicio,mesFinal);
+            return response;
+        }
+        catch(e){
+            toast.error(e.response.data.error);
+        }
+    }
 
     return(
 
         <PageDefault>
-
+            <ToastContainer/>   
             <h1>Realizar  consulta por dia/mes</h1>
 
             <SearchWrappper>
@@ -34,7 +62,6 @@ export default function ConsultGerente() {
             <div style = {{visibility: 'hidden'}}>
                 <Relogio />
             </div>
-
         </PageDefault>
     );
 

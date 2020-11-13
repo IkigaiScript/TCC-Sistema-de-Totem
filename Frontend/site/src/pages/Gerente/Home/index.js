@@ -2,6 +2,9 @@ import React from 'react';
 import Relogio from '../../../components/Relogio';
 import Button from '../../../components/Buttons';
 import {PageDefault, OpcaoWrapper} from './style';
+import { ToastContainer,toast } from 'react-toastify'
+import { Gerente } from '../../../services/GerenteApi'
+const api = new Gerente();
 
 export default function HomeGerente() {
 
