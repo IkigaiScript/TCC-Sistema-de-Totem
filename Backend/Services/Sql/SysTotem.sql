@@ -357,6 +357,44 @@ insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entr
 
 insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (1,1,'A',11,false);
 
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (1,1,'A',4,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (1,1,'A',7,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (1,1,'A',2,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (1,1,'A',9,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (2,2,'A',1,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (2,2,'A',2,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (2,2,'A',3,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (2,2,'A',4,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (2,2,'A',5,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (2,2,'A',6,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (2,2,'A',7,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (2,2,'A',8,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (2,2,'A',9,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (2,3,'A',10,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (3,3,'A',11,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (1,1,'A',11,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (1,1,'A',11,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (1,1,'A',11,false);
+
+insert into tb_ingresso (id_pedido,id_sessao,ds_fileira,nr_poltrona,bt_meia_entrada) values (4,4,'A',11,false);
+
 insert into tb_nota_fiscal (id_pedido,ds_email,ds_cpf) values (1,'skegtyko@gmail.com','000.000.000-00');
 
 insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_condicao_especial,bt_vip) values (3,'Diego Lima Cavalcanti','737.905.675-15','40265-080','(11)94050-6575','38.861.140-6',false,false);
@@ -391,12 +429,20 @@ LEFT JOIN tb_diretor d
 	ON f.id_filme = d.id_filme
     WHERE d.id_filme IS NULL;
     
+select * from tb_pedido where  dt_horario between '2020-11-01' and '2020-11-30'; 
+
+update tb_pedido set vl_total = 100 where id_pedido in(1,2,3,4,5,6,7,8);
 
 desc tb_cliente;
 
+select * from tb_pedido_snack_bar where id_snack_bar = 5;
+select * from tb_snack_bar where id_snack_bar = 5;
+select * from tb_pedido_combo where id_combo = 4;
 select * from tb_combo;
-select * from tb_pedido;
+select count(*) from tb_pedido where id_login not in(1,2);
+
+update tb_pedido set dt_horario = '2020-11-13-12' where id_pedido in(1,3,5,7);
 
 select * from tb_login;
-select * from tb_snack_bar;
+select * from tb_ingresso;
 select * from tb_nota_fiscal;
