@@ -24,4 +24,9 @@ export class Gerente {
         const response = await api.get(`Gerente/Top/Produtos`);
         return response.data;
     }
+
+    async TotemLogins(){
+        const response = await api.get(`Gerente/Logins`);
+        return response.data;
+    }
 }

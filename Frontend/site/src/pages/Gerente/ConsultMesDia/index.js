@@ -6,17 +6,18 @@ import { ToastContainer,toast } from 'react-toastify'
 import { Gerente } from '../../../services/GerenteApi'
 const api = new Gerente();
 
-"use strict"
-
 export default function ConsultGerente() {
 
     const [dia,setDia] = useState(0);
     const [mesInicio,setMesInicio] = useState(0);
     const [mesFinal,setMesFinal] = useState(0);
-    
+    const [vendasDia,setVendasDia] = useState([])
+    const [vendasMes,setVendasMes] = useState([]);
+
     async function consultVendasDoDia(){
         try{
-            const response = api.VendasDoDia(dia);
+            const response = await api.VendasDoDia(dia);
+            setVendasDia([...response]);
             return response;
         }
         catch(e){
@@ -26,7 +27,8 @@ export default function ConsultGerente() {
 
     async function consultVendasDoMes(){
         try{
-            const response = api.VendasdoMes(mesInicio,mesFinal);
+            const response = await api.VendasdoMes(mesInicio,mesFinal);
+            setVendasMes([...response]);
             return response;
         }
         catch(e){

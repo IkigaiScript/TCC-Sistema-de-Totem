@@ -7,13 +7,15 @@ import { Gerente } from '../../../services/GerenteApi';
 import Chart from "react-google-charts";
 const api = new Gerente();
 
-"use strict"
-
 export default function ConsulTop (){
     
+    const [topFilmes,setTopFilmes] = useState([]);
+    const [topPrdotutos,setTopProdutos] = useState([]);
+
     async function consultTopFilmes(){
         try{
             const response = await api.TopFilmes();
+            setTopFilmes([...response])
             return response;
         }
         catch(e){
@@ -24,6 +26,7 @@ export default function ConsulTop (){
     async function consultTopProdutos(){
         try{
             const response = api.TopProdutos();
+            setTopProdutos([...response])
             return response;
         }
         catch(e){

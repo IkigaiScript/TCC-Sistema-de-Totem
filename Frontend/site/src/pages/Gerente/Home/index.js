@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Relogio from '../../../components/Relogio';
 import Button from '../../../components/Buttons';
 import {PageDefault, OpcaoWrapper} from './style';
@@ -8,6 +8,20 @@ const api = new Gerente();
 
 export default function HomeGerente() {
 
+    const [totem,setTotem] = useState(0);
+    const [login,setLogin] = useState(0);
+
+    async function TotemLogins(){
+        try{
+            const response = await api.TotemLogins();
+            setTotem(response.Totem);
+            setLogin(response.Login);
+            return response;
+        }
+        catch(e){
+            toast.error(e.response.data);
+        }
+    }
     return(
 
         <PageDefault>
