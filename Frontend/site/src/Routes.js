@@ -1,7 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-
 /* Global */
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -28,8 +27,11 @@ import NFe from './pages/Pagamento/NF-e';
 import PagamentoRealizado from './pages/Pagamento/PagamentoRealizado';
 import ErroNoPagamento from './pages/Pagamento/PagamentoError';
 
-import Teste from './pages/Teste'
-
+/* Telas fora do sistema */
+import Teste from './pages/Teste';
+import HomeGerente from './pages/Gerente/Home';
+import ConsultGerente from './pages/Gerente/ConsultMesDia';
+import ConsulTop from './pages/Gerente/ConsulTop';
 
 function Routes(){
     return(
@@ -64,6 +66,12 @@ function Routes(){
                 <Route path = '/pagamento/QRCode' component = {QRCode} exact/>
                 <Route path = '/ErroNoPagamento' component = {ErroNoPagamento} exact/>
                 <Route path = '/PagamentoRealizado' component = {PagamentoRealizado} exact/>   
+
+                                    {/* Gerente */}
+                
+                <Route path = '/Gerenciar' component = {HomeGerente} exact />
+                <Route path = '/Gerenciar/consult' component = {ConsultGerente} exact />
+                <Route path = '/Gerenciar/top' component = {ConsulTop} exact />
 
             </Switch>
         </BrowserRouter>
