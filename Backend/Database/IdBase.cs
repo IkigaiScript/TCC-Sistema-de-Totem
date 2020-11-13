@@ -36,5 +36,10 @@ namespace Backend.Database
         {
             return ctx.TbCombo.FirstOrDefault(x => x.IdCombo == id);
         }
+
+        public TbLogin Login(int id)
+        {
+            return ctx.TbLogin.FirstOrDefault(x => x.IdLogin == id);
+        }
     }
 }

@@ -16,10 +16,11 @@ namespace Backend.Utils
             };
         }
 
-        public LoginResponse ParaResponse(TbPedido tb)
+        public LoginResponse ParaResponse(TbPedido tb,int nivel)
         {
             return new LoginResponse {
-                Pedido = tb.IdPedido
+                Pedido = tb.IdPedido,
+                Nivel = nivel
             };
         }
     }
