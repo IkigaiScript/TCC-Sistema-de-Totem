@@ -2,8 +2,14 @@ import React,{ useState } from 'react';
 import Input from '../../../components/Input'
 import Relogio from '../../../components/Relogio';
 import {PageDefault, SearchWrappper} from './style';
-import { ToastContainer,toast } from 'react-toastify'
-import { Gerente } from '../../../services/GerenteApi'
+import { ToastContainer,toast } from 'react-toastify';
+import { Gerente } from '../../../services/GerenteApi';
+import Chart from "react-google-charts";
+import Table from 'react-bootstrap/Table';
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const api = new Gerente();
 
 export default function ConsultGerente() {
@@ -39,26 +45,71 @@ export default function ConsultGerente() {
     return(
 
         <PageDefault>
+
             <ToastContainer/>   
             <h1>Realizar  consulta por dia/mes</h1>
 
             <SearchWrappper>
 
-                <Input 
-                    type = 'month'
-                    placeholder = 'Escolhau um mês'
-                    
-                    width = '20vw'
-                />
+                <div>
+
+                    <span>Inicio</span>
+                    <Input 
+
+                        type = 'month'
+                        value = {mesInicio}
+                        onChange = {e => setMesInicio(e.target.value)}
+                        
+                        width = '16vw'
+                    />
+
+                </div>
+
+                <div>
+
+                    <span>Fim</span>
+                    <Input 
+
+                        type = 'month'    
+                        value = {mesFinal}
+                        onChange = {e => setMesFinal(e.target.value)}
+                        
+                        width = '16vw'
+                    />
+
+                </div>
 
                 <Input 
                     type = 'date'
-                    placeholder = 'Escolhau um dia'
+                    value = {dia}
+                    onChange = {e => setDia(e.target.value)}
                     
                     width = '20vw'
                 />    
 
             </SearchWrappper>
+
+            <div>
+
+            <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
+
+                <Tab eventKey="Dia" title="Dia">
+
+
+                    
+                </Tab>
+
+                <Tab eventKey="Mês" title="Mês">
+
+
+
+                </Tab>
+
+                
+
+            </Tabs>
+
+            </div>
 
 
             <div style = {{visibility: 'hidden'}}>
