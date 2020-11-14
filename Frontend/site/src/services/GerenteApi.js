@@ -15,8 +15,8 @@ export class Gerente {
         return response.data;
     }
 
-    async VendasdoMes(inicio,final){
-        const response = await api.get(`Gerente/Venda?inicio=${inicio}&final=${final}`);
+    async VendasdoMes(req){
+        const response = await api.get(`Gerente/Vendas`,req);
         return response.data;
     }
 

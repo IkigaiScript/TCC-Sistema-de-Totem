@@ -27,7 +27,13 @@ export default function ConsultGerente() {
 
     async function consultVendasDoMes(){
         try{
-            const response = await api.VendasdoMes(mesInicio,mesFinal);
+            
+            const req = {
+                Inicio:mesInicio,
+                Final:mesFinal
+            }
+
+            const response = await api.VendasdoMes(req);
             setVendasMes([...response]);
             return response;
         }

@@ -39,18 +39,20 @@ namespace Backend.Database
             return vendas;
         }
 
-        public List<VendasPorMes> VendasdoMes(int inicio, int final)
+        public List<VendasPorMes> VendasdoMes(DateTime inicio, DateTime final)
         {
             List<VendasPorMes> vendas = new List<VendasPorMes>();
 
-            while(inicio <= final)
+            if(final == null) final = inicio;
+
+            while(inicio.Month <= final.Month || final.Year != inicio.Year)
             {
-                List<TbPedido> pedidos = ctx.TbPedido.Where(x => x.DtHorario.Value.Month == final).ToList();
+                List<TbPedido> pedidos = ctx.TbPedido.Where(x => x.DtHorario.Value.Month == final.Month && x.DtHorario.Value.Year == final.Year).ToList();
                 
                 float total = (float) pedidos.Sum(x => x.VlTotal).Value;
-                VendasPorMes venda = conv.VendasPorMes(final,pedidos.Count,total);
+                VendasPorMes venda = conv.VendasPorMes(final.ToLongDateString(),pedidos.Count,total);
                 vendas.Add(venda);
-                final--;
+                final = final.AddMonths(-1);
             }
 
             return vendas;

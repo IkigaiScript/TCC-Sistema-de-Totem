@@ -21,17 +21,31 @@ namespace Backend.Business
             return vendas;
         }
 
-        public List<VendasPorMes> VendasdoMes(int inicio,int final)
+        public List<VendasPorMes> VendasdoMes(DateTime inicio,DateTime final)
         {
-            if(inicio < 1 || inicio > 12) throw new ArgumentException("Mês inicial inválido");
+            if(inicio == null) throw new ArgumentException("Mês inicial está vazio");
+            Console.WriteLine('0');
+            if(inicio.Month < 1 || inicio.Month > 12) throw new ArgumentException("Mês inicial inválido");
+            Console.WriteLine('1');
+            if(final != new DateTime() && final != null)
+            {
+                Console.WriteLine('2');
+                if(final.Month < 1 || final.Month > 12) throw new ArgumentException("Mês final inválido");
+            
+                if(final.Year <= DateTime.Now.Year - 2) throw new ArgumentException("Ano inválido"); 
 
-            if(final < 1 || final > 12) throw new ArgumentException("Mês inicial inválido");
-
-            if(inicio > final) throw new ArgumentException("Intervalo de meses inválido");            
-
+                if(inicio.Month != final.Month || inicio.Year != final.Year)
+                {
+                    Console.WriteLine($"{inicio.Month > final.Month} + {inicio.Year > final.Year} = {inicio.Month > final.Month || inicio.Year > final.Year} ");
+                    if((inicio.Month > final.Month || inicio.Year > final.Year) || (inicio.Month < final.Month && inicio.Year > final.Year)) throw new ArgumentException("Intervalo de meses inválido");            
+                   
+                    Console.WriteLine('3');
+                }
+                Console.WriteLine('4');
+            }
             return db.VendasdoMes(inicio,final);
+        
         }
-
         public List<TopFilmes> TopFilmes()
         {
             List<TopFilmes> filmes = db.TopFilmes();

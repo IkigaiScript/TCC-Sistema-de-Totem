@@ -5,11 +5,11 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
 
+using Backend.Models;
 using Backend.Models.Response.Gerente;
 using Backend.Business;
 using Backend.Utils;
 using Backend.Models.Response;
-
 namespace Backend.Database
 {
     [ApiController]
@@ -35,11 +35,12 @@ namespace Backend.Database
         }
 
         [HttpGet("Vendas")] // pronto
-        public ActionResult<List<VendasPorMes>> VendasDoMes(int inicio, int final)
+        public ActionResult<List<VendasPorMes>> VendasDoMes(Models.Request.Gerente.VendasPorMes req)
         {
             try
             {
-                return buss.VendasdoMes(inicio,final);
+                Console.WriteLine("start");
+                return buss.VendasdoMes(req.Inicio,req.Final);
             }
             catch(Exception ex)
             {
@@ -64,7 +65,7 @@ namespace Backend.Database
             }
         }
 
-        [HttpGet("Top/Produtos")]
+        [HttpGet("Top/Produtos")] // pronto
         public ActionResult<List<TopProdutos>> TopProdutos()
         {
             try
@@ -79,7 +80,7 @@ namespace Backend.Database
             }
         }
 
-        [HttpGet("Logins")]
+        [HttpGet("Logins")] // pronto
         public ActionResult<TotemLogins> TotemLogins()
         {
             try 
@@ -88,8 +89,8 @@ namespace Backend.Database
             }
             catch(Exception ex)
             {
-                return new NotFoundObjectResult(
-                    new ErrorResponse(400,ex.Message)
+                return new BadRequestObjectResult(
+                    new ErrorResponse(500,ex.Message)
                 );
             }
         }

@@ -25,19 +25,14 @@ export default function HomeGerente() {
     return(
 
         <PageDefault>
-
             <h1>Gerenciamento do Totem</h1>
-
             <OpcaoWrapper>
-               
                 <Button 
                     children = 'Consultar por dia/mês'
-               
                 />
 
                 <Button 
                     children = 'Consultar os top 10'
-               
                 />
 
 
@@ -45,7 +40,6 @@ export default function HomeGerente() {
                     children = 'Consultar'
             
                 />
-
             </OpcaoWrapper>
             
             <div style = {{visibility: 'hidden'}}>

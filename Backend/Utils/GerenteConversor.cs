@@ -18,7 +18,7 @@ namespace Backend.Utils
             };
         }
 
-        public VendasPorMes VendasPorMes(int mes,int qtd,float total)
+        public VendasPorMes VendasPorMes(string mes,int qtd,float total)
         {
             return new VendasPorMes() {
                 Mes = mes,

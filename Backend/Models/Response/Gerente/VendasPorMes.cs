@@ -1,8 +1,9 @@
+using System;
 namespace Backend.Models.Response.Gerente
 {
     public class VendasPorMes
     {
-        public int Mes { get; set; }
+        public string Mes { get; set; }
         public int Qtd { get; set; }
         public float Total { get; set; }
     }
