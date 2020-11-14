@@ -93,5 +93,11 @@ namespace Backend.Database
                 );
             }
         }
+
+        [HttpGet("ping")]
+        public string ping()
+        {
+            return "pong";
+        }
     }
 }
