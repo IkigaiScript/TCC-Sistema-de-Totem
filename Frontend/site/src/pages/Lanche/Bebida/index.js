@@ -34,7 +34,7 @@ export default function Bebida (){
             width: "150px",
             height: "35px"
         }
-  };
+    };
    
 
     return (

@@ -12,7 +12,7 @@ export const PageDefault = styled.div`
 export const SearchWrappper = styled.div`
     display:flex;
     height: 10vh;
-    width:60vw;
+    width:90vw;
     background:rgb(140,140,140,0.2);
     box-sizing:border-box;
     padding-left:20px;

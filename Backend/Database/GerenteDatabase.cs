@@ -43,9 +43,9 @@ namespace Backend.Database
         {
             List<VendasPorMes> vendas = new List<VendasPorMes>();
 
-            if(final == null) final = inicio;
+            if(final == new DateTime() || final == null) final = inicio;
 
-            while(inicio.Month <= final.Month || final.Year != inicio.Year)
+            while((inicio - final.AddMonths(1)).TotalDays < -1)
             {
                 List<TbPedido> pedidos = ctx.TbPedido.Where(x => x.DtHorario.Value.Month == final.Month && x.DtHorario.Value.Year == final.Year).ToList();
                 
@@ -56,6 +56,27 @@ namespace Backend.Database
             }
 
             return vendas;
+        }
+
+        public TbPedido DatePedExists(DateTime data)
+        {
+            return ctx.TbPedido.FirstOrDefault(x => x.DtHorario.Value.Year == data.Year && x.DtHorario.Value.Month == data.Month);
+        }
+
+        public TbPedido UltimateExists(DateTime data)
+        {
+            TbPedido ret = null;
+
+            if(ctx.TbPedido.Any(x => x.DtHorario.Value.Year == data.Year && x.DtHorario.Value.Month > data.Month))
+            {
+                while(ret == null)
+                {
+                    ret = ctx.TbPedido.OrderBy(x => x.DtHorario.Value).FirstOrDefault(x => x.DtHorario.Value.Month == data.Month && x.DtHorario.Value.Year == data.Year);
+                    data = data.AddMonths(1);
+                }
+            }
+
+            return ret;
         }
 
         public List<TopFilmes> TopFilmes()

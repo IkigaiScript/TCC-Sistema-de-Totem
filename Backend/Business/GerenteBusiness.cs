@@ -24,27 +24,33 @@ namespace Backend.Business
         public List<VendasPorMes> VendasdoMes(DateTime inicio,DateTime final)
         {
             if(inicio == null) throw new ArgumentException("Mês inicial está vazio");
-            Console.WriteLine('0');
-            if(inicio.Month < 1 || inicio.Month > 12) throw new ArgumentException("Mês inicial inválido");
-            Console.WriteLine('1');
+
+            if((inicio - DateTime.Now).TotalDays > 0) throw new ArgumentException("Data para o mês incial ainda não existe");
+
+            if(inicio.Month < 1 || inicio.Month > 12) throw new ArgumentException("Mês inicial está inválido");
+
+            if(db.DatePedExists(inicio) == null)
+            {
+                string text = "Nenhum pedido foi adicionado a esse mês. ";
+                if(db.UltimateExists(inicio) != null) text += $"O dia mais proximo que encontramos foi {db.UltimateExists(inicio).DtHorario.Value.ToLongDateString()}";
+                
+                throw new ArgumentException(text);
+            } 
+
             if(final != new DateTime() && final != null)
             {
-                Console.WriteLine('2');
                 if(final.Month < 1 || final.Month > 12) throw new ArgumentException("Mês final inválido");
             
-                if(final.Year <= DateTime.Now.Year - 2) throw new ArgumentException("Ano inválido"); 
+                if(inicio.Year <= DateTime.Now.Year - 2 || inicio > DateTime.Now) throw new ArgumentException("Ano/Mês inicial inválido");
+                
+                if(final > DateTime.Now) throw new ArgumentException("Ano/Mês final inválido"); 
 
                 if(inicio.Month != final.Month || inicio.Year != final.Year)
                 {
-                    Console.WriteLine($"{inicio.Month > final.Month} + {inicio.Year > final.Year} = {inicio.Month > final.Month || inicio.Year > final.Year} ");
-                    if((inicio.Month > final.Month || inicio.Year > final.Year) || (inicio.Month < final.Month && inicio.Year > final.Year)) throw new ArgumentException("Intervalo de meses inválido");            
-                   
-                    Console.WriteLine('3');
+                    if((inicio - final).TotalDays >= 1) throw new ArgumentException("Intervalo de meses inválido");                               
                 }
-                Console.WriteLine('4');
             }
             return db.VendasdoMes(inicio,final);
-        
         }
         public List<TopFilmes> TopFilmes()
         {

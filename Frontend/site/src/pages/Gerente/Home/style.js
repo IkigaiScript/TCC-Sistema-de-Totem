@@ -10,9 +10,19 @@ export const PageDefault = styled.div`
 
 export const OpcaoWrapper = styled.div`
     display:flex;
-    height:80vh;
+    height:35vh;
     width:100vw;
     align-items:center;
     justify-content:center;
     justify-content:space-around;
+`;
+
+export const GrafiWrapper = styled.div`
+    display:flex;
+    height:fit-content();
+    width:100vw;
+
+    justify-content:center;
+     
+    
 `;

@@ -5,6 +5,10 @@ import {PageDefault, ClassificarWrapper, TopWrapper} from './style';
 import { ToastContainer,toast } from 'react-toastify';
 import { Gerente } from '../../../services/GerenteApi';
 import Chart from "react-google-charts";
+import Table from 'react-bootstrap/Table';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 const api = new Gerente();
 
 export default function ConsulTop (){
@@ -19,83 +23,156 @@ export default function ConsulTop (){
             return response;
         }
         catch(e){
-            toast.error(e.response.data)
+            toast.error('Deu ruim')
         }
     }
 
     async function consultTopProdutos(){
+
         try{
             const response = api.TopProdutos();
             setTopProdutos([...response])
             return response;
         }
         catch(e){
-            toast.error(e.response.data);
+            toast.error('Deu ruim');
         }
     }
-
-    useEffect(() => {
-        consultTopFilmes();
-        consultTopProdutos();
-    },[]);
     
+    function filme(){
+        const resp = [];
+
+        for(let i=4;i < topFilmes.length;i++){
+           const filme = topFilmes[i].Posicao = i;
+          console.log(filme);
+           resp.push(filme);
+        }
+        return resp;
+
+    }
+
+    function prodotu(){
+
+        const resp = [];
+
+        for(let i=4;i < topPrdotutos.length;i++){
+           const prodo = topPrdotutos[i].Posicao = i;
+          console.log(prodo);
+           resp.push(prodo);
+        }
+        return resp;
+
+    }
+
+    const produtos = prodotu();
+    const filmees = filme();
+
     return(
         <PageDefault>
             <ToastContainer/>
             <h1>Classificação dos Top 10</h1>
             
+            <Button 
+                to = '/Gerenciar'
+                children = 'Voltar'
+            />
+
             <ClassificarWrapper>
 
                 <TopWrapper>
 
                     <Button 
+                        onClick = {consultTopProdutos}
                         children = 'Top 10 mais Vendidas'
                     />
+
+                    {produtos.map(x =>       
+                        <Table striped bordered hover>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Posição</th>
+                                    <th>Item</th>
+                                    <th>Tipo</th>
+                                    <th>valor un</th>
+                                    <th>Quantidade</th>
+                                    <th>Total</th>
+                                    <th>Imagem </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>{x.Posicao}</td>
+                                    <td >{x.Nome}</td>
+                                    <td>{x.Tipo}</td>
+                                    <td>{x.Valor}</td>
+                                    <td>{x.Qtd}</td>
+                                    <td>{x.Total}</td>
+                                    <td>{x.Imagem} </td>
+                                
+                                </tr>   
+
+                            </tbody>
+
+                        </Table>    
+                    )}
 
                 </TopWrapper>
 
                 <TopWrapper>
 
                     <Button 
-                        children = 'Top 10 mais Vendidas'
+                        onClick = {consultTopFilmes}
+                        children = 'Top 15  filmes mais Vendidas'
                     />
 
-                    <div style={{ display: 'flex', maxWidth: 900 }}>
-                        
-                        <Chart
-                            width={400}
-                            height={300}
-                            chartType="ColumnChart"
-                            loader={<div>Loading Chart</div>}
-                            data={[
-                            ['City', '2010 Population', '2000 Population'],
-                            ['New York City, NY', 8175000, 8008000],
-                            ['Los Angeles, CA', 3792000, 3694000],
-                            ['Chicago, IL', 2695000, 2896000],
-                            ['Houston, TX', 2099000, 1953000],
-                            ['Philadelphia, PA', 1526000, 1517000],
-                            ]}
-                            options={{
-                            title: 'Population of Largest U.S. Cities',
-                            chartArea: { width: '30%' },
-                            hAxis: {
-                                title: 'Total Population',
-                                minValue: 0,
-                            },
-                            vAxis: {
-                                title: 'City',
-                            },
-                            }}
-                            legendToggle
-                        />
 
-                    </div>
+                    {filmees.map(x => 
+
+                        <Table striped bordered hover>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Posição</th>
+                                    <th>Filme</th>
+                                    <th>Genero</th>
+                                    <th>Quantidade</th>
+                                    <th>Imagem</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>{x.Id}</td>
+                                    <td>{x.Nome}</td>
+                                    <td>{x.Genero}</td>
+                                    <td>{x.Qtd}</td>
+                                    <td>{x.Imagem} </td>
+                                    
+                                </tr>   
+
+                            </tbody>
+
+                        </Table>
+
+                    )}
 
                 </TopWrapper>
 
             </ClassificarWrapper>
-
-
 
             <div style = {{visibility: 'hidden'}}>
                 <Relogio />

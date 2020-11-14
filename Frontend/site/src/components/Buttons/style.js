@@ -8,18 +8,23 @@ export const ButtonStyled = styled.button`
 
   box-shadow:3px -5px darkgray;
   box-sizing:border-box;
-  padding-top:15px;
-  padding-bottom:auto;
-  padding-left:15px;
-  padding-right:15px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-right:auto;
   margin: 1em;
+  
   border: 2px solid darkgray;
   border-radius: 12px;
 
-  font-size: 16px;
-  text-align:center;
-  text-decoration:none;
-  color: white;
+  align-items:center;
+  justify-content:center;
+  
+  >span{
+    font-size: 16px;
+    text-align:center;
+    text-decoration:none;
+    color: white;
+  }
 
   :hover{
     cursor: pointer;
