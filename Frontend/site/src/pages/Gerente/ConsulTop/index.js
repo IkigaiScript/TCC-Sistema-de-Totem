@@ -194,96 +194,80 @@ export default function ConsulTop (){
 
                     
                     {filmees.map(x =>
+                        <>
+                            <RankingWrapper>
+                            
+                                <Posicao>
 
-                        <RankingWrapper>
-                        
-                            <Posicao>
+                                    <img src = {x.imagem} alt = '' height= '100px' />
+                                    <span>{x.Filmes}</span>
 
-                                <img src = {x.imagem} alt = '' height= '100px' />
-                                
-                                <span>{x.Filmes}</span>
+                                    <Segundo>
 
-                                <Segundo>
+                                        <img src = {Prate} alt = ''  height = '100px'/>
+                                        <span>Genero: {x.Genero}</span>
+                                        <span>Quantidade: {x.Qtd}</span>
 
-                                    <img src = {Prate} alt = ''  height = '100px'/>
+                                    </Segundo>
 
-                                    <span>Genero: {x.Genero}</span>
-                                    <span>Quantidade: {x.Qtd}</span>
+                                </Posicao>
 
-                                </Segundo>
+                                <Posicao>
 
-                            </Posicao>
+                                    <img src = {x.imagem} alt = '' height= '100px' />
+                                    <span>{x.Filmes}</span>
 
-                            <Posicao>
+                                    <Primeiro>
 
-                                <img src = {x.imagem} alt = '' height= '100px' />
-                                
-                                <span>{x.Filmes}</span>
+                                        <img src = {Ouro} alt = '' height = '120px'/>
+                                        <span>Genero: {x.Genero}</span>
+                                        <span>Quantidade: {x.Qtd}</span>
 
-                                <Primeiro>
+                                    </Primeiro>
 
-                                    <img src = {Ouro} alt = '' height = '120px'/>
+                                </Posicao>
 
-                                    <span>Genero: {x.Genero}</span>
-                                    <span>Quantidade: {x.Qtd}</span>
+                                <Posicao>
 
-                                </Primeiro>
+                                    <img src = {x.imagem} alt = '' height= '100px' />
+                                    <span>{x.Filmes}</span>
 
-                            </Posicao>
+                                    <Terceiro>
 
-                            <Posicao>
+                                        <img src = {Bronze} alt = '' height = '100px'/> 
+                                        <span>Genero</span>
+                                        <span>Quantidade</span>
 
-                                <img src = {x.imagem} alt = '' height= '100px' />
-                                
-                                <span>{x.Filmes}</span>
+                                    </Terceiro>
 
-                                <Terceiro>
-
-                                    <img src = {Bronze} alt = '' height = '100px'/> 
-
-                                    <span>Genero</span>
-                                    <span>Quantidade</span>
-
-                                </Terceiro>
-
-                            </Posicao>
-
-                        </RankingWrapper>
+                                </Posicao>
+                            </RankingWrapper>
                     
-                    
+                            <Table striped bordered hover>
+                                <thead>
+                                    <tr>
 
-                        <Table striped bordered hover>
+                                        <th>Posição</th>
+                                        <th>Filme</th>
+                                        <th>Genero</th>
+                                        <th>Quantidade</th>
+                                        <th>Imagem</th>
 
-                            <thead>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                <tr>
+                                    <tr>
+                                        <td>{x.Id}</td>
+                                        <td>{x.Nome}</td>
+                                        <td>{x.Genero}</td>
+                                        <td>{x.Qtd}</td>
+                                        <td>{x.Imagem} </td>
+                                    </tr>   
 
-                                    <th>Posição</th>
-                                    <th>Filme</th>
-                                    <th>Genero</th>
-                                    <th>Quantidade</th>
-                                    <th>Imagem</th>
-
-                                </tr>
-
-                            </thead>
-
-                            <tbody>
-
-                                <tr>
-
-                                    <td>{x.Id}</td>
-                                    <td>{x.Nome}</td>
-                                    <td>{x.Genero}</td>
-                                    <td>{x.Qtd}</td>
-                                    <td>{x.Imagem} </td>
-                                    
-                                </tr>   
-
-                            </tbody>
-
-                        </Table>
-
+                                </tbody>
+                            </Table>
+                        </>
                     )}
 
                 </TopWrapper>
