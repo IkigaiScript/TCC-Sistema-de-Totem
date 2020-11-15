@@ -10,7 +10,7 @@ namespace Backend.Database
     {
         tcdbContext ctx = new tcdbContext();
 
-        public List<TbPedidoSnackBar> Cadastrar (List<TbPedidoSnackBar> tbs)
+        public void Cadastrar (List<TbPedidoSnackBar> tbs)
         {
             ctx.TbPedidoSnackBar.AddRange(tbs);
             ctx.SaveChanges();
@@ -22,7 +22,6 @@ namespace Backend.Database
             }            
 
             ctx.SaveChanges();
-            return tbs;
         }       
     }
 }

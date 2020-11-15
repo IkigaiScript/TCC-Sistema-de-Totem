@@ -33,7 +33,7 @@ namespace Backend.Models
         [Column("vl_total", TypeName = "decimal(10,2)")]
         public decimal? VlTotal { get; set; }
         [Column("dt_horario", TypeName = "datetime")]
-        public DateTime? DtHorario { get; set; }
+        public DateTime DtHorario { get; set; }
 
         [ForeignKey(nameof(IdCupomDesconto))]
         [InverseProperty(nameof(TbCupomDesconto.TbPedido))]

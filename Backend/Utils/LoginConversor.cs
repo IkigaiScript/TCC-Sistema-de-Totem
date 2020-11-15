@@ -15,13 +15,5 @@ namespace Backend.Utils
                 DsSenha = req.Senha
             };
         }
-
-        public LoginResponse ParaResponse(TbPedido tb,int nivel)
-        {
-            return new LoginResponse {
-                Pedido = tb.IdPedido,
-                Nivel = nivel
-            };
-        }
     }
 }

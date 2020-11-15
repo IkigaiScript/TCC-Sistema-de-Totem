@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL:'http://54.89.253.106:5000/'
-    // baseURL:'http://localhost:5000/'
+    // baseURL:'http://54.89.253.106:5000/'
+    baseURL:'http://localhost:5000/'
 });
 
 export default class Filme {
@@ -28,7 +28,7 @@ export default class Filme {
     }
 
     async consultFilter(sala,genero,classificacao){
-        const response = await api.get(`Filmes?classificacao=${classificacao}&sala=${sala}&genero=${genero}`);
+        const response = await api.get(`Filmes/Seach?classificacao=${classificacao}&sala=${sala}&genero=${genero}`);
         return response.data;
     }
 

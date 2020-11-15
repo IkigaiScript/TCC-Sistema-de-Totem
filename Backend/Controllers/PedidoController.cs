@@ -20,7 +20,7 @@ namespace Backend.Controllers
         PedidoConversor conv = new PedidoConversor();
         PedidoBusiness buss = new PedidoBusiness();
 
-        [HttpDelete("{id}")] // funcionando
+        [HttpDelete("{id}")] // PRONTO
         public ActionResult<PedidoResponse> Deletar(int id)
         {
             try
@@ -35,7 +35,7 @@ namespace Backend.Controllers
             }
         }
  
-        [HttpPut("{id}")] // funcionando
+        [HttpPut("{id}")] // PRONTO
         public ActionResult<PedidoResponse> Alterar(int id, PedidoRequest req)
         {
             try
@@ -66,7 +66,7 @@ namespace Backend.Controllers
             }
         }
         
-        [HttpGet("{id}")] // funcionando
+        [HttpGet("{id}")] // PRONTO
         public ActionResult<PedidoResponse> Consultar(int id)
         {
             try

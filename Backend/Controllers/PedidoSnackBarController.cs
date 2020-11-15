@@ -12,7 +12,6 @@ using Backend.Models;
 using Backend.Models.Request;
 using Backend.Models.Response;
 
-
 namespace Backend.Controllers
 {
     [ApiController]
@@ -22,13 +21,14 @@ namespace Backend.Controllers
         PedidoSnackBarBusiness buss = new PedidoSnackBarBusiness();
         PedidoSnackBarConversor conv = new PedidoSnackBarConversor();
 
-        [HttpPost] // funcionando
-        public ActionResult<List<PedidoSnackBarResponse>> Cadastrar(List<PedidoSnackBarRequest> reqs)
+        [HttpPost] // PRONTO
+        public ActionResult Cadastrar(PedidoSnackBarRequest reqs)
         {
             try
             {
-                List<TbPedidoSnackBar> psb = conv.ParaListaTabela(reqs);
-                return conv.ParaListaResponse(buss.Cadastrar(psb));
+                List<TbPedidoSnackBar> psb = conv.ParaTabela(reqs);
+                buss.Cadastrar(psb);
+                return new OkResult();
             }
             catch(Exception ex)
             {

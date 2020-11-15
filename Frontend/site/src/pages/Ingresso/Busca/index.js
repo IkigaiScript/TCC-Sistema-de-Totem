@@ -17,14 +17,25 @@ export default function Busca (){
     const [con,setCon] = useState([]);
 
     async function consultParcial(){
-
         try{
+            setCon([]);
             const resp = await filme.consultParcial(seach);
-            setCon([...resp])
+            setCon([...resp]);
         }catch(e){
             console.error(e);
         }
-
+    }
+    
+    async function consultFilter(){
+        try{
+            setCon([]);
+            const resp = await filme.consultFilter(sala,genero,classificacao);
+            setCon([...resp]);
+            return resp;
+        }
+        catch(e){
+            console.log(e)
+        }
     }
 
     return (

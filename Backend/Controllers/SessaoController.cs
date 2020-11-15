@@ -19,7 +19,7 @@ namespace Backend.Controllers
         SessaoBusiness buss = new SessaoBusiness();
         SessaoConversor conv = new SessaoConversor();
 
-        [HttpGet] // funcionando
+        [HttpGet("{id}")] // PRONTO
         public ActionResult<SessaoResponse> Consultar(int id)
         {
             try

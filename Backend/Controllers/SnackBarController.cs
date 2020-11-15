@@ -32,7 +32,7 @@ namespace Backend.Controllers
            }
        }
 
-       [HttpGet]
+       [HttpGet] // PRONTO
        public ActionResult<List<SnackBarResponse>> Consultar(string tipoProduto)
        {
            try

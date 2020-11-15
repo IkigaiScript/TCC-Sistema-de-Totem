@@ -7,7 +7,7 @@ namespace Backend.Business
     public class LoginBusiness : Cryptography
     {
         LoginDatabase db = new LoginDatabase();
-        public TbPedido Iniciar(TbLogin tb)
+        public (int NumPedido,int Nivel) Iniciar(TbLogin tb)
         {
             TbLogin login = new TbLogin();
             if(!string.IsNullOrEmpty(tb.DsEmail))
@@ -17,7 +17,7 @@ namespace Backend.Business
 
                 login = login1;
             }
-
+            
             return db.Iniciar(login);
         }
     }

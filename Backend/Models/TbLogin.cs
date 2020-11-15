@@ -24,7 +24,7 @@ namespace Backend.Models
         [Column("ds_senha", TypeName = "varchar(255)")]
         public string DsSenha { get; set; }
         [Column("nr_nivel")]
-        public int? NrNivel { get; set; }
+        public int NrNivel { get; set; }
 
         [InverseProperty("IdLoginNavigation")]
         public virtual ICollection<TbCliente> TbCliente { get; set; }

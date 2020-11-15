@@ -9,33 +9,21 @@ namespace Backend.Utils
 {
     public class PedidoSnackBarConversor
     {
-        public TbPedidoSnackBar ParaTabela(PedidoSnackBarRequest req)
+        public List<TbPedidoSnackBar> ParaTabela(PedidoSnackBarRequest req)
         {
-            return new TbPedidoSnackBar {
-                NrQtdSnackBar = req.Qtd,
-                IdPedido = req.Pedido,
-                IdSnackBar = req.SnackBar
-            };
-        }
+            List<TbPedidoSnackBar> ret = new List<TbPedidoSnackBar>();
 
-        public List<TbPedidoSnackBar> ParaListaTabela(List<PedidoSnackBarRequest> reqs)
-        {
-            return reqs.Select(x => this.ParaTabela(x)).ToList();
-        }
+            foreach(Itens x in req.Itens){
+                ret.Add(
+                    new TbPedidoSnackBar {
+                        NrQtdSnackBar = x.Qtd,
+                        IdPedido = req.Pedido,
+                        IdSnackBar = x.SnackBar
+                    }
+                );
+            }
 
-        public PedidoSnackBarResponse ParaResponse(TbPedidoSnackBar tb)
-        {
-            return new PedidoSnackBarResponse {
-                SnackBar = (int) tb.IdSnackBar,
-                Qtd = (int) tb.NrQtdSnackBar,
-                Pedido = (int) tb.IdPedido,
-                Id = tb.IdPedidoSnackBar
-            };
-        }
-
-        public List<PedidoSnackBarResponse> ParaListaResponse(List<TbPedidoSnackBar> tbs)
-        {
-            return tbs.Select(x => this.ParaResponse(x)).ToList();
+            return ret;    
         }
     }
 }

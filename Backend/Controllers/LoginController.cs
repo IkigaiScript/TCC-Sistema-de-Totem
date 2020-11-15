@@ -21,16 +21,15 @@ namespace Backend.Controllers
         LoginConversor conv = new LoginConversor();
         LoginBusiness buss = new LoginBusiness();
 
-        [HttpPost] // funcionando 
-        public ActionResult<LoginResponse> Iniciar(LoginRequest req)
+        [HttpPost] // PRONTO 
+        public ActionResult<string> Iniciar(LoginRequest req)
         {
             try
             {
                 TbLogin login = conv.ParaTabela(req);
-                TbPedido pedido = buss.Iniciar(login);
-                TbLogin lg = ConsTBase.Login(pedido.IdLogin);
-
-                return conv.ParaResponse(pedido,(int) lg.NrNivel);
+                (int,int) pedido = buss.Iniciar(login);
+                Console.WriteLine(pedido);
+                return pedido.ToString();
             }
             catch(Exception ex)
             {

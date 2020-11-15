@@ -72,7 +72,6 @@ function Routes(){
                 <Route path = '/Gerenciar' component = {HomeGerente} exact />
                 <Route path = '/Gerenciar/consult' component = {ConsultGerente} exact />
                 <Route path = '/Gerenciar/top' component = {ConsulTop} exact />
-
             </Switch>
         </BrowserRouter>
     )

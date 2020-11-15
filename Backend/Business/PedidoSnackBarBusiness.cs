@@ -11,18 +11,18 @@ namespace Backend.Business
     {
         PedidoSnackBarDatabase db = new PedidoSnackBarDatabase();
         IdBase ConstBase = new IdBase();
-        public List<TbPedidoSnackBar> Cadastrar(List<TbPedidoSnackBar> tbs)
+        public void Cadastrar(List<TbPedidoSnackBar> tbs)
         {
             foreach(TbPedidoSnackBar tb in tbs)
             {
                 if(tb.NrQtdSnackBar < 1 || tb.NrQtdSnackBar > 10) throw new ArgumentException("Quantidade de lanche inválido");
 
                 if(ConstBase.SnackBar((int) tb.IdSnackBar) == null) throw new ArgumentException("Lanche não encontrado");
-                // Console.WriteLine(ConstBase.Pedido((int) tb.IdPedido).IdPedido);
+
                 if(ConstBase.Pedido((int) tb.IdPedido) == null) throw new ArgumentException("Pedido não encontrado");
             }
-
-           return db.Cadastrar(tbs);
+            
+            db.Cadastrar(tbs);
         }
     }
 }

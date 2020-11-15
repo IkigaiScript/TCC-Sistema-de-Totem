@@ -39,7 +39,6 @@ namespace Backend.Database
         {
             try
             {
-                Console.WriteLine("start");
                 return buss.VendasdoMes(req.Inicio,req.Final);
             }
             catch(Exception ex)

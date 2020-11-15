@@ -17,9 +17,9 @@ namespace Backend.Database
         public List<VendasPorDia> VendasDoDia(int dia)
         {
             DateTime data = new DateTime(DateTime.Now.Year,DateTime.Now.Month,dia);
-            List<TbPedido> pedido = ctx.TbPedido.Where(x => x.DtHorario.Value.Day == data.Day &&
-                                                            x.DtHorario.Value.Month == data.Month &&
-                                                            x.DtHorario.Value.Year == data.Year )
+            List<TbPedido> pedido = ctx.TbPedido.Where(x => x.DtHorario.Day == data.Day &&
+                                                            x.DtHorario.Month == data.Month &&
+                                                            x.DtHorario.Year == data.Year )
                                                 .ToList();
 
             List<VendasPorDia> vendas = new List<VendasPorDia>();
@@ -32,7 +32,7 @@ namespace Backend.Database
                     cliente = ctx.TbCliente.FirstOrDefault(y => y.IdLogin == ped.IdLogin).NmCliente;
                 }
 
-                VendasPorDia venda = conv.VendasPorDia(ped.IdPedido,ped.DtHorario.Value,cliente,ped.VlTotal.ToString());
+                VendasPorDia venda = conv.VendasPorDia(ped.IdPedido,ped.DtHorario,cliente,ped.VlTotal.ToString());
                 vendas.Add(venda);
             }
             
@@ -47,31 +47,37 @@ namespace Backend.Database
 
             while((inicio - final.AddMonths(1)).TotalDays < -1)
             {
-                List<TbPedido> pedidos = ctx.TbPedido.Where(x => x.DtHorario.Value.Month == final.Month && x.DtHorario.Value.Year == final.Year).ToList();
+                List<TbPedido> pedidos = ctx.TbPedido.Where(x => x.DtHorario.Month == final.Month && x.DtHorario.Year == final.Year).ToList();
                 
                 float total = (float) pedidos.Sum(x => x.VlTotal).Value;
-                VendasPorMes venda = conv.VendasPorMes(final.ToLongDateString(),pedidos.Count,total);
+
+                string data = final.ToLongDateString();
+                data = data.Substring(data.IndexOf("de ") + 3);
+       
+                string letra = data.Substring(0,1).ToUpper();
+                data = string.Concat(letra,data.Substring(1)); 
+
+                VendasPorMes venda = conv.VendasPorMes(data,pedidos.Count,total);
                 vendas.Add(venda);
                 final = final.AddMonths(-1);
             }
-
             return vendas;
         }
 
         public TbPedido DatePedExists(DateTime data)
         {
-            return ctx.TbPedido.FirstOrDefault(x => x.DtHorario.Value.Year == data.Year && x.DtHorario.Value.Month == data.Month);
+            return ctx.TbPedido.FirstOrDefault(x => x.DtHorario.Year == data.Year && x.DtHorario.Month == data.Month);
         }
 
         public TbPedido UltimateExists(DateTime data)
         {
             TbPedido ret = null;
 
-            if(ctx.TbPedido.Any(x => x.DtHorario.Value.Year == data.Year && x.DtHorario.Value.Month > data.Month))
+            if(ctx.TbPedido.Any(x => x.DtHorario.Year == data.Year && x.DtHorario.Month > data.Month))
             {
                 while(ret == null)
                 {
-                    ret = ctx.TbPedido.OrderBy(x => x.DtHorario.Value).FirstOrDefault(x => x.DtHorario.Value.Month == data.Month && x.DtHorario.Value.Year == data.Year);
+                    ret = ctx.TbPedido.OrderBy(x => x.DtHorario).FirstOrDefault(x => x.DtHorario.Month == data.Month && x.DtHorario.Year == data.Year);
                     data = data.AddMonths(1);
                 }
             }
@@ -134,9 +140,15 @@ namespace Backend.Database
                 ret.Add(conv.TopProdutos(combo.NmCombo,(float) (combo.VlPreco * qtd),qtd,(float) combo.VlPreco,combo.DsImagem,"Combo"));
             }
 
-            return ret.OrderByDescending(x => x.Qtd)
+            ret = ret.OrderByDescending(x => x.Qtd)
                       .Take(10)
-                      .ToList();  
+                      .ToList();
+
+            TopProdutos troca = ret[0];
+            ret[0] = ret[1];
+            ret[1] = troca;
+
+            return ret;
         }
 
         public TotemLogins TotemLogins()

@@ -27,8 +27,8 @@ namespace Backend.Services.Documents
             List<Models.TbPedidoSnackBar> snacks = buss.ConsultarSnackBar(pedido.IdPedido);
             List<Models.TbIngresso> ingressos = buss.ConsultarIngresso(pedido.IdPedido);
 
-            string path = $"C:\\Users\\MGonzalez\\Documents\\Grupo do TCC\\TCC-Sistema-de-Totem\\Backend\\Storage\\";
-            string arq = $"{path}Arquivos\\{pedido.IdPedido}.pdf";
+            string path = Path.Combine(AppContext.BaseDirectory,"Storage");
+            string arq = Path.Combine(path,"Arquivos",$"{pedido.IdPedido}.pdf");
 
             FileStream pdf = new FileStream(arq,FileMode.Create);
             Document doc = new Document(PageSize.A4);
@@ -36,7 +36,7 @@ namespace Backend.Services.Documents
 
             doc.Open();
 
-            Image logo = Image.GetInstance($"{path}Fotos\\logo.PNG");
+            Image logo = Image.GetInstance(Path.Combine(path,"Fotos","logo.PNG"));
             logo.ScaleToFit(100f, 80f);
             logo.SetAbsolutePosition(80,700);
             doc.Add(logo);

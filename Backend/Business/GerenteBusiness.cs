@@ -32,7 +32,7 @@ namespace Backend.Business
             if(db.DatePedExists(inicio) == null)
             {
                 string text = "Nenhum pedido foi adicionado a esse mês. ";
-                if(db.UltimateExists(inicio) != null) text += $"O dia mais proximo que encontramos foi {db.UltimateExists(inicio).DtHorario.Value.ToLongDateString()}";
+                if(db.UltimateExists(inicio) != null) text += $"O dia mais proximo que encontramos foi {db.UltimateExists(inicio).DtHorario.ToLongDateString()}";
                 
                 throw new ArgumentException(text);
             } 
@@ -62,11 +62,6 @@ namespace Backend.Business
 
         public List<TopProdutos> TopProdutos()
         {
-            // if(tipo.ToLower() != "doce" &&
-            //     tipo.ToLower() != "pipoca" &&
-            //     tipo.ToLower() != "bebida" &&
-            //     tipo.ToLower() != "lanche") throw new ArgumentException("Tipo de produto inválido");
-
             List<TopProdutos> produtos =  db.TopProdutos();
 
             if(produtos.Count == 0) throw new ArgumentException("Nenhum filme encontrado");
