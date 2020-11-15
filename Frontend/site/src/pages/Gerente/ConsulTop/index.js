@@ -1,12 +1,15 @@
 import React,{ useState, useEffect } from 'react'
 import Relogio from '../../../components/Relogio';
 import Button from '../../../components/Buttons';
-import {PageDefault, ClassificarWrapper, TopWrapper} from './style';
+import {PageDefault, ClassificarWrapper, TopWrapper, RankingWrapper, Posicao ,Primeiro, Segundo, Terceiro} from './style';
 import { ToastContainer,toast } from 'react-toastify';
 import { Gerente } from '../../../services/GerenteApi';
 import Chart from "react-google-charts";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Ouro from '../../../assets/Img/Ouro.png';
+import Prate from '../../../assets/Img/Prate.png';
+import Bronze from '../../../assets/Img/Bronze.png';
 
 
 const api = new Gerente();
@@ -69,6 +72,7 @@ export default function ConsulTop (){
 
     return(
         <PageDefault>
+            
             <ToastContainer/>
             <h1>Classificação dos Top 10</h1>
             
@@ -86,7 +90,62 @@ export default function ConsulTop (){
                         children = 'Top 10 mais Vendidas'
                     />
 
-                    {produtos.map(x =>       
+                        
+
+                    <RankingWrapper>
+                        
+                            <Posicao>
+
+                                <span>Nome</span>
+
+                                <Segundo>
+
+                                    <img src = {Prate} alt = ''  height = '100px'/>
+
+                                    <span>Valor und: 10.90</span>
+                                    <span>Total: 55000</span>
+
+                                </Segundo>
+
+                            </Posicao>
+
+                            <Posicao>
+
+                            
+
+                                <span>Nome</span>
+
+                                <Primeiro>
+
+                                <img src = {Ouro} alt = '' height = '120px'/>
+
+                                    <span>Valor und:10.90</span>
+                                    <span>Total:60000 </span>
+
+                                </Primeiro>
+
+                            </Posicao>
+
+                            <Posicao>
+
+                                <span>Nome</span>
+
+                                <Terceiro>
+
+                                    <img src = {Bronze} alt = '' height = '100px'/>
+
+                                    <span>Valor und:10.90</span>
+                                    <span>Total:50000 </span>
+
+                                </Terceiro>
+
+                            </Posicao>
+
+                        </RankingWrapper>
+
+                    
+                    {produtos.map(x =>
+
                         <Table striped bordered hover>
 
                             <thead>
@@ -133,8 +192,65 @@ export default function ConsulTop (){
                         children = 'Top 15  filmes mais Vendidas'
                     />
 
+                    
+                    {filmees.map(x =>
 
-                    {filmees.map(x => 
+                        <RankingWrapper>
+                        
+                            <Posicao>
+
+                                <img src = {x.imagem} alt = '' height= '100px' />
+                                
+                                <span>{x.Filmes}</span>
+
+                                <Segundo>
+
+                                    <img src = {Prate} alt = ''  height = '100px'/>
+
+                                    <span>Genero: {x.Genero}</span>
+                                    <span>Quantidade: {x.Qtd}</span>
+
+                                </Segundo>
+
+                            </Posicao>
+
+                            <Posicao>
+
+                                <img src = {x.imagem} alt = '' height= '100px' />
+                                
+                                <span>{x.Filmes}</span>
+
+                                <Primeiro>
+
+                                    <img src = {Ouro} alt = '' height = '120px'/>
+
+                                    <span>Genero: {x.Genero}</span>
+                                    <span>Quantidade: {x.Qtd}</span>
+
+                                </Primeiro>
+
+                            </Posicao>
+
+                            <Posicao>
+
+                                <img src = {x.imagem} alt = '' height= '100px' />
+                                
+                                <span>{x.Filmes}</span>
+
+                                <Terceiro>
+
+                                    <img src = {Bronze} alt = '' height = '100px'/> 
+
+                                    <span>Genero</span>
+                                    <span>Quantidade</span>
+
+                                </Terceiro>
+
+                            </Posicao>
+
+                        </RankingWrapper>
+                    
+                    
 
                         <Table striped bordered hover>
 
