@@ -50,14 +50,11 @@ export default function  Home(){
 
     }
     catch(e){
-      toast.error('Fodeu');
+      toast.error('Erro ao consultar filme');
     }
   }
 
-
-
   useEffect(() => {
-    console.log("Hello world");
     ConsultClick();
   },[])
 
@@ -84,6 +81,7 @@ export default function  Home(){
 
         {req.map(x =>            
           <Card  key = {x.id}
+            image = {api.getPhoto(x.imagem)}
             nome = {x.nome}
             sinopse = {x.sinopse}
           />

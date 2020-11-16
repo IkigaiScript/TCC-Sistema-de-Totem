@@ -7,7 +7,7 @@ import Login from './pages/Login';
 
 /* Tela de Ingresso */
 import Lugar from './pages/Ingresso/Assento';
-import Filme from './pages/Ingresso/Filme';
+import InfoFilme from './pages/Ingresso/Filme';
 import ComprarIngresso from './pages/Ingresso/CompraIngresso';
 import Busca from './pages/Ingresso/Busca';
 
@@ -22,7 +22,7 @@ import Bebida from  './pages/Lanche/Bebida';
 import HomePagamento from './pages/Pagamento/HomePagamento';
 import Dinheiro from './pages/Pagamento/Dinheiro';
 import QRCode from './pages/Pagamento/QRCode';
-import Cartao from './pages/Pagamento/Cartao';
+import ValidarCartao from './pages/Pagamento/Cartao';
 import NFe from './pages/Pagamento/NF-e';
 import PagamentoRealizado from './pages/Pagamento/PagamentoRealizado';
 import ErroNoPagamento from './pages/Pagamento/PagamentoError';
@@ -36,6 +36,7 @@ import ConsulTop from './pages/Gerente/ConsulTop';
 function Routes(){
     return(
         <BrowserRouter>
+
             <Switch>
                 
                 <Route path = '/' component = {Home} exact/>
@@ -47,7 +48,7 @@ function Routes(){
                 <Route path = '/compra/assento' component = {Lugar} exact/>
                 <Route path = '/compra/ingresso' component = {ComprarIngresso} exact/>
                 <Route path = '/sessaofilme' component = {Busca} exact/>
-                <Route path = '/Filme' component = {Filme} exact/>
+                <Route path = '/Filme' component = {InfoFilme} exact/>
 
                                     {/* Lanche */}
 
@@ -62,7 +63,7 @@ function Routes(){
                 <Route path = '/escolha-pagamento' component = {HomePagamento} exact/>
                 <Route path = '/pagamento/dinheiro' component = {Dinheiro} exact />
                 <Route path = '/NF-e' component = {NFe} exact/>
-                <Route path = '/pagamento/cartao' component = {Cartao} exact />
+                <Route path = '/pagamento/cartao' component = {ValidarCartao} exact />
                 <Route path = '/pagamento/QRCode' component = {QRCode} exact/>
                 <Route path = '/ErroNoPagamento' component = {ErroNoPagamento} exact/>
                 <Route path = '/PagamentoRealizado' component = {PagamentoRealizado} exact/>   
@@ -72,7 +73,9 @@ function Routes(){
                 <Route path = '/Gerenciar' component = {HomeGerente} exact />
                 <Route path = '/Gerenciar/consult' component = {ConsultGerente} exact />
                 <Route path = '/Gerenciar/top' component = {ConsulTop} exact />
+                
             </Switch>
+
         </BrowserRouter>
     )
 }

@@ -35,7 +35,7 @@ export default function CompraIngresso (){
         }
     }
 
-    async function assentos(){
+    async function Assentos(){
         try{
             const response = await api.ConsultPlaces(sessao);
             setAssentos([...response]);

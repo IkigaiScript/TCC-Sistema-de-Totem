@@ -1,10 +1,35 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Relogio from '../../../components/Relogio';
 import Input from '../../../components/Input';
-import Button from '../../../components/Buttons'
+import Button from '../../../components/Buttons';
 import {PageDefault, CartaoWrapper, Custom, ButtonWrapper} from './style';
+import Cartao from '../../../services/CartaoApi';
 
-export default function Cartao (){
+const api = new Cartao();
+
+export default function ValidarCartao (){
+    
+    const [cvv,setCvv] = useState();
+    const [numero,setNumero] = useState();
+    const [pagamento,setPagamento] = useState();
+    const [senha,setSenha] = useState();
+
+    const SalvarCartao = async () => {
+        try {
+            const info = {
+                Cvv:cvv,
+                Numero:numero,
+                Pagamento:pagamento,
+                Senha:senha
+            }
+            const resp = await api.post(info)
+            return resp;
+
+        } catch (e) {
+            
+        }
+    }
+
     return (
         <PageDefault>
             <h1>Pagamento com Cartão</h1>
@@ -13,14 +38,20 @@ export default function Cartao (){
 
                 <Custom>
 
-                    <Input id = 'cartao' type = 'radio' width = '30px' />
+                    <Input id = 'cartao' type = 'radio' width = '30px' 
+                        value = {pagamento}
+                        onChange = {e => setPagamento(e.target.value)}
+                    />
                     <span>Debito</span>
 
                 </Custom>
 
                 <Custom>
 
-                    <Input id = 'cartao' type = 'radio' width = '30px' />
+                    <Input id = 'cartao' type = 'radio' width = '30px'
+                        value = {pagamento}
+                        onChange = {e => setPagamento(e.target.value)}
+                    />
                     <span>Credito</span>
 
                 </Custom>
@@ -32,14 +63,10 @@ export default function Cartao (){
                 <Custom>
 
                     <span>Numero do cartão</span>
-                    <Input type = 'number'/>
-
-                </Custom>
-
-                <Custom>
-
-                    <span>Validade</span>
-                    <Input type = 'date'  width = '500'/>
+                    <Input type = 'password'
+                        value = {numero}
+                        onChange = {e => setNumero(e.target.value)}
+                    />
 
                 </Custom>
 
@@ -50,9 +77,9 @@ export default function Cartao (){
                 <Custom>
 
                     <span>CVV</span>
-                    <Input type = 'password'  
-                        width = '350px'
-                        maxLength = '3'  
+                    <Input type = 'password'   width = '350px' maxLength = '3'  
+                        value = {cvv}
+                        onChange = {e => setCvv(e.target.value)}
                     />
 
                 </Custom>
@@ -60,7 +87,10 @@ export default function Cartao (){
                 <Custom>
 
                     <span>Senha</span>
-                    <Input type = 'password'  width = '300px'/>
+                    <Input type = 'password'  width = '300px'
+                        value = {senha}
+                        onChange = {e => setSenha(e.target.value)}
+                    />
 
                 </Custom>
 

@@ -1,9 +1,38 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
 import {PageDefault, FilmeWrapper, Video, InfoWrapper, Img, Custom, ImgCont, Span, ButtonWrapper} from './style';
 import Relogio from '../../../components/Relogio/';
 import Button from '../../../components/Buttons';
+import Sessao from  '../../../services/SessaoApi';
+import Filme from '../../../services/FilmeApi';
 
-export default function Filme (){
+const filme = new Filme();
+const api = new Sessao();
+
+export default function InfoFilme (props){
+
+    const [nome] = useState(props.location.state.nome);
+    const [sinopse] = useState(props.location.state.sinopse);
+    const [imagem] = useState(props.location.state.imagem)
+
+    const [diretor] = useState();
+    const [ator] =  useState();
+    const [sessao] = useState();
+
+    const getSessao =  async () => {
+        try{
+            const resp = await api.get(props.location.state.id);
+            return resp;
+        }catch(e){
+            console.error('deu ruim')
+        }
+    }
+
+    useEffect(() => {
+        console.log("Hello world");
+        getSessao();    
+    })
+
+
     return (
         <PageDefault> 
 
@@ -16,31 +45,44 @@ export default function Filme (){
 
                 <ImgCont>
 
-                    <Img src = '' alt = ''  height = '200' width = '200'/>
-
-                    
-                    <Span>Investigação sobre um cidadao acima de qualquer suspeita</Span>
+                    <Img src = {filme.getPhoto(imagem)} alt = ''  height = '200' width = '200'/>
+                    <Span>{nome}</Span>
 
                 </ImgCont>
 
                 <InfoWrapper>
+
                     <span>Sninopse</span>
+                    <span>{sinopse}</span>
+
                 </InfoWrapper>
 
-                <InfoWrapper>
-                    <span>Sobre o Filme </span>
+                {sessao.map(x =>
 
+                    <>                    
+
+                        <InfoWrapper>
+
+                            <span>Sobre o Filme </span>
+                            <span>{x.ator}</span>          
+                            <span>{x.diretor}</span>
+
+                        </InfoWrapper>
+
+                        <Custom>
+
+                            <span>Sessão</span>
+                            <span>{x.sessoes}</span>
+
+                        </Custom>
+
+                        <Custom>
+                            <span>Sala</span>
+                        </Custom>
                     
-                </InfoWrapper>
+                    </>
 
-                <Custom>
-                    <span>Sessão</span>
-
-                </Custom>
-
-                <Custom>
-                    <span>Sala</span>
-                </Custom>
+                )}
 
                 <ButtonWrapper>
 
