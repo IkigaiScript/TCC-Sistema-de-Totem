@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Relogio from '../../../components/Relogio';
 import Input from '../../../components/Input';
 import Button from '../../../components/Buttons';
@@ -8,7 +8,7 @@ import Cartao from '../../../services/CartaoApi';
 const api = new Cartao();
 
 export default function ValidarCartao (){
-    
+
     const [cvv,setCvv] = useState();
     const [numero,setNumero] = useState();
     const [pagamento,setPagamento] = useState();
@@ -26,7 +26,7 @@ export default function ValidarCartao (){
             return resp;
 
         } catch (e) {
-            
+
         }
     }
 
@@ -38,21 +38,20 @@ export default function ValidarCartao (){
 
                 <Custom>
 
-                    <Input id = 'cartao' type = 'radio' width = '30px' 
+                <Input id = 'cartao' type = 'radio' width = '30px' 
                         value = {pagamento}
-                        onChange = {e => setPagamento(e.target.value)}
-                    />
-                    <span>Debito</span>
+                        onChange = {e => setPagamento(e.target.value)}/>
+                <span>Debito</span>
 
                 </Custom>
 
                 <Custom>
 
-                    <Input id = 'cartao' type = 'radio' width = '30px'
+                <Input id = 'cartao' type = 'radio' width = '30px'
                         value = {pagamento}
                         onChange = {e => setPagamento(e.target.value)}
                     />
-                    <span>Credito</span>
+                <span>Credito</span>
 
                 </Custom>
 
@@ -64,9 +63,15 @@ export default function ValidarCartao (){
 
                     <span>Numero do cartão</span>
                     <Input type = 'password'
-                        value = {numero}
-                        onChange = {e => setNumero(e.target.value)}
-                    />
+                            value = {numero}
+                            onChange = {e => setNumero(e.target.value)}
+                        />
+                </Custom>
+
+                <Custom>
+
+                    <span>Validade</span>
+                    <Input type = 'date'  width = '500'/>
 
                 </Custom>
 
@@ -77,9 +82,11 @@ export default function ValidarCartao (){
                 <Custom>
 
                     <span>CVV</span>
-                    <Input type = 'password'   width = '350px' maxLength = '3'  
-                        value = {cvv}
-                        onChange = {e => setCvv(e.target.value)}
+                    <Input type = 'password'  
+                        width = '350px'
+                        maxLength = '3'
+                        value = {cvv} 
+                        onChange = {e => setCvv(e.target.value)} 
                     />
 
                 </Custom>
@@ -87,9 +94,10 @@ export default function ValidarCartao (){
                 <Custom>
 
                     <span>Senha</span>
-                    <Input type = 'password'  width = '300px'
-                        value = {senha}
-                        onChange = {e => setSenha(e.target.value)}
+                    <Input type = 'password'  
+                            width = '300px'
+                            value = {senha}
+                            onChange = {e => setSenha(e.target.value)}
                     />
 
                 </Custom>

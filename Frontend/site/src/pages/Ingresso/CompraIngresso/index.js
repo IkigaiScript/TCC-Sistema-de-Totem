@@ -13,7 +13,7 @@ export default function CompraIngresso (){
     const [sessao,setSessao] = useState(0);
     const [fileira,setFileira] = useState('');
     const [poltrona,setPoltrona] = useState(0);
-    const [pedido,setPedido] = useState(0);
+    const [pedido,setPedido] = useState(0); // possivelmente colocar o localstorage
     const [meiaEntrada,setMeiaEntrada] = useState(false);
     const [assentos,setAssentos] = useState([]);
 
@@ -35,7 +35,7 @@ export default function CompraIngresso (){
         }
     }
 
-    async function Assentos(){
+    async function consultAssentos(){
         try{
             const response = await api.ConsultPlaces(sessao);
             setAssentos([...response]);

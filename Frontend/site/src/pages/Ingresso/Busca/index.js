@@ -57,35 +57,44 @@ export default function Busca (){
                 />
                 
                 <Relogio />   
-
             </SearchWrapper>
 
             <SelectionWrapper>
 
                 <Select>
 
-                    <option>Livre</option>
-                    <option>12</option>
-                    <option>14</option>
-                    <option>16</option>
-                    <option>18</option>
+                    <option value="0">Livre</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="14">14</option>
+                    <option value="16">16</option>
+                    <option value="18">18</option>
 
                 </Select>
     
                 <Select>
 
-                    <option>Comédia</option>
-                    <option>Romance</option>
-                    <option>Ação</option>
-                    <option>Suspense</option>
-                    <option>Terror</option>
+                    <option value="comedia">Comédia</option>
+                    <option value="romance">Romance</option>
+                    <option value="acao">Ação</option>
+                    <option value="suspense">Suspense</option>
+                    <option value="terror">Terror</option>
+                    <option value="animacao">Terror</option>
+                    <option value="aventura">Terror</option>
+                    <option value="documnetario">Terror</option>
+                    <option value="fantasia">Fantasia</option>
+                    <option value="faroeste">Terror</option>
+                    <option value="ficcao cientifica">Terror</option>
+                    <option value="musical">Terror</option>
+                    <option value="romance">Terror</option>
+                    <option value="suspense">Terror</option>
 
                 </Select>
         
                 <Select>
 
-                    <option>3D</option>
-                    <option>XD</option>
+                    <option value="3d">3D</option>
+                    <option value="xd">XD</option>
 
                 </Select>
                 

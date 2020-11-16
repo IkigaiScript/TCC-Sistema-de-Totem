@@ -53,21 +53,6 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpGet("Breve")]
-        public ActionResult<List<FilmeResponse>> ConsultarBreve()
-        {
-            try
-            {
-                return conv.ParaListaResponse(buss.ConsultarBreve());
-            }
-            catch(Exception ex)
-            {
-                return new BadRequestObjectResult(
-                    new ErrorResponse(500,ex.Message)
-                );
-            }
-        }
-
         [HttpGet("{id}")]
         public ActionResult<FilmeCompletoResponse> ConsultaUNI(int id)
         {

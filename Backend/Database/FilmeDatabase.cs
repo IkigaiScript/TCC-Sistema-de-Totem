@@ -23,16 +23,8 @@ namespace Backend.Database
 
         public List<TbFilme> Consultar()
         {
-            return ctx.TbFilme.Where(x => x.BtEstreia == true)
-                              .OrderBy(x => x.NmFilme)
+            return ctx.TbFilme.OrderBy(x => x.NmFilme)
                               .ToList();
-        }
-
-        public List<TbFilme> ConsultarBreve()
-        {
-            return ctx.TbFilme.Where(x => x.BtBreve == true && x.BtBreve == false)
-                                .OrderBy(x => x.NmFilme)
-                                .ToList();
         }
 
         public List<TbFilme> ConsultarFilter(string genero,int classificacao,string sala)

@@ -15,11 +15,6 @@ export default class Filme {
         const response = await api.get(`Filmes`);
         console.log("Consultar");
         return response.data;
-    }
-
-    async consultBreve(){
-        const response = await api.get(`Filmes/Breve`);
-        return response.data;
     }   
 
     async consultUNI(id){

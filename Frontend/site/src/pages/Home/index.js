@@ -54,6 +54,8 @@ export default function  Home(){
     }
   }
 
+
+
   useEffect(() => {
     ConsultClick();
   },[])
@@ -81,8 +83,8 @@ export default function  Home(){
 
         {req.map(x =>            
           <Card  key = {x.id}
-            image = {api.getPhoto(x.imagem)}
             nome = {x.nome}
+            image = {api.getPhoto(x.imagem)}
             sinopse = {x.sinopse}
           />
         )}  

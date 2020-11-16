@@ -26,17 +26,9 @@ namespace Backend.Business
             return filmes;
         }
 
-        public List<TbFilme> ConsultarBreve()
-        {
-            List<TbFilme> filmes = db.ConsultarBreve();
-
-            if(filmes.Count == 0) throw new ArgumentException("Nenhum filme encontrado");
-            return filmes;
-        }
-
         public List<TbFilme> ConsultarFilter(int classificacao,string genero,string sala)
         {
-            string[] generos = new string[]{ "ação","acao","animação","animacao","aventura", "comédia","comedia","dança","danca","drama","espionagem", "faroeste", "fantasia", "romance", "terror", "guerra","ficcao cientifica","ficção científica", "policial", "musical", "thriller", "suspense", "guerra","infantil"};
+            string[] generos = new string[]{"acao", "animacao", "aventura", "comedia", "documnetario", "fantasia", "faroeste", "ficcao cientifica", "musical", "romance", "suspense", "terror", "drama"};
             if(classificacao.ToString() != string.Empty && classificacao.ToString() != null)
             {
                 if(classificacao < 0 || classificacao > 18) throw new ArgumentException("Classificação inválida");

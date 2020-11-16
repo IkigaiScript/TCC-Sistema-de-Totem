@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react'
 import {PageDefault, FilmeWrapper, Video, InfoWrapper, Img, Custom, ImgCont, Span, ButtonWrapper} from './style';
 import Relogio from '../../../components/Relogio/';
 import Button from '../../../components/Buttons';
+
 import Sessao from  '../../../services/SessaoApi';
 import Filme from '../../../services/FilmeApi';
 
@@ -32,7 +33,6 @@ export default function InfoFilme (props){
         getSessao();    
     })
 
-
     return (
         <PageDefault> 
 
@@ -48,42 +48,34 @@ export default function InfoFilme (props){
                     <Img src = {filme.getPhoto(imagem)} alt = ''  height = '200' width = '200'/>
                     <Span>{nome}</Span>
 
+
                 </ImgCont>
 
                 <InfoWrapper>
-
                     <span>Sninopse</span>
-                    <span>{sinopse}</span>
-
+                    <span>{sinopse}</span> 
                 </InfoWrapper>
+                {sessao.map(x => 
+                        <>    
+                            <InfoWrapper>
+                                <span>Sobre o Filme </span>
+                                <span>{x.ator}</span>          
+                                <span>{x.diretor}</span>
+                            </InfoWrapper>
 
-                {sessao.map(x =>
+                            <Custom>
 
-                    <>                    
+                                <span>Sessão</span>
+                                <span>{x.sessoes}</span>
 
-                        <InfoWrapper>
+                            </Custom>
 
-                            <span>Sobre o Filme </span>
-                            <span>{x.ator}</span>          
-                            <span>{x.diretor}</span>
-
-                        </InfoWrapper>
-
-                        <Custom>
-
-                            <span>Sessão</span>
-                            <span>{x.sessoes}</span>
-
-                        </Custom>
-
-                        <Custom>
-                            <span>Sala</span>
-                        </Custom>
-                    
-                    </>
-
-                )}
-
+                            <Custom>
+                                <span>Sala</span>
+                            </Custom>
+                            
+                        </>
+                    )} 
                 <ButtonWrapper>
 
                     <Button 

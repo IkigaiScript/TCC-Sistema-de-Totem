@@ -76,7 +76,7 @@ CREATE TABLE tb_pedido (
     FOREIGN KEY (`id_cupom_desconto`) REFERENCES tb_cupom_desconto (`id_cupom_desconto`) ON DELETE CASCADE,
     FOREIGN KEY (`id_login`) 	REFERENCES tb_login (`id_login`) ON DELETE CASCADE
 );
-   
+
 CREATE TABLE tb_ingresso (
 	`id_ingresso`			INT PRIMARY KEY AUTO_INCREMENT,
     `id_pedido`   		    INT NOT NULL,
