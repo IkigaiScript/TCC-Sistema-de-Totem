@@ -3,8 +3,9 @@ import Relogio from '../../../components/Relogio';
 import Input from '../../../components/Input';
 import Button from '../../../components/Buttons';
 import {PageDefault, CartaoWrapper, Custom, ButtonWrapper} from './style';
-import Cartao from '../../../services/CartaoApi';
-
+import { Cartao } from '../../../services/CartaoApi';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const api = new Cartao();
 
 export default function ValidarCartao (){
@@ -14,19 +15,28 @@ export default function ValidarCartao (){
     const [pagamento,setPagamento] = useState();
     const [senha,setSenha] = useState();
 
-    const SalvarCartao = async () => {
+    async function cadastrarCartao() {
         try {
-            const info = {
+            const req = {
                 Cvv:cvv,
                 Numero:numero,
                 Pagamento:pagamento,
                 Senha:senha
             }
-            const resp = await api.post(info)
+
+            console.log(req);
+            const resp = await api.cadastrar(req)
             return resp;
-
-        } catch (e) {
-
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
         }
     }
 
@@ -114,7 +124,7 @@ export default function ValidarCartao (){
                 />
 
             </ButtonWrapper>
-
+            <ToastContainer/>
         </PageDefault>
     );
 }

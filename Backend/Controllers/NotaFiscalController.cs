@@ -23,12 +23,13 @@ namespace Backend.Controllers
         NotaFiscalBusiness buss = new NotaFiscalBusiness();
 
         [HttpPost] // inserir 
-        public ActionResult<NotaFiscalResponse> Cadastrar(NotaFiscalRequest req)
+        public ActionResult Cadastrar(NotaFiscalRequest req)
         {
             try
             {
                 TbNotaFiscal nota = conv.ParaTabela(req);
-                return conv.ParaResponse(buss.Cadastrar(nota));
+                buss.Cadastrar(nota);
+                return new OkResult();
             }
             catch(Exception ex)
             {

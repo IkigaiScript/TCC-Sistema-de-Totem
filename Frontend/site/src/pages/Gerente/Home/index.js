@@ -24,7 +24,6 @@ export default function HomeGerente() {
         catch(e){
             toast.error(e.response.data);
         }
-
     }
 
     return(
@@ -74,7 +73,7 @@ export default function HomeGerente() {
             <div style = {{visibility: 'hidden'}}>
                 <Relogio />
             </div>            
-
+            <ToastContainer/>
         </PageDefault>
     );
 

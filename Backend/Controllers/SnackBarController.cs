@@ -16,22 +16,7 @@ namespace Backend.Controllers
        SnackBarBusiness buss = new SnackBarBusiness();
        SnackBarConversor conv = new SnackBarConversor();
        GerenciadorFotos foto = new GerenciadorFotos();
-       
-       [HttpGet("Fotos/{nome}")]
-       public ActionResult BuscarFoto(string nome)
-       {
-           try
-           {
-               return foto.BuscarFoto(nome);
-           }
-           catch (Exception ex)
-           {
-               return new BadRequestObjectResult(
-                   new ErrorResponse(404,ex.Message)
-               );
-           }
-       }
-
+    
        [HttpGet] // PRONTO
        public ActionResult<List<SnackBarResponse>> Consultar(string tipoProduto)
        {

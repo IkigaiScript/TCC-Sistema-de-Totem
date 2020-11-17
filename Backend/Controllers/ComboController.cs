@@ -30,20 +30,5 @@ namespace Backend.Controllers
                 );
             }
         }
-
-        [HttpGet("Fotos/{nome}")]
-        public ActionResult BuscarFoto(string nome)
-        {
-            try
-           {
-               return foto.BuscarFoto(nome);
-           }
-           catch (Exception ex)
-           {
-               return new BadRequestObjectResult(
-                   new ErrorResponse(404,ex.Message)
-               );
-           }
-        }
     }
 }

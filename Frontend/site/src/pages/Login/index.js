@@ -19,23 +19,24 @@ export default function Login(){
             const req = {
                 Email:email,
                 Senha:senha
-            }
+            };
             
-            const response = await api.Iniciar(req);
+            const response = await api.iniciarPedido(req);
             
             if(response){
+                
+                let t = String(response).substring(1,String(response).indexOf(','))
+                localStorage.setItem("pedido",Number(t))
+
                 let y = String(response).substring(String(response).indexOf(",") + 1,String(response).indexOf(")"));
                 y = Number(y);
                 
                 if(y == 1 || y == 2 || y == 3){
-                    let url = window.location.href;
-                    url = url.substring(0,url.lastIndexOf("/home"));
-                    url = url.concat("/Gerenciar");
+                    let url = `${window.location.href}Gerenciar`;
                     window.location.replace(url);  
                 }   
                 else{
-                    let url = window.location.href;
-                    url = url.substring(0,url.lastIndexOf("/"));
+                    let url = `${window.location.href}home`;
                     window.location.replace(url);
                 }
             }
@@ -43,28 +44,30 @@ export default function Login(){
             return response;
         }
         catch(e){
-            toast.error(e.response.data.error)
-            console.log(e.response.data)
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
         }
     }
 
     return(
-        <PageDefault>
-            
+        <PageDefault>            
             <h1>Login</h1>
-               
-            <TextLogin>   
 
+            <TextLogin>   
                 <p>
                     Faça agora seu login caso não tenha seu cadastro faça atraves de nossos app 
                     CineTotem  ou entre em nosso site <br/>
                     www.CineTotem.com.br/CadastroMembroCineTotem
                 </p>
-                
             </TextLogin>
 
             <Custom>
-
                 <Input 
                     type = 'text' 
                     width = '60vw'
@@ -91,16 +94,16 @@ export default function Login(){
 
             <ButtonWrapper>
 
-                <Button   
-                    as = {Link}
-                    to = '/home'
-                    children = 'Entrar sem login'
-
-                />
+                <Button onClick = {Logar}>Entrar</Button>
 
                 <Relogio />
 
-                <button onClick = {Logar} >Logar</button>
+                <Button 
+                    onClick = {() => {
+                        if(email !== '' && senha !== '') Logar();
+                        else toast.info("Todos os campos não foram prenchidos");
+                    }} 
+                >Logar</Button>
 
             </ButtonWrapper>
             

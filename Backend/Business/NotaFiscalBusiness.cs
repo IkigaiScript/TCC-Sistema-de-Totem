@@ -13,7 +13,7 @@ namespace Backend.Business
     {
         NotaFiscalDatabase db = new NotaFiscalDatabase();
         IdBase ConsTBase = new IdBase();
-        public int Cadastrar(TbNotaFiscal tb)
+        public void Cadastrar(TbNotaFiscal tb)
         {
             if(!string.IsNullOrEmpty(tb.DsCpf))
             {
@@ -48,7 +48,6 @@ namespace Backend.Business
             if(!dominio.Any(x => tb.DsEmail.Contains(x))) throw new ArgumentException("Dominio do email não aceito");
             
             tb.DsCpf = CriarHash(tb.DsCpf);
-            return db.Cadastrar(tb);
         }
 
         public TbNotaFiscal Consultar(int pedido)

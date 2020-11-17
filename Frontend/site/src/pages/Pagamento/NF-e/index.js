@@ -1,10 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Relogio from '../../../components/Relogio'
 import Button from '../../../components/Buttons'
 import Input from '../../../components/Input'
 import {PageDefault, Custom, ButtonWrapper} from './style'
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Nota } from '../../../services/NotaApi'
+import { Cupom } from '../../../services/CupomApi'
+import { Pedido } from '../../../services/PedidoApi'
+const nota = new Nota();
+const pedido = new Pedido();
+const cupom = new Cupom();
 
 export default function NFe (){
+
+    const [ped,setPed] = useState(localStorage.getItem('pedido'));
+    const [email,setEmail] = useState('');
+    const [cpf,setCpf] = useState('');
+    const [codigo,setCodigo] = useState('');
+
+    async function cancelar(){
+        try{
+            const response = await pedido.deleteOrder(ped);
+            console.log(response);
+            return response;
+        } 
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
+    async function cadastrarNota(){
+        try{
+            const req = {
+                Pedido:ped,
+                Email:email,
+                Cpf:cpf
+            };
+
+            const response = await nota.cadastrar(req);
+            console.log(response);
+            return response;
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
     return (
         <PageDefault>
 
@@ -19,9 +75,19 @@ export default function NFe (){
 
             <Custom ClassName= 'inputone'>
 
-                <Input type = 'text'  placeholder = 'Digite seu e-mail para receber a nota fiscal' width = '1000' />
+                <Input  type = 'text'  
+                        placeholder = 'Digite seu e-mail para receber a nota fiscal' 
+                        width = '1000'
+                        value = {email}
+                        onChange = {e => setEmail(e.target.value)} 
+                    />
 
-                <Input type = 'text'  placeholder = 'Digite seu CPF' width = '1000' />
+                <Input  type = 'text'  
+                        placeholder = 'Digite seu CPF' 
+                        width = '1000' 
+                        value = {cpf}                        
+                        onChange = {e => setCpf(e.target.value)}
+                    />
 
             </Custom>
 
@@ -37,7 +103,13 @@ export default function NFe (){
 
             <Custom className= 'inputwo'>
 
-                <Input type = 'text' maxLength ='4' placeholder = 'Digite o codigo do seu cupom de desconto' width = '1000'/>
+                <Input  type = 'text' 
+                        maxLength ='4' 
+                        placeholder = 'Digite o codigo do seu cupom de desconto' 
+                        width = '1000'
+                        value = {codigo}
+                        onChange = {e => setCodigo(e.target.value)}
+                    />
 
             </Custom> 
 
@@ -45,17 +117,21 @@ export default function NFe (){
                 
                 <Button 
                     to = '/'
-                    children = 'Cancelar Pedido' 
+                    children = 'Cancelar Pedido'
+                    onClick = {cancelar} 
                 />
 
                 <Relogio />
 
                 <Button 
                     to = '/pagamento/cartao'
-                    children = 'Confirmar' 
+                    children = 'Confirmar'
+                    onClick = {() => {
+                        cadastrarNota();
+                    }} 
                 />
             </ButtonWrapper>
-
+            <ToastContainer/>
         </PageDefault>
     );
 }

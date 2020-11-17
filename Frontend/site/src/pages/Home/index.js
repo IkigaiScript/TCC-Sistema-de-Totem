@@ -12,14 +12,20 @@ import {GiMeal, GiTicket} from 'react-icons/gi';
 import { IconContext } from "react-icons";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Filme from '../../services/FilmeApi';
+import { Filme } from '../../services/FilmeApi';
+import { Cliente } from '../../services/ClienteApi';
+import { GetPhoto } from '../../services/GetPhotoApi';
 
-const api = new Filme();
+const filme = new Filme();
+const cliente = new Cliente();
+const getPhoto = new GetPhoto();
 
 export default function  Home(){
 
+  const [pedido,setPedido] = useState(localStorage.getItem('pedido'));
   const [req,setReq] = useState([]);
-  const [reqs,setReqs] = useState([]);
+  const [img,setImg] = useState('');
+  const [nome,setNome] = useState('');
 
   const responsive = {
     superLargeDesktop: {
@@ -41,21 +47,55 @@ export default function  Home(){
     },
   };
 
-  const ConsultClick = async () => {
-
+  async function consultFilmes() {
     try{
-      const con = await api.consult();
-      setReq([...con]);
+      const response = await filme.consultFilmes();
+      setReq([...response]);
       console.log('ok Filme');
-
     }
     catch(e){
-      toast.error('Erro ao consultar filme');
+      if(e.response.data.error){
+        console.log(e.response.data);
+        toast.error(e.response.data.error);
+      }
+      else {
+        console.log(e.response.data);
+        toast.error("Algo deu errado!");
+      }
+    }
+  }
+
+  async function consultCliente() {
+    try{
+      const response = await cliente.consultCliente(pedido);
+      console.log(response);
+      setNome(response.nome);
+      return response;
+    }
+    catch(e){
+      if(e.response.data.error){
+        console.log(e.response.data);
+        toast.error(e.response.data.error);
+      }
+      else {
+        console.log(e.response.data);
+        toast.error("Algo deu errado!");
+      }
     }
   }
 
   useEffect(() => {
-    ConsultClick();
+    consultFilmes();
+    consultCliente();
+    toast.dark('Seja bem-vindo! 😉', {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
   },[])
 
 
@@ -69,7 +109,7 @@ export default function  Home(){
 
         <Relogio/>
    
-        <Span>Usuario <FaRegUserCircle /></Span>
+        <Span>{nome}<FaRegUserCircle /></Span>
 
       </Menu>
 
@@ -78,7 +118,7 @@ export default function  Home(){
         {req.map(x =>            
           <Card  key = {x.id}
             nome = {x.nome}
-            image = {api.getPhoto(x.imagem)}
+            image = {getPhoto.getPhoto('paisagem.jpg')}
             sinopse = {x.sinopse}
           />
         )}  

@@ -4,9 +4,9 @@ import { PageDefault, SearchWrapper, SelectionWrapper, Select, FilmesWrapper } f
 import Relogio from '../../../components/Relogio';
 import SelectFilme from '../../../components/SelectionFilme';
 import Input from '../../../components/Input';
-import FilmeApi from '../../../services/FilmeApi';
+import { Filme } from '../../../services/FilmeApi';
 
-const filme = new FilmeApi();
+const filme = new Filme();
 
 export default function Busca (){
     

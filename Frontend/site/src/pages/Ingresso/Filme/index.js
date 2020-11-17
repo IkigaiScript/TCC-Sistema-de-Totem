@@ -3,8 +3,8 @@ import {PageDefault, FilmeWrapper, Video, InfoWrapper, Img, Custom, ImgCont, Spa
 import Relogio from '../../../components/Relogio/';
 import Button from '../../../components/Buttons';
 
-import Sessao from  '../../../services/SessaoApi';
-import Filme from '../../../services/FilmeApi';
+import { Sessao } from  '../../../services/SessaoApi';
+import { Filme } from '../../../services/FilmeApi';
 
 const filme = new Filme();
 const api = new Sessao();

@@ -9,9 +9,9 @@ export default function ErroNoPagamento() {
 
            <h1>ERRO NO PAGAMENTO</h1>
 
-           <Img src= {ImgPagamentoErro} alt="Erro no Pagamento" width="290" height="310"/>
+           <Img src= {ImgPagamentoErro} alt="" width="290" height="310"/>
 
-           <SubTitulo>OPS! PARECE QUE OCORREU UM ERRO NO<br></br> MOMENTO DO SEU PAGAMENTO.</SubTitulo>
+           <SubTitulo>OPS! PARECE QUE OCORREU UM ERRO NO<br/> MOMENTO DO SEU PAGAMENTO.</SubTitulo>
 
             <div style = {{visibility: 'hidden'}}>
              <Relogio />

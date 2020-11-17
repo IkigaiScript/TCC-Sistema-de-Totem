@@ -1,34 +1,36 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL:'http://54.89.253.106:5000/'
-    //baseURL:'http://localhost:5000/'
+    // baseURL:'http://54.89.253.106:5000/'
+    baseURL:'http://localhost:5000/'
 })
 
 export class Gerente {
-    async TopFilmes(){
+
+    async topFilmes(){
         const response = await api.get(`Gerente/Top/Filmes`);
         return response.data
     }
 
-    async VendasDoDia(dia){
+    async vendasDoDia(dia){
         console.log(dia);
         const response = await api.get(`Gerente/Vendas/Dia/${dia}`,);
         return response.data;
     }
 
-    async VendasdoMes(req){
+    async vendasdoMes(req){
         console.log(req);
+        console.log(typeof req.Inicio)
         const response = await api.get(`Gerente/Vendas`,req);
         return response.data;
     }
 
-    async TopProdutos(){
+    async topProdutos(){
         const response = await api.get(`Gerente/Top/Produtos`);
         return response.data;
     }
 
-    async TotemLogins(){
+    async totemLogins(){
         const response = await api.get(`Gerente/Logins`);
         return response.data;
     }

@@ -5,7 +5,7 @@ import Input from '../../../components/Input';
 import Button from '../../../components/Buttons';
 import SelectFilme from '../../../components/SelectionFilme'
 import { BiReset } from "react-icons/bi";
-import Ingresso from '../../../services/IngressoApi'
+import { Ingresso } from '../../../services/IngressoApi'
 const api = new Ingresso();
 
 export default function CompraIngresso (){

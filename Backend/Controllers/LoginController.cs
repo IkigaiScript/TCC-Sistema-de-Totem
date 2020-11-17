@@ -26,6 +26,7 @@ namespace Backend.Controllers
         {
             try
             {
+                Console.WriteLine("start login");
                 TbLogin login = conv.ParaTabela(req);
                 (int,int) pedido = buss.Iniciar(login);
                 Console.WriteLine(pedido);

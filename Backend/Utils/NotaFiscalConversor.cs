@@ -16,12 +16,5 @@ namespace Backend.Utils
                 IdPedido = req.Pedido
             };
         }
-
-        public NotaFiscalResponse ParaResponse(int pedido)
-        {
-            return new NotaFiscalResponse {
-                Pedido = pedido
-            };
-        }
     }
 }

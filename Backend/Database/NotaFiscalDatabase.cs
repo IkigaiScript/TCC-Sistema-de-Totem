@@ -10,11 +10,10 @@ namespace Backend.Database
     public class NotaFiscalDatabase
     {
         tcdbContext ctx = new tcdbContext();
-        public int Cadastrar(TbNotaFiscal tb)
+        public void Cadastrar(TbNotaFiscal tb)
         {
             ctx.TbNotaFiscal.Add(tb);
             ctx.SaveChanges();
-            return tb.IdPedido;
         }
 
         public bool ExitsPedido(int id)
