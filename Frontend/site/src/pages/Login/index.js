@@ -29,7 +29,7 @@ export default function Login(){
                 
                 if(y == 1 || y == 2 || y == 3){
                     let url = window.location.href;
-                    url = url.substring(0,url.lastIndexOf("/"));
+                    url = url.substring(0,url.lastIndexOf("/home"));
                     url = url.concat("/Gerenciar");
                     window.location.replace(url);  
                 }   
@@ -91,15 +91,19 @@ export default function Login(){
 
             <ButtonWrapper>
 
-                <Link
-                    to = '/'
-                >Voltar</Link>
+                <Button   
+                    as = {Link}
+                    to = '/home'
+                    children = 'Entrar sem login'
+
+                />
 
                 <Relogio />
 
                 <button onClick = {Logar} >Logar</button>
 
             </ButtonWrapper>
+            
             <ToastContainer/>
         </PageDefault>
     );

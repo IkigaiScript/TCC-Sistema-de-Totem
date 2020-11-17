@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     height: 30vh;
-    width: 35vw;
+    width: 85vw;
 
     justify-content: left;
    
@@ -26,7 +26,7 @@ export const Container = styled.div`
 export const ContainerImage = styled.div`
     display: flex;
     flex-direction: column;
-    height: 150px;
+    height: 160px;
     width: 20vw;
     
     align-items: center;
@@ -36,13 +36,19 @@ export const ContainerImage = styled.div`
     margin-bottom:auto;
     margin-right: 15px;
 
+    border:1px solid purple;
+
 `;
 
 export const SubContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 335px;
+    width: 60vw;
     height: 170px;
+
+    align-items:center;
+    justify-content:center;
+
 `;
 
 
@@ -50,12 +56,12 @@ export const ContainerTitleLanche = styled.div`
     display: flex;
     flex-direction: column;
     width: 20vw;
-    height: 30px;
+    height: 70px;
 
     align-items: center;
     justify-content: center;
     
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     margin-left:auto;
     margin-right:auto;
 `;
@@ -63,8 +69,8 @@ export const ContainerTitleLanche = styled.div`
 export const ContainerDescLanche = styled.div`
     display: flex;
     flex-direction: column;
-    width: 20vw;
-    height: 30vh;
+    width: 55vw;
+    height: 20vh;
 
     padding-right:10px;
     padding-left:10px;
@@ -83,7 +89,7 @@ export const ContainerBottom = styled.div`
     display: flex;
     flex-direction: row;
     height: 15vh;
-    width: 20vw;
+    width: 50vw;
 
     align-items: center;
     justify-content:space-evenly;
@@ -106,15 +112,7 @@ export const Button = styled.button`
     }
 `;
 
-export const Input = styled.input`
-    height:5vh;
-    width:5vw;
-
-    @media(max-width: 800px){
-        height:4vh;
-        width:10vw;
-
-        margin-left:5px;
-        margin-right:5px;
-    }
+export const P = styled.p`
+    font-size:16px;
+    font-weight:200;
 `;

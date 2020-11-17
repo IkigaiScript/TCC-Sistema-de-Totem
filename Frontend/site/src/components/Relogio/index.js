@@ -22,8 +22,8 @@ setInterval(function(){
     // Com o textContent, iremos inserir as horas, minutos 
     // no nosso elemento HTML
 
-    document.getElementsByClassName('hora')[0].textContent = hora+':'+minuto;
-},1000)
+// document.getElementById('hora')[0].innerHtml = hora+':'+minuto;
+},10000)
 
 
 // A function zero concatena a string (número) 0 em frente aos números
@@ -45,7 +45,7 @@ function zero(x) {
 export default function Relogio() {
     return(
         <PageDefault>
-            <Span className = 'hora'></Span>
+            <Span id = 'hora'></Span>
         </PageDefault>
     )
 }

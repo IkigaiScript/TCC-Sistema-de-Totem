@@ -54,8 +54,6 @@ export default function  Home(){
     }
   }
 
-
-
   useEffect(() => {
     ConsultClick();
   },[])
@@ -70,12 +68,8 @@ export default function  Home(){
         <img src = {Logo} alt = '' width = '150' />
 
         <Relogio/>
-
-        <Link style ={{'textDecoration': 'none'}} to = '/login'> 
-
-          <Span>Usuario <FaRegUserCircle /></Span>
-
-        </Link>
+   
+        <Span>Usuario <FaRegUserCircle /></Span>
 
       </Menu>
 
@@ -93,9 +87,10 @@ export default function  Home(){
 
       <ButtonWrapper>
 
-        <IconContext.Provider value={{ size: '20px'}}>
+        <IconContext.Provider value={{ size: '20px', color : 'white'}}>
 
           <Button
+            as = {Link}
             to = '/compra/lanche'
             children = 'Comprar Lanche'
             icon = { <GiMeal /> } 
