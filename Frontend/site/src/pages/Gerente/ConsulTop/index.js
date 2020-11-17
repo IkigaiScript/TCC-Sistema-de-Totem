@@ -4,7 +4,6 @@ import Button from '../../../components/Buttons';
 import {PageDefault, ClassificarWrapper, TopWrapper, RankingWrapper, Posicao ,Primeiro, Segundo, Terceiro} from './style';
 import { ToastContainer,toast } from 'react-toastify';
 import { Gerente } from '../../../services/GerenteApi';
-import Chart from "react-google-charts";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Ouro from '../../../assets/Img/Ouro.png';
