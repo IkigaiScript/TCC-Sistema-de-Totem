@@ -78,7 +78,7 @@ export default function Bebida (){
             <OptionWrapper>
                 
                 
-
+                {req.map(x => 
                     <SelectionLanche key = ''
                         imagem  =  ''
                         title   =  ''
@@ -86,6 +86,7 @@ export default function Bebida (){
                         sabor   =  ''
                         preco   =  ''
                     />
+                )}
                 
 
             </OptionWrapper>
