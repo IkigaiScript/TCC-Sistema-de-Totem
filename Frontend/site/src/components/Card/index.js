@@ -1,9 +1,11 @@
 import React from 'react'
-import {PageDefault,Header,InfoWrapper,FilmeWrapper, Video, Span, ImgFilme, Custom} from './style'
+import {PageDefault,Header,InfoWrapper, Video, Span, ImgFilme} from './style'
 
 export default function Card(props){
     return(
+
         <PageDefault>
+
             <Header>
 
                 <Video controls>
@@ -25,9 +27,6 @@ export default function Card(props){
                 <p style = {{'font-size': '18px'}}>{props.sinopse}</p>
 
             </InfoWrapper>
-
-            
-            
 
         </PageDefault>
     );

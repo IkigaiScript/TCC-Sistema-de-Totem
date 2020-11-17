@@ -36,21 +36,6 @@ export const InfoWrapper = styled.div`
     ::-webkit-scrollbar{opacity:0};
 `;
 
-export const Custom = styled.div`
-    display:flex;
-    height:10vh;
-    width:90%;
-
-    margin-bottom:5px;
-
-    overflow-x:auto;
-    ::-webkit-scrollbar{opacity:0};
-    
-    >li{
-        margin-left:5px;
-    }
-`;
-
 export const Video = styled.video`
     height:100%;
     width:100%;

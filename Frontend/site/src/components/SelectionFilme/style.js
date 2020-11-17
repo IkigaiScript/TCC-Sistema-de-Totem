@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const PageDefault = styled.div`
     display: flex;
     flex-direction: row;
     width: 90vw;
@@ -18,7 +18,7 @@ export const Container = styled.div`
     color: black;
 `;
 
-export const ContainerImage = styled.div`
+export const ImageWrapper = styled.div`
     display: flex;
     flex-direction: row;
     height:100%;
@@ -29,7 +29,7 @@ export const ContainerImage = styled.div`
     margin-left: 20px;
 `;
 
-export const ContainerTitle = styled.div`
+export const TitleWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 80%;

@@ -20,7 +20,7 @@ export const Img = styled.img`
 `;
 
 //SubTitulo
-export const SubTitulo = styled.p`
+export const SubTitle = styled.p`
     color: white;
     font-family: Arial;
     font-size: 20pt;

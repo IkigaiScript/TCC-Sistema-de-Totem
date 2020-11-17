@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const PageDefault = styled.div`
     display: flex;
     flex-direction: row;
     height: 30vh;
@@ -23,7 +23,7 @@ export const Container = styled.div`
     }
 `;
 
-export const ContainerImage = styled.div`
+export const ImageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     height: 160px;
@@ -40,7 +40,7 @@ export const ContainerImage = styled.div`
 
 `;
 
-export const SubContainer = styled.div`
+export const InfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 60vw;
@@ -52,7 +52,7 @@ export const SubContainer = styled.div`
 `;
 
 
-export const ContainerTitleLanche = styled.div`
+export const TitleWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 20vw;
@@ -66,7 +66,7 @@ export const ContainerTitleLanche = styled.div`
     margin-right:auto;
 `;
 
-export const ContainerDescLanche = styled.div`
+export const DescWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 55vw;
@@ -85,7 +85,7 @@ export const ContainerDescLanche = styled.div`
     }
 `;
 
-export const ContainerBottom = styled.div`
+export const ButtonWrapper = styled.div`
     display: flex;
     flex-direction: row;
     height: 15vh;

@@ -19,7 +19,7 @@ export const Img = styled.img`
 `;
 
 //Subtitulo
-export const SubTitulo = styled.p`
+export const SubTitle = styled.p`
   text-align:center;
   
   font-family: Arial;

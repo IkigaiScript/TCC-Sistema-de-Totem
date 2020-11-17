@@ -1,15 +1,15 @@
 import React from 'react';
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
-import { Container, ContainerImage, ContainerTitleLanche, ContainerDescLanche, SubContainer, ContainerBottom, Button, P } from './style';
+import { PageDefault, ImageWrapper, TitleWrapper, DescWrapper, InfoWrapper, ButtonWrapper, Button, P } from './style';
 
 let a = 0;
 
-function Adicionar() {
+function Add() {
     a++;
     document.getElementById("demo").innerText = a;
 }
 
-function Remover() {
+function Remove() {
 
   if(a > 0){
         a--;
@@ -19,53 +19,53 @@ function Remover() {
    	    document.getElementById("demo").innerHTML = b;
    }
 
-}
-	  
+}	  
 
-export default function SelectLanche(props) {
+export default function SelectSnack(props) {
     return(
-        <Container>
 
-            <ContainerImage>
+        <PageDefault>
+
+            <ImageWrapper>
 
                 <img src={props.imagem} alt="" width='270px' height='160px'/>
 
-            </ContainerImage>
+            </ImageWrapper>
 
-            <SubContainer>
+            <InfoWrapper>
 
-                <ContainerTitleLanche>
+                <TitleWrapper>
 
                     <span>{props.title}</span>
 
-                </ContainerTitleLanche>
+                </TitleWrapper>
             
-                <ContainerDescLanche>
+                <DescWrapper>
 
                     <span>peso:{props.peso}</span>
                     <span>sabor:{props.sabor}</span>
                     <span>preco:{props.preco}</span>
 
-                </ContainerDescLanche>
+                </DescWrapper>
 
-                <ContainerBottom>
+                <ButtonWrapper>
                     
-                    <Button onClick = {Remover}>
+                    <Button onClick = {Remove}>
                         <AiOutlineMinusCircle size='5vh' cursor='pointer' />
                     </Button>
 
                     <P id="demo"></P>
 
-                    <Button onClick = {Adicionar}>
+                    <Button onClick = {Add}>
                         <AiOutlinePlusCircle size= '5vh' cursor='pointer'/>
                     </Button>
 
                     <span>Preço:{props.preco} </span>                    
 
-                </ContainerBottom>
+                </ButtonWrapper>
 
-            </SubContainer>
+            </InfoWrapper>
 
-        </Container>
-    )
+        </PageDefault>
+    );
 }
