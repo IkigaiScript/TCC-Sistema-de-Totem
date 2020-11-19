@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Relogio from '../../../components/Relogio';
 import Input from '../../../components/Input';
 import Button from '../../../components/Buttons';
+import {Link} from 'react-router-dom';
 import {PageDefault, CartaoWrapper, Custom, ButtonWrapper} from './style';
 import { Cartao } from '../../../services/CartaoApi';
 import { ToastContainer,toast } from 'react-toastify';
@@ -48,24 +49,25 @@ export default function ValidarCartao (){
         <PageDefault>
             <h1>Pagamento com Cartão</h1>
 
-            <CartaoWrapper id = 'cartao'>
+            <CartaoWrapper id = 'cartaowrapper'>
 
                 <Custom>
 
-                <Input id = 'cartao' type = 'radio' width = '30px' 
+                    <Input id = 'cartao' name = 'tipo' type = 'radio' width = '30px' 
                         value = {pagamento}
-                        onChange = {e => setPagamento(e.target.value)}/>
-                <span>Debito</span>
+                        onChange = {e => setPagamento(e.target.value)}
+                    />
+                    <span>Debito</span>
 
                 </Custom>
 
                 <Custom>
 
-                <Input id = 'cartao' type = 'radio' width = '30px'
+                    <Input id = 'cartao' name = 'tipo' type = 'radio' width = '30px'
                         value = {pagamento}
                         onChange = {e => setPagamento(e.target.value)}
                     />
-                <span>Credito</span>
+                    <span>Credito</span>
 
                 </Custom>
 
@@ -77,15 +79,9 @@ export default function ValidarCartao (){
 
                     <span>Numero do cartão</span>
                     <Input type = 'password'
-                            value = {numero}
-                            onChange = {e => setNumero(e.target.value)}
-                        />
-                </Custom>
-
-                <Custom>
-
-                    <span>Validade</span>
-                    <Input type = 'date'  width = '500'/>
+                        name = 'tipo'    value = {numero}
+                        onChange = {e => setNumero(e.target.value)}
+                    />
 
                 </Custom>
 
@@ -123,6 +119,7 @@ export default function ValidarCartao (){
                 <Relogio />
     
                 <Button 
+                    as = {Link}
                     to = '/PagamentoRealizado'
                     children = 'Concluir'
                     onClick = {() => {

@@ -1,11 +1,13 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import HomeFundo from '../../assets/Img/HomeFundo.jpg';
 
 export const PageDefault = styled.div`
     display:flex;
     flex-direction:column;
     min-height:100%;
     width:100vw;
-    background:linear-gradient(#773500,#F3D69D);
+    background-image:url(${HomeFundo});
+    background-size:cover;
 
     box-sizing:border-box;
     padding-left:15px;

@@ -1,11 +1,13 @@
 import styled from 'styled-components'
+import NFEFundo from '../../../assets/Img/NFEFundo.jpg'
 
 export const PageDefault = styled.div`
     display:flex;
     flex-direction:column;
     min-height:100vh;
     width:100vw;
-    background:linear-gradient(#773500,#F3D69D);
+    background-image:url(${NFEFundo});
+    background-size:cover;
 
     box-sizing:border-box;
     padding-top:20px;
@@ -27,6 +29,8 @@ export const Custom = styled.div`
     margin-left:auto;
     margin-right:auto;
     margin-bottom:20px;
+
+    color:white;
 
     @media(max-width:800px){
         height:20vh;

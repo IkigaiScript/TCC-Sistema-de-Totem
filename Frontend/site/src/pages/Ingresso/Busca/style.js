@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+import BuscaFundo from '../../../assets/Img/BuscaFundo.jpg'
 
 export const PageDefault = styled.div`
   display: flex;
   flex-direction: column;
   min-height:100vh;
   max-width:100vw;
-  background:linear-gradient(#773500,#F3D69D);
+  background-image:url(${BuscaFundo});
+  background-size:cover;
 
   align-items: center;
   justify-content: center;

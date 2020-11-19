@@ -1,15 +1,16 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import QRCodeFundo from '../../../assets/Img/QRCodeFundo.jpg';
 
 export const PageDefault = styled.div`
-    display:flex;
+    display:flex;color:white;
     flex-direction:column;
     min-height:100vh;
     width:100vw;
-    background:linear-gradient(#773500,#F3D69D);
+    background-image:url(${QRCodeFundo});
+    background-size:cover;
 
     box-sizing:border-box;
     padding:20px;
-
 `;
 
 export const ButtonWrappper = styled.div`
@@ -39,5 +40,7 @@ export const QRCodeWrapper = styled.div`
 
     margin-left:auto;
     margin-right:auto;
+
+    color:white;
 `;
 

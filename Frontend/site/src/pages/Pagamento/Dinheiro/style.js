@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+import DinheiroFundo from '../../../assets/Img/DinheiroFundo.jpg';
 
 export const PageDefault = styled.div`
     display: flex;
-    flex-direction: column;
-    height:100vh;
-    max-width:100vw;
-    background:linear-gradient(#773500,#F3D69D);
+    flex-direction: column; 
+    min-height:100vh;
+    width:100vw;
+    background-image:url(${DinheiroFundo});
+    background-size:cover;
 
     align-items: center;
 
@@ -21,8 +23,9 @@ export const TextWrapper = styled.div`
 
     margin-left:auto;
     margin-right:auto;
-
     margin-top: 30px;
+
+    color:white;
 
     @media(max-width: 800px){
         height:40vh;

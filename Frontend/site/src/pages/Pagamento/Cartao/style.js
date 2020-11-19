@@ -1,24 +1,30 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import CartaoFundo from '../../../assets/Img/CartaoFundo.jpg'
 
 export const PageDefault = styled.div`
     display:flex;
     flex-direction:column;
     min-height:100vh;
     width:100vw;
-    background:linear-gradient(#773500,#F3D69D);
+    background-image:url(${CartaoFundo});
+    background-size:cover;
 
     align-items:center;
 
-    >#cartao{
+    color:white;
+    font-weight:800;
+
+    >#cartaowrapper{
         flex-direction:row;
-        width:70vw;
+        width:90vw;
 
         padding-left:5px;
         padding-right:5px;
 
         >div{
             padding-left:5px;
-            padding-right:5px;
+            padding-right:20px;
+            font-size:16px;
         }
 
         >div input{
@@ -41,6 +47,7 @@ export const CartaoWrapper = styled.div`
     padding-right:16px;
     margin-left:auto;
     margin-right:auto;
+
 
     @media(max-width:800px){
         flex-direction:column;

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const PageDefault = styled.div`
     display:flex;
@@ -30,7 +30,7 @@ export const OpcaoWrapper = styled.div`
 export const Opcao = styled.div`
     display:flex;
     flex-direction:column;
-    height:45vh;
+    height:50vh;
     width:20vw;
 
     align-items:center;

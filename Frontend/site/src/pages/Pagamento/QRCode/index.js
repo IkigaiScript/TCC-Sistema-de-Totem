@@ -12,7 +12,7 @@ export default function QRCode (){
            
             <p>
                 Pague de forma rapida e facil use agora o nosso pagamento por QRCODE basta ler o 
-                codigo qrcode, com a tela do seu celular
+                codigo QRCode, com a tela do seu celular
             </p>
 
             <QRCodeWrapper>

@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-
+import IngressoFundo from '../../../assets/Img/IngressoFundo.jpg'
 
 export const PageDefault = styled.div`
     display:flex;
     flex-direction:column;
     min-height:100vh;
     max-width:100vw;
-    background:linear-gradient(#773500,#F3D69D);
+    background-image:url(${IngressoFundo});
+    background-size:cover;
 
     align-items:center;
     justify-content:center;
@@ -14,6 +15,8 @@ export const PageDefault = styled.div`
     box-sizing:border-box;
     padding-left:16;
     padding-right:16px;
+
+    color:white;
 
     @media(max-width: 800px){
       
