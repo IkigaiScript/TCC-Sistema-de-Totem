@@ -39,5 +39,16 @@ namespace Backend.Database
         {
             return ctx.TbPedidoSnackBar.Where(x => x.IdPedido == id).ToList();
         } 
+
+        public TbPedidoSnackBar ConsultExists(int pedido,int snackBar)
+        {
+            return ctx.TbPedidoSnackBar.FirstOrDefault(x => x.IdPedido == pedido && x.IdSnackBar == snackBar);
+        }
+
+        public void Deletar(TbPedidoSnackBar tb)
+        {
+            ctx.TbPedidoSnackBar.Remove(tb);
+            ctx.SaveChanges();
+        }
     }
 }

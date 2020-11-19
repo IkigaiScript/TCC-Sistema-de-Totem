@@ -29,5 +29,17 @@ namespace Backend.Business
 
             return db.Historico(id);
         }
+
+        public void Deletar(int pedido,int snackbar)
+        {
+            if(ConstBase.Pedido(pedido) == null) throw new ArgumentException("Pedido não encontrado");
+
+            if(ConstBase.SnackBar(snackbar) == null) throw new ArgumentException("Lanche não encontrado");
+
+            TbPedidoSnackBar tb = db.ConsultExists(pedido,snackbar);
+            if(tb == null) throw new ArgumentException("Esse combo não foi registrado ao seu pedido");      
+
+            db.Deletar(tb);     
+        }
     }
 }

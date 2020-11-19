@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { Multiselect } from 'multiselect-react-dropdown';
-import {PagesDefault, ButtonWrapper, OptionWrapper, Custom} from './style';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import {H1, PagesDefault, Option, ButtonWrapper, OptionWrapper, Select} from './style';
 import SelectionLanche from '../../../components/SelectionLanche';
 import Relogio from '../../../components/Relogio';
-import Button from '../../../components/Buttons'
-import { BiReset } from "react-icons/bi";
+import Button from '../../../components/Buttons';
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PedidoCombo } from '../../../services/PedidoComboApi'
 import { Combo } from '../../../services/ComboApi'
 import { GetPhoto } from '../../../services/GetPhotoApi'
-import { PedidoCombo } from '../../../services/PedidoComboApi'
 const combo = new Combo();
 const getPhoto = new GetPhoto();
 const pedidocombo = new PedidoCombo();
 
-export default function Combos(){
-    
-    const [combos,setCombos] = useState([]);
-    const [ped,setPed] = useState(localStorage.getItem('pedido'));
-    const [itens,setItens] = useState([]);
+export default function Combos (){
 
-    async function consultCombos(){
+    const [history,setHistory] = useState([]);
+    const [ped] = useState(localStorage.getItem('pedido'));
+    const [combos, setCombos] = useState([]);
+    const [itens] = useState([]);
+
+    async function consultBebida(){
         try{
             const response = await combo.consultCombo();
             setCombos([...response]);
@@ -40,13 +40,22 @@ export default function Combos(){
 
     async function cadastrarCombo(){
         try{
-            const req = {
-                Pedido:ped,
-                Itens:itens
-            };
 
+            combos.map(x => 
+                    itens.push(
+                        {
+                            Qtd:Number(window.localStorage.getItem(`id ${x.id}`)),
+                            SnackBar:Number(x.id)
+                        }
+                    )
+                );
+            
+            const req = {
+                Pedido:Number(ped),
+                Itens:itens.filter(x => x.Qtd != 0)
+            };
+            
             const response = await pedidocombo.registerComboOrden(req);
-            console.log(response);
             return response;
         }
         catch(e){
@@ -61,93 +70,100 @@ export default function Combos(){
         }
     }
 
-    useEffect(() => {
-        consultCombos();
-    },[]); 
-
-    const options = {
-        select: [
-            {name: 'Pipoca', id: "1"},
-            {name: "Combo", id: "2"},
-            {name: "Doce", id: "3"},    
-            {name: "Bebida", id: "4"}
-        ]
-    };
-
-   const style = {
-        chips: {
-            color: 'white',
-            fontsize:'18px',
-            paddingleft: '10px'
-        },
-        searchBox: {
-            minwidth: '200px',
-            height: '35px',
-            background : 'lightgray',
-            color: 'white'
-           
-        },
-        multiselectContainer: {
-            width: '200px',
-            height: '35px',
-            color: 'darkorange'
+    async function consulthistory(){
+        try{
+            const response = await pedidocombo.history(ped);
+            console.log(response);
+            setHistory([...response]);
+            return response;
         }
-    };
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
+    function switchRoutes(route){
+        if(route !== 'master'){
+            window.location.assign(`${window.location.origin}/compra/lanche/${route}`);
+        }
+    }
+
+    function takeQtd(id){
+        
+        if(history.some(x => x.combo === id)){
+            return history.find(x => x.combo === id).qtd;
+        }
+        else return 0;
+    }
+
+    useEffect(() => {
+        consulthistory();
+        consultBebida();
+    },[])
 
     return (
         <PagesDefault>
             
-            <h1>Qual combo deseja?</h1>
+            <H1>Qual bebida deseja tomar?</H1>
 
             <ButtonWrapper>
-                
-                <Button
-                    to = '/compra/lanche'
-                    children = 'Voltar'
-                />
 
                 <Relogio />
 
-                <Multiselect
-                    placeholder = 'adicionar items'
-                    options={options.select}
-                    displayValue="name"
-                    style={style}
-                    singleSelect
-                />
+                <Select onClick={e => switchRoutes(e.target.value)}>
+                    <Option> Combo </Option>
+                    <Option> Pipoca </Option>
+                    <Option value='doces'> Doce </Option>
+                    <Option selected value='master'> Bebida </Option>
+                </Select>
 
             </ButtonWrapper>
 
             <OptionWrapper>
-
-                <Custom>
-
-                    {combo.map(x => 
-                            <>
-                                
-                            </>
-                        )};
-
-                </Custom>
-
+                
+                {combos.map(x => 
+                    <SelectionLanche key = {x.id}
+                        id      = {x.id}
+                        imagem  =  {getPhoto.getPhoto(x.imagem)}
+                        title   =  {x.nome}
+                        peso    =  {x.peso}
+                        sabor   =  {x.sabor}
+                        preco   =  {`R$ ${x.preco}`}
+                        qtd     =  {takeQtd(x.id)}
+                    />
+                )};
+                
             </OptionWrapper>
 
             <ButtonWrapper>
 
                 <Button 
-                    to = '/sessaofilme'
-                    children = 'Compra Ingreeso'
-                />
-
-                <button>Desfazer</button>
+                        as = {Link}
+                        to = '/sessaofilme'
+                        children = 'Compra Ingreeso'
+                        onClick = {() => {
+                            cadastrarCombo();
+                        }}
+                    />
 
                 <Button 
-                    to = '/escolha-pagamento'
-                    children = 'Pagamento'
-                />
+                        as = {Link}
+                        to = '/escolha-pagamento'
+                        children = 'Pagamento'
+                        onClick = {() => {
+                            cadastrarCombo();
+                        }}
+                    />
 
             </ButtonWrapper>
             <ToastContainer/>
-        </PagesDefault>       
+        </PagesDefault>      
     );
 }

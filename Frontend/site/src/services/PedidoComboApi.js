@@ -16,4 +16,9 @@ export class PedidoCombo {
         const response = await api.get(`Pedidos/Combos/History/${id}`);
         return response.data;
     }
+
+    async deletar(pedido,combo){
+        const response = await api.delete(`Pedidos/Combos?pedido=${pedido}&combo=${combo}`);
+        return response.data;
+    }
 }

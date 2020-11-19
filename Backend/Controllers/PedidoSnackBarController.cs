@@ -21,7 +21,7 @@ namespace Backend.Controllers
         PedidoSnackBarBusiness buss = new PedidoSnackBarBusiness();
         PedidoSnackBarConversor conv = new PedidoSnackBarConversor();
 
-        [HttpPost] // TESTAR
+        [HttpPost] // PRONTO
         public ActionResult Cadastrar(PedidoSnackBarRequest reqs)
         {
             try
@@ -38,7 +38,7 @@ namespace Backend.Controllers
             }   
         }
 
-        [HttpGet("History/{id}")]
+        [HttpGet("History/{id}")] // PRONTO
         public ActionResult<List<PedidoSnackBarResponse>> Historico(int id)
         {
             try
@@ -50,6 +50,22 @@ namespace Backend.Controllers
                 return new NotFoundObjectResult(
                     new ErrorResponse(404,ex.Message)
                 );
+            }
+        }
+
+        [HttpDelete]
+        public ActionResult Deletar(int pedido,int snackbar)
+        {
+            try
+            {
+                buss.Deletar(pedido,snackbar);
+                return new OkResult();
+            }
+            catch(Exception ex)
+            {
+                return new NotFoundObjectResult(
+                    new ErrorResponse(404,ex.Message)
+                );    
             }
         }
 

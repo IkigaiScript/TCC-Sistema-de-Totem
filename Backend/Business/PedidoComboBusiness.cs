@@ -32,5 +32,17 @@ namespace Backend.Business
 
             return db.Historico(id);
         }
+
+        public void Deletar(int pedido, int combo)
+        {
+            if(ConstBase.Pedido(pedido) == null) throw new ArgumentException("Pedido não encontrado");
+
+            if(ConstBase.Combo(combo) == null) throw new ArgumentException("Combo não encontrado");
+     
+            TbPedidoCombo tb = db.ConsultExits(pedido,combo);
+            if(tb == null) throw new ArgumentException("Esse combo não foi registrado ao seu pedido");
+        
+            db.Deletar(tb);
+        }
     }
 }

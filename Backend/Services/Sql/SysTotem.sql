@@ -337,3 +337,12 @@ insert into tb_cliente (id_login,nm_cliente,ds_cpf,ds_cep,ds_celular,ds_rg,bt_co
 
 select * from tb_pedido;
 select * from tb_login;
+select * from tb_snack_bar where ds_tipo_produto like '%Bebida%';
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (2,3,4);
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (2,2,7);
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (2,1,1);
+
+insert into tb_pedido_snack_bar (id_pedido,id_snack_bar,nr_qtd_snack_bar) values (2,5,2);

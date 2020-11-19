@@ -57,8 +57,7 @@ export default function HomeGerente() {
                     data={[
                         ['Login', 'tipo'],
                         ['Totem', totem] ,
-                        ['Usuario', login],
-                       
+                        ['Usuario', login],  
                     ]}
                     options={{
                         title: 'Login de Usuarios',

@@ -1,50 +1,48 @@
 import React, { useState } from 'react';
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
-import { PageDefault, ImageWrapper, TitleWrapper, DescWrapper, InfoWrapper, ButtonWrapper, Button, P } from './style';
+import { PageDefault, ImageWrapper, TitleWrapper,Img, DescWrapper, InfoWrapper, ButtonWrapper, Button, P, Text } from './style';
+import bebida from '../../assets/Img/Pipoca.png'
 
-let a = 0;
-
-function Add() {
-    a++;
-    document.getElementById("demo").innerText = a;
-}
-
-function Remove() {
-
-  if(a > 0){
-        a--;
-        document.getElementById("demo").innerHTML = a;
-   }else{
-        let b = 'Sua quantia deve ser maior que 0 para remover'
-   	    document.getElementById("demo").innerHTML = b;
-   }
-
-}	  
 
 export default function SelectSnack(props) {
+    
+    const [ped] = useState(window.localStorage.getItem('pedido'));
+    const [cont,setCont] = useState(0);
+    const [qtd,setQtd] = useState(props.qtd);
+    window.localStorage.setItem(`id ${props.id}`,cont);
+
+    function Add(){
+        setQtd(qtd + 1);
+        setCont(cont + 1);
+    }
+    
+    function Remove(){
+      if(cont <= 0){
+        setCont(0);
+      }
+      else{
+         setQtd(qtd - 1);
+         setCont(cont - 1);
+      }
+    }	  
+
     return(
         <PageDefault>
 
-            <ImageWrapper>
-
-                <img src={props.imagem} alt="" width='270px' height='160px'/>
-
-            </ImageWrapper>
+            <div>
+                <Img src={bebida} alt="" />
+            </div>
 
             <InfoWrapper>
-
                 <TitleWrapper>
-
-                    <span>{props.title}</span>
-
+                    <Text>{props.title}</Text>
                 </TitleWrapper>
             
                 <DescWrapper>
 
-                    <span>peso:{props.peso}</span>
-                    <span>sabor:{props.sabor}</span>
-                    <span>preco:{props.preco}</span>
-
+                    <Text>peso:{props.peso}</Text>
+                    <Text>sabor:{props.sabor}</Text>
+            
                 </DescWrapper>
 
                 <ButtonWrapper>
@@ -53,13 +51,13 @@ export default function SelectSnack(props) {
                         <AiOutlineMinusCircle size='5vh' cursor='pointer' />
                     </Button>
 
-                    <P id="demo"></P>
+                    <P>{qtd}</P>
 
                     <Button onClick = {Add}>
                         <AiOutlinePlusCircle size= '5vh' cursor='pointer'/>
                     </Button>
 
-                    <span>Preço:{props.preco} </span>                    
+                    <Text>Preço:{props.preco} </Text>                    
 
                 </ButtonWrapper>
 

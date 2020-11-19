@@ -1,17 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import { Multiselect } from 'multiselect-react-dropdown';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {H1, PagesDefault, Option, ButtonWrapper, OptionWrapper, Select} from './style';
 import SelectionLanche from '../../../components/SelectionLanche';
 import Relogio from '../../../components/Relogio';
 import Button from '../../../components/Buttons';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/DropdownButton';
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { PedidoSnackBar } from '../../../services/PedidoSnackBarApi'
-import { SnackBar } from '../../../services/SnackBarApi'
-import { GetPhoto } from '../../../services/GetPhotoApi'
+import { PedidoSnackBar } from '../../../services/PedidoSnackBarApi';
+import { SnackBar } from '../../../services/SnackBarApi';
+import { GetPhoto } from '../../../services/GetPhotoApi';
 const snackbar = new SnackBar();
 const getPhoto = new GetPhoto();
 const pedidosnackbar = new PedidoSnackBar();
@@ -21,12 +18,11 @@ export default function Bebida (){
     const [history,setHistory] = useState([]);
     const [ped] = useState(localStorage.getItem('pedido'));
     const [bebidas, setBebidas] = useState([]);
-    const [itens,setItens] = useState([]);
+    const [itens] = useState([]);
 
     async function consultBebida(){
         try{
             const response = await snackbar.consultProduto('bebida');
-            console.log(response);
             setBebidas([...response]);
             return response;
         }
@@ -44,13 +40,22 @@ export default function Bebida (){
 
     async function cadastrarSnackBar(){
         try{
-            const req = {
-                Pedido:ped,
-                Itens:itens
-            }
 
-            const response = await pedidosnackbar.registerSnackOrder(req)
-            console.log(response);
+            bebidas.map(x => 
+                    itens.push(
+                        {
+                            Qtd:Number(window.localStorage.getItem(`id ${x.id}`)),
+                            SnackBar:Number(x.id)
+                        }
+                    )
+                );
+            
+            const req = {
+                Pedido:Number(ped),
+                Itens:itens.filter(x => x.Qtd != 0)
+            };
+            
+            const response = await pedidosnackbar.registerSnackOrder(req);
             return response;
         }
         catch(e){
@@ -69,6 +74,7 @@ export default function Bebida (){
         try{
             const response = await pedidosnackbar.history(ped);
             console.log(response);
+            setHistory([...response]);
             return response;
         }
         catch(e){
@@ -83,9 +89,23 @@ export default function Bebida (){
         }
     }
 
+    function switchRoutes(route){
+        if(route !== 'master'){
+            window.location.assign(`${window.location.origin}/compra/lanche/${route}`);
+        }
+    }
+
+    function takeQtd(id){
+        
+        if(history.some(x => x.snackBar === id)){
+            return history.find(x => x.snackBar === id).qtd;
+        }
+        else return 0;
+    }
+
     useEffect(() => {
-        consultBebida();
         consulthistory();
+        consultBebida();
     },[])
 
     return (
@@ -97,11 +117,11 @@ export default function Bebida (){
 
                 <Relogio />
 
-                <Select>
-                    <Option>Combo</Option>
-                    <Option>Pipoca</Option>
-                    <Option>Doce</Option>
-                    <Option selected></Option>
+                <Select onClick={e => switchRoutes(e.target.value)}>
+                    <Option> Combo </Option>
+                    <Option> Pipoca </Option>
+                    <Option value='doces'> Doce </Option>
+                    <Option selected value='master'> Bebida </Option>
                 </Select>
 
             </ButtonWrapper>
@@ -110,11 +130,13 @@ export default function Bebida (){
                 
                 {bebidas.map(x => 
                     <SelectionLanche key = {x.id}
+                        id      = {x.id}
                         imagem  =  {getPhoto.getPhoto(x.imagem)}
                         title   =  {x.nome}
                         peso    =  {x.peso}
                         sabor   =  {x.sabor}
                         preco   =  {`R$ ${x.preco}`}
+                        qtd     =  {takeQtd(x.id)}
                     />
                 )};
                 
@@ -127,7 +149,7 @@ export default function Bebida (){
                         to = '/sessaofilme'
                         children = 'Compra Ingreeso'
                         onClick = {() => {
-                            if(itens.length > 0) cadastrarSnackBar();
+                            cadastrarSnackBar();
                         }}
                     />
 
@@ -136,7 +158,7 @@ export default function Bebida (){
                         to = '/escolha-pagamento'
                         children = 'Pagamento'
                         onClick = {() => {
-                            if(itens.length > 0) cadastrarSnackBar();
+                            cadastrarSnackBar();
                         }}
                     />
 

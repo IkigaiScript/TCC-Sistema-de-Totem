@@ -16,4 +16,9 @@ export class PedidoSnackBar {
         const response = await api.get(`Pedidos/SnackBars/History/${id}`);
         return response.data;
     }
+
+    async deletar(pedido,snackbar){
+        const response = await api.delete(`Pedidos/SnackBars?pedido${pedido}&snackbar=${snackbar}`);
+        return response.data;
+    }
 }

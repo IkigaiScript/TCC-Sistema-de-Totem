@@ -3,67 +3,46 @@ import styled from 'styled-components';
 export const PageDefault = styled.div`
     display: flex;
     flex-direction: row;
-    height: 30vh;
-    width: 85vw;
+    height: 40vh;
+    width: 55vw;
 
-    justify-content: left;
-   
-    padding-top: 10px;
-    padding-left: 10px;
-    margin-bottom: 10px;
-    margin-left:40px;
-    border: 2px solid  black;
-   
+    /* margin-left:10px;
+    margin-right:10px;
+    margin-top:25px;
+    margin-bottom:30px; */
+
     background-color: white;
-    color: black;
+    border:1px solid darkblue;
 
     @media(max-width: 800px){
-        width:80vw;
         margin-left:0;
     }
 `;
 
-export const ImageWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 160px;
+export const Img = styled.img`
+    height: 40vh;
     width: 20vw;
-    
-    align-items: center;
-    justify-content: center; 
-
-    margin-top:auto;
-    margin-bottom:auto;
-    margin-right: 15px;
 
     border:1px solid purple;
-
 `;
 
 export const InfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 60vw;
-    height: 170px;
+    width:35vw;
+    height:40vh;
 
+    border:1px solid black;
     align-items:center;
     justify-content:center;
-
 `;
 
-
 export const TitleWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
-    height: 70px;
+    width:28vw;
+    height:35px;
 
-    align-items: center;
-    justify-content: center;
-    
-    margin-bottom: 5px;
-    margin-left:auto;
-    margin-right:auto;
+    overflow: hidden;
+    border:1px solid dodgerblue;
 `;
 
 export const DescWrapper = styled.div`
@@ -75,7 +54,6 @@ export const DescWrapper = styled.div`
     padding-right:10px;
     padding-left:10px;
     margin-right:5px;
-    border: 1px solid black;
 
     overflow-y:auto;
 
@@ -109,6 +87,19 @@ export const Button = styled.button`
     :hover{
         border:0;
         background:white;
+    }
+`;
+
+export const Text = styled.span`
+    margin: 0 auto;
+    color: black;
+    font-size:13pt;
+    font-family:'Arial';
+    text-transform:lowercase;
+    border:1px solid black;
+
+    @media(max-width: 800px){
+        font-size:10pt;
     }
 `;
 

@@ -28,5 +28,16 @@ namespace Backend.Database
         {
             return ctx.TbPedidoCombo.Where(x => x.IdPedido == id).ToList();
         }
+
+        public TbPedidoCombo ConsultExits(int pedido, int combo)
+        {
+            return ctx.TbPedidoCombo.FirstOrDefault(x => x.IdPedido == pedido && x.IdCombo == combo);
+        }
+
+        public void Deletar(TbPedidoCombo tb)
+        {
+            ctx.TbPedidoCombo.Remove(tb);
+            ctx.SaveChanges();
+        }
     }
 }

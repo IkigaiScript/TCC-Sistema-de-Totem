@@ -53,6 +53,22 @@ namespace Backend.Controllers
             }
         }
 
+        [HttpDelete]
+        public ActionResult Deletar (int pedido, int combo)
+        {
+            try
+            {
+                buss.Deletar(pedido,combo);
+                return new OkResult();
+            }
+            catch(Exception ex)
+            {
+                return new NotFoundObjectResult(
+                    new ErrorResponse(404,ex.Message)
+                );
+            }
+        }
+
         [HttpGet("ping")]
         public string ping()
         {
