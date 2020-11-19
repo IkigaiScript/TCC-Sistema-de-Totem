@@ -1,14 +1,70 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Multiselect } from 'multiselect-react-dropdown';
 import {PagesDefault, ButtonWrapper, OptionWrapper, Custom} from './style';
 import SelectionLanche from '../../../components/SelectionLanche';
 import Relogio from '../../../components/Relogio';
 import Button from '../../../components/Buttons'
 import { BiReset } from "react-icons/bi";
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Combo } from '../../../services/ComboApi'
+import { GetPhoto } from '../../../services/GetPhotoApi'
+import { PedidoCombo } from '../../../services/PedidoComboApi'
+const combo = new Combo();
+const getPhoto = new GetPhoto();
+const pedidocombo = new PedidoCombo();
 
+export default function Combos(){
+    
+    const [combos,setCombos] = useState([]);
+    const [ped,setPed] = useState(localStorage.getItem('pedido'));
+    const [itens,setItens] = useState([]);
 
- 
-export default function Combo (){
+    async function consultCombos(){
+        try{
+            const response = await combo.consultCombo();
+            setCombos([...response]);
+            return response;
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
+    async function cadastrarCombo(){
+        try{
+            const req = {
+                Pedido:ped,
+                Itens:itens
+            };
+
+            const response = await pedidocombo.registerComboOrden(req);
+            console.log(response);
+            return response;
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
+    useEffect(() => {
+        consultCombos();
+    },[]); 
+
     const options = {
         select: [
             {name: 'Pipoca', id: "1"},
@@ -28,7 +84,6 @@ export default function Combo (){
             minwidth: '200px',
             height: '35px',
             background : 'lightgray',
-
             color: 'white'
            
         },
@@ -36,7 +91,6 @@ export default function Combo (){
             width: '200px',
             height: '35px',
             color: 'darkorange'
- 
         }
     };
 
@@ -68,9 +122,11 @@ export default function Combo (){
 
                 <Custom>
 
-                    <SelectionLanche />
-
-                    <SelectionLanche />
+                    {combo.map(x => 
+                            <>
+                                
+                            </>
+                        )};
 
                 </Custom>
 
@@ -91,8 +147,7 @@ export default function Combo (){
                 />
 
             </ButtonWrapper>
-            
-            
+            <ToastContainer/>
         </PagesDefault>       
     );
 }

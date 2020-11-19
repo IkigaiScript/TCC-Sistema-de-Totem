@@ -74,3 +74,40 @@ export const OptionWrapper = styled.div`
         padding:5px;
     }
 `;
+
+export const Select = styled.select`
+    height:8vh;
+    width:29vw;
+    box-sizing:border-box;
+    border-radius:10px;
+    color:white;
+    padding:5px;
+    background-color:#222831;
+    font-size:15pt;
+    border:0.2em solid #393e46 ;
+`;
+
+export const H1 = styled.h1`
+    font-size:40pt;
+    margin-bottom:80px;
+    margin-top:20px;
+    font-weight:bold;
+    text-decoration:none;
+
+    @media(max-width: 800px)
+    {
+        margin-bottom:10px;    
+    }
+
+    &:hover{
+        text-decoration:underline;
+        text-decoration-color:white;
+    }
+    
+`;
+
+export const Option = styled.option`
+    color:white;
+    line-height:50px;
+    font-size:12pt;
+`;

@@ -21,7 +21,7 @@ namespace Backend.Controllers
         PedidoSnackBarBusiness buss = new PedidoSnackBarBusiness();
         PedidoSnackBarConversor conv = new PedidoSnackBarConversor();
 
-        [HttpPost] // PRONTO
+        [HttpPost] // TESTAR
         public ActionResult Cadastrar(PedidoSnackBarRequest reqs)
         {
             try
@@ -36,6 +36,21 @@ namespace Backend.Controllers
                     new ErrorResponse(400,ex.Message)
                 );
             }   
+        }
+
+        [HttpGet("History/{id}")]
+        public ActionResult<List<PedidoSnackBarResponse>> Historico(int id)
+        {
+            try
+            {
+                return conv.ParaListaResponse(buss.Historico(id));
+            }
+            catch(Exception ex)
+            {
+                return new NotFoundObjectResult(
+                    new ErrorResponse(404,ex.Message)
+                );
+            }
         }
 
         [HttpGet("ping")]

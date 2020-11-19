@@ -8,7 +8,12 @@ const api = axios.create({
 export class PedidoSnackBar {
     
     async registerSnackOrder(reqs){
-        const response = await api.post(`Pedidos/SnackBars`,reqs)
+        const response = await api.post(`Pedidos/SnackBars`,reqs);
+        return response.data;
+    }
+
+    async history(id){
+        const response = await api.get(`Pedidos/SnackBars/History/${id}`);
         return response.data;
     }
 }

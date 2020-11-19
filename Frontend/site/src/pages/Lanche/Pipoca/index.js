@@ -5,10 +5,16 @@ import SelectionLanche from '../../../components/SelectionLanche';
 import Relogio from '../../../components/Relogio';
 import Button from '../../../components/Buttons'
 import { BiReset } from "react-icons/bi";
-
-
-
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { PedidoSnackBar } from '../../../services/PedidoSnackBarApi'
+import { SnackBar } from '../../../services/SnackBarApi'
+import { GetPhoto } from '../../../services/GetPhotoApi'
+const snackbar = new SnackBar();
+const getPhoto = new GetPhoto();
+const pedidosnackbar = new PedidoSnackBar();
  
+
 export default function Pipoca(){
     const options = {
         select: [{name: "Pipoca", id: "1"},
@@ -80,8 +86,7 @@ export default function Pipoca(){
             />
 
         </ButtonWrapper>
-        
-        
+        <ToastContainer/>       
     </PagesDefault>       
     );
 }

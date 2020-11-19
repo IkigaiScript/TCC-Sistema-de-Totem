@@ -15,14 +15,19 @@ namespace Backend.Business
         {
             foreach(TbPedidoSnackBar tb in tbs)
             {
-                if(tb.NrQtdSnackBar < 1 || tb.NrQtdSnackBar > 10) throw new ArgumentException("Quantidade de lanche inválido");
-
                 if(ConstBase.SnackBar((int) tb.IdSnackBar) == null) throw new ArgumentException("Lanche não encontrado");
 
                 if(ConstBase.Pedido((int) tb.IdPedido) == null) throw new ArgumentException("Pedido não encontrado");
             }
             
             db.Cadastrar(tbs);
+        }
+
+        public List<TbPedidoSnackBar> Historico(int id)
+        {
+            if(ConstBase.Pedido(id) == null) throw new ArgumentException("Pedido não encontrado");
+
+            return db.Historico(id);
         }
     }
 }

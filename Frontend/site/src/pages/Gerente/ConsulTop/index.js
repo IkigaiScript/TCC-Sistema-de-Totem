@@ -1,283 +1,282 @@
-// import React,{ useState, useEffect } from 'react'
-// import Relogio from '../../../components/Relogio';
-// import Button from '../../../components/Buttons';
-// import {PageDefault, ClassificarWrapper, TopWrapper, RankingWrapper, Posicao ,Primeiro, Segundo, Terceiro} from './style';
-// import { ToastContainer,toast } from 'react-toastify';
-// import { Gerente } from '../../../services/GerenteApi';
-// import Table from 'react-bootstrap/Table';
-// import { Chart } from 'react-google-charts'
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import Ouro from '../../../assets/Img/Ouro.png';
-// import Prate from '../../../assets/Img/Prate.png';
-// import Bronze from '../../../assets/Img/Bronze.png';
+import React,{ useState, useEffect } from 'react'
+import Relogio from '../../../components/Relogio';
+import Button from '../../../components/Buttons';
+import {PageDefault, ClassificarWrapper, TopWrapper, RankingWrapper, Posicao ,Primeiro, Segundo, Terceiro} from './style';
+import { ToastContainer,toast } from 'react-toastify';
+import { Gerente } from '../../../services/GerenteApi';
+import Table from 'react-bootstrap/Table';
+import { Chart } from 'react-google-charts'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Ouro from '../../../assets/Img/Ouro.png';
+import Prate from '../../../assets/Img/Prate.png';
+import Bronze from '../../../assets/Img/Bronze.png';
 
-// const api = new Gerente();
+const api = new Gerente();
 
-// export default function ConsulTop (){
+export default function ConsulTop (){
     
-//     const [topFilmes,setTopFilmes] = useState([]);
-//     const [topPrdotutos,setTopProdutos] = useState([]);
+    const [filmees,setFilmees] = useState([]);
+    const [produtos,setProdutos] = useState([]);
+    const [topFilmes,setTopFilmes] = useState([]);
+    const [topPrdotutos,setTopProdutos] = useState([]);
 
-//     async function consultTopFilmes(){
-//         try{
-//             const response = await api.TopFilmes();
-//             setTopFilmes([...response])
-//             return response;
-//         }
-//         catch(e){
-//             toast.error('Deu ruim')
-//         }
-//     }
+    async function consultTopFilmes(){
+        try{
+            const response = await api.TopFilmes();
+            setTopFilmes([...response])
+            
+            for(let i=4; i < topFilmes.length; i++){
+                const filme = topFilmes[i].Posicao = i;
+                console.log(filme);
+                setFilmees(filmees.push(filme));
+            }
+            
+            return response;
+        }
+        catch(e){
+            if(e.response.data.error){
+              console.log(e.response.data);
+              toast.error(e.response.data.error);
+            }
+            else {
+              console.log(e.response.data);
+              toast.error("Algo deu errado!");
+            }
+          }
+    }
 
-//     async function consultTopProdutos(){
+    async function consultTopProdutos(){
+        try{
+            const response = api.TopProdutos();
+            setTopProdutos([...response])
+            
+            for(let i = 4; i < topPrdotutos.length; i++){
+                const prodo = topPrdotutos[i].Posicao = i;
+                console.log(prodo);
+                setProdutos(produtos.push(prodo));
+            }
 
-//         try{
-//             const response = api.TopProdutos();
-//             setTopProdutos([...response])
-//             return response;
-//         }
-//         catch(e){
-//             toast.error('Deu ruim');
-//         }
-//     }
+            return response;
+        }
+        catch(e){
+            if(e.response.data.error){
+              console.log(e.response.data);
+              toast.error(e.response.data.error);
+            }
+            else {
+              console.log(e.response.data);
+              toast.error("Algo deu errado!");
+            }
+          }
+    }
     
-//     function filme(){
-//         const resp = [];
-
-//         for(let i=4;i < topFilmes.length;i++){
-//            const filme = topFilmes[i].Posicao = i;
-//           console.log(filme);
-//            resp.push(filme);
-//         }
-//         return resp;
-
-//     }
-
-//     function prodotu(){
-
-//         const resp = [];
-
-//         for(let i=4;i < topPrdotutos.length;i++){
-//            const prodo = topPrdotutos[i].Posicao = i;
-//           console.log(prodo);
-//            resp.push(prodo);
-//         }
-//         return resp;
-
-//     }
-
-//     const produtos = prodotu();
-//     const filmees = filme();
-
-//     return(
-//         <PageDefault>
+    return(
+        <PageDefault>
             
-//             <ToastContainer/>
-//             <h1>Classificação dos Top 10</h1>
+            <ToastContainer/>
+            <h1>Classificação dos Top 10</h1>
             
-//             <Button 
-//                 to = '/Gerenciar'
-//                 children = 'Voltar'
-//             />
+            <Button 
+                to = '/Gerenciar'
+                children = 'Voltar'
+            />
 
-//             <ClassificarWrapper>
+            <ClassificarWrapper>
 
-//                 <TopWrapper>
+                <TopWrapper>
 
-//                     <Button 
-//                         onClick = {consultTopProdutos}
-//                         children = 'Top 10 mais Vendidas'
-//                     />
+                    <Button 
+                        onClick = {consultTopProdutos}
+                        children = 'Top 10 mais Vendidas'
+                    />
 
                         
 
-//                     <RankingWrapper>
+                    <RankingWrapper>
                         
-//                             <Posicao>
+                            <Posicao>
 
-//                                 <span>Nome</span>
+                                <span>Nome</span>
 
-//                                 <Segundo>
+                                <Segundo>
 
-//                                     <img src = {Prate} alt = ''  height = '100px'/>
+                                    <img src = {Prate} alt = ''  height = '100px'/>
 
-//                                     <span>Valor und: 10.90</span>
-//                                     <span>Total: 55000</span>
+                                    <span>Valor und: 10.90</span>
+                                    <span>Total: 55000</span>
 
-//                                 </Segundo>
+                                </Segundo>
 
-//                             </Posicao>
+                            </Posicao>
 
-//                             <Posicao>
+                            <Posicao>
 
                             
 
-//                                 <span>Nome</span>
+                                <span>Nome</span>
 
-//                                 <Primeiro>
+                                <Primeiro>
 
-//                                 <img src = {Ouro} alt = '' height = '120px'/>
+                                <img src = {Ouro} alt = '' height = '120px'/>
 
-//                                     <span>Valor und:10.90</span>
-//                                     <span>Total:60000 </span>
+                                    <span>Valor und:10.90</span>
+                                    <span>Total:60000 </span>
 
-//                                 </Primeiro>
+                                </Primeiro>
 
-//                             </Posicao>
+                            </Posicao>
 
-//                             <Posicao>
+                            <Posicao>
 
-//                                 <span>Nome</span>
+                                <span>Nome</span>
 
-//                                 <Terceiro>
+                                <Terceiro>
 
-//                                     <img src = {Bronze} alt = '' height = '100px'/>
+                                    <img src = {Bronze} alt = '' height = '100px'/>
 
-//                                     <span>Valor und:10.90</span>
-//                                     <span>Total:50000 </span>
+                                    <span>Valor und:10.90</span>
+                                    <span>Total:50000 </span>
 
-//                                 </Terceiro>
+                                </Terceiro>
 
-//                             </Posicao>
+                            </Posicao>
 
-//                         </RankingWrapper>
+                        </RankingWrapper>
 
                     
-//                     {produtos.map(x =>
+                    {produtos.map(x =>
 
-//                         <Table striped bordered hover>
+                        <Table striped bordered hover>
 
-//                             <thead>
+                            <thead>
 
-//                                 <tr>
+                                <tr>
 
-//                                     <th>Posição</th>
-//                                     <th>Item</th>
-//                                     <th>Tipo</th>
-//                                     <th>valor un</th>
-//                                     <th>Quantidade</th>
-//                                     <th>Total</th>
-//                                     <th>Imagem </th>
+                                    <th>Posição</th>
+                                    <th>Item</th>
+                                    <th>Tipo</th>
+                                    <th>valor un</th>
+                                    <th>Quantidade</th>
+                                    <th>Total</th>
+                                    <th>Imagem </th>
 
-//                                 </tr>
+                                </tr>
 
-//                             </thead>
+                            </thead>
 
-//                             <tbody>
+                            <tbody>
 
-//                                 <tr>
+                                <tr>
 
-//                                     <td>{x.Posicao}</td>
-//                                     <td >{x.Nome}</td>
-//                                     <td>{x.Tipo}</td>
-//                                     <td>{x.Valor}</td>
-//                                     <td>{x.Qtd}</td>
-//                                     <td>{x.Total}</td>
-//                                     <td>{x.Imagem} </td>
+                                    <td>{x.Posicao}</td>
+                                    <td >{x.Nome}</td>
+                                    <td>{x.Tipo}</td>
+                                    <td>{x.Valor}</td>
+                                    <td>{x.Qtd}</td>
+                                    <td>{x.Total}</td>
+                                    <td>{x.Imagem} </td>
                                 
-//                                 </tr>   
+                                </tr>   
 
-//                             </tbody>
+                            </tbody>
 
-//                         </Table>    
-//                     )}
+                        </Table>    
+                    )}
 
-//                 </TopWrapper>
+                </TopWrapper>
 
-//                 <TopWrapper>
+                <TopWrapper>
 
-//                     <Button 
-//                         onClick = {consultTopFilmes}
-//                         children = 'Top 15  filmes mais Vendidas'
-//                     />
+                    <Button 
+                        onClick = {consultTopFilmes}
+                        children = 'Top 15  filmes mais Vendidas'
+                    />
 
                     
-//                     {filmees.map(x =>
-//                         <>
-//                             <RankingWrapper>
+                    {filmees.map(x =>
+                        <>
+                            <RankingWrapper>
                             
-//                                 <Posicao>
+                                <Posicao>
 
-//                                     <img src = {x.imagem} alt = '' height= '100px' />
-//                                     <span>{x.Filmes}</span>
+                                    <img src = {x.imagem} alt = '' height= '100px' />
+                                    <span>{x.Filmes}</span>
 
-//                                     <Segundo>
+                                    <Segundo>
 
-//                                         <img src = {Prate} alt = ''  height = '100px'/>
-//                                         <span>Genero: {x.Genero}</span>
-//                                         <span>Quantidade: {x.Qtd}</span>
+                                        <img src = {Prate} alt = ''  height = '100px'/>
+                                        <span>Genero: {x.Genero}</span>
+                                        <span>Quantidade: {x.Qtd}</span>
 
-//                                     </Segundo>
+                                    </Segundo>
 
-//                                 </Posicao>
+                                </Posicao>
 
-//                                 <Posicao>
+                                <Posicao>
 
-//                                     <img src = {x.imagem} alt = '' height= '100px' />
-//                                     <span>{x.Filmes}</span>
+                                    <img src = {x.imagem} alt = '' height= '100px' />
+                                    <span>{x.Filmes}</span>
 
-//                                     <Primeiro>
+                                    <Primeiro>
 
-//                                         <img src = {Ouro} alt = '' height = '120px'/>
-//                                         <span>Genero: {x.Genero}</span>
-//                                         <span>Quantidade: {x.Qtd}</span>
+                                        <img src = {Ouro} alt = '' height = '120px'/>
+                                        <span>Genero: {x.Genero}</span>
+                                        <span>Quantidade: {x.Qtd}</span>
 
-//                                     </Primeiro>
+                                    </Primeiro>
 
-//                                 </Posicao>
+                                </Posicao>
 
-//                                 <Posicao>
+                                <Posicao>
 
-//                                     <img src = {x.imagem} alt = '' height= '100px' />
-//                                     <span>{x.Filmes}</span>
+                                    <img src = {x.imagem} alt = '' height= '100px' />
+                                    <span>{x.Filmes}</span>
 
-//                                     <Terceiro>
+                                    <Terceiro>
 
-//                                         <img src = {Bronze} alt = '' height = '100px'/> 
-//                                         <span>Genero</span>
-//                                         <span>Quantidade</span>
+                                        <img src = {Bronze} alt = '' height = '100px'/> 
+                                        <span>Genero</span>
+                                        <span>Quantidade</span>
 
-//                                     </Terceiro>
+                                    </Terceiro>
 
-//                                 </Posicao>
-//                             </RankingWrapper>
+                                </Posicao>
+                            </RankingWrapper>
                     
-//                             <Table striped bordered hover>
-//                                 <thead>
-//                                     <tr>
+                            <Table striped bordered hover>
+                                <thead>
+                                    <tr>
 
-//                                         <th>Posição</th>
-//                                         <th>Filme</th>
-//                                         <th>Genero</th>
-//                                         <th>Quantidade</th>
-//                                         <th>Imagem</th>
+                                        <th>Posição</th>
+                                        <th>Filme</th>
+                                        <th>Genero</th>
+                                        <th>Quantidade</th>
+                                        <th>Imagem</th>
 
-//                                     </tr>
-//                                 </thead>
-//                                 <tbody>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-//                                     <tr>
-//                                         <td>{x.Id}</td>
-//                                         <td>{x.Nome}</td>
-//                                         <td>{x.Genero}</td>
-//                                         <td>{x.Qtd}</td>
-//                                         <td>{x.Imagem} </td>
-//                                     </tr>   
+                                    <tr>
+                                        <td>{x.Id}</td>
+                                        <td>{x.Nome}</td>
+                                        <td>{x.Genero}</td>
+                                        <td>{x.Qtd}</td>
+                                        <td>{x.Imagem} </td>
+                                    </tr>   
 
-//                                 </tbody>
-//                             </Table>
-//                         </>
-//                     )}
+                                </tbody>
+                            </Table>
+                        </>
+                    )}
 
-//                 </TopWrapper>
+                </TopWrapper>
 
-//             </ClassificarWrapper>
+            </ClassificarWrapper>
 
-//             <div style = {{visibility: 'hidden'}}>
-//                 <Relogio />
-//             </div>
-
-
-//         </PageDefault>
-//     );
-// }
+            <div style = {{visibility: 'hidden'}}>
+                <Relogio />
+            </div>
+        </PageDefault>
+    );
+}

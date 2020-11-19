@@ -18,10 +18,11 @@ namespace Backend.Controllers
     [Route("Clientes")]
     public class ClienteController  : ControllerBase
     {
+        Cryptography crip = new Cryptography();
         ClienteConversor conv = new ClienteConversor();
         ClienteBusiness Buss = new ClienteBusiness();
 
-        [HttpGet("{id}")] // Cliente
+        [HttpGet("{id}")] // PRONTO
         public ActionResult<ClienteResponse> Consultar(int id)
         {
             try
@@ -32,9 +33,16 @@ namespace Backend.Controllers
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
-                new ErrorResponse(400,ex.Message));
+                    new ErrorResponse(400,ex.Message)
+                );
             }
         } 
+
+        [HttpGet("Hash")]
+        public string Hash(string senha)
+        {
+            return crip.CriarHash(senha).ToString();
+        }
         
         [HttpGet("ping")]
         public string ping()

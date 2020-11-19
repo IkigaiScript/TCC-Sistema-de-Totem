@@ -22,7 +22,7 @@ export default function HomePagamento (){
             <OpcaoWrapper>
 
                 <Opcao>
-                    <Link to = '/NF-e'>
+                    <Link to = '/NF-e' onClick={() => window.localStorage.setItem('pagamento','cartao')}>
                         <Img src = {Cartao} alt = '' height = '200px' width = '200px' />
                         <Span>Cartão</Span>
                     </Link>
@@ -36,14 +36,10 @@ export default function HomePagamento (){
                 </Opcao>
 
                 <Opcao>
-
-                    <Link to = '/NF-e'>
-
+                    <Link to = '/NF-e' onClick={() => window.localStorage.setItem('pagamento','qrcode')}>
                         <Img src = {QRCode} alt = '' height = '200px' width = '200px' />
                         <Span>QRCode</Span>
-
                     </Link>
-
                 </Opcao>
 
             </OpcaoWrapper>

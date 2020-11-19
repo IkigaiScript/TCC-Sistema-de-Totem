@@ -11,31 +11,33 @@ namespace Backend.Utils
 {
     public class PedidoComboConvesor
     {
-        public TbPedidoCombo ParaTabela (PedidoComboRequest req)
+        public List<TbPedidoCombo> ParaTabela(PedidoComboRequest req)
         {
-            return new TbPedidoCombo {
-                NrQtdCombo = req.Qtd,
-                IdPedido = req.Pedido,
-                IdCombo = req.Combo
-            };
+            List<TbPedidoCombo> ret = new List<TbPedidoCombo>();
+
+            foreach(Combos combo in req.Itens)
+            {
+                ret.Add(
+                    new TbPedidoCombo(){
+                        IdPedido = req.Pedido,
+                        IdCombo = combo.Combo,
+                        NrQtdCombo = combo.Qtd
+                    }
+                );
+            }
+
+            return ret;
         }
 
-        public List<TbPedidoCombo> ParaListaTabela (List<PedidoComboRequest> reqs)
-        {
-            return reqs.Select(x => this.ParaTabela(x)).ToList();
-        }
-
-        public PedidoComboResponse ParaResponse (TbPedidoCombo tb)
+        public PedidoComboResponse ParaResponse(TbPedidoCombo tb)
         {
             return new PedidoComboResponse {
-                Qtd = (int) tb.NrQtdCombo,
-                Pedido = (int) tb.IdPedido,
-                Combo = (int) tb.IdCombo,
-                Id = tb.IdPedidoCombo
+                Qtd = tb.NrQtdCombo,
+                Combo = tb.IdCombo
             };
         }
 
-        public List<PedidoComboResponse> ParaListaResponse (List<TbPedidoCombo> tbs)
+        public List<PedidoComboResponse> ParaListaResponse(List<TbPedidoCombo> tbs)
         {
             return tbs.Select(x => this.ParaResponse(x)).ToList();
         }

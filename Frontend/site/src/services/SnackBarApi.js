@@ -5,7 +5,7 @@ const api = axios.create({
     baseURL:'http://localhost:5000/'
 });
 
-export default class SnackBar {
+export class SnackBar {
 
     async consultProduto(tipoProduto){
         const response = await api.get(`SnackBars?tipoProduto=${tipoProduto}`)

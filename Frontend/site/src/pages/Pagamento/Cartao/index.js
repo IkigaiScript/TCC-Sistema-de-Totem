@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Relogio from '../../../components/Relogio';
 import Input from '../../../components/Input';
 import Button from '../../../components/Buttons';
@@ -39,6 +39,10 @@ export default function ValidarCartao (){
               }
         }
     }
+
+    useEffect(() => {
+        localStorage.removeItem('pedido');        
+    },[]);
 
     return (
         <PageDefault>
@@ -121,6 +125,10 @@ export default function ValidarCartao (){
                 <Button 
                     to = '/PagamentoRealizado'
                     children = 'Concluir'
+                    onClick = {() => {
+                        cadastrarCartao();  
+                        window.localStorage.removeItem('pedido');
+                    }}
                 />
 
             </ButtonWrapper>

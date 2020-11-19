@@ -40,14 +40,14 @@ function Routes(){
                 
                 <Route path = '/' component = {Login} exact />
                 <Route path = '/home' component = {Home} exact/>
-                <Route path = '/Teste' component = {Teste} exact />
+                <Route path = '/teste' component = {Teste} exact />
                 
                                     {/* Ingresso */}
                                     
                 <Route path = '/compra/assento' component = {Lugar} exact/>
                 <Route path = '/compra/ingresso' component = {ComprarIngresso} exact/>
                 <Route path = '/sessaofilme' component = {Busca} exact/>
-                <Route path = '/Filme' component = {InfoFilme} exact/>
+                <Route path = '/filme' component = {InfoFilme} exact/>
 
                                     {/* Lanche */}
 

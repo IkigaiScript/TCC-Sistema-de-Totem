@@ -60,7 +60,14 @@ export default function  Home(){
       }
       else {
         console.log(e.response.data);
-        toast.error("Algo deu errado!");
+        toast.error('Algo deu errado!', {
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+          });
       }
     }
   }
@@ -87,15 +94,6 @@ export default function  Home(){
   useEffect(() => {
     consultFilmes();
     consultCliente();
-    toast.dark('Seja bem-vindo! 😉', {
-      position: "top-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
   },[])
 
 

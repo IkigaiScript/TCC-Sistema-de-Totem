@@ -1,114 +1,147 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { Multiselect } from 'multiselect-react-dropdown';
-import {PagesDefault, ButtonWrapper, OptionWrapper} from './style';
+import {H1, PagesDefault, Option, ButtonWrapper, OptionWrapper, Select} from './style';
 import SelectionLanche from '../../../components/SelectionLanche';
 import Relogio from '../../../components/Relogio';
 import Button from '../../../components/Buttons';
-import SnackBar from '../../../services/SnackBarApi';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/DropdownButton';
+import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-const api = new SnackBar();
+import { PedidoSnackBar } from '../../../services/PedidoSnackBarApi'
+import { SnackBar } from '../../../services/SnackBarApi'
+import { GetPhoto } from '../../../services/GetPhotoApi'
+const snackbar = new SnackBar();
+const getPhoto = new GetPhoto();
+const pedidosnackbar = new PedidoSnackBar();
 
 export default function Bebida (){
 
-    const [req, setReq] = useState('');
-    
+    const [history,setHistory] = useState([]);
+    const [ped] = useState(localStorage.getItem('pedido'));
+    const [bebidas, setBebidas] = useState([]);
+    const [itens,setItens] = useState([]);
 
-    const consultDrink = async() => {
+    async function consultBebida(){
         try{
-            const drink = await api.consult('bebida');
-            setReq([...drink]);
-            return drink;
-        }catch(e){
-            console.error('Falha na interegração');
+            const response = await snackbar.consultProduto('bebida');
+            console.log(response);
+            setBebidas([...response]);
+            return response;
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
+    async function cadastrarSnackBar(){
+        try{
+            const req = {
+                Pedido:ped,
+                Itens:itens
+            }
+
+            const response = await pedidosnackbar.registerSnackOrder(req)
+            console.log(response);
+            return response;
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
+    async function consulthistory(){
+        try{
+            const response = await pedidosnackbar.history(ped);
+            console.log(response);
+            return response;
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
         }
     }
 
     useEffect(() => {
-        consultDrink();
+        consultBebida();
+        consulthistory();
     },[])
-
-    const options = {
-        select: [{name: "Pipoca", id: "1"},
-                 {name: "Combo", id: "2"},
-                 {name: "Doce", id: "3"},
-                 {name: "Bebida", id: "4"}],
-
-        selectedValues: [{name: "Pipoca", id: "1"},
-                       {name: "Combo", id: "2"},
-                       {name: "Doce", id: "3"},
-                       {name: "Bebida", id: "4"}]
-   };
-
-   const style = {
-        chips: {
-            color: "white"
-        },
-        searchBox: {
-            width: "150px",
-            height: "35px"
-        },
-        multiselectContainer: {
-            width: "150px",
-            height: "35px"
-        }
-    };
-   
 
     return (
         <PagesDefault>
             
-            <h1>Qual Bebida deseja tomar?</h1>
+            <H1>Qual bebida deseja tomar?</H1>
 
             <ButtonWrapper>
 
-                <Button
-                    as = {Link}
-                    to = '/compra/lanche'
-                    children = 'Voltar'
-                />
-
                 <Relogio />
+
+                <Select>
+                    <Option>Combo</Option>
+                    <Option>Pipoca</Option>
+                    <Option>Doce</Option>
+                    <Option selected></Option>
+                </Select>
 
             </ButtonWrapper>
 
             <OptionWrapper>
                 
-                
-                {req.map(x => 
-                    <SelectionLanche key = ''
-                        imagem  =  ''
-                        title   =  ''
-                        peso    =  ''
-                        sabor   =  ''
-                        preco   =  ''
+                {bebidas.map(x => 
+                    <SelectionLanche key = {x.id}
+                        imagem  =  {getPhoto.getPhoto(x.imagem)}
+                        title   =  {x.nome}
+                        peso    =  {x.peso}
+                        sabor   =  {x.sabor}
+                        preco   =  {`R$ ${x.preco}`}
                     />
-                )}
+                )};
                 
-
             </OptionWrapper>
 
             <ButtonWrapper>
 
                 <Button 
-                    as = {Link}
-                    to = '/sessaofilme'
-                    children = 'Compra Ingreeso'
-                />
+                        as = {Link}
+                        to = '/sessaofilme'
+                        children = 'Compra Ingreeso'
+                        onClick = {() => {
+                            if(itens.length > 0) cadastrarSnackBar();
+                        }}
+                    />
 
-                
                 <Button 
-                    as = {Link}
-                    to = '/escolha-pagamento'
-                    children = 'Pagamento'
-                />
+                        as = {Link}
+                        to = '/escolha-pagamento'
+                        children = 'Pagamento'
+                        onClick = {() => {
+                            if(itens.length > 0) cadastrarSnackBar();
+                        }}
+                    />
 
             </ButtonWrapper>
-            
-            
+            <ToastContainer/>
         </PagesDefault>      
     );
 }

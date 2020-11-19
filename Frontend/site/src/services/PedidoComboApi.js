@@ -8,7 +8,12 @@ const api = axios.create({
 export class PedidoCombo {
     
     async registerComboOrden(reqs){
-        const response = await api.post(`Pedidos/Combos/`,reqs)
+        const response = await api.post(`Pedidos/Combos/`,reqs);
+        return response.data;
+    }
+
+    async history(id){
+        const response = await api.get(`Pedidos/Combos/History/${id}`);
         return response.data;
     }
 }

@@ -25,5 +25,18 @@ namespace Backend.Utils
 
             return ret;    
         }
+
+        public PedidoSnackBarResponse ParaResponse(TbPedidoSnackBar tb)
+        {
+            return new PedidoSnackBarResponse {
+                Qtd = tb.NrQtdSnackBar,
+                SnackBar = tb.IdSnackBar
+            };
+        }
+
+        public List<PedidoSnackBarResponse> ParaListaResponse(List<TbPedidoSnackBar> tbs)
+        {
+            return tbs.Select(x => this.ParaResponse(x)).ToList();
+        }
     }
 }

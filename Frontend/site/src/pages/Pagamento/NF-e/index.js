@@ -8,13 +8,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Nota } from '../../../services/NotaApi'
 import { Cupom } from '../../../services/CupomApi'
 import { Pedido } from '../../../services/PedidoApi'
-const nota = new Nota();
 const pedido = new Pedido();
+const nota = new Nota();
 const cupom = new Cupom();
 
 export default function NFe (){
-
-    const [ped,setPed] = useState(localStorage.getItem('pedido'));
+                                    {/* /pagamento/cartao     /pagamento/QRCode */}
+    const [to] = useState(String(localStorage.getItem('pagamento')) === 'qrcode' 
+                                        ? '/pagamento/QRCode'
+                                        : '/pagamento/cartao'
+                                );
+                                
+    const [ped] = useState(localStorage.getItem('pedido'));
     const [email,setEmail] = useState('');
     const [cpf,setCpf] = useState('');
     const [codigo,setCodigo] = useState('');
@@ -25,6 +30,24 @@ export default function NFe (){
             console.log(response);
             return response;
         } 
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
+    async function conusltCupom(){
+        try{
+            const response = await cupom.consultCupom(codigo,ped);
+            console.log(response);
+            return response;
+        }
         catch(e){
             if(e.response.data.error){
                 console.log(e.response.data);
@@ -124,9 +147,10 @@ export default function NFe (){
                 <Relogio />
 
                 <Button 
-                    to = '/pagamento/cartao'
+                    to = {to}
                     children = 'Confirmar'
                     onClick = {() => {
+                        conusltCupom();
                         cadastrarNota();
                     }} 
                 />

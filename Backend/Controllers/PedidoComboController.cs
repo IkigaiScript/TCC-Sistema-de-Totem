@@ -22,17 +22,33 @@ namespace Backend.Controllers
         PedidoComboBusiness buss = new PedidoComboBusiness();
         
         [HttpPost] // funcionando
-        public ActionResult<List<PedidoComboResponse>> Cadastrar(List<PedidoComboRequest> reqs)
+        public ActionResult Cadastrar(PedidoComboRequest req)
         {
             try
             {
-                List<TbPedidoCombo> combos = conv.ParaListaTabela(reqs);
-                return conv.ParaListaResponse(buss.Cadastrar(combos));
+                List<TbPedidoCombo> combos = conv.ParaTabela(req);
+                buss.Cadastrar(combos);
+                return new OkResult();
             }
             catch(Exception ex)
             {
                 return new BadRequestObjectResult(
                     new ErrorResponse(400,ex.Message)
+                );
+            }
+        }
+
+        [HttpGet("History/{id}")]
+        public ActionResult<List<PedidoComboResponse>> Historico(int id)
+        {
+            try
+            {
+                return conv.ParaListaResponse(buss.Historico(id));
+            }
+            catch(Exception ex)
+            {
+                return new NotFoundObjectResult(
+                    new ErrorResponse(404,ex.Message)
                 );
             }
         }

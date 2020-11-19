@@ -12,7 +12,7 @@ namespace Backend.Business
         IdBase ConstBase = new IdBase();
         PedidoComboDatabase db = new PedidoComboDatabase();
        
-        public List<TbPedidoCombo> Cadastrar(List<TbPedidoCombo> tbs)
+        public void Cadastrar(List<TbPedidoCombo> tbs)
         {
             foreach(TbPedidoCombo tb in tbs)
             {
@@ -23,7 +23,14 @@ namespace Backend.Business
                 if(ConstBase.Pedido((int) tb.IdPedido) == null) throw new ArgumentException("Pedido não existe"); 
             }
 
-            return db.Cadastrar(tbs);
+            db.Cadastrar(tbs);
+        }
+
+        public List<TbPedidoCombo> Historico(int id)
+        {
+            if(ConstBase.Pedido(id) == null) throw new ArgumentException("Pedido não encontrado");
+
+            return db.Historico(id);
         }
     }
 }

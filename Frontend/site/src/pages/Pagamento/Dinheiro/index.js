@@ -1,9 +1,34 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import Button from '../../../components/Buttons';
 import Relogio from '../../../components/Relogio/';
 import { PageDefault, TextWrapper, ButtonWrapper } from './style';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Pedido } from '../../../services/PedidoApi'
+const pedido = new Pedido();
 
 export default function Dinheiro (){
+
+    const [ped] = useState(localStorage.getItem('pedido'));
+    
+    async function cancelar(){
+        try{
+            const response = await pedido.deleteOrder(ped);
+            console.log(response);
+            return response;
+        } 
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
     return (
         <PageDefault>
             <h1>Pagamento com Dinheiro</h1>
@@ -23,27 +48,26 @@ export default function Dinheiro (){
 
             </TextWrapper>
 
-        
-            <h1>N° Pedido:</h1>
-            
+            <h1>N° Pedido:{ped}</h1>
 
             <ButtonWrapper>
 
                 <Button 
                     to= '/' 
                     children= 'Cancelar Pedido' 
+                    onClick = {cancelar}
                 />
 
                 <Relogio />
 
                 <Button 
                     to='/'  
-                    children='Finalizar' 
+                    children='Finalizar'
+                    onClick = {() => localStorage.removeItem('pedido')} 
                 />
 
             </ButtonWrapper>
-
+            <ToastContainer/>
         </PageDefault>
-
     );
 }

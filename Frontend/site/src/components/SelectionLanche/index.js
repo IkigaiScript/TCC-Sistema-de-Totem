@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import { PageDefault, ImageWrapper, TitleWrapper, DescWrapper, InfoWrapper, ButtonWrapper, Button, P } from './style';
 
@@ -23,7 +23,6 @@ function Remove() {
 
 export default function SelectSnack(props) {
     return(
-
         <PageDefault>
 
             <ImageWrapper>
