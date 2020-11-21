@@ -1,21 +1,51 @@
-import React from 'react'
-import Relogio from '../../../components/Relogio'
-import Input from '../../../components/Input'
-import Cartao from '../../../assets/Img/Cartao.png'
-import QRCode from '../../../assets/Img/QRCode.png'
-import Dinheiro from '../../../assets/Img/Dinheiro.png'
-import {PageDefault, OpcaoWrapper, Opcao, Img, Span, ValorWrapper} from './style'
-import {Link} from 'react-router-dom'
-
+import React, { useEffect, useState } from 'react';
+import Relogio from '../../../components/Relogio';
+import Input from '../../../components/Input';
+import Cartao from '../../../assets/Img/Cartao.png';
+import QRCode from '../../../assets/Img/QRCode.png';
+import Dinheiro from '../../../assets/Img/Dinheiro.png';
+import { PageDefault, OpcaoWrapper, Opcao, Img, Span, ValorWrapper } from './style';
+import { Link } from 'react-router-dom';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Pedido } from '../../../services/PedidoApi'
+const pedido = new Pedido();
 
 export default function HomePagamento (){
+
+    const [ped] = useState(localStorage.getItem('pedido'));
+    const [total,setTotal] = useState(0);
+
+    async function calcularTotal(){
+        try{
+            const response = await pedido.changeOrderAmount(ped);
+            console.log(response);
+            setTotal(response);
+            return response;
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
+    useEffect(() => {
+        calcularTotal()
+    },[]);
+
     return (
         <PageDefault>
             <h1>Formas de Pagamento</h1>
 
             <ValorWrapper>
                 <span>R$</span>
-                <Input type = 'number' width = '300' min = '0'/>
+                <Input value={total} type = 'number' width = '300' min = '0' disabled />
             </ValorWrapper>
 
 
@@ -45,9 +75,10 @@ export default function HomePagamento (){
             </OpcaoWrapper>
 
             <div style = {{visibility: 'hidden'}}>
-             <Relogio />
-            </div>
-    
+                <Relogio />
+            </div>   
+
+            <ToastContainer/>
         </PageDefault>
     );
 }

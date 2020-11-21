@@ -8,6 +8,7 @@ const api = axios.create({
 export class SnackBar {
 
     async consultProduto(tipoProduto){
+        console.log(tipoProduto);
         const response = await api.get(`SnackBars?tipoProduto=${tipoProduto}`)
         return response.data;
     }

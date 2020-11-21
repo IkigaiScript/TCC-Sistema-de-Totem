@@ -1,6 +1,7 @@
 import React,{ useState } from 'react';
 import Button from '../../../components/Buttons';
 import Relogio from '../../../components/Relogio/';
+import { Link } from 'react-router-dom';
 import { PageDefault, TextWrapper, ButtonWrapper } from './style';
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,6 +16,7 @@ export default function Dinheiro (){
         try{
             const response = await pedido.deleteOrder(ped);
             console.log(response);
+            localStorage.removeItem('pedido');
             return response;
         } 
         catch(e){
@@ -48,11 +50,12 @@ export default function Dinheiro (){
 
             </TextWrapper>
 
-            <h1>N° Pedido:{ped}</h1>
+            <h1> Pedido:{ped}</h1>
 
             <ButtonWrapper>
 
                 <Button 
+                    as= { Link }
                     to= '/' 
                     children= 'Cancelar Pedido' 
                     onClick = {cancelar}
@@ -61,9 +64,10 @@ export default function Dinheiro (){
                 <Relogio />
 
                 <Button 
+                    as= { Link }
                     to='/'  
                     children='Finalizar'
-                    onClick = {() => localStorage.removeItem('pedido')} 
+                    onClick = {() => sessionStorage.removeItem('pedido')} 
                 />
 
             </ButtonWrapper>

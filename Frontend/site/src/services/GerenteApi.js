@@ -9,18 +9,16 @@ export class Gerente {
 
     async topFilmes(){
         const response = await api.get(`Gerente/Top/Filmes`);
-        return response.data
+        return response.data;
     }
 
     async vendasDoDia(dia){
-        console.log(dia);
         const response = await api.get(`Gerente/Vendas/Dia/${dia}`,);
         return response.data;
     }
 
     async vendasdoMes(req){
         console.log(req);
-        console.log(typeof req.Inicio)
         const response = await api.get(`Gerente/Vendas`,req);
         return response.data;
     }

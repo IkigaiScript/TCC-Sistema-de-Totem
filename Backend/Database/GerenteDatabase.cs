@@ -103,10 +103,16 @@ namespace Backend.Database
 
                 ret.Add(conv.TopFilmes(filme,ingressos));
             }
-
-            return ret.OrderByDescending(x => x.Qtd)
+                    
+            ret = ret.OrderByDescending(x => x.Qtd)
                       .Take(15)
                       .ToList();            
+            
+            TopFilmes troca = ret[0];
+            ret[0] = ret[1];
+            ret[1] = troca;
+
+            return ret;
         } 
 
         public List<TopProdutos> TopProdutos()

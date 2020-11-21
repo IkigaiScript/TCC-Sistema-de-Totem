@@ -7,7 +7,7 @@ export default function SelectFilme(props) {
 
             <ImageWrapper>
 
-                <img src = {props.image} alt = {props.desc} height = '95px' width = '120px' />
+                <img src = {props.image} alt = '' height = '95px' width = '120px' />
             
             </ImageWrapper>
 

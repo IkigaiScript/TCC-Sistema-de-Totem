@@ -45,16 +45,16 @@ export default function Combos (){
                     itens.push(
                         {
                             Qtd:Number(window.localStorage.getItem(`id ${x.id}`)),
-                            SnackBar:Number(x.id)
+                            Combo:Number(x.id)
                         }
                     )
                 );
-            
-            const req = {
+
+                const req = {
                 Pedido:Number(ped),
                 Itens:itens.filter(x => x.Qtd != 0)
             };
-            
+
             const response = await pedidocombo.registerComboOrden(req);
             return response;
         }
@@ -118,10 +118,10 @@ export default function Combos (){
                 <Relogio />
 
                 <Select onClick={e => switchRoutes(e.target.value)}>
-                    <Option> Combo </Option>
+                    <Option  selected value='master'> Combo </Option>
                     <Option> Pipoca </Option>
                     <Option value='doces'> Doce </Option>
-                    <Option selected value='master'> Bebida </Option>
+                    <Option > Bebida </Option>
                 </Select>
 
             </ButtonWrapper>

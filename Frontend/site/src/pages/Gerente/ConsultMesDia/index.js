@@ -1,22 +1,20 @@
-import React,{ useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import Input from '../../../components/Input'
 import Relogio from '../../../components/Relogio';
 import {PageDefault, SearchWrappper} from './style';
 import { Gerente } from '../../../services/GerenteApi';
-import Chart from "react-google-charts";
-import Table from 'react-bootstrap/Table';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const api = new Gerente();
+const gerente = new Gerente();
 
 export default function ConsultGerente() {
 
     const [dia,setDia] = useState(new Date().toISOString().substr(0, 10));
-    const [mesInicio,setMesInicio] = useState(new Date().toISOString().substr(0, 10));
+    const [mesInicio,setMesInicio] = useState(new Date());
     const [mesFinal,setMesFinal] = useState();
     const [vendasDia,setVendasDia] = useState([])
     const [vendasMes,setVendasMes] = useState([]);
@@ -24,7 +22,7 @@ export default function ConsultGerente() {
     async function consultVendasDoDia(){
         try{
             setVendasDia([]);
-            const response = await api.VendasDoDia(new Date(dia).getDate() + 1);
+            const response = await gerente.vendasDoDia(new Date(dia).getDate() + 1);
             setVendasDia([...response]);
             return response;
         }
@@ -36,27 +34,34 @@ export default function ConsultGerente() {
 
     async function consultVendasDoMes(){
         try{
-             
             setVendasMes([]);
 
             const req = {
-                Inicio:mesInicio,
-                Final:mesFinal
+                inicio:'2020-11-15',
             };
-
-            const response = await api.VendasdoMes(req);
+            
+            const response = await gerente.vendasdoMes(req);
             setVendasMes([...response]);
             return response;
         }
         catch(e){
-            console.log(e);
-            toast.error(e);
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+          }
         }
-    }
+
+    useEffect(() => {
+    },[])
 
     return(
         <PageDefault>
-            <h1>Realizar  consulta por dia/mes</h1>
+            <h1>Consultar por mês/dia</h1>
 
             <SearchWrappper>
                 <div>
@@ -149,7 +154,6 @@ export default function ConsultGerente() {
             <div style = {{visibility: 'hidden'}}>
                 <Relogio />
             </div>
-
             <ToastContainer/>   
         </PageDefault>
     );

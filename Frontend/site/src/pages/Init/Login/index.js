@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
-import Relogio from '../../components/Relogio';
-import Button from '../../components/Buttons';
-import Input from '../../components/Input';
+import { Link } from 'react-router-dom';
+import Relogio from '../../../components/Relogio';
+import Button from '../../../components/Buttons';
+import Input from '../../../components/Input';
 import { PageDefault, Custom, ButtonWrapper, TextLogin} from './style';
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import LoginApi from '../../services/LoginApi'
+import LoginApi from '../../../services/LoginApi'
 const api = new LoginApi();
 
 export default function Login(){

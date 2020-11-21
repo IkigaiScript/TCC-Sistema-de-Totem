@@ -2,8 +2,7 @@ import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 /* Global */
-import Home from './pages/Home';
-import Login from './pages/Login';
+import Init from './pages/Init';
 
 /* Tela de Ingresso */
 import Lugar from './pages/Ingresso/Assento';
@@ -38,8 +37,7 @@ function Routes(){
         <BrowserRouter>
             <Switch>
                 
-                <Route path = '/' component = {Login} exact />
-                <Route path = '/home' component = {Home} exact/>
+                <Route path = '/' component = {Init} exact/>
                 <Route path = '/teste' component = {Teste} exact />
                 
                                     {/* Ingresso */}
@@ -47,7 +45,7 @@ function Routes(){
                 <Route path = '/compra/assento' component = {Lugar} exact/>
                 <Route path = '/compra/ingresso' component = {ComprarIngresso} exact/>
                 <Route path = '/sessaofilme' component = {Busca} exact/>
-                <Route path = '/filme' component = {InfoFilme} exact/>
+                <Route path = '/filme' component = {InfoFilme}/>
 
                                     {/* Lanche */}
 

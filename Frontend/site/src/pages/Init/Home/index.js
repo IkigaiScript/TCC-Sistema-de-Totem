@@ -1,28 +1,28 @@
-import React, {useState, useEffect} from 'react';
-import {PageDefault, ButtonWrapper, Menu, Span} from './style';
-import {Link} from 'react-router-dom';
-import Logo from '../../assets/Img/Logo.png';
-import Card from '../../components/Card';
-import Button from '../../components/Buttons';
-import Relogio from '../../components/Relogio';
+import React, { useState, useEffect } from 'react';
+import { PageDefault, ButtonWrapper, Menu, Span} from './style';
+import { Link } from 'react-router-dom';
+import Logo from '../../../assets/Img/Logo.png';
+import Card from '../../../components/Card';
+import Button from '../../../components/Buttons';
+import Relogio from '../../../components/Relogio';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import {FaRegUserCircle} from 'react-icons/fa';
-import {GiMeal, GiTicket} from 'react-icons/gi';
+import { FaRegUserCircle } from 'react-icons/fa';
+import { GiMeal, GiTicket } from 'react-icons/gi';
 import { IconContext } from "react-icons";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Filme } from '../../services/FilmeApi';
-import { Cliente } from '../../services/ClienteApi';
-import { GetPhoto } from '../../services/GetPhotoApi';
+import { Filme } from '../../../services/FilmeApi';
+import { Cliente } from '../../../services/ClienteApi';
+import { GetPhoto } from '../../../services/GetPhotoApi';
 
 const filme = new Filme();
 const cliente = new Cliente();
 const getPhoto = new GetPhoto();
 
-export default function  Home(){
+export default function Home(){
 
-  const [pedido,setPedido] = useState(localStorage.getItem('pedido'));
+  const [ped] = useState(localStorage.getItem('pedido'));
   const [req,setReq] = useState([]);
   const [img,setImg] = useState('');
   const [nome,setNome] = useState('');
@@ -50,8 +50,8 @@ export default function  Home(){
   async function consultFilmes() {
     try{
       const response = await filme.consultFilmes();
+      console.log(response);
       setReq([...response]);
-      console.log('ok Filme');
     }
     catch(e){
       if(e.response.data.error){
@@ -74,7 +74,7 @@ export default function  Home(){
 
   async function consultCliente() {
     try{
-      const response = await cliente.consultCliente(pedido);
+      const response = await cliente.consultCliente(ped);
       console.log(response);
       setNome(response.nome);
       return response;
@@ -114,11 +114,16 @@ export default function  Home(){
       <Carousel responsive={responsive} >
 
         {req.map(x =>            
-          <Card  key = {x.id}
-            nome = {x.nome}
-            image = {getPhoto.getPhoto('paisagem.jpg')}
-            sinopse = {x.sinopse}
-          />
+            <Link to={{
+              pathname:`/filme/${x.nome}`,
+              state:x.id
+            }}>
+                <Card  key = {x.id}
+                  nome = {x.nome}
+                  image = {getPhoto.getPhoto('paisagem.jpg')}
+                  sinopse = {x.sinopse}
+                />
+            </Link>
         )}  
           
       </Carousel>

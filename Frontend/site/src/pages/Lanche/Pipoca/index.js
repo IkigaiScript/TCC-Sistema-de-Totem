@@ -22,7 +22,7 @@ export default function Pipoca (){
 
     async function consultBebida(){
         try{
-            const response = await snackbar.consultProduto('pedido');
+            const response = await snackbar.consultProduto('pipoca');
             setPipocas([...response]);
             return response;
         }
@@ -111,7 +111,7 @@ export default function Pipoca (){
     return (
         <PagesDefault>
             
-            <H1>Qual bebida deseja tomar?</H1>
+            <H1>Qual pipoca deseja tomar?</H1>
 
             <ButtonWrapper>
 

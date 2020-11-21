@@ -40,7 +40,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost("Email/{pedido}")]  // mandar email -  Terminando
-        public ActionResult EnviarEmail(int pedido)
+        public  ActionResult EnviarEmail(int pedido)
         { 
             IdBase ConsTBase = new IdBase();
 

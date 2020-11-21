@@ -28,7 +28,10 @@ namespace Backend.Business
 
         public List<TbFilme> ConsultarFilter(int classificacao,string genero,string sala)
         {
-            string[] generos = new string[]{"acao", "animacao", "aventura", "comedia", "documnetario", "fantasia", "faroeste", "ficcao cientifica", "musical", "romance", "suspense", "terror", "drama"};
+            Console.WriteLine(classificacao);
+            Console.WriteLine(genero);
+            Console.WriteLine(sala);
+            string[] generos = new string[]{"ação", "animação", "aventura", "comédia", "documentario", "fantasia", "faroeste", "ficção científica", "musical", "romance", "suspense", "terror", "drama"};
             if(classificacao.ToString() != string.Empty && classificacao.ToString() != null)
             {
                 if(classificacao < 0 || classificacao > 18) throw new ArgumentException("Classificação inválida");

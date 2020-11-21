@@ -13,7 +13,7 @@ const nota = new Nota();
 const cupom = new Cupom();
 
 export default function NFe (){
-                                    {/* /pagamento/cartao     /pagamento/QRCode */}
+
     const [to] = useState(String(localStorage.getItem('pagamento')) === 'qrcode' 
                                         ? '/pagamento/QRCode'
                                         : '/pagamento/cartao'

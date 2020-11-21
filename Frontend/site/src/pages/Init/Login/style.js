@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CineTotem from '../../assets/Img/CineTotem.jpg'
+import CineTotem from '../../../assets/Img/CineTotem.jpg'
 
 export const PageDefault = styled.div`
     display: flex;

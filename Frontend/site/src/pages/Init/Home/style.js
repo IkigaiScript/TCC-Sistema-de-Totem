@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import HomeFundo from '../../assets/Img/HomeFundo.jpg';
+import HomeFundo from '../../../assets/Img/HomeFundo.jpg';
 
 export const PageDefault = styled.div`
     display:flex;

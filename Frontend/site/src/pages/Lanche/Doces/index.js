@@ -96,7 +96,8 @@ export default function Doce (){
     }
 
     function takeQtd(id){
-        
+        console.log(id);
+        console.log(`teste: ${history.some(x => x.snackBar === id)}`)
         if(history.some(x => x.snackBar === id)){
             return history.find(x => x.snackBar === id).qtd;
         }

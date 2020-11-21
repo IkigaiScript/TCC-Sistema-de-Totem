@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Relogio from '../../../components/Relogio';
 import Button from '../../../components/Buttons';
 import {PageDefault, OpcaoWrapper,  GrafiWrapper} from './style';
@@ -6,19 +7,19 @@ import { ToastContainer,toast } from 'react-toastify';
 import { Gerente } from '../../../services/GerenteApi';
 import Chart from 'react-google-charts';
 
-const api = new Gerente();
+const gerente = new Gerente();
 
 export default function HomeGerente() {
 
-    const [totem,setTotem] = useState(2);
-    const [login,setLogin] = useState(2);
+    const [totem,setTotem] = useState(0);
+    const [login,setLogin] = useState(0);
 
-    async function TotemLogins(){
+    async function totemLogins(){
 
         try{
-            const response = await api.TotemLogins();
-            setTotem(response.Totem);
-            setLogin(response.Login);
+            const response = await gerente.totemLogins();
+            setTotem(response.totem);
+            setLogin(response.login);
             return response;
         }
         catch(e){
@@ -26,24 +27,30 @@ export default function HomeGerente() {
         }
     }
 
+    useEffect(() => {
+        totemLogins();
+    },[])
+
     return(
 
         <PageDefault>
             <h1>Gerenciamento do Totem</h1>
             <OpcaoWrapper>
-                <Button 
+                <Button
+                    as = { Link } 
                     to = '/Gerenciar/consult'
                     children = 'Consultar por dia/mês'
                 />
 
                 <Button 
+                    as = { Link }
                     to = '/Gerenciar/top'
                     children = 'Consultar os top 10'
                 />
 
                 <Button 
                     children = 'Consultar'
-            
+                    onClick = {totemLogins}
                 />
             </OpcaoWrapper>
             

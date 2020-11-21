@@ -39,11 +39,16 @@ namespace Backend.Database
 
             if(genero != null && genero != string.Empty)
             {
-                Console.WriteLine($"{filmes.Count} {filmes[0].NmFilme}");
+                filmes = filmes.Where(x => this.GenderValidation(x.DsGenero,genero)).ToList();
             }
 
             if(classificacao != 0)
             {
+                if(classificacao == 1)
+                {
+                    classificacao = 0;
+                }
+                
                 filmes = filmes.Where(x => x.NrClassificacao == classificacao).ToList();
             }
 

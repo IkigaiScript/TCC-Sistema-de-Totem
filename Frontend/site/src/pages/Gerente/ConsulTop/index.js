@@ -1,36 +1,50 @@
 import React,{ useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import Relogio from '../../../components/Relogio';
 import Button from '../../../components/Buttons';
-import {PageDefault, ClassificarWrapper, TopWrapper, RankingWrapper, Posicao ,Primeiro, Segundo, Terceiro} from './style';
+import { PageDefault, ClassificarWrapper, TopWrapper, RankingWrapper, Posicao ,Primeiro, Segundo, Terceiro } from './style';
 import { ToastContainer,toast } from 'react-toastify';
 import { Gerente } from '../../../services/GerenteApi';
-import Table from 'react-bootstrap/Table';
 import { Chart } from 'react-google-charts'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Ouro from '../../../assets/Img/Ouro.png';
-import Prate from '../../../assets/Img/Prate.png';
-import Bronze from '../../../assets/Img/Bronze.png';
+// import Ouro from '../../../assets/Img/Ouro.png';
+// import Prate from '../../../assets/Img/Prate.png';
+// import Bronze from '../../../assets/Img/Bronze.png';
+// import { GiConsoleController } from 'react-icons/gi';
 
-const api = new Gerente();
+const gerente = new Gerente();
 
 export default function ConsulTop (){
     
-    const [filmees,setFilmees] = useState([]);
-    const [produtos,setProdutos] = useState([]);
-    const [topFilmes,setTopFilmes] = useState([]);
-    const [topPrdotutos,setTopProdutos] = useState([]);
+    const [primeiroFilme,setPrimeiroFilme] = useState();
+    const [segundoFilme,setSegundoFilme] = useState();
+    const [terceiroFilme,setTerceiroFilme] = useState();
+    const [primeiroProduto,setPrimeiroProduto] = useState();
+    const [segundoProduto,setSegundoProduto] = useState();
+    const [terceiroProduto,setTerceiroProduto] = useState();
+ 
+    let topFilmes = [];
+    let topProdutos = [];
 
     async function consultTopFilmes(){
         try{
-            const response = await api.TopFilmes();
-            setTopFilmes([...response])
-            
-            for(let i=4; i < topFilmes.length; i++){
-                const filme = topFilmes[i].Posicao = i;
-                console.log(filme);
-                setFilmees(filmees.push(filme));
+            const response = await gerente.topFilmes();
+            console.log([...response]);
+
+            topFilmes =  [...response];
+            setPrimeiroFilme(response[1]);
+            setSegundoFilme(response[0]);
+            setTerceiroFilme(response[2]);
+
+            for(let i = 0; i < topFilmes.length; i++){
+                topFilmes[i].Posicao = i;
             }
-            
+
+            topFilmes = topFilmes.map(x => [x.nome,x.qtd]);
+            console.log(...topFilmes);
+            console.log(primeiroFilme);
+            console.log(segundoFilme);
+            console.log(terceiroFilme);
             return response;
         }
         catch(e){
@@ -43,18 +57,28 @@ export default function ConsulTop (){
               toast.error("Algo deu errado!");
             }
           }
-    }
+        }
 
     async function consultTopProdutos(){
         try{
-            const response = api.TopProdutos();
-            setTopProdutos([...response])
-            
-            for(let i = 4; i < topPrdotutos.length; i++){
-                const prodo = topPrdotutos[i].Posicao = i;
-                console.log(prodo);
-                setProdutos(produtos.push(prodo));
+            const response = await gerente.topProdutos();
+
+            topProdutos = [...response]
+            setPrimeiroProduto(response[1]);
+            setSegundoProduto(response[0]);
+            setTerceiroProduto(response[2]);
+
+            for(let i = 0; i < topProdutos.length; i++){
+                topProdutos[i].posicao = i;
+                console.log(topProdutos[i]);
             }
+
+            topProdutos = topProdutos.map(x => [x.nome,x.qtd]);
+            console.log(typeof topProdutos[0][0]);
+            console.log(typeof topProdutos[0][1]);
+            console.log(primeiroProduto);
+            console.log(segundoProduto);
+            console.log(terceiroProduto);
 
             return response;
         }
@@ -68,8 +92,13 @@ export default function ConsulTop (){
               toast.error("Algo deu errado!");
             }
           }
-    }
+        }
     
+    useEffect(() => {
+        consultTopFilmes();
+        consultTopProdutos();
+    },[])
+
     return(
         <PageDefault>
             
@@ -77,6 +106,7 @@ export default function ConsulTop (){
             <h1>Classificação dos Top 10</h1>
             
             <Button 
+                as = { Link }
                 to = '/Gerenciar'
                 children = 'Voltar'
             />
@@ -84,67 +114,74 @@ export default function ConsulTop (){
             <ClassificarWrapper>
 
                 <TopWrapper>
-
+{/* 
                     <Button 
                         onClick = {consultTopProdutos}
                         children = 'Top 10 mais Vendidas'
+                    /> */}
+                    <Chart
+                        width={'500px'}
+                        height={'300px'}
+                        chartType="BarChart"
+                        loader={<div>Loading Chart</div>}
+                        data={[
+                            ['Filme', 'Position'],
+                            ...topFilmes
+                        ]}
+                        options={{
+                                title: 'Population of Largest U.S. Cities',
+                                chartArea: { width: '50%' },
+                                hAxis: {
+                                title: 'Top 15 filmes mais vendidos',
+                                minValue: 0,
+                            },
+                            vAxis: {
+                                title: 'City',
+                            },
+                        }}
+                        // For tests
+                        rootProps={{ 'data-testid': '1' }}
                     />
 
-                        
+                    {/* <RankingWrapper>                        
 
-                    <RankingWrapper>
-                        
                             <Posicao>
 
                                 <span>Nome</span>
-
                                 <Segundo>
-
                                     <img src = {Prate} alt = ''  height = '100px'/>
-
                                     <span>Valor und: 10.90</span>
                                     <span>Total: 55000</span>
-
                                 </Segundo>
 
                             </Posicao>
 
                             <Posicao>
 
-                            
-
                                 <span>Nome</span>
-
                                 <Primeiro>
-
-                                <img src = {Ouro} alt = '' height = '120px'/>
-
+                                    <img src = {Ouro} alt = '' height = '120px'/>
                                     <span>Valor und:10.90</span>
                                     <span>Total:60000 </span>
-
                                 </Primeiro>
-
+                                
                             </Posicao>
 
                             <Posicao>
 
                                 <span>Nome</span>
-
                                 <Terceiro>
-
                                     <img src = {Bronze} alt = '' height = '100px'/>
-
                                     <span>Valor und:10.90</span>
                                     <span>Total:50000 </span>
-
                                 </Terceiro>
 
                             </Posicao>
 
-                        </RankingWrapper>
+                        </RankingWrapper> */}
 
                     
-                    {produtos.map(x =>
+                    {/* {produtos.map(x =>
 
                         <Table striped bordered hover>
 
@@ -181,7 +218,7 @@ export default function ConsulTop (){
                             </tbody>
 
                         </Table>    
-                    )}
+                    )} */}
 
                 </TopWrapper>
 
@@ -192,8 +229,31 @@ export default function ConsulTop (){
                         children = 'Top 15  filmes mais Vendidas'
                     />
 
-                    
-                    {filmees.map(x =>
+                    <Chart
+                        width={'500px'}
+                        height={'300px'}
+                        chartType="BarChart"
+                        loader={<div>Loading Chart</div>}
+                        data={[
+                            ['Produtos', 'Quantidade'],
+                            ...topProdutos
+                        ]}
+                        options={{
+                                title: 'Population of Largest U.S. Cities',
+                                chartArea: { width: '50%' },
+                                hAxis: {
+                                title: 'Total Population',
+                                minValue: 0,
+                            },
+                            vAxis: {
+                                title: 'City',
+                            },
+                        }}
+                        // For tests
+                        rootProps={{ 'data-testid': '1' }}
+                    />
+
+                    {/* {filmees.map(x =>
                         <>
                             <RankingWrapper>
                             
@@ -268,7 +328,7 @@ export default function ConsulTop (){
                                 </tbody>
                             </Table>
                         </>
-                    )}
+                    )} */}
 
                 </TopWrapper>
 

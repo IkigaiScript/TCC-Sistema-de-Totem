@@ -1,36 +1,59 @@
 import React, { useState, useEffect } from 'react'
-import {PageDefault, FilmeWrapper, Video, InfoWrapper, Img, Custom, ImgCont, Span, ButtonWrapper} from './style';
+import { Link } from 'react-router-dom';
+import { PageDefault, FilmeWrapper, Video, InfoWrapper, Img, Custom, ImgCont, Span, ButtonWrapper } from './style';
 import Relogio from '../../../components/Relogio/';
 import Button from '../../../components/Buttons';
-
-import { Sessao } from  '../../../services/SessaoApi';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Filme } from '../../../services/FilmeApi';
+import { GetPhoto } from '../../../services/GetPhotoApi'
 
+const getPhoto = new GetPhoto();
 const filme = new Filme();
-const api = new Sessao();
 
 export default function InfoFilme (props){
 
-    const [nome] = useState(props.location.state.nome);
-    const [sinopse] = useState(props.location.state.sinopse);
-    const [imagem] = useState(props.location.state.imagem)
+    const [id] = useState(props.location.state);
+    const [nome,setNome] = useState('');
+    const [sinopse,setSinopse] = useState('');
+    const [imagem,setImagem] = useState('');
+    const [breve,setBreve] = useState(false);
+    const [classificacao,setClassificacao] = useState(0);
+    const [duracao,setDuracao] = useState(0);
+    const [diretores,setDiretores] = useState([]);
+    const [atores,setAtores] =  useState([]);
+    const [sessoes,setSessoes] = useState([]);
+    const [estreia,setEstreia] = useState(false);
 
-    const [diretor] = useState();
-    const [ator] =  useState();
-    const [sessao] = useState();
-
-    const getSessao =  async () => {
+    async function consultFilme(){
         try{
-            const resp = await api.get(props.location.state.id);
-            return resp;
-        }catch(e){
-            console.error('deu ruim')
+            const response = await filme.consultUni(id);
+            console.log(response.sessoes);
+            setEstreia(response.estreia);
+            setDuracao(response.duracao);
+            setClassificacao(response.classificacao);
+            setBreve(response.breve);
+            setAtores(response.atores);
+            setDiretores(response.diretores);
+            setNome(response.nome);
+            setSinopse(response.sinopse);
+            setImagem(response.imagem);
+            setSessoes(response.sessoes);
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
         }
     }
 
     useEffect(() => {
-        console.log("Hello world");
-        getSessao();    
+        consultFilme();
     })
 
     return (
@@ -45,40 +68,38 @@ export default function InfoFilme (props){
 
                 <ImgCont>
 
-                    <Img src = {filme.getPhoto(imagem)} alt = ''  height = '200' width = '200'/>
+                    {/* <Img src = {getPhoto.getPhoto(imagem)} alt = ''  height = '200' width = '200'/> */}
                     <Span>{nome}</Span>
-
 
                 </ImgCont>
 
                 <InfoWrapper>
-                    <span>Sninopse</span>
+                    <span>Sinopse</span>
                     <span>{sinopse}</span> 
                 </InfoWrapper>
-                {sessao.map(x => 
-                        <>    
-                            <InfoWrapper>
-                                <span>Sobre o Filme </span>
-                                <span>{x.ator}</span>          
-                                <span>{x.diretor}</span>
-                            </InfoWrapper>
+                
+                {atores.map(x => 
+                        <>
+                            <span>{x.nome}</span>
+                        </>)}
 
-                            <Custom>
+                {diretores.map(x => 
+                        <>
+                            <span>{x.nome}</span>
+                        </>)}
 
-                                <span>Sessão</span>
-                                <span>{x.sessoes}</span>
-
-                            </Custom>
-
-                            <Custom>
-                                <span>Sala</span>
-                            </Custom>
-                            
-                        </>
-                    )} 
+                {sessoes.map(x => 
+                        <>
+                            <span>{x.valor}</span>
+                            <span>{x.tipoSala}</span>
+                            <span>{x.horario}</span>
+                            <span>{x.sala}</span>                            
+                        </>)}
+                        
                 <ButtonWrapper>
 
                     <Button 
+                        as = { Link }
                         to = '/compra/assento'
                         children = 'Comprar ingressos'
                     />
@@ -86,15 +107,14 @@ export default function InfoFilme (props){
                     <Relogio />
 
                     <Button 
-                        to = '/sessaofilme'
+                        to = '/'
                         children = 'voltar'
                     />
 
                 </ButtonWrapper>
 
             </FilmeWrapper>
-
-
+            <ToastContainer/>
         </PageDefault>
     );
 }

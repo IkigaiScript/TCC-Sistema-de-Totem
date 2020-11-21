@@ -11,7 +11,7 @@ namespace Backend.Business
         {
             if(tipoProduto.ToLower() != "doce" &&
                tipoProduto.ToLower() != "pipoca" &&
-               tipoProduto.ToLower() != "bebida") throw  new ArgumentException("Tipo de produto inválido");
+               tipoProduto.ToLower() != "bebida") throw  new ArgumentException($"{tipoProduto} não é um tipo de produto valido");
 
             List<Models.TbSnackBar> snacks = db.Consultar(tipoProduto);
 
