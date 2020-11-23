@@ -34,9 +34,9 @@ export const SalaWrapper = styled.div`
 export const Assento = styled.div`
     display:flex;
     flex-direction:column;
-    height:80vh;
+    min-height:80vh;
     width:90vw;
-    background:radial-gradient(white,black);
+    background:rgba(000,000,000,0.3);
 
     margin-left:auto;
     margin-right:auto;
@@ -44,6 +44,7 @@ export const Assento = styled.div`
 
     align-items:center;
     justify-content:center;
+    justify-content:space-around;
 
     border:1px solid black;
     border-radius:5px;
@@ -65,4 +66,42 @@ export const Select = styled.select`
     padding-right:15px;
 
     border-radius:15px;
+`;
+
+export const Fileira = styled.div`
+    display:flex;
+    min-height:10vh;
+    width:75vw;
+
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:15px;
+
+    align-items:center;
+    justify-content:center;
+    justify-content:space-around;
+
+`;
+
+export const Cadeira = styled.div`
+    display:flex;
+    flex-direction:column;
+    height:20vh;
+    width:10vw;
+    background:${props => props.background ? props.background : ''};
+    
+    align-items:center;
+    justify-content:center;
+
+    >button{
+        width:5vw;
+        border:0;
+    }
+    
+`;
+
+export const DivColor = window.styled.div`
+  background: ${({toggle}) => toggle ? '#c3c3c3': '#446677'};
+  height: 200px;
+  width: 200px;
 `;

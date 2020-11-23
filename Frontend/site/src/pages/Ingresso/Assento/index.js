@@ -1,10 +1,87 @@
 import React from 'react';
-import { PageDefault, SalaWrapper, Assento, Select  } from './style';
+import { PageDefault, SalaWrapper, Assento, Select, Fileira, Cadeira, DivColor } from './style';
 import Button from '../../../components/Buttons';
-import Relogio from '../../../components/Relogio'
-import CircleLoader from "react-spinners/CircleLoader";
+import Relogio from '../../../components/Relogio';
+import {Link} from 'react-router-dom';
+import {MdEventSeat} from 'react-icons/md';
 
 export default function Lugar(){
+
+    const [toogle, setToogle] = React.useState(true);
+    const [cor, setCor] = React.useState('#c3c3c3');
+    React.useEffect(() => {
+        setCor((state) => toogle ? '#c3c3c3': '#446677');
+    }, [toogle]);
+
+    const fileira01 = [
+        {assento:'A01'},
+        {assento:'B01'},
+        {assento:'C01'},
+        {assento:'D01'},
+        {assento:'E01'},
+        {assento:'F01'},
+        {assento:'G01'}
+    ]
+
+    const fileira02 = [
+        {assento:'A02'},
+        {assento:'B02'},
+        {assento:'C02'},
+        {assento:'D02'},
+        {assento:'E02'},
+        {assento:'F02'},
+        {assento:'G02'}
+    ]
+
+    const fileira03 = [
+        {assento:'A03'},
+        {assento:'B03'},
+        {assento:'C03'},
+        {assento:'D03'},
+        {assento:'E03'},
+        {assento:'F03'},
+        {assento:'G03'}
+    ]
+
+    const fileira04 = [
+        {assento:'A04'},
+        {assento:'B04'},
+        {assento:'C04'},
+        {assento:'D04'},
+        {assento:'E04'},
+        {assento:'F04'},
+        {assento:'G04'}
+    ]
+
+    const fileira05 = [
+        {assento:'A05'},
+        {assento:'B05'},
+        {assento:'C05'},
+        {assento:'D05'},
+        {assento:'E05'},
+        {assento:'F05'},
+        {assento:'G05'}
+    ]
+
+    const fileira06 = [
+        {assento:'A06'},
+        {assento:'B06'},
+        {assento:'C06'},
+        {assento:'D06'},
+        {assento:'E06'},
+        {assento:'F06'},
+        {assento:'G06'}
+    ]
+
+    const fileira07 = [
+        {assento:'A07'},
+        {assento:'B07'},
+        {assento:'C07'},
+        {assento:'D07'},
+        {assento:'E07'},
+        {assento:'F07'},
+        {assento:'G07'}
+    ]
 
     return (
         <PageDefault>
@@ -30,16 +107,138 @@ export default function Lugar(){
             </SalaWrapper>
 
             <Assento>
-                
-                <CircleLoader size = '50vh' color = 'red' margin = '30px'/>
 
-                <span>Desculpe mas essa parte ainda não esta concluida</span>
+                <Fileira>
+
+                    {fileira01.map(valor => {
+
+                        console.log('Ls1' + valor.assento)
+
+                        if(valor.assento === 'D01' || valor.assento === 'A03'){
+                            return <Cadeira background = 'gray'> <MdEventSeat size = '60px' color = 'black'/> <button disabled>{valor.assento}</button> </Cadeira>
+                        }else{
+                            return <Cadeira> <MdEventSeat size = '60px'  color = 'orange'/> <button>{valor.assento}</button> </Cadeira>
+                        }
+
+                    })} 
+
+                </Fileira>
+
+                <Fileira>
+
+                    {fileira02.map(valor => {
+
+                        console.log('Ls1' + valor.assento)
+
+                        if(valor.assento === 'D01' || valor.assento === 'A03'){
+                            return <Cadeira background = 'gray'> <MdEventSeat size = '60px' color = 'black'/> <button disabled>{valor.assento}</button> </Cadeira>
+                        }else{
+                            return <Cadeira> <MdEventSeat size = '60px'  color = 'orange'/> <button>{valor.assento}</button> </Cadeira>
+                        }
+
+                    })} 
+
+                </Fileira>
+
+                <Fileira>
+
+                    {fileira03.map(valor => {
+
+                        console.log('Ls1' + valor.assento)
+
+                        if(valor.assento === 'D01' || valor.assento === 'A03'){
+                            return <Cadeira background = 'gray'> <MdEventSeat size = '60px' color = 'black'/> <button disabled>{valor.assento}</button> </Cadeira>
+                        }else{
+                            return <Cadeira> <MdEventSeat size = '60px'  color = 'orange'/> <button>{valor.assento}</button> </Cadeira>
+                        }
+
+                    })} 
+
+                </Fileira>
+
+
+                <Fileira>
+
+                    {fileira04.map(valor => {
+
+                        console.log('Ls1' + valor.assento)
+
+                        if(valor.assento === 'D01' || valor.assento === 'A03'){
+                            return <Cadeira background = 'gray'> <MdEventSeat size = '60px' color = 'black'/> <button disabled>{valor.assento}</button> </Cadeira>
+                        }else{
+                            return <Cadeira> <MdEventSeat size = '60px'  color = 'orange'/> <button>{valor.assento}</button> </Cadeira>
+                        }
+                    })} 
+
+                </Fileira>
+
+                <Fileira>
+
+                    {fileira05.map(valor => {
+
+                        console.log('Ls1' + valor.assento)
+
+                        if(valor.assento === 'D01' || valor.assento === 'A03'){
+                            return <Cadeira background = 'gray'> <MdEventSeat size = '60px' color = 'black'/> <button disabled>{valor.assento}</button> </Cadeira>
+                        }else{
+                            return <Cadeira> <MdEventSeat size = '60px'  color = 'orange'/> <button>{valor.assento}</button> </Cadeira>
+                        }
+
+                    })} 
+
+                </Fileira>
+
+                <Fileira>
+
+                    {fileira06.map(valor => {
+
+                        console.log('Ls1' + valor.assento)
+
+                        if(valor.assento === 'D01' || valor.assento === 'A03'){
+                            return <Cadeira background = 'gray'> <MdEventSeat size = '60px' color = 'black'/> <button disabled>{valor.assento}</button> </Cadeira>
+                        }else{
+                            return <Cadeira> <MdEventSeat size = '60px'  color = 'orange'/> <button>{valor.assento}</button> </Cadeira>
+                        }
+
+                    })} 
+
+                </Fileira>
+
+                <Fileira>
+
+                    {fileira07.map(valor => {
+
+                        console.log('Ls1' + valor.assento)
+
+                        if(valor.assento === 'D07' || valor.assento === 'A07'){
+                            return <Cadeira background = 'gray'> <MdEventSeat size = '60px' color = 'black'/> <button disabled>{valor.assento}</button> </Cadeira>
+                        }else{
+                            return (
+
+                                <button
+                                    onClick={e => 
+                                    setToogle(state => !state)}
+                                >
+                                    <Cadeira  style = {{backgroundColor:cor}}>
+
+                                        <MdEventSeat size = '60px'  color = 'orange'/> 
+                                        <button>{valor.assento}</button> 
+
+                                    </Cadeira>
+                                </button>
+                            )
+                        }
+
+                    })} 
+
+                </Fileira>
 
             </Assento>
             
             <SalaWrapper>
 
                 <Button 
+                    as = {Link}
                     to = '/sessaofilme'
                     children = 'Voltar'
                 />
@@ -47,11 +246,27 @@ export default function Lugar(){
                 <Relogio />
 
                 <Button 
+                    as = {Link}
                     to = '/compra/ingresso'
                     children = 'Proximo'
                 />
 
             </SalaWrapper>
+
+            <div>
+                <button
+                    onClick={e => 
+                        setToogle(state => !state)}
+                >
+                    
+                    <div style={{
+                        height: '200px', 
+                        width: '200px', 
+                        backgroundColor:cor,
+                        }}>      
+                    </div>
+                </button>
+            </div>
 
         </PageDefault>
     );
