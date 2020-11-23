@@ -25,11 +25,14 @@ export default function OqueDesejaComer() {
             <Hr></Hr>
 
             <Link to = '/compra/lanche/pipoca'>
-                <LancheWrapper>
-                    <Img src= {Pipoca} alt="Pipoca" width="150px" height="110px"/>
 
+                <LancheWrapper>
+
+                    <Img src= {Pipoca} alt="Pipoca" width="150px" height="110px"/>
                     <Opcao>Pipoca</Opcao>
+                    
                 </LancheWrapper>
+
             </Link>
 
             <Hr></Hr> 

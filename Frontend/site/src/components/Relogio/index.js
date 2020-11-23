@@ -22,8 +22,8 @@ setInterval(function(){
     // Com o textContent, iremos inserir as horas, minutos 
     // no nosso elemento HTML
 
-// document.getElementById('hora')[0].innerHtml = hora+':'+minuto;
-},10000)
+    // document.getElementById('hora').innerHTML = hora+':'+minuto;
+},1000)
 
 
 // A function zero concatena a string (número) 0 em frente aos números

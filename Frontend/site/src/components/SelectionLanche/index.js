@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
-import { PageDefault, ImageWrapper, TitleWrapper,Img, DescWrapper, InfoWrapper, ButtonWrapper, Button, P, Text } from './style';
+import { PageDefault, Img, DescWrapper, InfoWrapper, ButtonWrapper, Button, P, Text } from './style';
 import bebida from '../../assets/Img/Pipoca.png'
 
 
@@ -21,8 +21,8 @@ export default function SelectSnack(props) {
         setCont(0);
       }
       else{
-         setQtd(qtd - 1);
-         setCont(cont - 1);
+        setQtd(qtd - 1);
+        setCont(cont - 1);
       }
     }	  
 
@@ -34,14 +34,14 @@ export default function SelectSnack(props) {
             </div>
 
             <InfoWrapper>
-                <TitleWrapper>
-                    <Text>{props.title}</Text>
-                </TitleWrapper>
+                
+                <h3>{props.title}</h3>
+                
             
                 <DescWrapper>
 
-                    <Text>peso:{props.peso}</Text>
-                    <Text>sabor:{props.sabor}</Text>
+                    <span>peso:{props.peso}</span>
+                    <span>sabor:{props.sabor}</span>
             
                 </DescWrapper>
 

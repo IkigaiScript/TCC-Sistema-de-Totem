@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+import PipocaFundo from '../../../assets/Img/PipocaFundo.jpg'
 
 export const PagesDefault = styled.div`
     display:flex;
     flex-direction:column;
-    height:100vh;
+    min-height:100vh;
     width:100vw;
-    background:linear-gradient(#eeeeee,#d72323);
+    background-image:url(${PipocaFundo});
+    background-size:cover;
 
     align-items:center;
     justify-content:center;
@@ -14,7 +16,8 @@ export const PagesDefault = styled.div`
 export const ButtonWrapper = styled.div`
     display:flex;
     height:10vh;
-    width:70vw;
+    width:60vw;
+
     box-sizing:border-box;
     margin-left:auto;
     margin-right:auto;
@@ -52,7 +55,7 @@ export const Custom = styled.div`
 export const OptionWrapper = styled.div`
     display:flex;
     flex-direction:row;
-    height:100vh;
+    min-height:100vh;
     width:60vw;
     align-items:center;
 
@@ -60,7 +63,6 @@ export const OptionWrapper = styled.div`
     box-sizing:border-box;
     margin-left:auto;
     margin-right:auto;
-    border:1px solid red;
 
     @media(max-width: 800px)
     {
@@ -70,17 +72,22 @@ export const OptionWrapper = styled.div`
 `;
 
 export const Select = styled.select`
-    height:8vh;
-    width:29vw;
+    height:6vh;
+    width:15vw;
+    background:#1874CD;
+    
+    justify-items:center;
+    align-items:center;
+
+    box-sizing:border-box;
     padding:5px;
     
-    box-sizing:border-box;
     border-radius:10px;
+    border:0.1em solid black ;
     
     color:white;
-    background-color:#222831;
     font-size:15pt;
-    border:0.2em solid #393e46 ;
+    letter-spacing:3px;
 `;
 
 export const H1 = styled.h1`
@@ -104,7 +111,9 @@ export const H1 = styled.h1`
 `;
 
 export const Option = styled.option`
-    color:white;
-    line-height:50px;
-    font-size:12pt;
+   padding:15px;
+    background:white;
+
+    color:black;
+    font-size:18pt;
 `;
