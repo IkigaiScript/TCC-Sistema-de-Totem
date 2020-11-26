@@ -47,7 +47,7 @@ namespace Backend.Business
             string[] dominio = new string[4]{"@gmail","@outlook","@hotmail","@yahoo"};
             if(!dominio.Any(x => tb.DsEmail.Contains(x))) throw new ArgumentException("Dominio do email não aceito");
             
-            tb.DsCpf = CriarHash(tb.DsCpf);
+            db.Cadastrar(tb);
         }
 
         public TbNotaFiscal Consultar(int pedido)

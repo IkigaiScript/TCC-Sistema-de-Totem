@@ -1,5 +1,5 @@
-using System;
 using System.Linq;
+using System;
 using System.Collections.Generic;
 
 using Backend.Models.Request;
@@ -17,7 +17,7 @@ namespace Backend.Utils
                 Cpf = tb.DsCpf,
                 Login = tb.IdLogin,
                 Cep = tb.DsCep,
-                CondiçãoEspecial = tb.BtCondicaoEspecial,
+                CondicaoEspecial = tb.BtCondicaoEspecial,
                 Rg = tb.DsRg,
                 Celular = tb.DsCelular,
                 Vip = tb.BtVip

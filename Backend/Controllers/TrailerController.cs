@@ -12,7 +12,7 @@ namespace Backend.Controllers
         TrailerBusiness buss = new TrailerBusiness();
         GerenciadorFotos fotos = new GerenciadorFotos();
         
-        [HttpGet("Videos/id")] // Consultar trailer
+        [HttpGet("Videos/{id}")] // Consultar trailer
         public ActionResult LerVideo (int id)
         {
             string nome =  buss.LerVideo(id);

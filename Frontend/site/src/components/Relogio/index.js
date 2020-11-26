@@ -22,7 +22,7 @@ setInterval(function(){
     // Com o textContent, iremos inserir as horas, minutos 
     // no nosso elemento HTML
 
-    // document.getElementById('hora').innerHTML = hora+':'+minuto;
+    document.getElementById('hora').innerHTML = hora+':'+minuto;
 },1000)
 
 

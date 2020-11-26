@@ -24,6 +24,7 @@ namespace Backend.Controllers
         {
             try
             {
+                Console.WriteLine("start cartão");
                 TbCartao cartao = conv.ParaTabela(req);
                 return conv.ParaResponse(buss.Cadastrar(cartao,req.Cvv,req.Senha,req.Pagamento));
             }

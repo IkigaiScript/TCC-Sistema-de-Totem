@@ -26,8 +26,6 @@ export default function Login(){
             if(response){
                 
                 let t = String(response).substring(1,String(response).indexOf(','))
-                localStorage.setItem("pedido",Number(t))
-
                 let y = String(response).substring(String(response).indexOf(",") + 1,String(response).indexOf(")"));
                 y = Number(y);
                 
@@ -36,7 +34,8 @@ export default function Login(){
                     window.location.replace(url);  
                 }   
                 else{
-                    let url = `${window.location.href}home`;
+                    localStorage.setItem("pedido",Number(t))
+                    let url = `${window.location.href}`;
                     window.location.replace(url);
                 }
             }
@@ -94,7 +93,8 @@ export default function Login(){
 
             <ButtonWrapper>
 
-                <Button onClick = {Logar}>Entrar</Button>
+                <Button 
+                    onClick = {Logar}>Entrar</Button>
 
                 <Relogio />
 

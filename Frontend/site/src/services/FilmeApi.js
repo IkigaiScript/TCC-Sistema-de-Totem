@@ -24,9 +24,6 @@ export class Filme {
     }
 
     async consultFilter(sala,genero,classificacao){
-        console.log(`sala: ${typeof sala}`);
-        console.log(`classificacao: ${typeof classificacao}`);
-        console.log(`genero: ${typeof genero}`);
         const response = await api.get(`Filmes/Seach?classificacao=${classificacao}&sala=${sala}&genero=${genero}`);
         return response.data;
     }

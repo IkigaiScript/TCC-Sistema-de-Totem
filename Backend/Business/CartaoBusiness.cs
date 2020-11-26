@@ -15,7 +15,7 @@ namespace Backend.Business
         {
             if(ConsTBase.Pedido(tb.IdPedido) == null) throw new ArgumentException("Pedido não existe");  
 
-            if(cvv != 3) throw new ArgumentException("CVV inválido");
+            if(cvv.ToString().Length != 3) throw new ArgumentException("CVV inválido");
 
             if(tb.DsCartao.Replace(" ","").Length != 16) throw new ArgumentException("Numero de cartão inválido");
 

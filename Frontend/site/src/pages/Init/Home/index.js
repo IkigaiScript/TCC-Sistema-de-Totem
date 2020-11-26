@@ -133,16 +133,17 @@ export default function Home(){
         <IconContext.Provider value={{ size: '20px', color : 'white'}}>
 
           <Button
-            as = {Link}
-            to = '/compra/lanche'
-            children = 'Comprar Lanche'
-            icon = { <GiMeal /> } 
+              as = {Link}
+              to = '/compra/lanche'
+              children = 'Comprar Lanche'
+              icon = { <GiMeal /> } 
           />
 
           <Button 
-            to = '/sessaofilme'
-            children = 'Comprar Ingresso'
-            icon = { <GiTicket /> }
+              as = { Link }
+              to = '/sessaofilme'
+              children = 'Comprar Ingresso'
+              icon = { <GiTicket /> }
           />
           
         </IconContext.Provider>

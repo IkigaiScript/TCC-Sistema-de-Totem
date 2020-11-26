@@ -100,7 +100,7 @@ export const Cadeira = styled.div`
     
 `;
 
-export const DivColor = window.styled.div`
+export const DivColor = styled.div`
   background: ${({toggle}) => toggle ? '#c3c3c3': '#446677'};
   height: 200px;
   width: 200px;

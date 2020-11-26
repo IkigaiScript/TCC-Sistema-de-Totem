@@ -19,7 +19,6 @@ export default function HomePagamento (){
     async function calcularTotal(){
         try{
             const response = await pedido.changeOrderAmount(ped);
-            console.log(response);
             setTotal(response);
             return response;
         }

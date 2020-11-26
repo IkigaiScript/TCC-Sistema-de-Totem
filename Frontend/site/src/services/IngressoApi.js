@@ -8,7 +8,7 @@ const api = axios.create({
 export class Ingresso {
 
     async consultPlaces(sessao){
-        const response = await api.get(`Ingressos?sessao=${sessao}`);
+        const response = await api.get(`Ingressos/${sessao}`);
         return response;
     } 
 

@@ -19,7 +19,7 @@ export default function NFe (){
                                         : '/pagamento/cartao'
                                 );
                                 
-    const [ped] = useState(localStorage.getItem('pedido'));
+    const [ped] = useState(Number(localStorage.getItem('pedido')));
     const [email,setEmail] = useState('');
     const [cpf,setCpf] = useState('');
     const [codigo,setCodigo] = useState('');
@@ -28,6 +28,7 @@ export default function NFe (){
         try{
             const response = await pedido.deleteOrder(ped);
             console.log(response);
+            localStorage.clear();
             return response;
         } 
         catch(e){
@@ -42,10 +43,9 @@ export default function NFe (){
         }
     }
 
-    async function conusltCupom(){
+    async function conusultCupom(){
         try{
             const response = await cupom.consultCupom(codigo,ped);
-            console.log(response);
             return response;
         }
         catch(e){
@@ -68,8 +68,9 @@ export default function NFe (){
                 Cpf:cpf
             };
 
+            console.log(req);
             const response = await nota.cadastrar(req);
-            console.log(response);
+            window.location.replace(`${window.location.origin}${to}`)
             return response;
         }
         catch(e){
@@ -147,11 +148,13 @@ export default function NFe (){
                 <Relogio />
 
                 <Button 
-                    to = {to}
                     children = 'Confirmar'
                     onClick = {() => {
-                        conusltCupom();
-                        cadastrarNota();
+                        if((ped != null || ped === 0) && email !== '' && cpf !== '') {
+                            if(codigo !== '' && codigo.length === 4) conusultCupom();
+                            cadastrarNota();
+                       }
+                       else toast.info("Complete todos os campos");
                     }} 
                 />
             </ButtonWrapper>

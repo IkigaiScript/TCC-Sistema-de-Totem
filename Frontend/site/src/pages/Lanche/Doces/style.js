@@ -107,7 +107,6 @@ export const H1 = styled.h1`
         text-decoration:underline;
         text-decoration-color:white;
     }
-    
 `;
 
 export const Option = styled.option`

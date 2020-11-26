@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { PageDefault, SearchWrapper, SelectionWrapper, Select, FilmesWrapper } from './style';
+import Button from '../../../components/Buttons'
 import Relogio from '../../../components/Relogio';
 import SelectFilme from '../../../components/SelectionFilme';
 import Input from '../../../components/Input';
@@ -64,6 +65,7 @@ export default function Busca (){
             <SelectionWrapper>
 
                 <Select onClick= {(e) => setClassificacao(e.target.value)}>
+                    <option vaulue="" selected></option>
                     <option value={1}>Livre</option>
                     <option value={10}>10</option>
                     <option value={12}>12</option>
@@ -72,7 +74,8 @@ export default function Busca (){
                     <option value={18}>18</option>
                 </Select>
     
-                <Select onClick= {(e) => setGenero(e.target.value)}>
+                <Select onClick= {(e) => setGenero(e.target.value)}>4
+                    <option vaulue="" selected></option>
                     <option value="comédia">Comédia</option>
                     <option value="ação">Ação</option>
                     <option value="suspense">Suspense</option>
@@ -89,13 +92,14 @@ export default function Busca (){
                 </Select>
         
                 <Select onClick= {(e) => setSala(e.target.value)}>
+                    <option vaulue="" selected></option>
                     <option value="3d">3D</option>
                     <option value="xd">XD</option>
                 </Select>
 
-                <button
+                <Button
                     onClick= {consultFilter}
-                >Consultar</button>
+                >Consultar</Button>
                 
             </SelectionWrapper>
 
@@ -107,6 +111,7 @@ export default function Busca (){
                         state:x.id
                     }}>
                         <SelectFilme 
+                            key = {x.noe}
                             name= {x.nome}
                             image= {x.imagem}
                         />

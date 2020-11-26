@@ -19,11 +19,11 @@ export class Pedido {
 
     async changeOrderAmount(id){
         const response = await api.post(`Pedidos/Totals/${id}`)
-        return response;
+        return response.data;
     }
 
     async changeOrder(id,req){        
         const response = await api.put(`Pedidos/${id}`,req)
-        return response;
+        return response.data;
     }
 }

@@ -23,7 +23,7 @@ namespace Backend.Controllers
         IngressoConversor conv = new IngressoConversor();
         IngressoBusiness buss = new IngressoBusiness();
 
-        [HttpGet] // refazer apos o weverton definir certinho as cadeiras
+        [HttpGet("{sessao}")] // refazer apos o weverton definir certinho as cadeiras
         public ActionResult<List<IngressoResponse>> ConsultarLugares(int sessao)
         {
             try
