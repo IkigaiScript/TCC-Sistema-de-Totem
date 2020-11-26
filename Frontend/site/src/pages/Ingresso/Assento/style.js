@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import AssentoFundo from '../../../assets/Img/AssentoFundo.jpg';
+import Mouse from '../../../assets/Img/Mouse.png';
 
 export const PageDefault = styled.div`
     display:flex;
@@ -8,6 +9,7 @@ export const PageDefault = styled.div`
     max-width:100vw;    
     background-image:url(${AssentoFundo});
     background-size:cover;
+    cursor:url(${Mouse}),pointer;
 
     align-items:center;
     justify-content:center;
@@ -53,7 +55,6 @@ export const Assento = styled.div`
         font-size:15pt;
         margin-top:10px;
     }
-
     
 `;
 
@@ -96,6 +97,7 @@ export const Cadeira = styled.div`
     >button{
         width:5vw;
         border:0;
+
     }
     
 `;
