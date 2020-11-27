@@ -11,10 +11,8 @@ namespace Backend.Database
         tcdbContext ctx = new tcdbContext();   
         public string LerVideo(int id)
         {
-            Random rand = new Random();
-            TbFilme filme = ctx.TbFilme.Include(x => x.TbTrailer).FirstOrDefault(x => x.IdFilme == id);
-            int value = rand.Next(0,filme.TbTrailer.Count - 1);
-            return filme.TbTrailer.ToList()[value].NmTrailer;
+            TbTrailer trailer = ctx.TbTrailer.FirstOrDefault(x => x.IdFilme == id); 
+            return trailer.NmTrailer;
         }
     }
 }

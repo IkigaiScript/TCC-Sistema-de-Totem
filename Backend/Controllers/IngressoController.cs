@@ -48,11 +48,11 @@ namespace Backend.Controllers
         }
 
         [HttpPost] // funcionando
-        public ActionResult Cadastrar(List<IngressoRequest> reqs)
+        public ActionResult Cadastrar(IngressoRequest req)
         {
             try
             {
-                List<TbIngresso> ingressos = conv.ParaListaTabela(reqs);
+                List<TbIngresso> ingressos = conv.ParaTabela(req);
                 buss.Cadastrar(ingressos);
                 return new OkResult();
             }

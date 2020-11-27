@@ -23,20 +23,24 @@ namespace Backend.Utils
             return tbs.Select(x => this.ParaResponse(x)).ToList();
         }
 
-        public TbIngresso ParaTabela(IngressoRequest req)
+        public List<TbIngresso> ParaTabela(IngressoRequest req)
         {
-            return new TbIngresso {
-                DsFileira = req.Fileira.ToString(),
-                BtMeiaEntrada = req.MeiaEntrada,
-                IdPedido = req.Pedido,
-                NrPoltrona = req.Poltrona,
-                IdSessao = req.Sessao,
-            };
-        }
+            List<TbIngresso> ret = new List<TbIngresso>();
 
-        public List<TbIngresso> ParaListaTabela(List<IngressoRequest> reqs)
-        {
-            return reqs.Select(x => this.ParaTabela(x)).ToList();
+            foreach(Assento x in req.Assentos){
+                ret.Add(
+                    new TbIngresso {
+                        IdPedido = req.Pedido,
+                        DsFileira = x.Fileira.ToString(),
+                        NrPoltrona = x.Poltrona,
+                        IdSessao = req.Sessao,
+                        BtMeiaEntrada = x.MeiaEntrada
+                    }
+                );
+            }
+
+            return ret;
+
         }
     }
 }

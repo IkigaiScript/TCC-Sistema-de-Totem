@@ -1,20 +1,99 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState } from 'react';
 import { PageDefault, SalaWrapper, Assento, Select, Fileira, Cadeira } from './style';
 import Button from '../../../components/Buttons';
 import Relogio from '../../../components/Relogio';
-import {Link} from 'react-router-dom';
-import {MdEventSeat} from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import { MdEventSeat } from 'react-icons/md';
+import { Ingresso } from "../../../services/IngressoApi";
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const ingresso = new Ingresso();
 
-export default function Lugar(){   
+export default function Lugar(props){   
 
-    const [toogle, setToogle] = React.useState(true);
-    const [cor, setCor] = React.useState('#c3c3c3');
+    const [meiaEntrada,setMeiaEntrada] = useState([]);
+    const [cadeira,setCadeira] = useState([]);
+    const [valor,setValor] = useState();
+    const [sessao,setSessao] = useState(0);
+    const [ped,setPed] = useState(localStorage.getItem('pedido'));
+    const [sessoes,setSessoes] = useState(props.location.state);
+    const [toogle, setToogle] = useState(true);
+    const [cor, setCor] = useState('#c3c3c3');
 
     function Click(){
         setCor((state) => toogle ? '#c3c3c3': '#446677');
 
         return  setToogle(state => !state);
+    }
+
+    function valueSala(){
+        console.log(sessao)
+
+        if(sessao != 0){
+            const item = sessoes.find(x => x.id == sessao);
+            let r = item.valor;
+            setValor(r);
+        }
+
+        else {
+            setValor(0);
+        }
+    }
+
+    async function consultPoltrona(){
+        try{
+            const response = await ingresso.consultPlaces(sessao);
+            console.log(response);
+            
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
+    }
+
+    async function cadastrar(){
+        try{
+
+            const cad = [];
+
+            for(let x in cadeira){
+                cad.push({
+                        Fileira:String(x).substr(0,1),
+                        Poltrona:Number(String(x).substr(1)),
+                        MeiaEntrada:meiaEntrada.findIndex(x => x.assento == x)
+                    }
+                );
+            }
+
+            const req = {
+                Pedido:ped,
+                Sessao:sessao,
+                Assento:cad
+            };
+
+            console.log(req);
+
+            const response = await ingresso.registerTicket(req);
+            return response;
+        }
+        catch(e){
+            if(e.response.data.error){
+                console.log(e.response.data);
+                toast.error(e.response.data.error);
+              }
+              else {
+                console.log(e.response.data);
+                toast.error("Algo deu errado!");
+              }
+        }
     }
 
     const fileira01 = [
@@ -92,22 +171,27 @@ export default function Lugar(){
 
             <h1>Cadeiras</h1>
 
-
-
             <SalaWrapper>
 
-                <Select>
-                    <option value = '0'>Escolha uma sala</option>
-                    <option value = '1'>Sala 12-3D</option>
-                    <option value = '2'>Sala 09-XD</option>
-                    <option value = '1'>Sala 01</option>
+                <Select onClick={(e) => {
+                                        setSessao(e.target.value);
+                                        valueSala();
+                                    }}>
+                    <option value = {0} selected>Escolha sua sala</option>
+                    {sessoes.map(x => 
+                        <option value = {x.id}>{`Sala ${x.sala} ${x.tipoSala}`}</option>
+                    )}
                 </Select>
 
+                <input  type="number" 
+                        value={valor}
+                        disabled
+                    />
+
                 <Select>
-                    <option value = '0'>Escolha um horario da sessão</option>
-                    <option value = '1'>12:00</option>
-                    <option value = '1'>08:30</option>
-                    <option value = '1'>09:25</option>
+                    {sessoes.map(x => 
+                        <option>{String(x.horario).substring(String(x.horario).indexOf("T") + 1,String(x.horario).lastIndexOf(":"))}</option>
+                    )}
                 </Select>
 
             </SalaWrapper>
@@ -118,7 +202,6 @@ export default function Lugar(){
 
                     {fileira01.map(valor => {
 
-                        console.log('Ls1' + valor.assento)
                         if(valor.assento === 'Ocupado'){
                             return (
 
@@ -132,12 +215,13 @@ export default function Lugar(){
                             )
                         }else{
                             return (
-
                                 
                                 <Cadeira style = {{backgroundColor:cor}} >
 
                                     <MdEventSeat size = '60px'  color = 'orange'/> 
-                                    <button id = {valor.assento}>{valor.assento}</button> 
+                                    <button id = {valor.assento}
+                                            onClick={() => cadeira.push(valor.assento)}
+                                        >{valor.assento}</button> 
 
                                 </Cadeira>
                                 
@@ -151,7 +235,6 @@ export default function Lugar(){
 
                     {fileira02.map(valor => {
 
-                        console.log('Ls1' + valor.assento)
                         if(valor.assento === 'Ocupado'){
                             return (
 
@@ -170,7 +253,9 @@ export default function Lugar(){
                                 <Cadeira style = {{backgroundColor:cor}} >
 
                                     <MdEventSeat size = '60px'  color = 'orange'/> 
-                                    <button id = {valor.assento}>{valor.assento}</button> 
+                                    <button id = {valor.assento}
+                                            onClick={() => cadeira.push(valor.assento)}
+                                        >{valor.assento}</button> 
 
                                 </Cadeira>
                                 
@@ -184,7 +269,6 @@ export default function Lugar(){
 
                     {fileira03.map(valor => {
 
-                        console.log('Ls1' + valor.assento)
                         if(valor.assento === 'Ocupado'){
                             return (
 
@@ -203,7 +287,9 @@ export default function Lugar(){
                                 <Cadeira style = {{backgroundColor:cor}} >
 
                                     <MdEventSeat size = '60px'  color = 'orange'/> 
-                                    <button id = {valor.assento}>{valor.assento}</button> 
+                                    <button id = {valor.assento}
+                                            onClick={() => cadeira.push(valor.assento)}
+                                        >{valor.assento}</button> 
 
                                 </Cadeira>
                                 
@@ -236,10 +322,11 @@ export default function Lugar(){
                                 <Cadeira style = {{backgroundColor:cor}} >
 
                                     <MdEventSeat size = '60px'  color = 'orange'/> 
-                                    <button id = {valor.assento}>{valor.assento}</button> 
-
+                                    <button id = {valor.assento}
+                                            onClick={() => cadeira.push(valor.assento)}
+                                        >{valor.assento}</button> 
+                                        
                                 </Cadeira>
-                                
                             )
                         }
                     })} 
@@ -269,7 +356,9 @@ export default function Lugar(){
                                 <Cadeira style = {{backgroundColor:cor}} >
 
                                     <MdEventSeat size = '60px'  color = 'orange'/> 
-                                    <button id = {valor.assento}>{valor.assento}</button> 
+                                    <button id = {valor.assento}
+                                            onClick={() => cadeira.push(valor.assento)}
+                                        >{valor.assento}</button> 
 
                                 </Cadeira>
                                 
@@ -302,7 +391,9 @@ export default function Lugar(){
                                 <Cadeira style = {{backgroundColor:cor}} >
 
                                     <MdEventSeat size = '60px'  color = 'orange'/> 
-                                    <button id = {valor.assento}>{valor.assento}</button> 
+                                    <button id = {valor.assento}
+                                            onClick={() => cadeira.push(valor.assento)}
+                                        >{valor.assento}</button> 
 
                                 </Cadeira>
                                 
@@ -335,7 +426,9 @@ export default function Lugar(){
                                 <Cadeira style = {{backgroundColor:cor}} >
 
                                     <MdEventSeat size = '60px'  color = 'orange'/> 
-                                    <button id = {valor.assento}>{valor.assento}</button> 
+                                    <button id = {valor.assento}
+                                            onClick={() => cadeira.push(valor.assento)}
+                                        >{valor.assento}</button> 
 
                                 </Cadeira>
                                 
@@ -363,11 +456,8 @@ export default function Lugar(){
                     children = 'Proximo'
                 />
 
-            </SalaWrapper>
-
-           
-
+            </SalaWrapper>          
+            <ToastContainer />
         </PageDefault>
-    );
-    
+    );   
 }

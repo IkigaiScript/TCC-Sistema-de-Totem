@@ -10,6 +10,8 @@ export const PageDefault = styled.div`
     margin-left:50px;
     border-radius:8px;
     border:1px solid black;
+    color:black;
+    text-decoration:none;
 
     @media(max-width:800px){
         width:80vw;

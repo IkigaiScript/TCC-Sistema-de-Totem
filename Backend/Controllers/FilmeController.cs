@@ -19,6 +19,7 @@ namespace Backend.Controllers
     [Route("Filmes")]
     public class FilmeController : ControllerBase
     {
+        tcdbContext ctx = new tcdbContext();
         GerenciadorFotos fotos = new GerenciadorFotos();
         FilmeBusines buss = new FilmeBusines();
         FilmeConversor conv = new FilmeConversor();
@@ -80,6 +81,26 @@ namespace Backend.Controllers
                 return new BadRequestObjectResult(
                     new ErrorResponse(400,ex.Message)
                 );
+            }
+        }
+
+        [HttpPost] // funcionando
+        public ActionResult<FilmesResponse> Cadastrar([FromForm] FilmesRequest req)
+        {
+            try
+            {
+                Models.TbFilme ret = conv.CadastrarRequest(req);
+                ret.DsImagem = fotos.GerarNovoNome(req.Imagem.FileName);
+                ctx.TbFilme.Add(ret);
+                ctx.SaveChanges();
+                fotos.salvarFoto(ret.DsImagem,req.Imagem);
+                return conv.CadastrarResponse(ret);
+            }
+            catch(Exception ex)
+            {
+                return new BadRequestObjectResult(
+                    new Models.Response.ErrorResponse(400,ex.ToString())
+                );   
             }
         }
 

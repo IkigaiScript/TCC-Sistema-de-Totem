@@ -10,6 +10,7 @@ namespace Backend.Utils
         public SessaoResponse ParaResponse(TbSessao tb)
         {
             return new SessaoResponse {
+              Id = tb.IdSessao,
               Valor = (float) tb.VlIngresso,
               TipoSala = tb.DsTipoSala,
               Horario = tb.DtHorario,

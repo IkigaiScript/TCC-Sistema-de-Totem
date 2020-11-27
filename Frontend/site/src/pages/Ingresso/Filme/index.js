@@ -7,7 +7,9 @@ import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Filme } from '../../../services/FilmeApi';
 import { GetPhoto } from '../../../services/GetPhotoApi'
+import { Trailer } from '../../../services/TrailerApi'
 
+const trailer = new Trailer();
 const getPhoto = new GetPhoto();
 const filme = new Filme();
 
@@ -51,24 +53,24 @@ export default function InfoFilme (props){
               }
         }
     }
-
+    
     useEffect(() => {
         consultFilme();
-    })
+    },[])
+
 
     return (
         <PageDefault> 
 
             <FilmeWrapper>
 
-                
                 <Video controls>
-                    <source src = '' type = 'vide/mp4' />
+                    <source src = {trailer.consultTrailer(id)} type="video/mp4"/>
                 </Video>
 
                 <ImgCont>
 
-                    {/* <Img src = {getPhoto.getPhoto(imagem)} alt = ''  height = '200' width = '200'/> */}
+                    <Img src = {getPhoto.getPhoto(imagem)} alt = ''  height = '200' width = '200'/>
                     <Span>{nome}</Span>
 
                 </ImgCont>
@@ -129,13 +131,17 @@ export default function InfoFilme (props){
 
                     <Button 
                         as = { Link }
-                        to = '/compra/assento'
+                        to = {{
+                            pathname:`/compra/assento`,
+                            state:sessoes
+                          }}
                         children = 'Comprar ingressos'
                     />
 
                     <Relogio />
 
-                    <Button 
+                    <Button
+                        as = { Link }
                         to = '/'
                         children = 'voltar'
                     />

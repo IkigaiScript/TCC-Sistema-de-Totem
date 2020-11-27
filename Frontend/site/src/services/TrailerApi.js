@@ -7,8 +7,8 @@ const api = axios.create({
 
 export class Trailer {
     
-    async consultTrailer(nome){
-        const response = await api.get(`Trailers/Videos/${nome}`)
-        return response.data;
+    consultTrailer(id){
+        const url = `${api.defaults.baseURL}Trailers/Videos/${id}`;
+        return url;
     }
 }

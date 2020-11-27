@@ -118,10 +118,11 @@ export default function Home(){
               pathname:`/filme/${x.nome}`,
               state:x.id
             }}>
-                <Card  key = {x.id}
-                  nome = {x.nome}
-                  image = {getPhoto.getPhoto('paisagem.jpg')}
-                  sinopse = {x.sinopse}
+                <Card key = {x.id}
+                      id = {x.id}
+                      nome = {x.nome}
+                      image = {x.imagem}
+                      sinopse = {x.sinopse}
                 />
             </Link>
         )}  

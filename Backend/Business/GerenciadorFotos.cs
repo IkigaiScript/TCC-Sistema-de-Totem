@@ -23,7 +23,9 @@ namespace Backend.Business
 
        private byte[] LerFoto (string nome)
        {
+           Console.WriteLine('1');
            string caminho = Path.Combine(AppContext.BaseDirectory,"Storage","Fotos",nome);
+           Console.WriteLine(caminho);
            return System.IO.File.ReadAllBytes(caminho);
        }
 
@@ -36,6 +38,12 @@ namespace Backend.Business
        {
            byte[] photo =  this.LerFoto(nome);
            return File(photo,this.GerarContentType(nome));
+       }
+
+       public ActionResult BuscarVideo(string nome)
+       {
+           byte[] video = this.LerFoto(nome);
+           return File(video,"video/mp4");
        }
     }
 }

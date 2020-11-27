@@ -8,7 +8,9 @@ const api = axios.create({
 export class GetPhoto {
 
     getPhoto(nome){
-        const response = api.get(`GetPhoto/${nome}`);
-        return response.data;
+        if(nome == null) nome = 'paisagem.jpg'
+        
+        const url = `${api.defaults.baseURL}GetPhoto/${nome}`;
+        return url;
     }
 }
