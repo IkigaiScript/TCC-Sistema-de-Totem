@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import { PageDefault, FilmeWrapper, Video, InfoWrapper, Img, Custom, ImgCont, Span, ButtonWrapper } from './style';
+import { PageDefault, FilmeWrapper, Video, InfoWrapper, Img, Custom, ImgCont, Span, ButtonWrapper, InfoSessao } from './style';
 import Relogio from '../../../components/Relogio/';
 import Button from '../../../components/Buttons';
 import { ToastContainer,toast } from 'react-toastify';
@@ -77,24 +77,53 @@ export default function InfoFilme (props){
                     <span>Sinopse</span>
                     <span>{sinopse}</span> 
                 </InfoWrapper>
-                
-                {atores.map(x => 
-                        <>
-                            <span>{x.nome}</span>
-                        </>)}
 
-                {diretores.map(x => 
-                        <>
-                            <span>{x.nome}</span>
-                        </>)}
+                <InfoWrapper>
 
-                {sessoes.map(x => 
-                        <>
-                            <span>{x.valor}</span>
-                            <span>{x.tipoSala}</span>
-                            <span>{x.horario}</span>
-                            <span>{x.sala}</span>                            
-                        </>)}
+                    <span>Atores:</span>
+
+                    {atores.map(x => 
+                            <>
+                                <span>{x.nome}</span>
+                            </>
+                        )
+                    }
+
+                    <span>Diretor:</span>
+
+                    {diretores.map(x => 
+                            <>
+                                <span>{x.nome}</span>
+                            </>
+                        )     
+                    }
+
+                </InfoWrapper>
+
+                <InfoWrapper>
+
+                    <span>Sessão:</span>    
+
+                    {sessoes.map(x => 
+                            <InfoSessao>
+                                
+                                <div>
+                                    <span>valor do ingresso: {x.valor}</span>
+                                </div>
+
+                                <div>
+                                    <span>Horario: {x.horario}</span>
+                                </div>
+                                
+                                <div>
+                                    <span>sala: {x.sala}- {x.tipoSala}</span>
+                                </div>                            
+                                
+                            </InfoSessao>
+                        )
+                    }
+
+                </InfoWrapper>
                         
                 <ButtonWrapper>
 

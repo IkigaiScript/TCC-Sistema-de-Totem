@@ -14,6 +14,8 @@ export const PageDefault = styled.div`
 
     box-sizing:border-box;
     padding:15px;
+
+    font-size:15pt;
 `;
 
 export const FilmeWrapper =  styled.div`
@@ -81,10 +83,7 @@ export const Img = styled.img`
     width:200px;
 
     border-radius:10px;
-
-
     margin-left:20px;
-    
 `;
 
 export const ImgCont = styled.div`
@@ -126,3 +125,19 @@ export const ButtonWrapper = styled.div`
     justify-content:center;
     justify-content:space-around;
 `;
+
+export const InfoSessao = styled.div`
+    display:flex;
+    height:5vh;
+    width:70vw;
+
+    align-items:center;
+    justify-content:center;
+    justify-content:space-around;
+
+    box-sizing:border-box;
+    padding-left:10px;
+    padding-right:10px;
+    margin-right:auto;
+`;
+
