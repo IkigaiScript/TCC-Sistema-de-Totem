@@ -12,7 +12,7 @@ namespace Backend.Business
             TbLogin login = new TbLogin();
             if(!string.IsNullOrEmpty(tb.DsEmail))
             {
-                TbLogin login1 = db.Login(tb.DsEmail,tb.DsSenha); // hash da senha
+                TbLogin login1 = db.Login(tb.DsEmail,CriarHash(tb.DsSenha)); // hash da senha
                 if(login1 == null) throw new ArgumentException("Login não encontrado");
 
                 login = login1;
