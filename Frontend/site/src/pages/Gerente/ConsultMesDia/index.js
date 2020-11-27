@@ -1,7 +1,7 @@
 import React,{ useEffect, useState } from 'react';
 import Input from '../../../components/Input'
 import Relogio from '../../../components/Relogio';
-import {PageDefault, SearchWrappper} from './style';
+import {PageDefault, SearchWrappper, ButtonWrapper, Button, ReturnConsult, Table} from './style';
 import { Gerente } from '../../../services/GerenteApi';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -59,12 +59,19 @@ export default function ConsultGerente() {
     useEffect(() => {
     },[])
 
+    console.log('inicio: ' + mesInicio);
+    console.log('Fim: ' + mesFinal)
+
     return(
+        
         <PageDefault>
+            
             <h1>Consultar por mês/dia</h1>
 
             <SearchWrappper>
-                <div>
+
+                <div>          
+                
                     <label>Inicio</label>
                     <Input 
                         type = 'date'
@@ -74,9 +81,11 @@ export default function ConsultGerente() {
                         min = {new Date(new Date().getFullYear() -2 ,12,30)}
                         max = {new Date()}
                     />
+
                 </div>
 
                 <div>
+                    
                     <label>Fim</label>
                     <Input 
                         type = 'date'    
@@ -86,8 +95,11 @@ export default function ConsultGerente() {
                         min = {new Date(new Date().getFullYear() -2 ,12,30)}
                         max = {new Date()}
                     />
+
                 </div>
+
                 <div>
+
                     <label>Dia</label>
                     <Input 
                         type = 'date'
@@ -95,16 +107,22 @@ export default function ConsultGerente() {
                         onChange = {e => setDia(e.target.value)}             
                         width = '20vw'
                     />    
+
                 </div>
+
             </SearchWrappper>
-            <div>
-                <button onClick = {consultVendasDoMes}>Consulta Mes</button>
-                <button onClick = {consultVendasDoDia}>Consultar dia</button>
-            </div>                
-            <div>
+
+            <ButtonWrapper>
+
+                <Button onClick = {consultVendasDoMes}>Consulta Mes</Button>
+                <Button onClick = {consultVendasDoDia}>Consultar dia</Button>
+            
+            </ButtonWrapper> 
+
+            <ReturnConsult>
                 <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
                     <Tab eventKey="Dia" title="Dia">
-                        <table>
+                        <Table>
                             <thead>
                                 <tr>
                                     <th>Pedido</th>
@@ -125,7 +143,7 @@ export default function ConsultGerente() {
                                         </tr>
                                     )}
                             </tbody>
-                        </table>
+                        </Table>
                     </Tab>
 
                     <Tab eventKey="Mês" title="Mês">
@@ -149,7 +167,7 @@ export default function ConsultGerente() {
                         </table>
                     </Tab>
                 </Tabs>
-            </div>
+            </ReturnConsult>
 
             <div style = {{visibility: 'hidden'}}>
                 <Relogio />

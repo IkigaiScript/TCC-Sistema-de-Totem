@@ -26,3 +26,48 @@ export const SearchWrappper = styled.div`
     border:1px solid black;
     border-radius:20px  10px;
 `;
+
+export const ButtonWrapper = styled.div`
+    display:flex;
+    height:15vh;
+    width:70vw;
+
+    align-items:center;
+    justify-content:center;
+    justify-content:space-around;
+
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+`;
+
+export const Button = styled.button`
+    display:flex;
+    height:5vh;
+    width:15vw;
+
+    box-sizing:border-box;
+    padding-left:50px;
+
+    border-radius:8px;
+
+    text-align:center;
+    font-size:12pt;
+`;
+
+export const ReturnConsult = styled.div`
+    display:flex;
+    flex-direction:column;
+    width:70vw;
+`;
+
+export const Table = styled.table`
+    display:flex;
+    flex-direction:column;
+    min-height:60vh;
+    width:60vw;
+
+    margin-left:auto;
+    margin-right:auto;
+
+`;
